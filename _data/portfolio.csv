@@ -1,4 +1,4 @@
-title,subtitle,permalink,body,date,logo,color,background,tags,filter
+title,subtitle,id,body,date,logo,color,background,tags,filter
 Farshad Nayeri,Product | Technology | Strategy,about-farshad,"Oversee all aspects of product development for clients ranging from startups to multinationals. 
 Lead teams through all stages of mission-critical applications, from conception to delivery.",2024-01-01,Farshad-nayeri,1C2137,FFFFFF,,
 Enterprise API Platform,Ernst & Young Global Innovations 	,ernst-young-global-innovations-enterprise-api-platform,"Led international agile team to plan, define & develop EYs enterprise blockchain platform based on a federated microservice architecture on top of Azure cloud.",2024-01-01,ey-global-innovations,FBE74D,000000,"financial, crypto, api, platform",

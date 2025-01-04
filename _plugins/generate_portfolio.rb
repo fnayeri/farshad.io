@@ -17,8 +17,11 @@ module Jekyll
       def initialize(site, base, item, data_spec)
         @site = site
         @base = base
-        @dir  = item['permalink'] || data_spec['data'] # Use 'permalink' or fallback to 'data'
-        @name = item['permalink'] + '.html'
+        root = data_spec['root']
+        permalink = File.join(data_spec['root'], item['id'])
+        item['permalink'] = permalink
+        @dir  = File.join(data_spec['root'], item['permalink']) || data_spec['data'] # Use 'permalink' or fallback to 'data'
+        @name = File.join(data_spec['root'], item['permalink'], 'index.html')
 
         images = [File.join(data_spec['logo_dir'], item['logo'] + ".png")] if data_spec['logo_dir'] and item['logo']
 
@@ -27,8 +30,9 @@ module Jekyll
         self.data.merge!(item)
         self.data['images'] = images
         self.data['image'] = images.first
+        self.data['permalink'] = permalink
 
-        Jekyll.logger.info "\nGenerating portfolio page: #{@dir}, #{@name}", self.data
+        # Jekyll.logger.info "\nGenerating portfolio page: #{@dir}, #{@name}", self.data
   
     end
     end
