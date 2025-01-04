@@ -18,7 +18,7 @@ module Jekyll
         @site = site
         @base = base
         @dir  = item['permalink'] || data_spec['data'] # Use 'permalink' or fallback to 'data'
-        @name = 'index.html'
+        @name = item['permalink'] + '.html'
 
         images = [File.join(data_spec['logo_dir'], item['logo'] + ".png")] if data_spec['logo_dir'] and item['logo']
 
