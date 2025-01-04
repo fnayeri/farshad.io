@@ -7,33 +7,35 @@ module Jekyll
         return unless data_spec
   
         site.data['portfolio'].each do |item|
-          next if item['title'].nil? || item['title'].strip.empty? # Skip if title is nil or blank
-          site.pages << PortfolioPage.new(site, site.source, item, data_spec)
+            Jekyll.logger.info "\nnil check: #{item['name']} - #{item['name'].nil?}"
+            next if item['name'].nil? || item['name'].strip.empty? # Skip if title is nil or blank
+            site.pages << PortfolioPage.new(site, site.source, item, data_spec)
         end
       end
     end
   
     class PortfolioPage < Page
       def initialize(site, base, item, data_spec)
+
+
         @site = site
         @base = base
-        root = data_spec['root']
-        permalink = File.join(data_spec['root'], item['id'])
-        item['permalink'] = permalink
-        @dir  = File.join(data_spec['root'], item['permalink']) || data_spec['data'] # Use 'permalink' or fallback to 'data'
-        @name = File.join(data_spec['root'], item['permalink'], 'index.html')
+        @name = item['name']
+        @root = data_spec['root'] || '/'
 
-        images = [File.join(data_spec['logo_dir'], item['logo'] + ".png")] if data_spec['logo_dir'] and item['logo']
+        Jekyll.logger.info "\npage input: #{@root} - #{@name}", item
 
-        self.process(@name)
+        @dir  = File.join(@root, item['name'])
+        logo = File.join(data_spec['logo_dir'], @name + ".png") if data_spec['logo_dir'] and @name
+        item['image'] = logo if logo
+        item['images'] = [logo] if logo
+        item['permalink'] = File.join(@root,@name)
+
+        self.process(@name + '.html')
         self.read_yaml(File.join(base, '_layouts'), 'portfolio.html')
         self.data.merge!(item)
-        self.data['images'] = images
-        self.data['image'] = images.first
-        self.data['permalink'] = permalink
 
-        # Jekyll.logger.info "\nGenerating portfolio page: #{@dir}, #{@name}", self.data
-  
-    end
+        Jekyll.logger.info "\nGenerating portfolio page: #{@dir}, #{@name}", self.data
     end
   end
+end

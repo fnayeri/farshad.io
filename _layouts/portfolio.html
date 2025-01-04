@@ -1,10 +1,35 @@
 ---
 layout: default
 ---
+<style> 
+p {
+  font-size: 1.3em;
+  line-height: 1.2em;
+}
+</style>
 
 <article class="portfolio-item">
-  <img class='logo' src="{{ page.image }}" alt="{{ page.title }}" />
+  <img class='logo' style="width: 80%; max-width: 400px;" src="{{ page.image }}" alt="{{ page.title }}" />
+
+  <!-- <p>{{ page.tags }} </p> -->
   <h1>{{ page.title }}</h1>
   <h2>{{ page.subtitle }}</h2>
   <p>{{ page.body }}</p>
+
+  <h2>Problem</h2>
+  <p>{{ page.problem }}</p>
+  
+  <h2>Stakes</h2>
+  <p>{{ page.stakes }}</p>
+  
+  <h2>Approach</h2>
+  <p>{{ page.approach }}</p>
+  
+  <h2>Special Considerations</h2>
+  <p>{{ page.considerations }}</p>
+
+  <h2>Outcome</h2>
+  <p>{{ page.outcome }}</p>
+
+
 </article>

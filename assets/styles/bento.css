@@ -5,17 +5,23 @@ body {
         "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: #f8f8f8;
     display: flex;
-    justify-content: center;
     line-height: 1.0;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container {
+    display: grid;
+    padding: 20pt;
+    box-sizing: border-box;
 }
 
 .bento-box {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20pt;
-    padding: 30pt;
+    gap: 10pt;
     max-width: 1800px;
-    width: 100%;
+    width: 90%;
     box-sizing: border-box;
 }
 
@@ -25,10 +31,11 @@ div .bento {
     box-sizing: border-box;
     position: relative;
     padding: 25pt;
-    height: 250pt;
+    min-height: 250pt;
+    max-width: 200pt;
+    max-height: 25%;
+    max-width: 250pt;
     width: 250pt;
-    max-height: 300pt;
-    max-width: 300pt;
     background-color: white;
 }
 
@@ -44,14 +51,19 @@ div .bento {
 
 .bento img {
     opacity: 1.0;
+    color: inherit;
+    background-color: inherit;
 }
 
 .bento h2 {
     position: absolute;
     font-size: 1.8em;
+    line-height: 1.1;
     letter-spacing: -2%;
     bottom: 0;
     z-index: +2;
+    color: inherit;
+    background-color: inherit;
 }
 
 .bento h3 {
@@ -59,6 +71,24 @@ div .bento {
     position: absolute;
     display: none;
     z-index: +2;
+    color: inherit;
+    background-color: inherit;
+}
+
+
+
+.bento h1 {
+    display: none;
+    position: absolute;
+    top: 20%;
+    font-size: 4em;
+    z-index: +2;
+    text-align: center;
+    background-color: inherit;
+}
+
+.bento a:hover h1 {
+    display: block;
 }
 
 .bento p {
@@ -67,6 +97,8 @@ div .bento {
     line-height: 1.15;
     display: none;
     z-index: +2;
+    color: inherit;
+    background-color: inherit;
 }
 
 .bento:hover {

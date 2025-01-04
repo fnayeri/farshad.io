@@ -9,30 +9,55 @@
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/main.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" /> -->
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/styles/bento.css" />
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/styles/portfolio.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
 
-  </head>
+    <style>
+nav ul {
+  font-size: 1.3em;
+    list-style-type: none; /* Remove bullet points */
+    display: flex; /* Use flexbox to align items horizontally */
+    justify-content: left; /* Center the items horizontally */
+}
+
+nav ul li {
+    margin: 0 15px; /* Add horizontal spacing between items */
+}
+
+nav ul li a {
+    text-decoration: none; /* Remove underline from links */
+    color: #333; /* Set link color */
+    font-weight: bold; /* Make the text bold */
+}
+
+nav ul li a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}      
+    </style>
+
+</head>
 
   <body>
-    <div class="wrapper-masthead">
+    <div class="wrapper-header" role="header">
       <div class="container">
-        <header class="masthead clearfix" style="display: none">
-          <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
-
-          <div class="site-info">
-            <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
-            <p class="site-description">{{ site.description }}</p>
-          </div>
-
           <nav>
-            <a href="{{ site.baseurl }}/">Blog</a>
-            <a href="{{ site.baseurl }}/about">About</a>
+          <ul>
+            <li><a href='https://farshad.io/'>Farshad Nayeri</a></li>
+            <li><a href="mailto:farshad@igencorp.com">farshad@igencorp.com</a></li>
+            <li><a href="tel:+16178233876">+1.617.823.3876</a></li>
+            <li><a href="/docs/resume/Farshad-Nayeri-Resume.pdf" target="_blank">resume</a></li>
+            <li><a href="https://www.linkedin.com/in/farshadnayeri/" target="_blank">linkedin</a></li>
+  
+          <!-- <li><a href='https://farshad.io/'>Farshad Nayeri</a></li>
+          <li>email: <a href="mailto:farshad@igencorp.com">farshad@igencorp.com</a></li>
+          <li>tel: <a href="tel:+16178233876">+1.617.823.3876</a></li>
+          <li>resume: <a href="./resume/Farshad-Nayeri-Resume.pdf" target="_blank">resume</a></li>
+          <li>linkedin: <a href="https://www.linkedin.com/in/farshadnayeri/" target="_blank">linkedin</a></li> -->
+        </ul>
           </nav>
-        </header>
+      </div>
       </div>
     </div>
 
