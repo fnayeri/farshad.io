@@ -1,6 +1,7 @@
 ---
 title: farshad.io - Farshad Nayeri
 layout: default
+permalink: /bento/
 ---
 
 <h1><a href="/docs/">Farshad Nayeri - farshad.io</a></h1>
