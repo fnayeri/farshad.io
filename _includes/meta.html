@@ -16,3 +16,10 @@
     <meta property="og:title" content="{{ page.title }}" />
     <meta property="twitter:title" content="{{ page.title }}" />
     {% endif %}
+
+    <meta property="og:title" content="{{ page.title | escape }}" />
+    <meta property="og:description" content="{{ page.subtitle | escape }}" />
+    <meta property="og:image" content="{{ page.image | relative_url }}" />
+    <meta property="og:url" content="{{ page.url | absolute_url }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="{{ site.locale }}" />
