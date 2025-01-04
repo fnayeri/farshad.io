@@ -5,21 +5,20 @@
 
     {% if page.excerpt %}
     <meta name="description" content="{{ page.excerpt| strip_html }}" />
-    <meta property="og:description" content="{{ page.excerpt| strip_html }}" />
+    <meta property="og:description" content="{{ append: page.body | escape }}" />
     {% else %}
-    <meta name="description" content="{{ site.description }}">
-    <meta property="og:description" content="{{ site.description }}" />
+    <meta name="description" content="{{ page.subtitle }}">
+    <meta property="og:description"  content="{{ page.body | escape }}" />
     {% endif %}
     <meta name="author" content="{{ site.name }}" />
 
     {% if page.title %}
-    <meta property="og:title" content="{{ page.title }}" />
-    <meta property="twitter:title" content="{{ page.title }}" />
+    <meta property="og:title"        content="{{ page.title | append: subtitle | escape }}" />
+    <meta property="og:title"        content="{{ page.title | append: subtitle | escape }}" />
     {% endif %}
 
-    <meta property="og:title" content="{{ page.title | escape }}" />
-    <meta property="og:description" content="{{ page.subtitle | escape }}" />
-    <meta property="og:image" content="{{ page.image | relative_url }}" />
-    <meta property="og:url" content="{{ page.url | absolute_url }}" />
-    <meta property="og:type" content="article" />
-    <meta property="og:locale" content="{{ site.locale }}" />
+    <meta property="og:image"        content="{{ page.image | absolute_url | escape}}" />
+    <meta property="og:url"          content="{{ page.url | absolute_url | escape}}" />
+    <meta property="og:type"         content="article" />
+    <meta property="og:locale"       content="{{ site.locale }}" />
+
