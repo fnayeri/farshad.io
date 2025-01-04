@@ -7,7 +7,7 @@
     <meta name="description" content="{{ page.excerpt| strip_html }}" />
     <meta property="og:description" content="{{ append: page.body | escape }}" />
     {% else %}
-    <meta name="description" content="{{ page.subtitle | append: page.body | strip_html}}">
+    <meta name="description" content="{{ page.subtitle | append: '-' | append: page.body | strip_html}}">
     <meta property="og:description"  content="{{ page.body | escape }}" />
     {% endif %}
     <meta name="author" content="{{ site.name }}" />

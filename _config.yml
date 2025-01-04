@@ -81,7 +81,7 @@ gems:
 
 data_pages:
   - dataset: portfolio
-    permalink: /:permalink
+    permalink: /p/:permalink
     layout: portfolio
     logo_dir: /assets/logos
 
