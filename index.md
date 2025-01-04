@@ -1,12 +1,11 @@
 ---
 title: farshad.io - Farshad Nayeri
 layout: default
-permalink: /bento/
 ---
 
 <h1><a href="/docs/">Farshad Nayeri - farshad.io</a></h1>
 
-<!-- 
+
 <div class="bento-box">
       {% for p in site.data.portfolio %}
             <div class='bento' style='color: #{{ p.color | default: "000000" }}; background-color: #{{ p.background | default: "ffffff" }}'>
@@ -20,4 +19,4 @@ permalink: /bento/
             </div>
       {% endfor %}
 </div> 
--->
+
