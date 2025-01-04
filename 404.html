@@ -6,7 +6,7 @@
         <meta charset="utf-8" />
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+    <!-- <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'> -->
 
     
     <meta name="description" property="og:description"  content="-">
@@ -28,30 +28,55 @@
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" type="text/css" href="/style.css" />
-    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="/style.css" /> -->
     <link rel="stylesheet" type="text/css" href="/assets/styles/bento.css" />
     <link rel="stylesheet" type="text/css" href="/assets/styles/portfolio.css" />
     <link rel="alternate" type="application/rss+xml" title="Farshad Nayeri - farshad.io - Farshad Nayeri's Website" href="/feed.xml" />
 
-  </head>
+    <style>
+nav ul {
+  font-size: 1.3em;
+    list-style-type: none; /* Remove bullet points */
+    display: flex; /* Use flexbox to align items horizontally */
+    justify-content: left; /* Center the items horizontally */
+}
+
+nav ul li {
+    margin: 0 15px; /* Add horizontal spacing between items */
+}
+
+nav ul li a {
+    text-decoration: none; /* Remove underline from links */
+    color: #333; /* Set link color */
+    font-weight: bold; /* Make the text bold */
+}
+
+nav ul li a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}      
+    </style>
+
+</head>
 
   <body>
-    <div class="wrapper-masthead">
+    <div class="wrapper-header" role="header">
       <div class="container">
-        <header class="masthead clearfix" style="display: none">
-          <a href="/" class="site-avatar"><img src="https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/jekyll-logo.png" /></a>
-
-          <div class="site-info">
-            <h1 class="site-name"><a href="/">Farshad Nayeri - farshad.io</a></h1>
-            <p class="site-description">Farshad Nayeri's Website</p>
-          </div>
-
           <nav>
-            <a href="/">Blog</a>
-            <a href="/about">About</a>
+          <ul>
+            <li><a href='https://farshad.io/'>Farshad Nayeri</a></li>
+            <li><a href="mailto:farshad@igencorp.com">farshad@igencorp.com</a></li>
+            <li><a href="tel:+16178233876">+1.617.823.3876</a></li>
+            <li><a href="/docs/resume/Farshad-Nayeri-Resume.pdf" target="_blank">resume</a></li>
+            <li><a href="https://www.linkedin.com/in/farshadnayeri/" target="_blank">linkedin</a></li>
+  
+          <!-- <li><a href='https://farshad.io/'>Farshad Nayeri</a></li>
+          <li>email: <a href="mailto:farshad@igencorp.com">farshad@igencorp.com</a></li>
+          <li>tel: <a href="tel:+16178233876">+1.617.823.3876</a></li>
+          <li>resume: <a href="./resume/Farshad-Nayeri-Resume.pdf" target="_blank">resume</a></li>
+          <li>linkedin: <a href="https://www.linkedin.com/in/farshadnayeri/" target="_blank">linkedin</a></li> -->
+        </ul>
           </nav>
-        </header>
+      </div>
       </div>
     </div>
 
@@ -75,36 +100,6 @@
   - <a href="/">farshad.io - Farshad Nayeri - index.md</a>
  
   - <a href="/style.css"> - style.scss</a>
- 
-  - <a href="/p/about-farshad">Farshad Nayeri - /p/p/about-farshad/index.html</a>
- 
-  - <a href="/p/ernst-young-global-innovations-enterprise-api-platform">Enterprise API Platform - /p/p/ernst-young-global-innovations-enterprise-api-platform/index.html</a>
- 
-  - <a href="/p/red-book-keep-store-management-platform-apps">Store Management Platform &amp; Apps - /p/p/red-book-keep-store-management-platform-apps/index.html</a>
- 
-  - <a href="/p/boston-regtech-fintech-platform-for-regulatory-compliance">Fintech Platform for Regulatory Compliance - /p/p/boston-regtech-fintech-platform-for-regulatory-compliance/index.html</a>
- 
-  - <a href="/p/trackware-patient-symptom-tracking-app">Patient Symptom Tracking App - /p/p/trackware-patient-symptom-tracking-app/index.html</a>
- 
-  - <a href="/p/channelfit-fitness-and-nutrition-app">Fitness and Nutrition App - /p/p/channelfit-fitness-and-nutrition-app/index.html</a>
- 
-  - <a href="/p/verizon-labs-interactive-circuit-diagnostic-system">Interactive Circuit Diagnostic System - /p/p/verizon-labs-interactive-circuit-diagnostic-system/index.html</a>
- 
-  - <a href="/p/baupost-group-new-investment-warning-system">New Investment Warning System - /p/p/baupost-group-new-investment-warning-system/index.html</a>
- 
-  - <a href="/p/christensen-institute-disruptiveinnovation-org-business-innovation-community-system">Business Innovation Community System - /p/p/christensen-institute-disruptiveinnovation-org-business-innovation-community-system/index.html</a>
- 
-  - <a href="/p/peoplefluent-mobile-apps-for-talent-management">Mobile Apps for Talent Management - /p/p/peoplefluent-mobile-apps-for-talent-management/index.html</a>
- 
-  - <a href="/p/iphone-ipad-appstore-100-ios-apps">100+ iOS Apps - /p/p/iphone-ipad-appstore-100-ios-apps/index.html</a>
- 
-  - <a href="/p/fidelity-management-research-company-portfolio-management-framework-api">Portfolio Management Framework &amp; API - /p/p/fidelity-management-research-company-portfolio-management-framework-api/index.html</a>
- 
-  - <a href="/p/chicago-mercantile-exchange-interactive-trade-clearing-platform">Interactive Trade Clearing Platform - /p/p/chicago-mercantile-exchange-interactive-trade-clearing-platform/index.html</a>
- 
-  - <a href="/p/coniferpoint-computational-medicine-discovery-platform">Computational Medicine Discovery Platform - /p/p/coniferpoint-computational-medicine-discovery-platform/index.html</a>
- 
-  - <a href="/p/verizon-labs-real-time-qos-monitoring-system">Real-Time QoS Monitoring System - /p/p/verizon-labs-real-time-qos-monitoring-system/index.html</a>
  
   - <a href="/feed.xml"> - /feed.xml</a>
 
