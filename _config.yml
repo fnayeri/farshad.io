@@ -47,7 +47,9 @@ url:
 # (http://yourusername.github.io/repository-name)
 # and NOT your User repository (http://yourusername.github.io)
 # then add in the baseurl here, like this: "/repository-name"
-baseurl: "https://farshad.io"
+# baseurl: "https://farshad.io"
+baseurl: ""
+
 
 #
 # !! You don't need to change any of the configuration flags below !!
@@ -76,6 +78,14 @@ sass:
 gems:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
   - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
+
+data_pages:
+  - dataset: portfolio
+    permalink: /:permalink
+    layout: portfolio
+    logo_dir: /assets/logos
+
+plugins: []
 
 # Exclude these files from your production _site
 exclude:
