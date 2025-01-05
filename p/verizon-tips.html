@@ -43,27 +43,39 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
+nav {
+  width: 100%;
+  max-width: 1000pt;
+}
+
 nav ul {
-  font-size: 1.3em;
-    list-style-type: none; /* Remove bullet points */
-    display: flex; /* Use flexbox to align items horizontally */
-    justify-content: left; /* Center the items horizontally */
-}
+        list-style-type: none; /* Remove bullet points */
+        padding: 0; /* Remove default padding */
+        margin: 0; /* Remove default margin */
+        display: flex; /* Use flexbox to align items horizontally */
+        justify-content: flex-end; /* Align items to the right */
+      }
 
-nav ul li {
-    margin: 0 15px; /* Add horizontal spacing between items */
-}
+      nav ul li:first-child {
+        font-size: 2em;
+        font-weight: bold;
+        margin-right: auto; /* Push the first item to the left */
+      }
 
-nav ul li a {
-    text-decoration: none; /* Remove underline from links */
-    color: #333; /* Set link color */
-    font-weight: bold; /* Make the text bold */
-}
+      nav ul li {
+        margin: 0 15px; /* Add horizontal spacing between items */
+      }
 
-nav ul li a:hover {
-    text-decoration: underline; /* Add underline on hover */
-}      
-    </style>
+      nav ul li a {
+        text-decoration: none; /* Remove underline from links */
+        color: #333; /* Set link color */
+      }
+
+      nav ul li a:hover {
+        text-decoration: underline; /* Add underline on hover */
+      }
+
+</style>
 
 </head>
 
@@ -72,7 +84,7 @@ nav ul li a:hover {
       <div class="container">
           <nav>
           <ul>
-            <li><a href='https://farshad.io/'>Farshad Nayeri</a></li>
+            <li><a href='/'>Farshad Nayeri</a></li>
             <li><a href="mailto:farshad@igencorp.com">farshad@igencorp.com</a></li>
             <li><a href="tel:+16178233876">+1.617.823.3876</a></li>
             <li><a href="/docs/resume/Farshad-Nayeri-Resume.pdf" target="_blank">resume</a></li>
@@ -95,7 +107,7 @@ nav ul li a:hover {
     font-size:    1.3em;
     line-height:  1.2em;
     margin-top:   2pt;
-    padding-left: 2em; /* Adjust padding to make space for the icon */
+    margin-left: 24pt; /* Adjust padding to make space for the icon */
   }
 
   h3 {
@@ -107,12 +119,19 @@ nav ul li a:hover {
   }
 
   h1 {
-    padding-left: 2em;
+    margin-left: 24pt;
   }
 
   article {
+    justify-self: center;
     padding: 40px;
     width: 80%;
+    /* max-width: 600px; */
+  }
+
+  article img {
+    border-radius: 40px;
+    margin-left: 24pt;
   }
 
   /* 
@@ -124,12 +143,12 @@ nav ul li a:hover {
 
   .synopsis {
     line-height: 1.2em;
-    padding-left: 2em;    
+    margin-left: 24pt;    
   }
   
   .aspect {
     line-height: 1.5em;
-    padding-left: 2em;
+    padding-left: 28pt;
   }
 
   .problem {
@@ -166,9 +185,9 @@ nav ul li a:hover {
 <div class="container"> 
   <article class="portfolio-item" >
     <!-- <p>telecomm, native apps, api, architecture </p> -->
+    <img class='logo' style="width: 80%; max-width: 400px;" src="/assets/logos/verizon-tips.png" alt="Real-Time QoS Monitoring System" />
     <h1 class="synopsis">
-      <img class='logo' style="width: 80%; max-width: 400px;" src="/assets/logos/verizon-tips.png" alt="Real-Time QoS Monitoring System" />
-           
+      System Architect     
       <br />
       Real-Time QoS Monitoring System
       <br />
