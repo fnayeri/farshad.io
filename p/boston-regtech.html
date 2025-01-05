@@ -6,7 +6,7 @@
         <meta charset="utf-8" />
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <!-- <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'> -->
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
     
     <meta name="description" property="og:description"  content="-Create an investigation platform for financial institutions to perform smart investigations on behalf of FinCen. Apply analytic, visualization, and machine learning techniques to optimize flow to generate SARs.">
@@ -29,11 +29,20 @@
     <![endif]-->
 
     <!-- <link rel="stylesheet" type="text/css" href="/style.css" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
     <link rel="stylesheet" type="text/css" href="/assets/styles/bento.css" />
     <link rel="stylesheet" type="text/css" href="/assets/styles/portfolio.css" />
     <link rel="alternate" type="application/rss+xml" title="Farshad Nayeri - farshad.io - Farshad Nayeri's Website" href="/feed.xml" />
 
     <style>
+
+      /* TODO - move to styles. */
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
 nav ul {
   font-size: 1.3em;
     list-style-type: none; /* Remove bullet points */
@@ -81,38 +90,103 @@ nav ul li a:hover {
     </div>
 
     <div id="main" role="main" class="container">
-      <style> 
-p {
-  font-size: 1.3em;
-  line-height: 1.2em;
-}
+      <style>
+  p {
+    font-size: 1.3em;
+    line-height: 1.2em;
+    margin-top: 2pt;
+    padding-left: 1.5em; /* Adjust padding to make space for the icon */
+  }
+
+  h3 {
+    margin-bottom: 2pt;
+  }
+
+  h2 {
+    margin-bottom: 2pt;
+  }
+
+  h1 {
+    padding-left: 2em;
+  }
+
+  article {
+    padding: 40px;
+    width: 80%;
+  }
+
+  /* 
+  D03A21	discovery
+  F0C768	outcome
+  5A62BC	problem
+  306F53	stakes 
+  */
+  
+  h2 {
+    line-height: 1.5em;
+  }
+
+  .problem {
+    color: #D03A21;
+    background: url('/assets/icons/problem.png') no-repeat left center;
+    background-size: 1.5em 1.5em; /* Resize the icon */
+    padding-left: 1.5em;  /* Adjust padding to make space for the icon */
+  }
+
+  .stakes {
+    color: #F0C768;
+    background: url('/assets/icons/stakes.png') no-repeat left center;
+    background-size: 1.5em 1.5em; /* Resize the icon */
+    line-height: 1.5em;
+    padding-left: 1.5em;  /* Adjust padding to make space for the icon */
+  }
+
+  .discovery {
+    color: #5A62BC;
+    background: url('/assets/icons/discovery.png') no-repeat left;
+    background-size: 1.5em 1.5em; /* Resize the icon */
+    line-height: 1.5em;
+    padding-left: 1.5em;  /* Adjust padding to make space for the icon */
+  }
+
+  .outcome {
+    color: #306F53;
+    background: url('/assets/icons/outcome.png') no-repeat left center;
+    background-size: 1.5em 1.5em; /* Resize the icon */
+    line-height: 1.5em;
+    padding-left: 1.5em;  /* Adjust padding to make space for the icon */
+  }
 </style>
 
-<article class="portfolio-item">
-  <img class='logo' style="width: 80%; max-width: 400px;" src="/assets/logos/boston-regtech.png" alt="Fintech Platform for Regulatory Compliance" />
+<div class="container"> 
+  <article class="portfolio-item" style='border: 4px solid #3174B5' >
+    <!-- <p>financial, regulatory, analytics, product strategy </p> -->
+    <h1>
+      <img class='logo' style="width: 80%; max-width: 400px;" src="/assets/logos/boston-regtech.png" alt="Fintech Platform for Regulatory Compliance" />
+           
+      <br />
+      Fintech Platform for Regulatory Compliance
+      <br />
+      Boston Regtech
+      <br />
+    </h1>
+    <h2></h2>
+    <p>Create an investigation platform for financial institutions to perform smart investigations on behalf of FinCen. Apply analytic, visualization, and machine learning techniques to optimize flow to generate SARs.</p>
 
-  <!-- <p>financial, regulatory, analytics, product strategy </p> -->
-  <h1>Fintech Platform for Regulatory Compliance</h1>
-  <h2></h2>
-  <p>Create an investigation platform for financial institutions to perform smart investigations on behalf of FinCen. Apply analytic, visualization, and machine learning techniques to optimize flow to generate SARs.</p>
+    <h2 class="problem">Problem</h2>
+    <p>Financial institutions lacked a streamlined platform for regulatory compliance and SAR generation.</p>
 
-  <h2>Problem</h2>
-  <p>Financial institutions lacked a streamlined platform for regulatory compliance and SAR generation.</p>
-  
-  <h2>Stakes</h2>
-  <p>Risk of non-compliance, financial penalties, and inefficiencies in investigative processes.</p>
-  
-  <h2>Approach</h2>
-  <p>Created a platform integrating analytics, visualization, and machine learning for smart investigations and SAR generation.</p>
-  
-  <h2>Special Considerations</h2>
-  <p>Focused on meeting stringent regulatory standards and protecting sensitive financial data.</p>
+    <h2 class="stakes">Stakes</h2>
+    <p>Risk of non-compliance, financial penalties, and inefficiencies in investigative processes.</p>
 
-  <h2>Outcome</h2>
-  <p>Implemented a regulatory compliance tool that improved efficiency and accuracy in generating SARs.</p>
+    <h2 class="discovery">Discovery</h2>
+    <p>Created a platform integrating analytics, visualization, and machine learning for smart investigations and SAR generation.</p>
 
+    <h2 class="outcome">Outcome</h2>
+    <p>Implemented a regulatory compliance tool that improved efficiency and accuracy in generating SARs.</p>
+  </article>
 
-</article>
+</div>
     </div>
 
     <div class="wrapper-footer">
