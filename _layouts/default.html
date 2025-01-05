@@ -25,9 +25,17 @@ body {
 }
 
 nav {
-  width: 100%;
-  max-width: 800pt;
-}
+      width: 100%;
+      position: fixed; /* Fix the nav at the top */
+      top: 0;
+      left: 0;
+      height: 40pt;
+      padding-top: 20pt;
+      background-color: white; /* Set background color */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+      z-index: 1000; /* Ensure the nav is above other content */
+    }
+
 
 nav ul {
         list-style-type: none; /* Remove bullet points */
