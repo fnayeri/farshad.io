@@ -127,7 +127,6 @@ div .bento {
 
 .bento:hover h4 {
     display: block;
-    bottom: 2pt;
     z-index: +2;
 }
 
