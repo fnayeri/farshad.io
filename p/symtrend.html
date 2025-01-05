@@ -92,10 +92,10 @@ nav ul li a:hover {
     <div id="main" role="main" class="container">
       <style>
   p {
-    font-size: 1.3em;
-    line-height: 1.2em;
-    margin-top: 2pt;
-    padding-left: 1.5em; /* Adjust padding to make space for the icon */
+    font-size:    1.3em;
+    line-height:  1.2em;
+    margin-top:   2pt;
+    padding-left: 2em; /* Adjust padding to make space for the icon */
   }
 
   h3 {
@@ -121,47 +121,52 @@ nav ul li a:hover {
   5A62BC	problem
   306F53	stakes 
   */
+
+  .synopsis {
+    line-height: 1.2em;
+    padding-left: 2em;    
+  }
   
-  h2 {
+  .aspect {
     line-height: 1.5em;
+    padding-left: 2em;
   }
 
   .problem {
     color: #D03A21;
     background: url('/assets/icons/problem.png') no-repeat left center;
     background-size: 1.5em 1.5em; /* Resize the icon */
-    padding-left: 1.5em;  /* Adjust padding to make space for the icon */
   }
 
   .stakes {
     color: #F0C768;
     background: url('/assets/icons/stakes.png') no-repeat left center;
     background-size: 1.5em 1.5em; /* Resize the icon */
-    line-height: 1.5em;
-    padding-left: 1.5em;  /* Adjust padding to make space for the icon */
   }
 
   .discovery {
     color: #5A62BC;
     background: url('/assets/icons/discovery.png') no-repeat left;
     background-size: 1.5em 1.5em; /* Resize the icon */
-    line-height: 1.5em;
-    padding-left: 1.5em;  /* Adjust padding to make space for the icon */
   }
 
   .outcome {
     color: #306F53;
     background: url('/assets/icons/outcome.png') no-repeat left center;
     background-size: 1.5em 1.5em; /* Resize the icon */
-    line-height: 1.5em;
-    padding-left: 1.5em;  /* Adjust padding to make space for the icon */
   }
+
+  .portfolio-item {
+    border: 4px solid #2F6492;
+    border-radius: 40px;
+  }
+
 </style>
 
 <div class="container"> 
-  <article class="portfolio-item" style='border: 4px solid #2F6492' >
+  <article class="portfolio-item" >
     <!-- <p>healthcare, full stack, visualization, platform, native apps, web app, automation </p> -->
-    <h1>
+    <h1 class="synopsis">
       <img class='logo' style="width: 80%; max-width: 400px;" src="/assets/logos/symtrend.png" alt="Patient Symptom Tracking App" />
            
       <br />
@@ -171,18 +176,18 @@ nav ul li a:hover {
       <br />
     </h1>
     <h2></h2>
-    <p>Led team to develop pioneering platform for mobile tracking of patient symptoms.</p>
+    <p class="synopsis">Led team to develop pioneering platform for mobile tracking of patient symptoms.</p>
 
-    <h2 class="problem">Problem</h2>
+    <h2 class="aspect problem">Problem</h2>
     <p>Patients struggled to track symptoms effectively, hindering health management and provider communication.</p>
 
-    <h2 class="stakes">Stakes</h2>
+    <h2 class="aspect stakes">Stakes</h2>
     <p>Poor patient engagement and suboptimal health outcomes due to lack of reliable tracking solutions.</p>
 
-    <h2 class="discovery">Discovery</h2>
+    <h2 class="aspect discovery">Discovery</h2>
     <p>Developed a mobile app with user-friendly interfaces and data visualization tools for effective symptom monitoring and sharing with healthcare providers.</p>
 
-    <h2 class="outcome">Outcome</h2>
+    <h2 class="aspect outcome">Outcome</h2>
     <p>Enabled better health management and communication through an innovative symptom tracking app.</p>
   </article>
 

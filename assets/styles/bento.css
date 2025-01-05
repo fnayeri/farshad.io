@@ -1,8 +1,6 @@
 /* bento.css */
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont,
-        "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: #f8f8f8;
     display: flex;
     line-height: 1.0;
@@ -18,9 +16,9 @@ body {
 
 .bento-box {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 10pt;
-    max-width: 1800px;
+    max-width: 1200px;
     width: 90%;
     box-sizing: border-box;
 }
