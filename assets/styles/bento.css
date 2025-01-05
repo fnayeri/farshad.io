@@ -81,7 +81,7 @@ div .bento {
     display: none;
     position: absolute;
     top: 20%;
-    font-size: 4em;
+    font-size: 5em;
     z-index: +2;
     text-align: center;
     background-color: inherit;
@@ -89,6 +89,9 @@ div .bento {
 
 .bento a:hover h1 {
     display: block;
+    color: inherit;
+    text-align: center;
+    width: 75%;
 }
 
 .bento h4 {
