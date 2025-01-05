@@ -5,7 +5,7 @@ layout: default
 
 {%if false %}
 
-  <meta http-equiv="refresh" content="0; url={{ "/docs/" | relative_url }}" />
+  <meta http-equiv="refresh" content="0; url={{ '/docs/' | relative_url }}" />
   <h1><a href="/docs/">Farshad Nayeri - farshad.io</a></h1>
 
 {% else %}
@@ -20,7 +20,7 @@ layout: default
                 <h2>{{ p.title  }} </h2>
                 <h3>{{ p.subtitle  }}</h3>
                 <h1> → </h1>
-                <p>{{ p.body }}</p>
+                <h4>{{ p.customer }}</h4>
               </a>
             </div>
             {% endif %}

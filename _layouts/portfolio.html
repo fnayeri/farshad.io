@@ -6,7 +6,7 @@ layout: default
     font-size:    1.3em;
     line-height:  1.2em;
     margin-top:   2pt;
-    padding-left: 2em; /* Adjust padding to make space for the icon */
+    margin-left: 24pt; /* Adjust padding to make space for the icon */
   }
 
   h3 {
@@ -18,12 +18,19 @@ layout: default
   }
 
   h1 {
-    padding-left: 2em;
+    margin-left: 24pt;
   }
 
   article {
+    justify-self: center;
     padding: 40px;
     width: 80%;
+    /* max-width: 600px; */
+  }
+
+  article img {
+    border-radius: 40px;
+    margin-left: 24pt;
   }
 
   /* 
@@ -35,12 +42,12 @@ layout: default
 
   .synopsis {
     line-height: 1.2em;
-    padding-left: 2em;    
+    margin-left: 24pt;    
   }
   
   .aspect {
     line-height: 1.5em;
-    padding-left: 2em;
+    padding-left: 28pt;
   }
 
   .problem {
@@ -77,8 +84,8 @@ layout: default
 <div class="container"> 
   <article class="portfolio-item" >
     <!-- <p>{{ page.tags }} </p> -->
+    <img class='logo' style="width: 80%; max-width: 400px;" src="{{ page.image }}" alt="{{ page.title }}" />
     <h1 class="synopsis">
-      <img class='logo' style="width: 80%; max-width: 400px;" src="{{ page.image }}" alt="{{ page.title }}" />
       {{ page.role }}     
       <br />
       {{ page.title }}

@@ -18,9 +18,10 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10pt;
-    max-width: 1200px;
     width: 90%;
     box-sizing: border-box;
+    max-width: 900pt;
+    align-content: center;
 }
 
 div .bento {
@@ -70,6 +71,7 @@ div .bento {
     display: none;
     z-index: +2;
     color: inherit;
+    padding-left: 30pt;
     background-color: inherit;
 }
 
@@ -89,9 +91,9 @@ div .bento {
     display: block;
 }
 
-.bento p {
+.bento h4 {
     position: absolute;
-    font-size: 1em;
+    font-size: 1.8em;
     line-height: 1.15;
     display: none;
     z-index: +2;
@@ -120,6 +122,12 @@ div .bento {
     z-index: +2;
 }
 
+.bento:hover h4 {
+    display: block;
+    bottom: 2pt;
+    z-index: +2;
+}
+
 .bento img {
     width: 100%;
     border-radius: 20px;
@@ -138,7 +146,7 @@ div .bento {
     background-color: red;
 }
 
-.container h3>a:hover {
+.bento h3>a:hover {
     opacity: 1.0;
     text-decoration: none;
     font-size: 3em;
