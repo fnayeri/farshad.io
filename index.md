@@ -14,7 +14,11 @@ layout: default
       {% for p in site.data.portfolio %}
             <!-- {{p | escape}} -->
             {% if false or p.name != nil  %}
-            <div class='bento' style='color: #{{ p.color | default: "000000" }}; background-color: #{{ p.background | default: "ffffff" }}'>
+            <div class='bento' style='
+                color: #{{ p.color | default: "000000" }}; 
+                background-color: #{{ p.background | default: "ffffff" }};
+                border-color: #{{ p.background | default: "ffffff" }}'
+            >
               <a style='color: #{{ p.color | default: "000000" }}' href='{{ p.permalink | relative_url }}'> 
                 <img src='{{ p.image | relative_url }}' alt='{{ p.title | default: "No Title" }}' />
                 <h2>{{ p.title  }} </h2>

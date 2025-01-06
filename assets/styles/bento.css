@@ -71,7 +71,8 @@ div .bento {
     display: none;
     z-index: +2;
     color: inherit;
-    padding-left: 30pt;
+    padding-left: 10pt;
+    padding-right: 10pt;
     background-color: inherit;
 }
 
@@ -118,6 +119,8 @@ div .bento {
 .bento:hover h3 {
     display: block;
     top: 70pt;
+    padding-left: 10pt;
+    padding-right: 10pt;
 }
 
 .bento:hover p {
@@ -129,6 +132,8 @@ div .bento {
 .bento:hover h4 {
     display: block;
     z-index: +2;
+    padding-left: 10pt;
+    padding-right: 10pt;
 }
 
 .bento img {
