@@ -29,8 +29,10 @@ layout: default
   }
 
   article img {
-    border-radius: 40px;
+    border-radius: 20px;
     margin-left: 24pt;
+    width: 80%; 
+    max-width: 200px;
   }
 
   /* 
@@ -82,9 +84,11 @@ layout: default
 </style>
 
 <div class="container"> 
-  <article class="portfolio-item" >
+  <article class="portfolio-item" style="
+                  background-color: #{{ page.background }};
+                  border-color: #{{ page.border }}"  >
     <!-- <p>{{ page.tags }} </p> -->
-    <img class='logo' style="width: 80%; max-width: 400px;" src="{{ page.image }}" alt="{{ page.title }}" />
+    <img class='logo' src="{{ page.image }}" alt="{{ page.title }}" />
     <h1 class="synopsis">
       {{ page.role }}     
       <br />
