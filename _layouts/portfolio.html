@@ -19,6 +19,7 @@ layout: default
   h1 {
     font-size: 18pt;
     margin-left: 24pt;
+    padding-left: 0;
   }
 
   article {
@@ -31,8 +32,8 @@ layout: default
   article img {
     border-radius: 20px;
     margin-left: 24pt;
-    width: 80%; 
-    max-width: 200px;
+    height: 200px;
+    float: left;
   }
 
   /* 
@@ -81,6 +82,12 @@ layout: default
     border-radius: 40px;
   }
 
+  .portfolio-title {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
 </style>
 
 <div class="container"> 
@@ -88,15 +95,17 @@ layout: default
                   background-color: #{{ page.background }};
                   border-color: #{{ page.border }}"  >
     <!-- <p>{{ page.tags }} </p> -->
-    <img class='logo' src="{{ page.image }}" alt="{{ page.title }}" />
-    <h1 class="synopsis">
+    <div class="portfolio-title">
+      <img class='logo' src="{{ page.image }}" alt="{{ page.title }}" />
+      <h1 class="synopsis">
       {{ page.role }}     
       <br />
       {{ page.title }}
       <br />
       {{ page.customer }}
-      <br />
-    </h1>
+      <br clear="all"/>
+      </h1>
+    </div>
     <h2>{{ page.subtitle }}</h2>
     <p class="synopsis">{{ page.body }}</p>
 
