@@ -13,13 +13,21 @@ article {
     max-width: 800px;
 }
 
-article p {
-    margin-left: 20px;
+article h2 {
+    margin-bottom: 0;
+    margin-left: 0pt;
 }
+
+article p {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 28pt;
+}
+
 article img {
     width: 50%;
     border-radius: 20px;
-    margin-left: 24pt;
+    margin-left:   28pt;
     float: left;
 }
 
@@ -43,29 +51,26 @@ article img {
 .problem {
     color: #D03A21;
     background: url('/assets/icons/problem.png') no-repeat left center;
-    background-size: 1.5em 1.5em;
-    /* Resize the icon */
+    background-size: 24pt 24pt;
 }
 
 .stakes {
     color: #F0C768;
     background: url('/assets/icons/stakes.png') no-repeat left center;
-    background-size: 1.5em 1.5em;
-    /* Resize the icon */
+    background-size: 24pt 24pt;
 }
+    
 
 .discovery {
     color: #5A62BC;
     background: url('/assets/icons/discovery.png') no-repeat left;
-    background-size: 1.5em 1.5em;
-    /* Resize the icon */
+    background-size: 24pt 24pt;
 }
 
 .outcome {
     color: #306F53;
     background: url('/assets/icons/outcome.png') no-repeat left center;
-    background-size: 1.5em 1.5em;
-    /* Resize the icon */
+    background-size: 24pt 24pt;
 }
 
 .portfolio-title {
@@ -83,6 +88,7 @@ article img {
 }
 
 .tag {
+    margin-top: 20pt;
     border-radius: 15pt;
     font-weight: bold;
     padding: 5pt 10pt;
