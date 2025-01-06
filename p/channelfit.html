@@ -134,6 +134,7 @@
   h1 {
     font-size: 18pt;
     margin-left: 24pt;
+    padding-left: 0;
   }
 
   article {
@@ -146,8 +147,8 @@
   article img {
     border-radius: 20px;
     margin-left: 24pt;
-    width: 80%; 
-    max-width: 200px;
+    height: 200px;
+    float: left;
   }
 
   /* 
@@ -196,6 +197,12 @@
     border-radius: 40px;
   }
 
+  .portfolio-title {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
 </style>
 
 <div class="container"> 
@@ -203,15 +210,17 @@
                   background-color: #BFCCE2;
                   border-color: #3E6297"  >
     <!-- <p>healthcare, visualization, web app, community, automation </p> -->
-    <img class='logo' src="/assets/logos/channelfit.png" alt="Fitness & Nutrition Platform & Apps" />
-    <h1 class="synopsis">
+    <div class="portfolio-title">
+      <img class='logo' src="/assets/logos/channelfit.png" alt="Fitness & Nutrition Platform & Apps" />
+      <h1 class="synopsis">
       Product Lead     
       <br />
       Fitness & Nutrition Platform & Apps
       <br />
       Channelfit  	
-      <br />
-    </h1>
+      <br clear="all"/>
+      </h1>
+    </div>
     <h2></h2>
     <p class="synopsis">Led team to design and develop on-line system to create personalized diet and workout plans.</p>
 

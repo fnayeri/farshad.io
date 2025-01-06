@@ -134,6 +134,7 @@
   h1 {
     font-size: 18pt;
     margin-left: 24pt;
+    padding-left: 0;
   }
 
   article {
@@ -146,8 +147,8 @@
   article img {
     border-radius: 20px;
     margin-left: 24pt;
-    width: 80%; 
-    max-width: 200px;
+    height: 200px;
+    float: left;
   }
 
   /* 
@@ -196,6 +197,12 @@
     border-radius: 40px;
   }
 
+  .portfolio-title {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
 </style>
 
 <div class="container"> 
@@ -203,15 +210,17 @@
                   background-color: #;
                   border-color: #1A2B49"  >
     <!-- <p>financial, web apps, api, architecture </p> -->
-    <img class='logo' src="/assets/logos/cme.png" alt="Interactive Trade Clearing Platform" />
-    <h1 class="synopsis">
+    <div class="portfolio-title">
+      <img class='logo' src="/assets/logos/cme.png" alt="Interactive Trade Clearing Platform" />
+      <h1 class="synopsis">
       System Architect     
       <br />
       Interactive Trade Clearing Platform
       <br />
       Chicago Mercantile Exchange 	
-      <br />
-    </h1>
+      <br clear="all"/>
+      </h1>
+    </div>
     <h2></h2>
     <p class="synopsis">Developed trade clearing component for CME Future and Option Trades on Instant Messages.</p>
 

@@ -134,6 +134,7 @@
   h1 {
     font-size: 18pt;
     margin-left: 24pt;
+    padding-left: 0;
   }
 
   article {
@@ -146,8 +147,8 @@
   article img {
     border-radius: 20px;
     margin-left: 24pt;
-    width: 80%; 
-    max-width: 200px;
+    height: 200px;
+    float: left;
   }
 
   /* 
@@ -196,6 +197,12 @@
     border-radius: 40px;
   }
 
+  .portfolio-title {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
 </style>
 
 <div class="container"> 
@@ -203,15 +210,17 @@
                   background-color: #FFFFFF;
                   border-color: #D8383C"  >
     <!-- <p>telecomm, full stack, api, platform, native apps </p> -->
-    <img class='logo' src="/assets/logos/verizon-dti.png" alt="Interactive Circuit Diagnostic System" />
-    <h1 class="synopsis">
+    <div class="portfolio-title">
+      <img class='logo' src="/assets/logos/verizon-dti.png" alt="Interactive Circuit Diagnostic System" />
+      <h1 class="synopsis">
       Platform Architect     
       <br />
       Interactive Circuit Diagnostic System
       <br />
       Verizon Labs 	
-      <br />
-    </h1>
+      <br clear="all"/>
+      </h1>
+    </div>
     <h2></h2>
     <p class="synopsis">Led team to design & develop a unified platform for testing all Verizon Circuits.</p>
 
