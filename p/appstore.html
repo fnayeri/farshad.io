@@ -195,21 +195,40 @@
   .portfolio-item {
     border: 4px solid #3568E6;
     border-radius: 40px;
+    background-color: #FCFEFF;
+    border-color: #;
   }
 
   .portfolio-title {
     display: flex;
-    flex-direction: row;
-    align-items: flex-end;
+    flex-direction: column;
+    align-items: flex-start;
   }
+
+  .tags {
+    margin-left: 24pt;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20pt;
+  }
+
+  .tag {
+    background-color: #3568E6;
+    color: #FCFEFF;
+    border-radius: 15pt;
+    font-weight: bold;
+    padding: 5pt 10pt;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
 
 </style>
 
 <div class="container"> 
-  <article class="portfolio-item" style="
-                  background-color: #FCFEFF;
-                  border-color: #"  >
-    <!-- <p>consumer, native apps, architecture </p> -->
+  <article class="portfolio-item" >
     <div class="portfolio-title">
       <img class='logo' src="/assets/logos/appstore.png" alt="100+ iOS Apps" />
       <h1 class="synopsis">
@@ -221,7 +240,7 @@
       <br clear="all"/>
       </h1>
     </div>
-    <h2></h2>
+
     <p class="synopsis">Led conception, design, development, and release of more than 100 Apps.</p>
 
     <h2 class="aspect problem">Problem</h2>
@@ -235,6 +254,18 @@
 
     <h2 class="aspect outcome">Outcome</h2>
     <p>Successfully launched over 100 diverse and high-quality apps, boosting user engagement and platform appeal.</p>
+
+    <div class="tags">
+      
+        <span class="tag">consumer</span>
+      
+        <span class="tag">native apps</span>
+      
+        <span class="tag">architecture</span>
+      
+    </div>
+
+
   </article>
 
 </div>

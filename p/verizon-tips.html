@@ -195,21 +195,40 @@
   .portfolio-item {
     border: 4px solid #060606;
     border-radius: 40px;
+    background-color: #DEDEDE;
+    border-color: #D8383C;
   }
 
   .portfolio-title {
     display: flex;
-    flex-direction: row;
-    align-items: flex-end;
+    flex-direction: column;
+    align-items: flex-start;
   }
+
+  .tags {
+    margin-left: 24pt;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20pt;
+  }
+
+  .tag {
+    background-color: #060606;
+    color: #DEDEDE;
+    border-radius: 15pt;
+    font-weight: bold;
+    padding: 5pt 10pt;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
 
 </style>
 
 <div class="container"> 
-  <article class="portfolio-item" style="
-                  background-color: #DEDEDE;
-                  border-color: #D8383C"  >
-    <!-- <p>telecomm, native apps, api, architecture </p> -->
+  <article class="portfolio-item" >
     <div class="portfolio-title">
       <img class='logo' src="/assets/logos/verizon-tips.png" alt="Real-Time QoS Monitoring System" />
       <h1 class="synopsis">
@@ -221,7 +240,7 @@
       <br clear="all"/>
       </h1>
     </div>
-    <h2></h2>
+
     <p class="synopsis">Designed and developed real-time system to monitor and visualize network quality of service for the entire Verizon management network. </p>
 
     <h2 class="aspect problem">Problem</h2>
@@ -235,6 +254,20 @@
 
     <h2 class="aspect outcome">Outcome</h2>
     <p>Enhanced network reliability and customer satisfaction through proactive QoS monitoring.</p>
+
+    <div class="tags">
+      
+        <span class="tag">telecomm</span>
+      
+        <span class="tag">native apps</span>
+      
+        <span class="tag">api</span>
+      
+        <span class="tag">architecture</span>
+      
+    </div>
+
+
   </article>
 
 </div>

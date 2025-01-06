@@ -195,21 +195,40 @@
   .portfolio-item {
     border: 4px solid #B92739;
     border-radius: 40px;
+    background-color: #E2E2E2;
+    border-color: #77787B;
   }
 
   .portfolio-title {
     display: flex;
-    flex-direction: row;
-    align-items: flex-end;
+    flex-direction: column;
+    align-items: flex-start;
   }
+
+  .tags {
+    margin-left: 24pt;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20pt;
+  }
+
+  .tag {
+    background-color: #B92739;
+    color: #E2E2E2;
+    border-radius: 15pt;
+    font-weight: bold;
+    padding: 5pt 10pt;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
 
 </style>
 
 <div class="container"> 
-  <article class="portfolio-item" style="
-                  background-color: #E2E2E2;
-                  border-color: #77787B"  >
-    <!-- <p>retail, store management, aws, native apps, web app, full stack, multi-platform, community, analytics, data visualization, api design, platform </p> -->
+  <article class="portfolio-item" >
     <div class="portfolio-title">
       <img class='logo' src="/assets/logos/redbook-solutions.png" alt="Store Management Platform & Apps" />
       <h1 class="synopsis">
@@ -221,20 +240,50 @@
       <br clear="all"/>
       </h1>
     </div>
-    <h2></h2>
+
     <p class="synopsis">Led end-to-end design, development, and delivery of store management SaaS app platform on iOS, Android, Web capturing millions of images from 80,000 locations to the AWS cloud, atop a digital transformation workflow processing 1000s of PDFs  month.</p>
 
     <h2 class="aspect problem">Problem</h2>
-    <p>Challenges in managing operations across 80,000 locations with inefficiencies in image capture and document workflows.</p>
+    <p>Redbook digital transformation required moving retail users from paper-based solutions to digital offerings.</p>
 
     <h2 class="aspect stakes">Stakes</h2>
-    <p>Operational inefficiencies leading to potential revenue loss and reduced productivity.</p>
+    <p>Monthly and quarterly print editions had to be synchronized with online offerings, designed to scale to 80,000 locations.</p>
 
     <h2 class="aspect discovery">Discovery</h2>
-    <p>Designed and delivered a multi-platform SaaS app to streamline operations using AWS cloud for large-scale data management and transformation workflows.</p>
+    <p>Legacy app’s enterprise-based authentication created many problems in retail settings. A new, simplified onboarding method allowed retail location managers to onboard users quickly.</p>
 
     <h2 class="aspect outcome">Outcome</h2>
-    <p>Delivered a highly efficient store management platform, improving productivity and data handling.</p>
+    <p>Designed and delivered a multi-platform app, with a backend running on AWS cloud including large-scale data management and transformation workflows, providing support for millions of Redbook scans to be uploaded by users. </p>
+
+    <div class="tags">
+      
+        <span class="tag">retail</span>
+      
+        <span class="tag">store management</span>
+      
+        <span class="tag">aws</span>
+      
+        <span class="tag">native apps</span>
+      
+        <span class="tag">web app</span>
+      
+        <span class="tag">full stack</span>
+      
+        <span class="tag">multi-platform</span>
+      
+        <span class="tag">community</span>
+      
+        <span class="tag">analytics</span>
+      
+        <span class="tag">data visualization</span>
+      
+        <span class="tag">api design</span>
+      
+        <span class="tag">platform</span>
+      
+    </div>
+
+
   </article>
 
 </div>

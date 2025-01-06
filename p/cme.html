@@ -195,21 +195,40 @@
   .portfolio-item {
     border: 4px solid #52A7DA;
     border-radius: 40px;
+    background-color: #;
+    border-color: #1A2B49;
   }
 
   .portfolio-title {
     display: flex;
-    flex-direction: row;
-    align-items: flex-end;
+    flex-direction: column;
+    align-items: flex-start;
   }
+
+  .tags {
+    margin-left: 24pt;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20pt;
+  }
+
+  .tag {
+    background-color: #52A7DA;
+    color: #FFF;
+    border-radius: 15pt;
+    font-weight: bold;
+    padding: 5pt 10pt;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
 
 </style>
 
 <div class="container"> 
-  <article class="portfolio-item" style="
-                  background-color: #;
-                  border-color: #1A2B49"  >
-    <!-- <p>financial, web apps, api, architecture </p> -->
+  <article class="portfolio-item" >
     <div class="portfolio-title">
       <img class='logo' src="/assets/logos/cme.png" alt="Interactive Trade Clearing Platform" />
       <h1 class="synopsis">
@@ -221,7 +240,7 @@
       <br clear="all"/>
       </h1>
     </div>
-    <h2></h2>
+
     <p class="synopsis">Developed trade clearing component for CME Future and Option Trades on Instant Messages.</p>
 
     <h2 class="aspect problem">Problem</h2>
@@ -235,6 +254,20 @@
 
     <h2 class="aspect outcome">Outcome</h2>
     <p>Improved trade clearing efficiency and reduced settlement times, enhancing market reliability.</p>
+
+    <div class="tags">
+      
+        <span class="tag">financial</span>
+      
+        <span class="tag">web apps</span>
+      
+        <span class="tag">api</span>
+      
+        <span class="tag">architecture</span>
+      
+    </div>
+
+
   </article>
 
 </div>
