@@ -7,8 +7,11 @@ module Jekyll
         return unless data_spec
   
         site.data['portfolio'].each do |item|
-            Jekyll.logger.info "\nnil check: #{item['name']} - #{item['name'].nil?}"
             next if item['name'].nil? || item['name'].strip.empty? # Skip if title is nil or blank
+            next if item['name'].strip.start_with?('#') # Skip if title starts with #
+
+            Jekyll.logger.info "\ngenerating #{item['name']}"
+
             site.pages << PortfolioPage.new(site, site.source, item, data_spec)
         end
       end
@@ -30,6 +33,8 @@ module Jekyll
         item['image'] = logo if logo
         item['images'] = [logo] if logo
         item['permalink'] = File.join(@root,@name)
+        item['tags'] = item['tags'].split(',').map(&:strip) if item['tags']
+        item['enabled'] = true
 
         self.process(@name + '.html')
         self.read_yaml(File.join(base, '_layouts'), 'portfolio.html')

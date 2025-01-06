@@ -11,16 +11,15 @@ layout: default
 {% else %}
 
 <div class="bento-box">
-      {% for p in site.data.portfolio %}
-            <!-- {{p | escape}} -->
-            {% if false or p.name != nil  %}
+      {% for p in site.pages %}
+            {% if p.enabled  %}
             <div class='bento' style='
                 color:            #{{ p.color | default: "000000" }}; 
                 background-color: #{{ p.background | default: "ffffff" }};
-                border-color:     #{{ p.border | p.background | default: "FFFFF" }}'
+                border-color:     #{{ p.border | default: p.background | default: "FFFFF" }}'
             >
               <a style='color: #{{ p.color | default: "000000" }}' href='{{ p.permalink | relative_url }}'> 
-                <img src='{{ p.image | relative_url }}' alt='{{ p.title | default: "No Title" }}' />
+                <img src='{{ p.image | relative_url }}' alt='{{ p.title | default: "" }}' />
                 <h2>{{ p.title  }} </h2>
                 <h3>{{ p.subtitle  }}</h3>
                 <h1> → </h1>

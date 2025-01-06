@@ -30,11 +30,8 @@ div .bento {
     box-sizing: border-box;
     position: relative;
     padding: 25pt;
-    min-height: 250pt;
-    max-width: 200pt;
-    max-height: 25%;
-    max-width: 250pt;
     width: 250pt;
+    height: 250pt;
     background-color: white;
 }
 
@@ -169,13 +166,13 @@ a:visited {
 }
 
 @media (max-width: 900px) {
-    .container {
+    .bento-box {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 600px) {
-    .container {
+    .bento-box {
         grid-template-columns: 1fr;
     }
 }
