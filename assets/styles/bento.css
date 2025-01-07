@@ -3,18 +3,18 @@
 body {
     background-color: #f8f8f8;
     display: flex;
-    line-height: 1.0;
+    line-height: 1.1;
     justify-content: center;
     flex-direction: column;
 }
 
 .container {
     display: grid;
-    padding: 20pt;
     box-sizing: border-box;
 }
 
 .bento-box {
+    padding: 5px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10pt;
@@ -42,6 +42,7 @@ div .bento {
     letter-spacing: -2%;
     color: inherit;
     background-color: inherit;
+    text-wrap: no-wrap;
 }
 
 .bento h2  {
@@ -53,7 +54,7 @@ div .bento {
 }
 
 .superlarge {
-    font-size: 2em;
+    font-size: 3em;
 }
 
 .bento .arrow {
@@ -77,7 +78,10 @@ a {
 
 .bento .subtitle {
     color: inherit;
+    font-size: 2em;
     display: none;
+    max-height: 100pt;
+    line-height: 1.0;
 }
 
 .bento:hover {
@@ -130,7 +134,7 @@ a:visited {
     color: inherit;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
     .bento-box {
         grid-template-columns: repeat(2, 1fr);
     }

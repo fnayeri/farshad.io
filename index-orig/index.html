@@ -38,7 +38,7 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      margin: 40pt;
+      padding-top: 50pt;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -53,17 +53,14 @@
       /* Fix the nav at the top */
       top: 0;
       left: 0;
-      height: 40pt;
-      padding-top: 20pt;
       background-color: white;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       z-index: 1000;
-      margin: 5pt;
     }
 
     nav ul {
       list-style-type: none;
-      margin: 0;
+      margin: 0 10pt;
       display: flex;
       justify-content: flex-end;
       align-content: middle;
@@ -71,16 +68,21 @@
 
     nav ul li:first-child {
       white-space: nowrap;
-      font-size: 2em;
-      font-weight: bold;
       margin-right: auto;
     }
 
+    nav li h2 {
+      height: 1em;
+    }
+
     nav ul li {
-      margin: 0 15px;
+      margin: 0 auto !important ;
+      display: flex;
+      align-items: center;
     }
 
     nav ul li a {
+      margin: 0 !important;
       text-decoration: none;
       color: #333;
     }
@@ -112,10 +114,9 @@
 <body>
   <div class="wrapper-header" role="header">
     <div class="container">
-
       <nav>
         <ul>
-          <li><a href='/'>Farshad Nayeri</a></li>
+          <li><h2><a href='/'>Farshad Nayeri</a></h2></li>
           <li><a href="mailto:farshad@igencorp.com">
               <img class='icon' src='/assets/icons/email.svg' />
               <span>farshad@igencorp.com</span></a></li>
@@ -134,15 +135,6 @@
             </a>
           </li>
         </ul>
-
-        <!-- <ul>
-          <li><a href='/'>Farshad Nayeri</a></li>
-          <li><a href="mailto:farshad@igencorp.com">farshad@igencorp.com</a></li>
-          <li><a href="tel:+16178233876">+1.617.823.3876</a></li>
-          <li><a href="/docs/resume/Farshad-Nayeri-Resume.pdf" target="_blank">resume</a></li>
-          <li><a href="https://www.linkedin.com/in/farshadnayeri/" target="_blank">linkedin</a></li>
-        </ul> -->
-
       </nav>
     </div>
   </div>
@@ -290,7 +282,7 @@
   
     <article class="portfolio">
 
-      <h1><a href="">100+ iOS Apps</a></h1>
+      <h1><a href="">100+ Apps / 7 Million Downloads</a></h1>
 
       <div class="entry">
         
