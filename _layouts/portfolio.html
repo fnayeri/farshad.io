@@ -10,11 +10,11 @@ layout: default
     }
 
     body {
-      background-color: {{ page.background }};
+      background-color: #{{ page.background }};
     }
 
     .container {
-      background-color: {{ page.background }};
+      background-color: #{{ page.background }};
     }
 
     img {
@@ -22,7 +22,7 @@ layout: default
     }
 
   .portfolio-item {
-    border: 4px solid #{{ page.border }};
+    /* border: 4px solid #{{ page.border }}; */
     border-radius: 40px;
     background-color: #{{ page.background }};
     border-color: #{{ page.border }};
@@ -63,8 +63,6 @@ layout: default
         <span class="tag">{{ tag }}</span>
       {% endfor %}
     </div>
-
-
   </article>
 
 </div>
