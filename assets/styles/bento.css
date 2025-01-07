@@ -92,7 +92,7 @@ a {
 .bento img {
     position: relative;
     bottom: 20pt;
-    z-index: +5;
+    z-index: 0;
     width: 200pt;
     opacity: 1.0;
     background-color: inherit;

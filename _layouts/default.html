@@ -41,15 +41,15 @@
       background-color: white;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       z-index: 1000;
+      margin: 5pt;
     }
-
 
     nav ul {
       list-style-type: none;
-      padding: 0;
       margin: 0;
       display: flex;
       justify-content: flex-end;
+      align-content: middle;
     }
 
     nav ul li:first-child {
@@ -74,7 +74,7 @@
     }
 
     @media (max-width: 900px) {
-      nav ul li:nth-child(n+1) span {
+      nav ul li span {
         display: none;
       }
     }
@@ -85,10 +85,9 @@
       vertical-align: middle;
     }
 
-    img.icon + span {
+    img.icon+span {
       margin-left: 2px;
     }
-
   </style>
 
 </head>
@@ -96,6 +95,7 @@
 <body>
   <div class="wrapper-header" role="header">
     <div class="container">
+
       <nav>
         <ul>
           <li><a href='/'>Farshad Nayeri</a></li>
@@ -103,19 +103,21 @@
               <img class='icon' src='/assets/icons/email.svg' />
               <span>farshad@igencorp.com</span></a></li>
           <li>
-              <a href="tel:+16178233876">
+            <a href="tel:+16178233876">
               <img class='icon' src='/assets/icons/call.svg' /> <span>+1.617.823.3876</span></a>
           </li>
           <li>
-              <a href="/docs/resume/Farshad-Nayeri-Resume.pdf" target="_blank">
-               <img class='icon' src='/assets/icons/resume.svg' /> <span>resumé</span></a>
+            <a href="/docs/resume/Farshad-Nayeri-Resume.pdf" target="_blank">
+              <img class='icon' src='/assets/icons/resume.svg' /> <span>resumé</span></a>
           </li>
           <li>
             <a href="https://www.linkedin.com/in/farshadnayeri/" target="_blank">
-            <img class='icon' src='/assets/icons/linkedin.svg' /> 
-          </span>linkedin</span></a>
+              <img class='icon' src='/assets/icons/linkedin.svg' />
+              <span>linkedin</span>
+            </a>
           </li>
         </ul>
+
         <!-- <ul>
           <li><a href='/'>Farshad Nayeri</a></li>
           <li><a href="mailto:farshad@igencorp.com">farshad@igencorp.com</a></li>
@@ -123,6 +125,7 @@
           <li><a href="/docs/resume/Farshad-Nayeri-Resume.pdf" target="_blank">resume</a></li>
           <li><a href="https://www.linkedin.com/in/farshadnayeri/" target="_blank">linkedin</a></li>
         </ul> -->
+
       </nav>
     </div>
   </div>
