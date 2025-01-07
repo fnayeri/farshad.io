@@ -8,8 +8,7 @@ img .logo {
 
 article {
     justify-self: center;
-    padding: 40px;
-    width: 80%;
+    padding: 30pt;
     max-width: 800px;
 }
 
@@ -22,6 +21,7 @@ article p {
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 28pt;
+    line-height: 1.2em;
 }
 
 article img {
@@ -80,6 +80,7 @@ article img {
 }
 
 .tags {
+    margin-top: 24pt;
     margin-left: 24pt;
     display: flex;
     flex-wrap: wrap;
@@ -88,7 +89,6 @@ article img {
 }
 
 .tag {
-    margin-top: 20pt;
     border-radius: 15pt;
     font-weight: bold;
     padding: 5pt 10pt;
