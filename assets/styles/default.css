@@ -24,7 +24,7 @@ nav {
 
 nav ul {
   list-style-type: none;
-  margin: 0 10pt;
+  margin: 0 5pt;
   display: flex;
   justify-content: flex-end;
   align-content: middle;
@@ -40,13 +40,12 @@ nav li h2 {
 }
 
 nav ul li {
-  margin: 0 auto !important ;
   display: flex;
+  gap: 0.5em;
   align-items: center;
 }
 
 nav ul li a {
-  margin: 0 !important;
   text-decoration: none;
   color: #333;
 }
