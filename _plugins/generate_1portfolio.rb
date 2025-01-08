@@ -25,7 +25,7 @@ module Jekyll
 
         @site = site
         @base = base
-        @name = item['name']
+        @name = item['name'].strip.downcase
         @root = data_spec['root'] || '/'
 
         @dir  = File.join(@root, item['name'])
