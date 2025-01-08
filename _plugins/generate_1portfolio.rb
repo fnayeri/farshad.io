@@ -1,6 +1,8 @@
+
 module Jekyll
     class PortfolioPageGenerator < Generator
       safe true
+      Jekyll.logger.info "starting artifact generator"
   
       def generate(site)
         data_spec = site.config['data_pages'].find { |spec| spec['dataset'] == 'portfolio' }
@@ -10,7 +12,7 @@ module Jekyll
             next if item['name'].nil? || item['name'].strip.empty? # Skip if title is nil or blank
             next if item['name'].strip.start_with?('#') # Skip if title starts with #
 
-            Jekyll.logger.info "\ngenerating #{item['name']}"
+            Jekyll.logger.info "generating #{item['name']}"
 
             site.pages << PortfolioPage.new(site, site.source, item, data_spec)
         end
@@ -26,8 +28,6 @@ module Jekyll
         @name = item['name']
         @root = data_spec['root'] || '/'
 
-        Jekyll.logger.info "\npage input: #{@root} - #{@name}", item
-
         @dir  = File.join(@root, item['name'])
         logo = File.join(data_spec['logo_dir'], @name + ".png") if data_spec['logo_dir'] and @name
         item['image'] = logo if logo
@@ -40,7 +40,7 @@ module Jekyll
         self.read_yaml(File.join(base, '_layouts'), 'portfolio.html')
         self.data.merge!(item)
 
-        Jekyll.logger.info "\nGenerating portfolio page: #{@dir}, #{@name}", self.data
+        # Jekyll.logger.debug "\nGenerating portfolio page: #{@dir}, #{@name}", self.data
     end
   end
 end

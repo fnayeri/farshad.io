@@ -17,18 +17,15 @@ layout: default
       background-color: #{{ page.background }};
     }
 
-    img {
-      width: 30%;
-    }
-
-    hr {
-      margin-top: 20pt;
-      color:#{{ page.border }}
+    div.break {
+      border-bottom: solid 2pt #{{ page.border }};
+      clear: both;
+      margin: 20pt 0 20pt 20pt;
     }
 
   .portfolio-item {
     /* border: 4px solid #{{ page.border }}; */
-    border-radius: 40px;
+    border-radius: 20px;
     background-color: #{{ page.background }};
     border-color: #{{ page.border }};
   }
@@ -51,7 +48,7 @@ layout: default
 
     <p class="synopsis">{{ page.body }}</p>
 
-    <hr/>
+    <div class="break"></div>
 
     <h2 class="aspect problem">Problem</h2>
     <p>{{ page.problem }}</p>
@@ -65,7 +62,18 @@ layout: default
     <h2 class="aspect outcome">Outcome</h2>
     <p>{{ page.outcome }}</p>
 
-    <hr/>
+    {% if page.artifacts %}
+    <div class="break"></div>
+    {% endif %}
+
+    <div class="artifacts">
+      {% for image in page.artifacts %}
+        <img class='artifact' src="{{ image | relative_url }}" alt="{{name}} artifact"/>
+      {% endfor %}
+    </div>
+
+    <div class="break"></div>
+
     <div class="tags">
       {% for tag in page.tags %}
         <span class="tag">{{ tag }}</span>
