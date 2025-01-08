@@ -19,11 +19,9 @@ layout: default
                 background-color: #{{ p.background | default: "ffffff" }};
                 border-color:     #{{ p.border | default: p.background | default: "FFFFF" }}'
             >
-                <h2 class='title'>{{ p.title  }} </h2>
-                <h2 class='arrow superlarge'></h2>
+                <h2 class='title'>{{ p.title }} </h2>
                 <img src='{{ p.image | relative_url }}' alt='{{ p.title | default: "" }}' />
-                <h2 class='subtitle'>{{ p.customer}}<br>
-                <span class='superlarge'>→</span>
+                <h2 class='subtitle' style='text-wrap: no-wrap'>{{ p.customer}}
                 </h2>
             </div>
         </a>
