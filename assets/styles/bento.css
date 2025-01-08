@@ -25,13 +25,14 @@ body {
 }
 
 div .bento {
-    display: grid;
+    display: flex;
     flex-direction: column;
-    justify-items: left;
+    align-items: center;
+    justify-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 30pt;
     box-sizing: border-box;
-    padding: 5%;
+    padding: 20pt;
     width: 250pt;
     height: 250pt;
     background-color: white;
@@ -95,7 +96,7 @@ a {
 
 .bento img {
     position: relative;
-    bottom: 20pt;
+    top: 15pt;
     z-index: 0;
     width: 200pt;
     opacity: 1.0;

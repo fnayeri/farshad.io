@@ -45,6 +45,7 @@ article img {
   .artifacts img {
     border-radius: 20pt;
     height: auto;
+    width: 90%;
     box-shadow: 3px 3px rgba(0,0,0,0.1);
     padding: 0;
     margin: 10pt;
