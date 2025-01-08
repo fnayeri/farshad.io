@@ -39,6 +39,10 @@ nav li h2 {
   height: 1em;
 }
 
+nav li h3 {
+  height: 1em;
+}
+
 nav ul li {
   display: flex;
   gap: 0.5em;
