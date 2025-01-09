@@ -48,6 +48,12 @@ layout: default
 
     <p class="synopsis">{{ page.body }}</p>
 
+    <div class="tags">
+      {% for tag in page.tags %}
+        <span class="tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+
     <div class="break"></div>
 
     <h2 class="aspect problem">Problem</h2>
@@ -73,12 +79,6 @@ layout: default
     </div>
 
     <div class="break"></div>
-
-    <div class="tags">
-      {% for tag in page.tags %}
-        <span class="tag">{{ tag }}</span>
-      {% endfor %}
-    </div>
 
   </article>
 
