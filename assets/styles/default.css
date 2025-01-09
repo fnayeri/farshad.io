@@ -71,3 +71,12 @@ img.icon {
 img.icon+span {
   margin-left: 2px;
 }
+
+footer {
+  padding-top: 10px;
+}
+
+footer p {
+  font-size: 0.8em;
+  color: #eee;
+}

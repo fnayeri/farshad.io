@@ -21,8 +21,7 @@ layout: default
             >
                 <h2 class='title'>{{ p.title }} </h2>
                 <img src='{{ p.image | relative_url }}' alt='{{ p.title | default: "" }}' />
-                <h2 class='subtitle' style='text-wrap: no-wrap'>{{ p.customer}}
-                </h2>
+                <h2 class='subtitle' style='text-wrap: no-wrap; vertical-align: top;'>{{ p.customer}}→</h2>
             </div>
         </a>
             {% endif %}
