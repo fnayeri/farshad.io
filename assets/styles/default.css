@@ -72,11 +72,7 @@ img.icon+span {
   margin-left: 2px;
 }
 
-footer {
-  padding-top: 10px;
-}
-
-footer p {
+.footer p {
   font-size: 0.8em;
-  color: #eee;
+  color: #f00;
 }
