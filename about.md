@@ -4,14 +4,24 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+<style>
+    p {
+    }
+</style>
 
-### More Information
+<div class="container">
+    <h1>Farshad Nayeri</h1>
 
-A place to include any other types of information that you'd like to include about yourself.
+<img src='/assets/about/farshad-nayeri-faceshot.jpeg' style='width: 50%'> 
 
-### Contact me
+<p>farshad.io</p>
+<p><a href="mailto:farshad@igencorp.com">farshad@igencorp.com</a></p>
+<p><a href="tel:+16178233876">+1.617.823.3876</a></p>
+<p><a href="./resume/Farshad-Nayeri-Resume.pdf" target="_blank">resume</a>&nbsp;&nbsp; | &nbsp;&nbsp; 
+    <a href="https://www.linkedin.com/in/farshadnayeri/" target="_blank">linkedin</a></p>
 
-[email@domain.com](mailto:email@domain.com)
+<p>
+Experienced product leader with deep knowledge of platform innovation and a proven track record of delivering results. Unique ability to combine and reshape business and technical constraints into leveraged, scalable solutions. Adept at integrating emergent business visions into tangible outcomes across the entire product lifecycle. Thrives in dynamic environments, leading teams through critical, high-stakes challenges. 
+</p>
 
-
+</div>
