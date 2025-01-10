@@ -30,8 +30,11 @@ module Jekyll
 
         @dir  = File.join(@root, item['name'])
         logo = File.join(data_spec['logo_dir'], @name + ".png") if data_spec['logo_dir'] and @name
-        item['image'] = logo if logo
-        item['images'] = [logo] if logo
+        item['image'] = logo || @name
+        item['images'] = [item['image']]
+
+        Jekyll.logger.info "\n LOGO #{@name}, #{logo} #{item['image']}, #{item['images']}, #{item}"
+
         item['permalink'] = File.join(@root,@name)
         item['tags'] = item['tags'].split(',').map(&:strip) if item['tags']
         item['enabled'] = true
