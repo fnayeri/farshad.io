@@ -4,7 +4,7 @@
 <head>
   <title>farshad.io - Farshad Nayeri – farshad.io – </title>
 
-  <!-- page.image  farshad.io - Farshad Nayeri {"title"=>"farshad.io - Farshad Nayeri", "layout"=>"default", "content"=>"{%if false %}\n\n  <meta http-equiv=\"refresh\" content=\"0; url={{ '/docs/' | relative_url }}\" />\n  <h1><a href=\"/docs/\">Farshad Nayeri - farshad.io</a></h1>\n\n{% else %}\n\n<div class=\"bento-box\">\n      {% for p in site.pages %}\n            {% if p.enabled  %}\n          <a style='color: \#{{ p.color | default: \"000000\" }}' href='{{ p.permalink | relative_url }}'> \n            <div class='bento' style='\n                color:            \#{{ p.color | default: \"000000\" }}; \n                background-color: \#{{ p.background | default: \"ffffff\" }};\n                border-color:     \#{{ p.border | default: p.background | default: \"FFFFF\" }}'\n            >\n                <h2 class='title'>{{ p.title }} </h2>\n                <img src='{{ p.image | relative_url }}' alt='{{ p.title | default: \"\" }}' />\n                <h2 class='subtitle' style='text-wrap: no-wrap; vertical-align: top;'>{{ p.customer}}→</h2>\n            </div>\n        </a>\n            {% endif %}\n      {% endfor %}\n</div> \n\n{%endif%}\n", "dir"=>"/", "excerpt"=>nil, "name"=>"index.md", "path"=>"index.md", "url"=>"/"}-->
+  <!-- page.image  farshad.io - Farshad Nayeri {"title"=>"farshad.io - Farshad Nayeri", "layout"=>"default", "content"=>"<style>\n  .info {\n    margin-top: 10px;\n    display: flex;\n    flex-direction: row;\n    background-color: white;\n    border-radius: 40px;\n    gap: 20px;\n    width: 940px;\n    /* padding: 20px; */\n  }\n\n  .info img {\n    width: 300px;\n    height: 300px;\n    border-radius: 40px;\n    /* border-radius: 20px; */\n    /* margin: 0 auto;\n    float: left; */\n  }\n\n  .bio {\n    flex: 1;\n    /* Allow the bio to take up the remaining space */\n  }\n\n  .info p {\n    font-size: 1.55em;\n    line-height: 1.6em;\n    padding-left: 20px;\n    padding-right: 30px;\n  }\n\n  @media (max-width: 600px) {\n    .info {\n      flex-direction: column;\n      width: 100%;\n    }\n\n    .info p {\n      padding: 20px;\n      font-size: 1.2em;\n      max-width: 300px;\n    }\n\n    .info img {\n      margin-bottom: 5px;\n      /* Add space below the image */\n    }\n  }\n</style>\n\n{%if false %}\n\n<meta http-equiv=\"refresh\" content=\"0; url={{ '/docs/' | relative_url }}\" />\n<h1><a href=\"/docs/\">Farshad Nayeri - farshad.io</a></h1>\n\n{% else %}\n\n<div class='container'>\n  <div class=\"bento-box\">\n    <div class='info'>\n      <a href='/docs/resume/farshad-nayeri-resume.pdf'>\n        <img src='/assets/about/farshad-nayeri-faceshot.jpeg' alt='{{ p.title | default: \"\" }}' />\n      </a>\n      <p>Proven product leader who transforms business, technical, and strategic constraints into scalable,\n        high-impact solutions.\n        Thrives in dynamic, hands-on, high-stakes environments, delivering tangible results across the entire product\n        lifecycle.\n      </p>\n    </div>\n  </div>\n\n  <div style='clear: both'> </div>\n\n  <div class=\"bento-box\">\n    {% for p in site.pages %}\n      {% if p.enabled %}\n          <a style='color: \#{{ p.color | default: \"000000\" }}' href='{{ p.permalink | relative_url }}'>\n            <div class='bento' style='\n                    color:            \#{{ p.color | default: \"000000\" }}; \n                    background-color: \#{{ p.background | default: \"ffffff\" }};\n                    border-color:     \#{{ p.border | default: p.background | default: \"FFFFF\" }}'>\n              <h2 class='title'>{{ p.title }} </h2>\n              <img src='{{ p.image | relative_url }}' alt='{{ p.title | default: \"\" }}' />\n              <h2 class='subtitle' style='text-wrap: no-wrap; vertical-align: top;'>{{ p.customer}}→</h2>\n            </div>\n          </a>\n      {% endif %}\n    {% endfor %}\n  </div>\n</div>\n\n{% endif %}\n", "dir"=>"/", "excerpt"=>nil, "name"=>"index.md", "path"=>"index.md", "url"=>"/"}-->
 
       <meta charset="utf-8" />
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
@@ -145,181 +145,249 @@
   </div>
 
   <div id="main" role="main" class="container">
+    <style>
+  .info {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    border-radius: 40px;
+    gap: 20px;
+    width: 940px;
+    /* padding: 20px; */
+  }
+
+  .info img {
+    width: 300px;
+    height: 300px;
+    border-radius: 40px;
+    /* border-radius: 20px; */
+    /* margin: 0 auto;
+    float: left; */
+  }
+
+  .bio {
+    flex: 1;
+    /* Allow the bio to take up the remaining space */
+  }
+
+  .info p {
+    font-size: 1.55em;
+    line-height: 1.6em;
+    padding-left: 20px;
+    padding-right: 30px;
+  }
+
+  @media (max-width: 600px) {
+    .info {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .info p {
+      padding: 20px;
+      font-size: 1.2em;
+      max-width: 300px;
+    }
+
+    .info img {
+      margin-bottom: 5px;
+      /* Add space below the image */
+    }
+  }
+</style>
+
+<div class="container">
+  <div class="bento-box">
+    <div class="info">
+      <a href="/docs/resume/farshad-nayeri-resume.pdf">
+        <img src="/assets/about/farshad-nayeri-faceshot.jpeg" alt="" />
+      </a>
+      <p>Proven product leader who transforms business, technical, and strategic constraints into scalable,
+        high-impact solutions.
+        Thrives in dynamic, hands-on, high-stakes environments, delivering tangible results across the entire product
+        lifecycle.
+      </p>
+    </div>
+  </div>
+
+  <div style="clear: both"> </div>
+
+  <div class="bento-box">
     
-<div class="bento-box">
       
-            
+    
       
-            
+    
       
-            
+    
       
-            
+    
       
-            
+    
       
-            
-          <a style="color: #808080" href="/p/ey-blockchain"> 
+          <a style="color: #808080" href="/p/ey-blockchain">
             <div class="bento" style="
-                color:            #808080; 
-                background-color: #FFFFFF;
-                border-color:     #FBE74D">
-                <h2 class="title">Enterprise API Platform </h2>
-                <img src="/assets/logos/ey-blockchain.png" alt="Enterprise API Platform" />
-                <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Ernst &amp; Young Global Innovations 	→</h2>
+                    color:            #808080; 
+                    background-color: #FFFFFF;
+                    border-color:     #FBE74D">
+              <h2 class="title">Enterprise API Platform </h2>
+              <img src="/assets/logos/ey-blockchain.png" alt="Enterprise API Platform" />
+              <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Ernst &amp; Young Global Innovations 	→</h2>
             </div>
-        </a>
-            
+          </a>
       
-            
-          <a style="color: #B92739" href="/p/redbook-keep"> 
+    
+      
+          <a style="color: #B92739" href="/p/redbook-keep">
             <div class="bento" style="
-                color:            #B92739; 
-                background-color: #E2E2E2;
-                border-color:     #77787B">
-                <h2 class="title">Retail Management Platform &amp; Apps </h2>
-                <img src="/assets/logos/redbook-keep.png" alt="Retail Management Platform &amp; Apps" />
-                <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Red Book Solutions→</h2>
+                    color:            #B92739; 
+                    background-color: #E2E2E2;
+                    border-color:     #77787B">
+              <h2 class="title">Retail Management Platform &amp; Apps </h2>
+              <img src="/assets/logos/redbook-keep.png" alt="Retail Management Platform &amp; Apps" />
+              <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Red Book Solutions→</h2>
             </div>
-        </a>
-            
+          </a>
       
-            
-          <a style="color: #000000" href="/p/verizon-dti"> 
+    
+      
+          <a style="color: #000000" href="/p/verizon-dti">
             <div class="bento" style="
-                color:            #000000; 
-                background-color: #FFFFFF;
-                border-color:     #D8383C">
-                <h2 class="title">Interactive Circuit Diagnostic System </h2>
-                <img src="/assets/logos/verizon-dti.png" alt="Interactive Circuit Diagnostic System" />
-                <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Verizon Labs 	→</h2>
+                    color:            #000000; 
+                    background-color: #FFFFFF;
+                    border-color:     #D8383C">
+              <h2 class="title">Interactive Circuit Diagnostic System </h2>
+              <img src="/assets/logos/verizon-dti.png" alt="Interactive Circuit Diagnostic System" />
+              <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Verizon Labs 	→</h2>
             </div>
-        </a>
-            
+          </a>
       
-            
-          <a style="color: #3568E6" href="/p/appstore"> 
+    
+      
+          <a style="color: #3568E6" href="/p/appstore">
             <div class="bento" style="
-                color:            #3568E6; 
-                background-color: #FCFEFF;
-                border-color:     #FCFEFF">
-                <h2 class="title">100+ iOS Apps / 7 Million Downloads </h2>
-                <img src="/assets/logos/appstore.png" alt="100+ iOS Apps / 7 Million Downloads" />
-                <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">iOS AppStore 	→</h2>
+                    color:            #3568E6; 
+                    background-color: #FCFEFF;
+                    border-color:     #FCFEFF">
+              <h2 class="title">100+ iOS Apps / 7 Million Downloads </h2>
+              <img src="/assets/logos/appstore.png" alt="100+ iOS Apps / 7 Million Downloads" />
+              <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">iOS AppStore 	→</h2>
             </div>
-        </a>
-            
+          </a>
       
-            
-          <a style="color: #233955" href="/p/christensen-institute"> 
+    
+      
+          <a style="color: #233955" href="/p/christensen-institute">
             <div class="bento" style="
-                color:            #233955; 
-                background-color: #E6EFD0;
-                border-color:     #E6EFD0">
-                <h2 class="title">Disruptive Innovation.com </h2>
-                <img src="/assets/logos/christensen-institute.png" alt="Disruptive Innovation.com" />
-                <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Clayton Christensen Institute→</h2>
+                    color:            #233955; 
+                    background-color: #E6EFD0;
+                    border-color:     #E6EFD0">
+              <h2 class="title">Disruptive Innovation.com </h2>
+              <img src="/assets/logos/christensen-institute.png" alt="Disruptive Innovation.com" />
+              <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Clayton Christensen Institute→</h2>
             </div>
-        </a>
-            
+          </a>
       
-            
-          <a style="color: #3A8149" href="/p/fidelity-pm"> 
+    
+      
+          <a style="color: #3A8149" href="/p/fidelity-pm">
             <div class="bento" style="
-                color:            #3A8149; 
-                background-color: #ffffff;
-                border-color:     #FFFFF">
-                <h2 class="title">Portfolio Management UI Framework </h2>
-                <img src="/assets/logos/fidelity-pm.png" alt="Portfolio Management UI Framework" />
-                <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Fidelity Investments	→</h2>
+                    color:            #3A8149; 
+                    background-color: #ffffff;
+                    border-color:     #FFFFF">
+              <h2 class="title">Portfolio Management UI Framework </h2>
+              <img src="/assets/logos/fidelity-pm.png" alt="Portfolio Management UI Framework" />
+              <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Fidelity Investments	→</h2>
             </div>
-        </a>
-            
+          </a>
       
-            
-          <a style="color: #52A7DA" href="/p/cme-chat"> 
+    
+      
+          <a style="color: #52A7DA" href="/p/cme-chat">
             <div class="bento" style="
-                color:            #52A7DA; 
-                background-color: #EBEDEE;
-                border-color:     #1A2B49">
-                <h2 class="title">Interactive Trade Clearing Platform </h2>
-                <img src="/assets/logos/cme-chat.png" alt="Interactive Trade Clearing Platform" />
-                <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Chicago Mercantile Exchange 	→</h2>
+                    color:            #52A7DA; 
+                    background-color: #EBEDEE;
+                    border-color:     #1A2B49">
+              <h2 class="title">Interactive Trade Clearing Platform </h2>
+              <img src="/assets/logos/cme-chat.png" alt="Interactive Trade Clearing Platform" />
+              <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Chicago Mercantile Exchange 	→</h2>
             </div>
-        </a>
-            
+          </a>
       
-            
-          <a style="color: #22436C" href="/p/baupost-niws"> 
+    
+      
+          <a style="color: #22436C" href="/p/baupost-niws">
             <div class="bento" style="
-                color:            #22436C; 
-                background-color: #FFFFFF;
-                border-color:     #22436C">
-                <h2 class="title">New Investment Warning System </h2>
-                <img src="/assets/logos/baupost-niws.png" alt="New Investment Warning System" />
-                <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Baupost Group	→</h2>
+                    color:            #22436C; 
+                    background-color: #FFFFFF;
+                    border-color:     #22436C">
+              <h2 class="title">New Investment Warning System </h2>
+              <img src="/assets/logos/baupost-niws.png" alt="New Investment Warning System" />
+              <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Baupost Group	→</h2>
             </div>
-        </a>
-            
+          </a>
       
-            
-          <a style="color: #EB4C36" href="/p/peoplefluent"> 
+    
+      
+          <a style="color: #EB4C36" href="/p/peoplefluent">
             <div class="bento" style="
-                color:            #EB4C36; 
-                background-color: #FFFFFF;
-                border-color:     #272058">
-                <h2 class="title">Mobile Apps for Talent Management </h2>
-                <img src="/assets/logos/peoplefluent.png" alt="Mobile Apps for Talent Management" />
-                <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Peoplefluent 	→</h2>
+                    color:            #EB4C36; 
+                    background-color: #FFFFFF;
+                    border-color:     #272058">
+              <h2 class="title">Mobile Apps for Talent Management </h2>
+              <img src="/assets/logos/peoplefluent.png" alt="Mobile Apps for Talent Management" />
+              <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Peoplefluent 	→</h2>
             </div>
-        </a>
-            
+          </a>
       
-            
-          <a style="color: #5B5BEC" href="/p/coniferpoint"> 
+    
+      
+          <a style="color: #5B5BEC" href="/p/coniferpoint">
             <div class="bento" style="
-                color:            #5B5BEC; 
-                background-color: #ffffff;
-                border-color:     #72EA4F">
-                <h2 class="title">UX &amp; Payment Frameworks </h2>
-                <img src="/assets/logos/coniferpoint.png" alt="UX &amp; Payment Frameworks" />
-                <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Conifer Point Computational Medicine	→</h2>
+                    color:            #5B5BEC; 
+                    background-color: #ffffff;
+                    border-color:     #72EA4F">
+              <h2 class="title">UX &amp; Payment Frameworks </h2>
+              <img src="/assets/logos/coniferpoint.png" alt="UX &amp; Payment Frameworks" />
+              <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Conifer Point Computational Medicine	→</h2>
             </div>
-        </a>
-            
+          </a>
       
-            
-          <a style="color: #3A8149" href="/p/fidelity-readiness"> 
+    
+      
+          <a style="color: #3A8149" href="/p/fidelity-readiness">
             <div class="bento" style="
-                color:            #3A8149; 
-                background-color: #ffffff;
-                border-color:     #FFFFF">
-                <h2 class="title">Retirement Readiness Sales App </h2>
-                <img src="/assets/logos/fidelity-readiness.png" alt="Retirement Readiness Sales App" />
-                <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Fidelity Investments 	→</h2>
+                    color:            #3A8149; 
+                    background-color: #ffffff;
+                    border-color:     #FFFFF">
+              <h2 class="title">Retirement Readiness Sales App </h2>
+              <img src="/assets/logos/fidelity-readiness.png" alt="Retirement Readiness Sales App" />
+              <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Fidelity Investments 	→</h2>
             </div>
-        </a>
-            
+          </a>
       
-            
-          <a style="color: #060606" href="/p/verizon-tips"> 
+    
+      
+          <a style="color: #060606" href="/p/verizon-tips">
             <div class="bento" style="
-                color:            #060606; 
-                background-color: #DEDEDE;
-                border-color:     #D8383C">
-                <h2 class="title">Real-Time QoS Monitoring System </h2>
-                <img src="/assets/logos/verizon-tips.png" alt="Real-Time QoS Monitoring System" />
-                <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Verizon Labs 	→</h2>
+                    color:            #060606; 
+                    background-color: #DEDEDE;
+                    border-color:     #D8383C">
+              <h2 class="title">Real-Time QoS Monitoring System </h2>
+              <img src="/assets/logos/verizon-tips.png" alt="Real-Time QoS Monitoring System" />
+              <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Verizon Labs 	→</h2>
             </div>
-        </a>
-            
+          </a>
       
-            
+    
       
-            
+    
       
-            
+    
       
+    
+  </div>
 </div>
 
 
