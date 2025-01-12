@@ -65,7 +65,7 @@ layout: default
 <div class='container'>
   <div class="bento-box">
     <div class='info'>
-      <a href='/docs/resume/farshad-nayeri-resume.pdf'>
+      <a href='/docs/resume/Farshad-Nayeri-Resume.pdf'>
         <img src='/assets/about/farshad-nayeri-faceshot.jpeg' alt='{{ p.title | default: "" }}' />
       </a>
       <p>Proven product leader who transforms business, technical, and strategic constraints into scalable,
