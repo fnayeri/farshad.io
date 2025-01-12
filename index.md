@@ -58,7 +58,7 @@ layout: default
 {%if false %}
 
 <meta http-equiv="refresh" content="0; url={{ '/docs/' | relative_url }}" />
-<meta og:image="/assets/about/farshad-nayeri-faceshot.jpeg" />
+<meta property="og:image"  content="{{ '/assets/about/farshad-nayeri-faceshot.jpeg' | absolute_url }}" />
 
 <h1><a href="/docs/">Farshad Nayeri - farshad.io</a></h1>
 

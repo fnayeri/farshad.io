@@ -33,7 +33,7 @@ module Jekyll
         item['image'] = logo || @name
         item['images'] = [item['image']]
 
-        Jekyll.logger.info "\n LOGO #{@name}, #{logo} #{item['image']}, #{item['images']}, #{item}"
+        # Jekyll.logger.info "\n LOGO #{@name}, #{logo} #{item['image']}, #{item['images']}, #{item}"
 
         item['permalink'] = File.join(@root,@name)
         item['tags'] = item['tags'].split(',').map(&:strip) if item['tags']
