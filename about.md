@@ -11,10 +11,11 @@ permalink: /about/
         float: left;
         width: 300px;
         padding: 20px;
+        margin: 0;
     }
 
     .about {
-        padding-left: 20px;
+        padding-left: 30px;
         float: right;
         width: 500px important!;
     }
@@ -68,15 +69,9 @@ permalink: /about/
                 <br/><a href="./resume/Farshad-Nayeri-Resume.pdf" target="_blank"><b>Resumé</b></a> | 
                 <a href="https://www.linkedin.com/in/farshadnayeri/" target="_blank"><b>LinkedIn</b></a>
             </p>
-            
-            <p>
-                Experienced product leader with deep knowledge of platform innovation and a proven track record of delivering results.
-                    Unique ability to combine and reshape business and technical constraints into leveraged, scalable solutions. 
-                    Adept at integrating emergent business visions into tangible outcomes across the entire product lifecycle. 
-                    Thrives in dynamic environments, leading teams through critical, high-stakes challenges.
-                <br/>
-            </p>
 
+           {% include bio.html %} 
+           
         </article>
 
 </div>
