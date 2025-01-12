@@ -54,7 +54,8 @@ layout: default
     }
   }
 </style>
-<meta property="og:image"  content="{{ '/assets/about/fn.png' | absolute_url }}" />
+<!-- <meta property="og:image"  content="{{ '/assets/about/fn.png' | absolute_url }}" /> -->
+<meta property="og:image"  content="{{ '/assets/about/farshad-nayeri-faceshot.jpeg' | absolute_url }}" />
 
 {%if false %}
 
