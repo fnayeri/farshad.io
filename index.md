@@ -53,20 +53,67 @@ layout: default
       /* Add space below the image */
     }
   }
+
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th,
+  td {
+    border: none;
+    padding: 8px;
+    text-align: left;
+    font-weight: demibold
+    vertical-align: top;
+  }
+
+  th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+
+  /* tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+ */
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  .view-project {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .text-lines {
+    display: none;
+  }
+
+  .icon-lines {
+    display: block;
+  }
+
+  .project a:hover {
+      text-decoration: none;
+
+  }
 </style>
-<meta property="og:image"  content="{{ '/assets/about/farshad-nayeri-faceshot.jpeg' | absolute_url }}" />
+<meta property="og:image" content="{{ '/assets/about/farshad-nayeri-faceshot.jpeg' | absolute_url }}" />
 
 {%if false %}
 
 <meta http-equiv="refresh" content="0; url={{ '/docs/' | relative_url }}" />
-
 <h1><a href="/docs/">Farshad Nayeri - farshad.io</a></h1>
 
 {% else %}
 
 <div class='container'>
   <div class="bento-box">
-    <div class='info'>
+    <div class="info">
       <a href='/docs/resume/Farshad-Nayeri-Resume.pdf'>
         <img src='/assets/about/farshad-nayeri-faceshot.jpeg' alt='{{ p.title | default: "" }}' />
       </a>
@@ -78,24 +125,67 @@ layout: default
     </div>
   </div>
 
+  <div class="bento-box">
+    <div class="info">
+    <table class="text-lines">
+    <tbody>
+      {% for p in site.pages %}
+      {% if p.enabled %}
+      <tr>
+        <td width="30%"><a href="{{ p.url }}" class="project"><b>{{ p.role }}</b><br/>{{ p.title }}</a></td>
+        <td width="20%">{{ p.customer }}</td>
+        <td>
+          <div class="">
+            {% for tag in p.tags %}
+              <span class="tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        </td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+</div>
+
   <div style='clear: both'> </div>
 
-  <div class="bento-box">
-    {% for p in site.pages %}
+  <div class="icon-lines">
+    <div class="bento-box">
+      {% for p in site.pages %}
       {% if p.enabled %}
-          <a style='color: #{{ p.color | default: "000000" }}' href='{{ p.permalink | relative_url }}'>
-            <div class='bento' style='
+      <a style='color: #{{ p.color | default: "000000" }}' href='{{ p.permalink | relative_url }}'>
+        <div class='bento' style='
                     color:            #{{ p.color | default: "000000" }}; 
                     background-color: #{{ p.background | default: "ffffff" }};
                     border-color:     #{{ p.border | default: p.background | default: "FFFFF" }}'>
-              <h2 class='title'>{{ p.title }} </h2>
-              <img src='{{ p.image | relative_url }}' alt='{{ p.title | default: "" }}' />
-              <h2 class='subtitle' style='text-wrap: no-wrap; vertical-align: top;'>{{ p.customer}}→</h2>
-            </div>
-          </a>
+          <h2 class='title'>{{ p.title }} </h2>
+          <img src='{{ p.image | relative_url }}' alt='{{ p.title | default: "" }}' />
+          <h2 class='subtitle' style='text-wrap: no-wrap; vertical-align: top;'>{{ p.customer}}→</h2>
+        </div>
+      </a>
       {% endif %}
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
 </div>
 
 {% endif %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tParam = urlParams.get('f');
+
+    if (tParam) {
+      if (tParam === 'list') {
+        document.querySelector('.text-lines').style.display = 'block';
+        document.querySelector('.icon-lines').style.display = 'none';
+      } else if (tParam === 'icons') {
+        document.querySelector('.icon-lines').style.display = 'block';
+        document.querySelector('.text-lines').style.display = 'none';
+      }
+    }
+  });
+</script>
