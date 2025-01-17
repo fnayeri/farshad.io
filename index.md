@@ -96,6 +96,13 @@ layout: default
       text-decoration: none;
 
   }
+
+  h1 {
+    font-size: 26px;
+    text-align: center;
+    padding-bottom: 10px;
+    margin: 0;
+  }
 </style>
 <meta property="og:image" content="{{ '/assets/about/farshad-nayeri.png' | absolute_url }}" />
 
@@ -116,6 +123,8 @@ layout: default
   </div>
 
   <div style='clear: both'> </div>
+  
+  <h1>Selected Work</h1>
 
   <div class="icon-lines">
     <div class="bento-box projects">

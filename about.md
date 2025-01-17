@@ -19,10 +19,6 @@ permalink: /about/
     }
 
     div.container {
-        display: flex;
-        flex-direction: column;
-        justify-content: left;
-        align-items: flex-start;
     }
 
     p {
@@ -57,6 +53,7 @@ permalink: /about/
 <div class="container">
         <article class="about" >
             <img class='photo' src='/assets/about/farshad-nayeri.png'>
+            <br clear='all'/>
             <p class='medium'>
                 <br/><b >Farshad Nayeri</b>
                 <br/><b>Email:</b> <a href="mailto:farshad@igencorp.com">farshad@igencorp.com</a>
