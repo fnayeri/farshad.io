@@ -4,7 +4,7 @@
 <head>
   <title>Enterprise API Platform – farshad.io – </title>
 
-  <!-- page.image /assets/logos/ey-blockchain.png Enterprise API Platform {"layout"=>"default", "name"=>"ey-blockchain", "permalink"=>"/p/ey-blockchain", "title"=>"Enterprise API Platform", "customer"=>"Ernst & Young Global Innovations \t", "role"=>"Platform Lead", "link"=>"https://blockchain.ey.com/", "color"=>"808080", "background"=>"FFFFFF", "border"=>"FBE74D", "tags"=>["financial", "crypto", "api design", "product strategy", "platform", "azure"], "body"=>"Led international agile team to plan, define & develop EYs enterprise blockchain platform based on a federated microservice architecture on top of Azure cloud.", "problem"=>"Augment EY’s consulting business with a family of subscription services from EY Global Innovation.", "stakes"=>"As a global services company, EY has many subsidiary businesses with conflicting interests. A new platform had to be available to both existing and new applications, based on Azure Cloud.", "discovery"=>"The legacy system tightly integrated front-end applications with the API platform. The new platform needed to decouple this into a set of microservices around core platform services such as authentication and metering.", "outcome"=>"Successfully launched a robust blockchain API platform, an accompanying website, and a full launch and migration plan.", "considerations"=>nil, "image"=>"/assets/logos/ey-blockchain.png", "images"=>["/assets/logos/ey-blockchain.png"], "enabled"=>true, "artifacts"=>["assets/artifacts/ey-blockchain/ey-blockchain-website-1.png"], "content"=>"<style> \n\n    .tag {\n      /* background-color: #888; */\n      background-color: \#{{ page.color | default: '888'}};\n      color: \#{{ page.background | default: 'FFF' }};\n    }\n\n    body {\n      background-color: \#{{ page.background }};\n    }\n\n    .container {\n      background-color: \#{{ page.background }};\n    }\n\n    div.break {\n      border-bottom: solid 2px \#{{ page.border }};\n      clear: both;\n      margin: 20px 0 20px 20px;\n    }\n\n  .portfolio-item {\n    /* border: 4px solid \#{{ page.border }}; */\n    border-radius: 20px;\n    background-color: \#{{ page.background }};\n    border-color: \#{{ page.border }};\n  }\n\n</style>\n\n<div class=\"container\"> \n  <article class=\"portfolio-item\" >\n    <div class=\"portfolio-title\">\n      <img class='logo' src=\"{{ page.image }}\" alt=\"{{ page.title }}\" />\n      <h1 class=\"synopsis\">\n      {{ page.role }}     \n      <br />\n      {{ page.title }}\n      <br />\n      {{ page.customer }}\n      <br clear=\"all\"/>\n      </h1>\n    </div>\n\n    <p class=\"synopsis\">{{ page.body }}</p>\n\n    <div class=\"tags\">\n      {% for tag in page.tags %}\n        <span class=\"tag\">{{ tag }}</span>\n      {% endfor %}\n    </div>\n\n    <div class=\"break\"></div>\n\n    <h2 class=\"aspect problem\">Problem</h2>\n    <p>{{ page.problem }}</p>\n\n    <h2 class=\"aspect stakes\">Stakes</h2>\n    <p>{{ page.stakes }}</p>\n\n    <h2 class=\"aspect discovery\">Discovery</h2>\n    <p>{{ page.discovery }}</p>\n\n    <h2 class=\"aspect outcome\">Outcome</h2>\n    <p>{{ page.outcome }}</p>\n\n    {% if page.artifacts %}\n    <div class=\"break\"></div>\n    {% endif %}\n\n    <div class=\"artifacts\">\n      {% for image in page.artifacts %}\n        <img class='artifact' src=\"{{ image | relative_url }}\" alt=\"{{name}} artifact\"/>\n      {% endfor %}\n    </div>\n\n    <div class=\"break\"></div>\n\n  </article>\n\n</div>", "dir"=>"/p/", "excerpt"=>nil, "path"=>"p/ey-blockchain/ey-blockchain", "url"=>"/p/ey-blockchain"}-->
+  <!-- page.image /assets/logos/ey-blockchain.png Enterprise API Platform {"layout"=>"default", "name"=>"ey-blockchain", "permalink"=>"/p/ey-blockchain", "title"=>"Enterprise API Platform", "customer"=>"Ernst & Young Global Innovations \t", "role"=>"Platform Lead", "link"=>"https://blockchain.ey.com/", "color"=>"808080", "background"=>"FFFFFF", "border"=>"FBE74D", "tags"=>["financial", "crypto", "api design", "product strategy", "platform", "azure"], "body"=>"Led international agile team to plan, define & develop EYs enterprise blockchain platform based on a federated microservice architecture on top of Azure cloud.", "problem"=>"Augment EY’s consulting business with a family of subscription services from EY Global Innovation.", "stakes"=>"As a global services company, EY has many subsidiary businesses with conflicting interests. A new platform had to be available to both existing and new applications, based on Azure Cloud.", "discovery"=>"The legacy system tightly integrated front-end applications with the API platform. The new platform needed to decouple this into a set of microservices around core platform services such as authentication and metering.", "outcome"=>"Successfully launched a robust blockchain API platform, an accompanying website, and a full launch and migration plan.", "considerations"=>nil, "image"=>"/assets/logos/ey-blockchain.png", "images"=>["/assets/logos/ey-blockchain.png"], "enabled"=>true, "artifacts"=>["assets/artifacts/ey-blockchain/ey-blockchain-website-1.png"], "content"=>"<style> \n\n    .tag {\n      /* background-color: #888; */\n      background-color: \#{{ page.color | default: '888'}};\n      color: \#{{ page.background | default: 'FFF' }};\n    }\n\n    body {\n      background-color: \#{{ page.background }};\n    }\n\n    .container {\n      background-color: \#{{ page.background }};\n    }\n\n    div.break {\n      border-bottom: solid 2px \#{{ page.border }};\n      clear: both;\n      margin: 20px 0 20px 20px;\n    }\n\n  .portfolio-item {\n    /* border: 4px solid \#{{ page.border }}; */\n    border-radius: 20px;\n    background-color: \#{{ page.background }};\n    border-color: \#{{ page.border }};\n  }\n\n</style>\n\n<div class=\"container\"> \n  <article class=\"portfolio-item\" >\n    <div class=\"portfolio-title\">\n      <img class='logo' src=\"{{ page.image }}\" alt=\"{{ page.title }}\" />\n      <h1 class=\"synopsis\">\n      {{ page.role }}     \n      <br />\n      {{ page.title }}\n      <br />\n      {{ page.customer }}\n      <br clear=\"all\"/>\n      </h1>\n    </div>\n\n    <p class=\"synopsis\">{{ page.body }}</p>\n\n    <div class=\"tags\">\n      {% for tag in page.tags %}\n        <span class=\"tag\"><a href='/?tags={{tag}}' />{{ tag }}</a></span>\n      {% endfor %}\n    </div>\n\n    <div class=\"break\"></div>\n\n    <h2 class=\"aspect problem\">Problem</h2>\n    <p>{{ page.problem }}</p>\n\n    <h2 class=\"aspect stakes\">Stakes</h2>\n    <p>{{ page.stakes }}</p>\n\n    <h2 class=\"aspect discovery\">Discovery</h2>\n    <p>{{ page.discovery }}</p>\n\n    <h2 class=\"aspect outcome\">Outcome</h2>\n    <p>{{ page.outcome }}</p>\n\n    {% if page.artifacts %}\n    <div class=\"break\"></div>\n    {% endif %}\n\n    <div class=\"artifacts\">\n      {% for image in page.artifacts %}\n        <img class='artifact' src=\"{{ image | relative_url }}\" alt=\"{{name}} artifact\"/>\n      {% endfor %}\n    </div>\n\n    <div class=\"break\"></div>\n\n  </article>\n\n</div>", "dir"=>"/p/", "excerpt"=>nil, "path"=>"p/ey-blockchain/ey-blockchain", "url"=>"/p/ey-blockchain"}-->
 
       <meta charset="utf-8" />
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
@@ -46,7 +46,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-end;
     }
 
     /* TODO - move to styles. */
@@ -60,14 +60,18 @@
       background-color: white;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       z-index: 1000;
+
     }
 
     nav ul {
       list-style-type: none;
-      margin: 0 10px;
+      margin: auto;
+      padding: 0px;
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-evenly;
+      max-width: 1000px;
       align-content: middle;
+      gap: 10px;
     }
 
     nav ul li:first-child {
@@ -80,7 +84,7 @@
     }
 
     nav ul li {
-      margin: 0 auto !important ;
+      margin: auto 10px !important;
       display: flex;
       align-items: center;
     }
@@ -120,7 +124,13 @@
     <div class="container">
       <nav>
         <ul>
-          <li><h2><a href='/'>Farshad Nayeri</a></h2></li>
+          <li>
+            <h2>
+              <a href='/about'><img src='/assets/about/farshad-nayeri-headshot.jpeg'
+                  style='vertical-align: middle; width: 1em; height: 1em; border-radius: 50%; padding-bottom: 0.2em; padding-right: 0.2em; ' /></a>
+              <a href='/'>Farshad Nayeri</a>
+            </h2>
+          </li>
           <li><a href="mailto:farshad@igencorp.com">
               <img class='icon' src='/assets/icons/email.svg' />
               <span>farshad@igencorp.com</span></a></li>
@@ -194,17 +204,17 @@
 
     <div class="tags">
       
-        <span class="tag">financial</span>
+        <span class="tag"><a href='/?tags=financial' />financial</a></span>
       
-        <span class="tag">crypto</span>
+        <span class="tag"><a href='/?tags=crypto' />crypto</a></span>
       
-        <span class="tag">api design</span>
+        <span class="tag"><a href='/?tags=api design' />api design</a></span>
       
-        <span class="tag">product strategy</span>
+        <span class="tag"><a href='/?tags=product strategy' />product strategy</a></span>
       
-        <span class="tag">platform</span>
+        <span class="tag"><a href='/?tags=platform' />platform</a></span>
       
-        <span class="tag">azure</span>
+        <span class="tag"><a href='/?tags=azure' />azure</a></span>
       
     </div>
 
@@ -242,7 +252,7 @@
   <div class="wrapper-footer">
     <div class="container">
       <footer class="footer">
-        <p >&copy; 2025 farshad.io. All rights reserved.</p>
+        <p>&copy; 2025 farshad.io. All rights reserved.</p>
         
 
 

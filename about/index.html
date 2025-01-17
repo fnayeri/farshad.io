@@ -2,9 +2,9 @@
 <html>
 
 <head>
-  <title>About Farshad Nayeri – farshad.io – </title>
+  <title>farshad.io – </title>
 
-  <!-- page.image  About Farshad Nayeri {"layout"=>"page", "title"=>"About Farshad Nayeri", "permalink"=>"/about/", "content"=>"<style>\n   \n\n    .photo {\n        float: left;\n        width: 300px;\n        padding: 20px;\n        margin: 0;\n    }\n\n    .about {\n        padding-left: 30px;\n        float: right;\n        width: 500px important!;\n    }\n\n    div.container {\n        display: flex;\n        flex-direction: column;\n        justify-content: left;\n        align-items: flex-start;\n    }\n\n    p {\n        padding-bottom: 10px;\n        font-size: 1em;\n    }\n\n    .medium {\n        font-size: 1.0em;\n        line-height: 1.3em;\n    }\n\n    a {\n        font-size: 1.0em;\n    }\n\n    ul {\n        list-style: none; /* Remove default bullets */\n        padding-left: 0;\n    }\n\n    ul li {\n        position: relative;\n        padding-left: 20px; /* Space for the custom bullet */\n    }\n\n   \n\n\n</style>\n\n<div class=\"container\">\n\n        <article class=\"about\" >\n            <img class='photo' src='/assets/about/farshad-nayeri-faceshot.jpeg'>\n\n            <p class='medium'>\n                <br/><b >Farshad Nayeri</b>\n                <br/><b>Email:</b> <a href=\"mailto:farshad@igencorp.com\">farshad@igencorp.com</a>\n                <br/><b>Phone:</b> <a href=\"tel:+16178233876\">+1.617.823.3876</a>\n\n                <br/><a href=\"./resume/Farshad-Nayeri-Resume.pdf\" target=\"_blank\"><b>Resumé</b></a> | \n                <a href=\"https://www.linkedin.com/in/farshadnayeri/\" target=\"_blank\"><b>LinkedIn</b></a>\n            </p>\n\n           {% include bio.html %} \n           \n        </article>\n\n</div>", "dir"=>"/about/", "excerpt"=>nil, "name"=>"about.md", "path"=>"about.md", "url"=>"/about/"}-->
+  <!-- page.image   {"layout"=>"page", "permalink"=>"/about/", "content"=>"<style>\n   \n\n    .photo {\n        float: left;\n        width: 200px;\n        padding: 20px;\n        margin: 0;\n    }\n\n    .about {\n        padding-left: 30px;\n        float: right;\n    }\n\n    div.container {\n        display: flex;\n        flex-direction: column;\n        justify-content: left;\n        align-items: flex-start;\n    }\n\n    p {\n        padding-bottom: 10px;\n        font-size: 1em;\n    }\n\n    .medium {\n        font-size: 1.0em;\n        line-height: 1.3em;\n    }\n\n    a {\n        font-size: 1.0em;\n    }\n\n    ul {\n        list-style: none; /* Remove default bullets */\n        padding-left: 0;\n    }\n\n    ul li {\n        position: relative;\n        padding-left: 20px; /* Space for the custom bullet */\n    }\n\n   \n\n\n</style>\n\n<div class=\"container\">\n        <article class=\"about\" >\n            <img class='photo' src='/assets/about/farshad-nayeri.png'>\n            <p class='medium'>\n                <br/><b >Farshad Nayeri</b>\n                <br/><b>Email:</b> <a href=\"mailto:farshad@igencorp.com\">farshad@igencorp.com</a>\n                <br/><b>Phone:</b> <a href=\"tel:+16178233876\">+1.617.823.3876</a>\n                <br/><a href=\"./resume/Farshad-Nayeri-Resume.pdf\" target=\"_blank\"><b>Resumé</b></a> | \n                <a href=\"https://www.linkedin.com/in/farshadnayeri/\" target=\"_blank\"><b>LinkedIn</b></a>\n            </p>\n           {% include bio.html %} \n        </article>\n</div>", "dir"=>"/about/", "excerpt"=>nil, "name"=>"about.md", "path"=>"about.md", "url"=>"/about/"}-->
 
       <meta charset="utf-8" />
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
@@ -16,8 +16,6 @@
     
     <!-- <meta name="author" content="farshad.io" /> -->
 
-    
-    <meta name="title" property="og:title" content="About Farshad Nayeri" />
     
 
     <meta property="og:image"        content="" />
@@ -46,7 +44,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-end;
     }
 
     /* TODO - move to styles. */
@@ -60,14 +58,18 @@
       background-color: white;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       z-index: 1000;
+
     }
 
     nav ul {
       list-style-type: none;
-      margin: 0 10px;
+      margin: auto;
+      padding: 0px;
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-evenly;
+      max-width: 1000px;
       align-content: middle;
+      gap: 10px;
     }
 
     nav ul li:first-child {
@@ -80,7 +82,7 @@
     }
 
     nav ul li {
-      margin: 0 auto !important ;
+      margin: auto 10px !important;
       display: flex;
       align-items: center;
     }
@@ -120,7 +122,13 @@
     <div class="container">
       <nav>
         <ul>
-          <li><h2><a href='/'>Farshad Nayeri</a></h2></li>
+          <li>
+            <h2>
+              <a href='/about'><img src='/assets/about/farshad-nayeri-headshot.jpeg'
+                  style='vertical-align: middle; width: 1em; height: 1em; border-radius: 50%; padding-bottom: 0.2em; padding-right: 0.2em; ' /></a>
+              <a href='/'>Farshad Nayeri</a>
+            </h2>
+          </li>
           <li><a href="mailto:farshad@igencorp.com">
               <img class='icon' src='/assets/icons/email.svg' />
               <span>farshad@igencorp.com</span></a></li>
@@ -147,7 +155,7 @@
   <div id="main" role="main" class="container">
     <article class="page">
 
-  <h1>About Farshad Nayeri</h1>
+  <h1></h1>
 
   <div class="entry">
     <style>
@@ -155,7 +163,7 @@
 
     .photo {
         float: left;
-        width: 300px;
+        width: 200px;
         padding: 20px;
         margin: 0;
     }
@@ -163,7 +171,6 @@
     .about {
         padding-left: 30px;
         float: right;
-        width: 500px important!;
     }
 
     div.container {
@@ -203,19 +210,15 @@
 </style>
 
 <div class="container">
-
         <article class="about">
-            <img class="photo" src="/assets/about/farshad-nayeri-faceshot.jpeg" />
-
+            <img class="photo" src="/assets/about/farshad-nayeri.png" />
             <p class="medium">
                 <br /><b>Farshad Nayeri</b>
                 <br /><b>Email:</b> <a href="mailto:farshad@igencorp.com">farshad@igencorp.com</a>
                 <br /><b>Phone:</b> <a href="tel:+16178233876">+1.617.823.3876</a>
-
                 <br /><a href="./resume/Farshad-Nayeri-Resume.pdf" target="_blank"><b>Resumé</b></a> | 
                 <a href="https://www.linkedin.com/in/farshadnayeri/" target="_blank"><b>LinkedIn</b></a>
             </p>
-
            <!-- bio --> 
 <p>
     Experienced product leader with deep knowledge of platform innovation and a proven track record of delivering results.
@@ -224,9 +227,7 @@
     Thrives in dynamic environments, leading teams through critical, high-stakes challenges.
 </p>
  
-           
         </article>
-
 </div>
 
   </div>
@@ -237,7 +238,7 @@
   <div class="wrapper-footer">
     <div class="container">
       <footer class="footer">
-        <p >&copy; 2025 farshad.io. All rights reserved.</p>
+        <p>&copy; 2025 farshad.io. All rights reserved.</p>
         
 
 

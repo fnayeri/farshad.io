@@ -2,9 +2,9 @@
 <html>
 
 <head>
-  <title>farshad.io - Farshad Nayeri – farshad.io – </title>
+  <title>Farshad Nayeri – farshad.io – </title>
 
-  <!-- page.image  farshad.io - Farshad Nayeri {"title"=>"farshad.io - Farshad Nayeri", "layout"=>"default", "content"=>"<style>\n  .info {\n    margin-top: 10px;\n    display: flex;\n    flex-direction: row;\n    background-color: white;\n    border-radius: 40px;\n    gap: 20px;\n    width: 940px;\n    /* padding: 20px; */\n  }\n\n  .info img {\n    width: 300px;\n    height: 300px;\n    border-radius: 40px;\n    /* border-radius: 20px; */\n    /* margin: 0 auto;\n    float: left; */\n  }\n\n  .bio {\n    flex: 1;\n    /* Allow the bio to take up the remaining space */\n  }\n\n  .info p {\n    font-size: 1.55em;\n    line-height: 1.6em;\n    padding-left: 20px;\n    padding-right: 30px;\n  }\n\n  @media (max-width: 600px) {\n    .info {\n      flex-direction: column;\n      width: 100%;\n    }\n\n    .info p {\n      padding: 20px;\n      font-size: 1.2em;\n      max-width: 300px;\n    }\n\n    .info img {\n      margin-bottom: 5px;\n      /* Add space below the image */\n    }\n  }\n\n\n  table {\n    width: 100%;\n    border-collapse: collapse;\n    margin-top: 20px;\n  }\n\n  th,\n  td {\n    border: none;\n    padding: 8px;\n    text-align: left;\n    font-weight: demibold\n    vertical-align: top;\n  }\n\n  th {\n    background-color: #f2f2f2;\n    text-align: left;\n  }\n\n  /* tr:nth-child(even) {\n    background-color: #f9f9f9;\n  }\n */\n  tr:hover {\n    background-color: #f1f1f1;\n  }\n\n  .view-project {\n    color: blue;\n    text-decoration: underline;\n    cursor: pointer;\n  }\n\n  .text-lines {\n    display: none;\n  }\n\n  .icon-lines {\n    display: block;\n  }\n\n  .project a:hover {\n      text-decoration: none;\n\n  }\n</style>\n<meta property=\"og:image\" content=\"{{ '/assets/about/farshad-nayeri-faceshot.jpeg' | absolute_url }}\" />\n\n{%if false %}\n\n<meta http-equiv=\"refresh\" content=\"0; url={{ '/docs/' | relative_url }}\" />\n<h1><a href=\"/docs/\">Farshad Nayeri - farshad.io</a></h1>\n\n{% else %}\n\n<div class='container'>\n  <div class=\"bento-box\">\n    <div class=\"info\">\n      <a href='/docs/resume/Farshad-Nayeri-Resume.pdf'>\n        <img src='/assets/about/farshad-nayeri-faceshot.jpeg' alt='{{ p.title | default: \"\" }}' />\n      </a>\n      <p>Proven product leader who transforms business, technical, and strategic constraints into scalable,\n        high-impact solutions.\n        Thrives in dynamic, hands-on, high-stakes environments, delivering tangible results across the entire product\n        lifecycle.\n      </p>\n    </div>\n  </div>\n\n  <div class=\"bento-box\">\n    <div class=\"info\">\n    <table class=\"text-lines\">\n    <tbody>\n      {% for p in site.pages %}\n      {% if p.enabled %}\n      <tr>\n        <td width=\"30%\"><a href=\"{{ p.url }}\" class=\"project\"><b>{{ p.role }}</b><br/>{{ p.title }}</a></td>\n        <td width=\"20%\">{{ p.customer }}</td>\n        <td>\n          <div class=\"\">\n            {% for tag in p.tags %}\n              <span class=\"tag\">{{ tag }}</span>\n            {% endfor %}\n          </div>\n        </td>\n      </tr>\n      {% endif %}\n      {% endfor %}\n    </tbody>\n  </table>\n  </div>\n</div>\n\n  <div style='clear: both'> </div>\n\n  <div class=\"icon-lines\">\n    <div class=\"bento-box\">\n      {% for p in site.pages %}\n      {% if p.enabled %}\n      <a style='color: \#{{ p.color | default: \"000000\" }}' href='{{ p.permalink | relative_url }}'>\n        <div class='bento' style='\n                    color:            \#{{ p.color | default: \"000000\" }}; \n                    background-color: \#{{ p.background | default: \"ffffff\" }};\n                    border-color:     \#{{ p.border | default: p.background | default: \"FFFFF\" }}'>\n          <h2 class='title'>{{ p.title }} </h2>\n          <img src='{{ p.image | relative_url }}' alt='{{ p.title | default: \"\" }}' />\n          <h2 class='subtitle' style='text-wrap: no-wrap; vertical-align: top;'>{{ p.customer}}→</h2>\n        </div>\n      </a>\n      {% endif %}\n      {% endfor %}\n    </div>\n  </div>\n</div>\n\n{% endif %}\n\n<script>\n  document.addEventListener('DOMContentLoaded', function () {\n    const urlParams = new URLSearchParams(window.location.search);\n    const tParam = urlParams.get('f');\n\n    if (tParam) {\n      if (tParam === 'list') {\n        document.querySelector('.text-lines').style.display = 'block';\n        document.querySelector('.icon-lines').style.display = 'none';\n      } else if (tParam === 'icons') {\n        document.querySelector('.icon-lines').style.display = 'block';\n        document.querySelector('.text-lines').style.display = 'none';\n      }\n    }\n  });\n</script>", "dir"=>"/", "excerpt"=>nil, "name"=>"index.md", "path"=>"index.md", "url"=>"/"}-->
+  <!-- page.image  Farshad Nayeri {"title"=>"Farshad Nayeri", "layout"=>"default", "content"=>"<style>\n  .info {\n    margin-top: 10px;\n    display: flex;\n    flex-direction: column;\n    /* background-color: white; */\n    border-radius: 40px;\n    gap: 20px;\n    width: 940px;\n    /* padding: 20px; */\n  }\n\n  .info a img {\n    width: 300px;\n    height: 300px;\n    border-radius: 40px;\n  }\n\n  .bio {\n    flex: 1;\n  }\n\n  .info p {\n    font-size: 1.55em;\n    line-height: 1.6em;\n    padding-left: 20px;\n    padding-right: 30px;\n  }\n\n  @media (max-width: 600px) {\n    .info {\n      flex-direction: column;\n      width: 100%;\n    }\n\n    .info p {\n      padding: 20px;\n      font-size: 1.2em;\n      max-width: 300px;\n    }\n\n    .info img {\n      margin-bottom: 5px;\n      /* Add space below the image */\n    }\n  }\n\n\n  table {\n    width: 100%;\n    border-collapse: collapse;\n    margin-top: 20px;\n  }\n\n  th,\n  td {\n    border: none;\n    padding: 8px;\n    text-align: left;\n    font-weight: demibold\n    vertical-align: top;\n  }\n\n  th {\n    background-color: #f2f2f2;\n    text-align: left;\n  }\n\n  /* tr:nth-child(even) {\n    background-color: #f9f9f9;\n  }\n */\n  tr:hover {\n    background-color: #f1f1f1;\n  }\n\n  .view-project {\n    text-decoration: underline;\n    cursor: pointer;\n  }\n\n  .text-lines {\n    display: none;\n  }\n\n  .icon-lines {\n    display: block;\n  }\n\n  .project a:hover {\n      text-decoration: none;\n\n  }\n</style>\n<meta property=\"og:image\" content=\"{{ '/assets/about/farshad-nayeri.png' | absolute_url }}\" />\n\n{%if false %}\n\n<meta http-equiv=\"refresh\" content=\"0; url={{ '/docs/' | relative_url }}\" />\n<h1><a href=\"/docs/\">Farshad Nayeri - farshad.io</a></h1>\n\n{% else %}\n\n<div class='container'>\n    <div class=\"info\">\n      <br clear=\"all\"/>\n      <p>Proven product leader with deep experience in technology and product innovation &star; Transforms business, technical, and strategic constraints into scalable,\n        high-impact solutions &star; Thrives in dynamic, hands-on, high-stakes environments, delivering tangible results across the entire product\n        lifecycle &star;\n        </p>\n  </div>\n\n  <div style='clear: both'> </div>\n\n  <div class=\"icon-lines\">\n    <div class=\"bento-box projects\">\n      {% for p in site.pages %}\n      {% if p.enabled %}\n      <a style='color: \#{{ p.color | default: \"000000\" }}' href='{{ p.permalink | relative_url }}'>\n        <div class='bento' \n             style='\n                    color:            \#{{ p.color | default: \"000000\" }}; \n                    background-color: \#{{ p.background | default: \"ffffff\" }};\n                    border-color:     \#{{ p.border | default: p.background | default: \"FFFFF\" }};\n                    '\n              data-tags='{{p.tags}}'>\n          <h2 class='title'>{{ p.title }} </h2>\n          <img src='{{ p.image | relative_url }}' alt='{{ p.title | default: \"\" }}' />\n          <h2 class='subtitle' style='text-wrap: no-wrap; vertical-align: top;'>{{ p.customer}}→</h2>\n        </div>\n      </a>\n      {% endif %}\n      {% endfor %}\n    </div>\n  </div>\n</div>\n\n<div class=\"text-lines\">\n</div>\n\n{% endif %}\n\n<script>\n  document.addEventListener('DOMContentLoaded', function () {\n    console.log(\"CONTENT LOADED\");\n    const urlParams = new URLSearchParams(window.location.search);\n    const fmt = urlParams.get('fmt');\n    const tags= urlParams.get('tags') || urlParams.get('tag');\n\n    console.log(\"Format\", fmt);\n    console.log(\"Tags\", tags);\n\n    \n    if (fmt) {\n      console.log(\"FMT\", tags);\n      if (fmt === 'list' || fmt == 'text') {\n        document.querySelector('.text-lines').style.display = 'block';\n        document.querySelector('.icon-lines').style.display = 'none';\n      } else if (fmt === 'icons') {\n        document.querySelector('.icon-lines').style.display = 'block';\n        document.querySelector('.text-lines').style.display = 'none';\n      }\n    }\n  \n  if (tags) {\n      console.log(\"TAGS\", tags);\n      const tagArray = tags.split(/[ ]*,[ ]*/);\n      const items = document.querySelectorAll('[data-tags]');\n\n      console.log(\"DATA TAGS\", items);\n\n      items.forEach(item => {\n        console.log(\"EACH TAG\", item);\n        const itemTags = item.getAttribute('data-tags').split(/[ ]*,[ ]*/);\n        const hasTag = tagArray.some(tag => itemTags.includes(tag));\n        console.log(\"TAG\", itemTags, hasTag);\n        if (!hasTag) {\n          item.style.opacity = 0.2;\n        }\n      });\n    }\n  });\n\n\n</script>", "dir"=>"/", "excerpt"=>nil, "name"=>"index.md", "path"=>"index.md", "url"=>"/"}-->
 
       <meta charset="utf-8" />
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
@@ -17,7 +17,7 @@
     <!-- <meta name="author" content="farshad.io" /> -->
 
     
-    <meta name="title" property="og:title" content="farshad.io - Farshad Nayeri" />
+    <meta name="title" property="og:title" content="Farshad Nayeri" />
     
 
     <meta property="og:image"        content="" />
@@ -46,7 +46,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-end;
     }
 
     /* TODO - move to styles. */
@@ -60,14 +60,18 @@
       background-color: white;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       z-index: 1000;
+
     }
 
     nav ul {
       list-style-type: none;
-      margin: 0 10px;
+      margin: auto;
+      padding: 0px;
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-evenly;
+      max-width: 1000px;
       align-content: middle;
+      gap: 10px;
     }
 
     nav ul li:first-child {
@@ -80,7 +84,7 @@
     }
 
     nav ul li {
-      margin: 0 auto !important ;
+      margin: auto 10px !important;
       display: flex;
       align-items: center;
     }
@@ -120,7 +124,13 @@
     <div class="container">
       <nav>
         <ul>
-          <li><h2><a href='/'>Farshad Nayeri</a></h2></li>
+          <li>
+            <h2>
+              <a href='/about'><img src='/assets/about/farshad-nayeri-headshot.jpeg'
+                  style='vertical-align: middle; width: 1em; height: 1em; border-radius: 50%; padding-bottom: 0.2em; padding-right: 0.2em; ' /></a>
+              <a href='/'>Farshad Nayeri</a>
+            </h2>
+          </li>
           <li><a href="mailto:farshad@igencorp.com">
               <img class='icon' src='/assets/icons/email.svg' />
               <span>farshad@igencorp.com</span></a></li>
@@ -149,26 +159,22 @@
   .info {
     margin-top: 10px;
     display: flex;
-    flex-direction: row;
-    background-color: white;
+    flex-direction: column;
+    /* background-color: white; */
     border-radius: 40px;
     gap: 20px;
     width: 940px;
     /* padding: 20px; */
   }
 
-  .info img {
+  .info a img {
     width: 300px;
     height: 300px;
     border-radius: 40px;
-    /* border-radius: 20px; */
-    /* margin: 0 auto;
-    float: left; */
   }
 
   .bio {
     flex: 1;
-    /* Allow the bio to take up the remaining space */
   }
 
   .info p {
@@ -226,7 +232,6 @@
   }
 
   .view-project {
-    color: blue;
     text-decoration: underline;
     cursor: pointer;
   }
@@ -245,324 +250,21 @@
   }
 </style>
 
-<meta property="og:image" content="http://fm1.local:4000//assets/about/farshad-nayeri-faceshot.jpeg" />
+<meta property="og:image" content="http://fm1.local:4000//assets/about/farshad-nayeri.png" />
 
 <div class="container">
-  <div class="bento-box">
     <div class="info">
-      <a href="/docs/resume/Farshad-Nayeri-Resume.pdf">
-        <img src="/assets/about/farshad-nayeri-faceshot.jpeg" alt="" />
-      </a>
-      <p>Proven product leader who transforms business, technical, and strategic constraints into scalable,
-        high-impact solutions.
-        Thrives in dynamic, hands-on, high-stakes environments, delivering tangible results across the entire product
-        lifecycle.
-      </p>
-    </div>
+      <br clear="all" />
+      <p>Proven product leader with deep experience in technology and product innovation &star; Transforms business, technical, and strategic constraints into scalable,
+        high-impact solutions &star; Thrives in dynamic, hands-on, high-stakes environments, delivering tangible results across the entire product
+        lifecycle &star;
+        </p>
   </div>
-
-  <div class="bento-box">
-    <div class="info">
-    <table class="text-lines">
-    <tbody>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      <tr>
-        <td width="30%"><a href="/p/ey-blockchain" class="project"><b>Platform Lead</b><br />Enterprise API Platform</a></td>
-        <td width="20%">Ernst &amp; Young Global Innovations 	</td>
-        <td>
-          <div class="">
-            
-              <span class="tag">financial</span>
-            
-              <span class="tag">crypto</span>
-            
-              <span class="tag">api design</span>
-            
-              <span class="tag">product strategy</span>
-            
-              <span class="tag">platform</span>
-            
-              <span class="tag">azure</span>
-            
-          </div>
-        </td>
-      </tr>
-      
-      
-      
-      <tr>
-        <td width="30%"><a href="/p/redbook-keep" class="project"><b>Platform Lead</b><br />Retail Management Platform &amp; Apps</a></td>
-        <td width="20%">Red Book Solutions</td>
-        <td>
-          <div class="">
-            
-              <span class="tag">retail</span>
-            
-              <span class="tag">native apps</span>
-            
-              <span class="tag">web app</span>
-            
-              <span class="tag">full stack</span>
-            
-              <span class="tag">multi-platform</span>
-            
-              <span class="tag">community</span>
-            
-              <span class="tag">analytics</span>
-            
-              <span class="tag">data visualization</span>
-            
-              <span class="tag">api design</span>
-            
-              <span class="tag">platform</span>
-            
-              <span class="tag">aws</span>
-            
-          </div>
-        </td>
-      </tr>
-      
-      
-      
-      <tr>
-        <td width="30%"><a href="/p/verizon-dti" class="project"><b>Platform Architect</b><br />Interactive Circuit Diagnostic System</a></td>
-        <td width="20%">Verizon Labs 	</td>
-        <td>
-          <div class="">
-            
-              <span class="tag">telecomm</span>
-            
-              <span class="tag">full stack</span>
-            
-              <span class="tag">api design</span>
-            
-              <span class="tag">product strategy</span>
-            
-              <span class="tag">platform</span>
-            
-              <span class="tag">native apps</span>
-            
-          </div>
-        </td>
-      </tr>
-      
-      
-      
-      <tr>
-        <td width="30%"><a href="/p/appstore" class="project"><b>Product Lead</b><br />100+ iOS Apps / 7 Million Downloads</a></td>
-        <td width="20%">iOS AppStore 	</td>
-        <td>
-          <div class="">
-            
-              <span class="tag">consumer</span>
-            
-              <span class="tag">native apps</span>
-            
-              <span class="tag">product strategy</span>
-            
-              <span class="tag">architecture</span>
-            
-          </div>
-        </td>
-      </tr>
-      
-      
-      
-      <tr>
-        <td width="30%"><a href="/p/christensen-institute" class="project"><b>Product Lead</b><br />Disruptive Innovation.com</a></td>
-        <td width="20%">Clayton Christensen Institute</td>
-        <td>
-          <div class="">
-            
-              <span class="tag">management</span>
-            
-              <span class="tag">research</span>
-            
-              <span class="tag">community</span>
-            
-              <span class="tag">product strategy</span>
-            
-              <span class="tag">innovation</span>
-            
-          </div>
-        </td>
-      </tr>
-      
-      
-      
-      <tr>
-        <td width="30%"><a href="/p/fidelity-pm" class="project"><b>System Architect</b><br />Portfolio Management UI Framework</a></td>
-        <td width="20%">Fidelity Investments	</td>
-        <td>
-          <div class="">
-            
-              <span class="tag">financial</span>
-            
-              <span class="tag">native apps</span>
-            
-              <span class="tag">data visualization</span>
-            
-              <span class="tag">architecture</span>
-            
-          </div>
-        </td>
-      </tr>
-      
-      
-      
-      <tr>
-        <td width="30%"><a href="/p/cme-chat" class="project"><b>System Architect</b><br />Interactive Trade Clearing Platform</a></td>
-        <td width="20%">Chicago Mercantile Exchange 	</td>
-        <td>
-          <div class="">
-            
-              <span class="tag">financial</span>
-            
-              <span class="tag">web apps</span>
-            
-              <span class="tag">api design</span>
-            
-              <span class="tag">architecture</span>
-            
-          </div>
-        </td>
-      </tr>
-      
-      
-      
-      <tr>
-        <td width="30%"><a href="/p/baupost-niws" class="project"><b>Product Lead</b><br />New Investment Warning System</a></td>
-        <td width="20%">Baupost Group	</td>
-        <td>
-          <div class="">
-            
-              <span class="tag">financial</span>
-            
-              <span class="tag">visualization</span>
-            
-              <span class="tag">community</span>
-            
-              <span class="tag">analytics</span>
-            
-              <span class="tag">data visualization</span>
-            
-              <span class="tag">web apps</span>
-            
-          </div>
-        </td>
-      </tr>
-      
-      
-      
-      <tr>
-        <td width="30%"><a href="/p/peoplefluent" class="project"><b>Product Lead</b><br />Mobile Apps for Talent Management</a></td>
-        <td width="20%">Peoplefluent 	</td>
-        <td>
-          <div class="">
-            
-              <span class="tag">management</span>
-            
-              <span class="tag">native apps</span>
-            
-              <span class="tag">web app</span>
-            
-              <span class="tag">business processes</span>
-            
-              <span class="tag">api integration</span>
-            
-              <span class="tag">architecture</span>
-            
-          </div>
-        </td>
-      </tr>
-      
-      
-      
-      <tr>
-        <td width="30%"><a href="/p/coniferpoint" class="project"><b>System Architect</b><br />UX &amp; Payment Frameworks</a></td>
-        <td width="20%">Conifer Point Computational Medicine	</td>
-        <td>
-          <div class="">
-            
-              <span class="tag">healthcare</span>
-            
-              <span class="tag">web apps</span>
-            
-              <span class="tag">api design</span>
-            
-              <span class="tag">architecture</span>
-            
-              <span class="tag">e-commerce</span>
-            
-          </div>
-        </td>
-      </tr>
-      
-      
-      
-      <tr>
-        <td width="30%"><a href="/p/fidelity-readiness" class="project"><b>Technical Lead</b><br />Retirement Readiness Sales App</a></td>
-        <td width="20%">Fidelity Investments 	</td>
-        <td>
-          <div class="">
-            
-              <span class="tag">data visualization</span>
-            
-              <span class="tag">data-analytic storytelling</span>
-            
-              <span class="tag">native apps</span>
-            
-          </div>
-        </td>
-      </tr>
-      
-      
-      
-      <tr>
-        <td width="30%"><a href="/p/verizon-tips" class="project"><b>System Architect</b><br />Real-Time QoS Monitoring System</a></td>
-        <td width="20%">Verizon Labs 	</td>
-        <td>
-          <div class="">
-            
-              <span class="tag">telecomm</span>
-            
-              <span class="tag">native apps</span>
-            
-              <span class="tag">api</span>
-            
-              <span class="tag">architecture</span>
-            
-          </div>
-        </td>
-      </tr>
-      
-      
-      
-      
-      
-      
-      
-      
-    </tbody>
-  </table>
-  </div>
-</div>
 
   <div style="clear: both"> </div>
 
   <div class="icon-lines">
-    <div class="bento-box">
+    <div class="bento-box projects">
       
       
       
@@ -579,7 +281,8 @@
         <div class="bento" style="
                     color:            #808080; 
                     background-color: #FFFFFF;
-                    border-color:     #FBE74D">
+                    border-color:     #FBE74D;
+                    " data-tags="financialcryptoapi designproduct strategyplatformazure">
           <h2 class="title">Enterprise API Platform </h2>
           <img src="/assets/logos/ey-blockchain.png" alt="Enterprise API Platform" />
           <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Ernst &amp; Young Global Innovations 	→</h2>
@@ -592,7 +295,8 @@
         <div class="bento" style="
                     color:            #B92739; 
                     background-color: #E2E2E2;
-                    border-color:     #77787B">
+                    border-color:     #77787B;
+                    " data-tags="retailnative appsweb appfull stackmulti-platformcommunityanalyticsdata visualizationapi designplatformaws">
           <h2 class="title">Retail Management Platform &amp; Apps </h2>
           <img src="/assets/logos/redbook-keep.png" alt="Retail Management Platform &amp; Apps" />
           <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Red Book Solutions→</h2>
@@ -605,7 +309,8 @@
         <div class="bento" style="
                     color:            #000000; 
                     background-color: #FFFFFF;
-                    border-color:     #D8383C">
+                    border-color:     #D8383C;
+                    " data-tags="telecommfull stackapi designproduct strategyplatformnative apps">
           <h2 class="title">Interactive Circuit Diagnostic System </h2>
           <img src="/assets/logos/verizon-dti.png" alt="Interactive Circuit Diagnostic System" />
           <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Verizon Labs 	→</h2>
@@ -618,7 +323,8 @@
         <div class="bento" style="
                     color:            #3568E6; 
                     background-color: #FCFEFF;
-                    border-color:     #FCFEFF">
+                    border-color:     #FCFEFF;
+                    " data-tags="consumernative appsproduct strategyarchitecture">
           <h2 class="title">100+ iOS Apps / 7 Million Downloads </h2>
           <img src="/assets/logos/appstore.png" alt="100+ iOS Apps / 7 Million Downloads" />
           <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">iOS AppStore 	→</h2>
@@ -631,7 +337,8 @@
         <div class="bento" style="
                     color:            #233955; 
                     background-color: #E6EFD0;
-                    border-color:     #E6EFD0">
+                    border-color:     #E6EFD0;
+                    " data-tags="managementresearchcommunityproduct strategyinnovation">
           <h2 class="title">Disruptive Innovation.com </h2>
           <img src="/assets/logos/christensen-institute.png" alt="Disruptive Innovation.com" />
           <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Clayton Christensen Institute→</h2>
@@ -644,7 +351,8 @@
         <div class="bento" style="
                     color:            #3A8149; 
                     background-color: #ffffff;
-                    border-color:     #FFFFF">
+                    border-color:     #FFFFF;
+                    " data-tags="financialnative appsdata visualizationarchitecture">
           <h2 class="title">Portfolio Management UI Framework </h2>
           <img src="/assets/logos/fidelity-pm.png" alt="Portfolio Management UI Framework" />
           <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Fidelity Investments	→</h2>
@@ -657,7 +365,8 @@
         <div class="bento" style="
                     color:            #52A7DA; 
                     background-color: #EBEDEE;
-                    border-color:     #1A2B49">
+                    border-color:     #1A2B49;
+                    " data-tags="financialweb appsapi designarchitecture">
           <h2 class="title">Interactive Trade Clearing Platform </h2>
           <img src="/assets/logos/cme-chat.png" alt="Interactive Trade Clearing Platform" />
           <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Chicago Mercantile Exchange 	→</h2>
@@ -670,7 +379,8 @@
         <div class="bento" style="
                     color:            #22436C; 
                     background-color: #FFFFFF;
-                    border-color:     #22436C">
+                    border-color:     #22436C;
+                    " data-tags="financialvisualizationcommunityanalyticsdata visualizationweb apps">
           <h2 class="title">New Investment Warning System </h2>
           <img src="/assets/logos/baupost-niws.png" alt="New Investment Warning System" />
           <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Baupost Group	→</h2>
@@ -683,7 +393,8 @@
         <div class="bento" style="
                     color:            #EB4C36; 
                     background-color: #FFFFFF;
-                    border-color:     #272058">
+                    border-color:     #272058;
+                    " data-tags="managementnative appsweb appbusiness processesapi integrationarchitecture">
           <h2 class="title">Mobile Apps for Talent Management </h2>
           <img src="/assets/logos/peoplefluent.png" alt="Mobile Apps for Talent Management" />
           <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Peoplefluent 	→</h2>
@@ -696,7 +407,8 @@
         <div class="bento" style="
                     color:            #5B5BEC; 
                     background-color: #ffffff;
-                    border-color:     #72EA4F">
+                    border-color:     #72EA4F;
+                    " data-tags="healthcareweb appsapi designarchitecturee-commerce">
           <h2 class="title">UX &amp; Payment Frameworks </h2>
           <img src="/assets/logos/coniferpoint.png" alt="UX &amp; Payment Frameworks" />
           <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Conifer Point Computational Medicine	→</h2>
@@ -709,7 +421,8 @@
         <div class="bento" style="
                     color:            #3A8149; 
                     background-color: #ffffff;
-                    border-color:     #FFFFF">
+                    border-color:     #FFFFF;
+                    " data-tags="data visualizationdata-analytic storytellingnative apps">
           <h2 class="title">Retirement Readiness Sales App </h2>
           <img src="/assets/logos/fidelity-readiness.png" alt="Retirement Readiness Sales App" />
           <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Fidelity Investments 	→</h2>
@@ -722,7 +435,8 @@
         <div class="bento" style="
                     color:            #060606; 
                     background-color: #DEDEDE;
-                    border-color:     #D8383C">
+                    border-color:     #D8383C;
+                    " data-tags="telecommnative appsapiarchitecture">
           <h2 class="title">Real-Time QoS Monitoring System </h2>
           <img src="/assets/logos/verizon-tips.png" alt="Real-Time QoS Monitoring System" />
           <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Verizon Labs 	→</h2>
@@ -740,21 +454,51 @@
   </div>
 </div>
 
+<div class="text-lines">
+</div>
+
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+    console.log("CONTENT LOADED");
     const urlParams = new URLSearchParams(window.location.search);
-    const tParam = urlParams.get('f');
+    const fmt = urlParams.get('fmt');
+    const tags= urlParams.get('tags') || urlParams.get('tag');
 
-    if (tParam) {
-      if (tParam === 'list') {
+    console.log("Format", fmt);
+    console.log("Tags", tags);
+
+    
+    if (fmt) {
+      console.log("FMT", tags);
+      if (fmt === 'list' || fmt == 'text') {
         document.querySelector('.text-lines').style.display = 'block';
         document.querySelector('.icon-lines').style.display = 'none';
-      } else if (tParam === 'icons') {
+      } else if (fmt === 'icons') {
         document.querySelector('.icon-lines').style.display = 'block';
         document.querySelector('.text-lines').style.display = 'none';
       }
     }
+  
+  if (tags) {
+      console.log("TAGS", tags);
+      const tagArray = tags.split(/[ ]*,[ ]*/);
+      const items = document.querySelectorAll('[data-tags]');
+
+      console.log("DATA TAGS", items);
+
+      items.forEach(item => {
+        console.log("EACH TAG", item);
+        const itemTags = item.getAttribute('data-tags').split(/[ ]*,[ ]*/);
+        const hasTag = tagArray.some(tag => itemTags.includes(tag));
+        console.log("TAG", itemTags, hasTag);
+        if (!hasTag) {
+          item.style.opacity = 0.2;
+        }
+      });
+    }
   });
+
+
 </script>
 
 
@@ -763,7 +507,7 @@
   <div class="wrapper-footer">
     <div class="container">
       <footer class="footer">
-        <p >&copy; 2025 farshad.io. All rights reserved.</p>
+        <p>&copy; 2025 farshad.io. All rights reserved.</p>
         
 
 
