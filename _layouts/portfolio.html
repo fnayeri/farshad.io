@@ -50,7 +50,7 @@ layout: default
 
     <div class="tags">
       {% for tag in page.tags %}
-        <span class="tag">{{ tag }}</span>
+        <span class="tag"><a href='/?tags={{tag}}' />{{ tag }}</a></span>
       {% endfor %}
     </div>
 

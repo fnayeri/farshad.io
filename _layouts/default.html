@@ -27,7 +27,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-end;
     }
 
     /* TODO - move to styles. */
@@ -41,14 +41,18 @@
       background-color: white;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       z-index: 1000;
+
     }
 
     nav ul {
       list-style-type: none;
-      margin: 0 10px;
+      margin: auto;
+      padding: 0px;
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-evenly;
+      max-width: 1000px;
       align-content: middle;
+      gap: 10px;
     }
 
     nav ul li:first-child {
@@ -61,7 +65,7 @@
     }
 
     nav ul li {
-      margin: 0 auto !important ;
+      margin: auto 10px !important;
       display: flex;
       align-items: center;
     }
@@ -101,7 +105,13 @@
     <div class="container">
       <nav>
         <ul>
-          <li><h2><a href='/'>Farshad Nayeri</a></h2></li>
+          <li>
+            <h2>
+              <a href='/about'><img src='/assets/about/farshad-nayeri-headshot.jpeg'
+                  style='vertical-align: middle; width: 1em; height: 1em; border-radius: 50%; padding-bottom: 0.2em; padding-right: 0.2em; ' /></a>
+              <a href='/'>Farshad Nayeri</a>
+            </h2>
+          </li>
           <li><a href="mailto:farshad@igencorp.com">
               <img class='icon' src='/assets/icons/email.svg' />
               <span>farshad@igencorp.com</span></a></li>
@@ -132,7 +142,7 @@
   <div class="wrapper-footer">
     <div class="container">
       <footer class="footer">
-        <p >&copy; {{ site.time | date: '%Y' }} {{ site.name }}. All rights reserved.</p>
+        <p>&copy; {{ site.time | date: '%Y' }} {{ site.name }}. All rights reserved.</p>
         {% include svg-icons.html %}
       </footer>
     </div>

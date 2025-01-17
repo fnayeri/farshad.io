@@ -37,6 +37,7 @@ module Jekyll
 
         item['permalink'] = File.join(@root,@name)
         item['tags'] = item['tags'].split(',').map(&:strip) if item['tags']
+        Jekyll.logger.info "tags: #{item['tags']}"
         item['enabled'] = true
 
         self.process(@name + '.html')

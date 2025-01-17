@@ -1,5 +1,5 @@
 ---
-title: farshad.io - Farshad Nayeri
+title: Farshad Nayeri
 layout: default
 ---
 
@@ -7,26 +7,22 @@ layout: default
   .info {
     margin-top: 10px;
     display: flex;
-    flex-direction: row;
-    background-color: white;
+    flex-direction: column;
+    /* background-color: white; */
     border-radius: 40px;
     gap: 20px;
     width: 940px;
     /* padding: 20px; */
   }
 
-  .info img {
+  .info a img {
     width: 300px;
     height: 300px;
     border-radius: 40px;
-    /* border-radius: 20px; */
-    /* margin: 0 auto;
-    float: left; */
   }
 
   .bio {
     flex: 1;
-    /* Allow the bio to take up the remaining space */
   }
 
   .info p {
@@ -84,7 +80,6 @@ layout: default
   }
 
   .view-project {
-    color: blue;
     text-decoration: underline;
     cursor: pointer;
   }
@@ -102,7 +97,7 @@ layout: default
 
   }
 </style>
-<meta property="og:image" content="{{ '/assets/about/farshad-nayeri-faceshot.jpeg' | absolute_url }}" />
+<meta property="og:image" content="{{ '/assets/about/farshad-nayeri.png' | absolute_url }}" />
 
 {%if false %}
 
@@ -112,54 +107,28 @@ layout: default
 {% else %}
 
 <div class='container'>
-  <div class="bento-box">
     <div class="info">
-      <a href='/docs/resume/Farshad-Nayeri-Resume.pdf'>
-        <img src='/assets/about/farshad-nayeri-faceshot.jpeg' alt='{{ p.title | default: "" }}' />
-      </a>
-      <p>Proven product leader who transforms business, technical, and strategic constraints into scalable,
-        high-impact solutions.
-        Thrives in dynamic, hands-on, high-stakes environments, delivering tangible results across the entire product
-        lifecycle.
-      </p>
-    </div>
+      <br clear="all"/>
+      <p>Proven product leader with deep experience in technology and product innovation &star; Transforms business, technical, and strategic constraints into scalable,
+        high-impact solutions &star; Thrives in dynamic, hands-on, high-stakes environments, delivering tangible results across the entire product
+        lifecycle &star;
+        </p>
   </div>
-
-  <div class="bento-box">
-    <div class="info">
-    <table class="text-lines">
-    <tbody>
-      {% for p in site.pages %}
-      {% if p.enabled %}
-      <tr>
-        <td width="30%"><a href="{{ p.url }}" class="project"><b>{{ p.role }}</b><br/>{{ p.title }}</a></td>
-        <td width="20%">{{ p.customer }}</td>
-        <td>
-          <div class="">
-            {% for tag in p.tags %}
-              <span class="tag">{{ tag }}</span>
-            {% endfor %}
-          </div>
-        </td>
-      </tr>
-      {% endif %}
-      {% endfor %}
-    </tbody>
-  </table>
-  </div>
-</div>
 
   <div style='clear: both'> </div>
 
   <div class="icon-lines">
-    <div class="bento-box">
+    <div class="bento-box projects">
       {% for p in site.pages %}
       {% if p.enabled %}
       <a style='color: #{{ p.color | default: "000000" }}' href='{{ p.permalink | relative_url }}'>
-        <div class='bento' style='
+        <div class='bento' 
+             style='
                     color:            #{{ p.color | default: "000000" }}; 
                     background-color: #{{ p.background | default: "ffffff" }};
-                    border-color:     #{{ p.border | default: p.background | default: "FFFFF" }}'>
+                    border-color:     #{{ p.border | default: p.background | default: "FFFFF" }};
+                    '
+              data-tags='{{p.tags}}'>
           <h2 class='title'>{{ p.title }} </h2>
           <img src='{{ p.image | relative_url }}' alt='{{ p.title | default: "" }}' />
           <h2 class='subtitle' style='text-wrap: no-wrap; vertical-align: top;'>{{ p.customer}}→</h2>
@@ -171,21 +140,51 @@ layout: default
   </div>
 </div>
 
+<div class="text-lines">
+</div>
+
 {% endif %}
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+    console.log("CONTENT LOADED");
     const urlParams = new URLSearchParams(window.location.search);
-    const tParam = urlParams.get('f');
+    const fmt = urlParams.get('fmt');
+    const tags= urlParams.get('tags') || urlParams.get('tag');
 
-    if (tParam) {
-      if (tParam === 'list') {
+    console.log("Format", fmt);
+    console.log("Tags", tags);
+
+    
+    if (fmt) {
+      console.log("FMT", tags);
+      if (fmt === 'list' || fmt == 'text') {
         document.querySelector('.text-lines').style.display = 'block';
         document.querySelector('.icon-lines').style.display = 'none';
-      } else if (tParam === 'icons') {
+      } else if (fmt === 'icons') {
         document.querySelector('.icon-lines').style.display = 'block';
         document.querySelector('.text-lines').style.display = 'none';
       }
     }
+  
+  if (tags) {
+      console.log("TAGS", tags);
+      const tagArray = tags.split(/[ ]*,[ ]*/);
+      const items = document.querySelectorAll('[data-tags]');
+
+      console.log("DATA TAGS", items);
+
+      items.forEach(item => {
+        console.log("EACH TAG", item);
+        const itemTags = item.getAttribute('data-tags').split(/[ ]*,[ ]*/);
+        const hasTag = tagArray.some(tag => itemTags.includes(tag));
+        console.log("TAG", itemTags, hasTag);
+        if (!hasTag) {
+          item.style.opacity = 0.2;
+        }
+      });
+    }
   });
+
+
 </script>
