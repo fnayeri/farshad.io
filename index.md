@@ -35,8 +35,8 @@ layout: default
     .info p {
       max-width: 500px;
       margin: 10px 5px 30px 5px;
-      
-      }
+      font-size: 1.2em;
+    }
 
     .info img {
       margin-bottom: 5px;
@@ -65,13 +65,14 @@ layout: default
     /* background-color: LightSalmon;  */
   }
 
-  .bento h2 {
-    font-size: 0.95em;
+  .bento .title {
+    font-size: 1.05em;
   }
 
-  .bento h3 {
-    max-lines: 2;
-    font-size: 1em;
+  .bento img {
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 20px;
   }
 
   .bento:hover {
