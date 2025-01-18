@@ -27,16 +27,15 @@ layout: default
   .info p {
     font-size: 1.40em;
     line-height: 1.6em;
+    margin: 20px 55px 30px 55px;
   }
 
   @media (max-width: 800px) {
-    .info {
-      flex-direction: column;
-      align-items: center;
-    }
 
     .info p {
       max-width: 500px;
+      margin: 10px 5px 30px 5px;
+      
       }
 
     .info img {
@@ -55,8 +54,10 @@ layout: default
   }
 
   .bento {
-    width: 200px !important;
-    height: 200px !important;
+    width: 180px !important;
+    height: 180px !important;
+    padding: 5px !important;
+    margin: 5px !important;
   }
   
   .bento .subtitle {
@@ -69,6 +70,7 @@ layout: default
   }
 
   .bento h3 {
+    max-lines: 2;
     font-size: 1em;
   }
 
@@ -180,7 +182,7 @@ layout: default
              style='
                     color:            #{{ p.color | default: "000000" }}; 
                     background-color: #{{ p.background | default: "ffffff" }};
-                    border-color:     #{{ p.border | default: p.background | default: "ffffff" }};
+                    border-color:     #{{ p.border | append: '77' | default: p.background | default: "ffffff" }};
                     '
               data-tags='{{p.tags}}'>
           <h2 class='title'>{{ p.title }} </h2>
