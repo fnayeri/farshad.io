@@ -4,8 +4,6 @@
 <head>
   <title>Retail Management Platform & Apps – farshad.io – </title>
 
-  <!-- page.image /assets/logos/redbook-keep.png Retail Management Platform & Apps {"layout"=>"default", "name"=>"redbook-keep", "permalink"=>"/p/redbook-keep", "title"=>"Retail Management Platform & Apps", "customer"=>"Red Book Solutions", "role"=>"Platform Lead", "link"=>"https://RedbookSolutions.com/", "color"=>"B92739", "background"=>"E2E2E2", "border"=>"77787B", "tags"=>["retail", "native apps", "web app", "full stack", "multi-platform", "community", "analytics", "data visualization", "api design", "platform", "aws"], "body"=>"Led end-to-end design, development, and delivery of store management SaaS app platform on iOS, Android, Web capturing millions of images from 80,000 locations to the AWS cloud, atop a digital transformation workflow processing 1000s of PDFs  month.", "problem"=>"Redbook’s digital transformation required moving retail users from paper-based solutions to digital offerings.", "stakes"=>"Monthly and quarterly print editions had to be synchronized with online offerings, designed to scale to 80,000 locations.", "discovery"=>"The legacy app’s enterprise-based authentication created many problems in retail settings. A new, simplified onboarding method allowed retail location managers to onboard users quickly.", "outcome"=>"Designed and delivered a multi-platform app with a backend running on AWS Cloud, including large-scale data management and transformation workflows, providing support for millions of Redbook scans uploaded by users.", "considerations"=>"Redbook’s digital transformation required moving retail users from paper-based solutions to digital offerings.", "image"=>"/assets/logos/redbook-keep.png", "images"=>["/assets/logos/redbook-keep.png"], "enabled"=>true, "artifacts"=>["assets/artifacts/redbook-keep/0-redbook-info.png", "assets/artifacts/redbook-keep/1-redbook-blueprint.png", "assets/artifacts/redbook-keep/2-redbook-keep.png", "assets/artifacts/redbook-keep/3-redbook-keep-restaurant-scene.jpg"], "content"=>"<style> \n\n    .tag {\n      /* background-color: #888; */\n      background-color: \#{{ page.color | default: '888'}};\n      color: \#{{ page.background | default: 'FFF' }};\n    }\n\n    body {\n      background-color: \#{{ page.background }};\n    }\n\n    .container {\n      background-color: \#{{ page.background }};\n    }\n\n    div.break {\n      border-bottom: solid 2px \#{{ page.border }};\n      clear: both;\n      margin: 20px 0 20px 20px;\n    }\n\n  .portfolio-item {\n    /* border: 4px solid \#{{ page.border }}; */\n    border-radius: 20px;\n    background-color: \#{{ page.background }};\n    border-color: \#{{ page.border }};\n  }\n\n</style>\n\n<div class=\"container\"> \n  <article class=\"portfolio-item\" >\n    <div class=\"portfolio-title\">\n      <img class='logo' src=\"{{ page.image }}\" alt=\"{{ page.title }}\" />\n      <h1 class=\"synopsis\">\n      {{ page.role }}     \n      <br />\n      {{ page.title }}\n      <br />\n      {{ page.customer }}\n      <br clear=\"all\"/>\n      </h1>\n    </div>\n\n    <p class=\"synopsis\">{{ page.body }}</p>\n\n    <div class=\"tags\">\n      {% for tag in page.tags %}\n        <span class=\"tag\">{{ tag }}</span>\n      {% endfor %}\n    </div>\n\n    <div class=\"break\"></div>\n\n    <h2 class=\"aspect problem\">Problem</h2>\n    <p>{{ page.problem }}</p>\n\n    <h2 class=\"aspect stakes\">Stakes</h2>\n    <p>{{ page.stakes }}</p>\n\n    <h2 class=\"aspect discovery\">Discovery</h2>\n    <p>{{ page.discovery }}</p>\n\n    <h2 class=\"aspect outcome\">Outcome</h2>\n    <p>{{ page.outcome }}</p>\n\n    {% if page.artifacts %}\n    <div class=\"break\"></div>\n    {% endif %}\n\n    <div class=\"artifacts\">\n      {% for image in page.artifacts %}\n        <img class='artifact' src=\"{{ image | relative_url }}\" alt=\"{{name}} artifact\"/>\n      {% endfor %}\n    </div>\n\n    <div class=\"break\"></div>\n\n  </article>\n\n</div>\n\n<!-- <span class=\"tag\"><a href='/?tags={{tag}}' />{{ tag }}</a></span> -->\n", "dir"=>"/p/", "excerpt"=>nil, "path"=>"p/redbook-keep/redbook-keep", "url"=>"/p/redbook-keep"}-->
-
       <meta charset="utf-8" />
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -27,11 +25,6 @@
 
 
 
-  <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-  <!-- <link rel="stylesheet" type="text/css" href="/style.css" /> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
   <link rel="stylesheet" type="text/css" href="/assets/styles/portfolio.css" />
@@ -155,27 +148,28 @@
   </div>
 
   <div id="main" role="main" class="container">
-    <style> 
+    <style>
+  .tag {
+    /* background-color: #888; */
+    background-color: #B92739;
+    color: #E2E2E2;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+  }
 
-    .tag {
-      /* background-color: #888; */
-      background-color: #B92739;
-      color: #E2E2E2;
-    }
+  body {
+    background-color: #E2E2E2;
+  }
 
-    body {
-      background-color: #E2E2E2;
-    }
+  .container {
+    background-color: #E2E2E2;
+  }
 
-    .container {
-      background-color: #E2E2E2;
-    }
-
-    div.break {
-      border-bottom: solid 2px #77787B;
-      clear: both;
-      margin: 20px 0 20px 20px;
-    }
+  div.break {
+    border-bottom: solid 2px #77787B;
+    clear: both;
+    margin: 20px 0 20px 20px;
+  }
 
   .portfolio-item {
     /* border: 4px solid #77787B; */
@@ -186,17 +180,17 @@
 
 </style>
 
-<div class="container"> 
-  <article class="portfolio-item" >
+<div class="container">
+  <article class="portfolio-item">
     <div class="portfolio-title">
       <img class='logo' src="/assets/logos/redbook-keep.png" alt="Retail Management Platform & Apps" />
       <h1 class="synopsis">
-      Platform Lead     
-      <br />
-      Retail Management Platform & Apps
-      <br />
-      Red Book Solutions
-      <br clear="all"/>
+        Platform Lead
+        <br />
+        Retail Management Platform & Apps
+        <br />
+        Red Book Solutions
+        <br clear="all" />
       </h1>
     </div>
 
@@ -204,27 +198,25 @@
 
     <div class="tags">
       
-        <span class="tag">retail</span>
+      <span class="tag">retail</span>
       
-        <span class="tag">native apps</span>
+      <span class="tag">management</span>
       
-        <span class="tag">web app</span>
+      <span class="tag">native apps</span>
       
-        <span class="tag">full stack</span>
+      <span class="tag">analytics</span>
       
-        <span class="tag">multi-platform</span>
+      <span class="tag">web app</span>
       
-        <span class="tag">community</span>
+      <span class="tag">platform</span>
       
-        <span class="tag">analytics</span>
+      <span class="tag">visualization</span>
       
-        <span class="tag">data visualization</span>
+      <span class="tag">api design</span>
       
-        <span class="tag">api design</span>
+      <span class="tag">saas platform</span>
       
-        <span class="tag">platform</span>
-      
-        <span class="tag">aws</span>
+      <span class="tag">cloud services</span>
       
     </div>
 
@@ -248,13 +240,13 @@
 
     <div class="artifacts">
       
-        <img class='artifact' src="/assets/artifacts/redbook-keep/0-redbook-info.png" alt=" artifact"/>
+      <img class='artifact' src="/assets/artifacts/redbook-keep/0-redbook-info.png" alt=" artifact" />
       
-        <img class='artifact' src="/assets/artifacts/redbook-keep/1-redbook-blueprint.png" alt=" artifact"/>
+      <img class='artifact' src="/assets/artifacts/redbook-keep/1-redbook-blueprint.png" alt=" artifact" />
       
-        <img class='artifact' src="/assets/artifacts/redbook-keep/2-redbook-keep.png" alt=" artifact"/>
+      <img class='artifact' src="/assets/artifacts/redbook-keep/2-redbook-keep.png" alt=" artifact" />
       
-        <img class='artifact' src="/assets/artifacts/redbook-keep/3-redbook-keep-restaurant-scene.jpg" alt=" artifact"/>
+      <img class='artifact' src="/assets/artifacts/redbook-keep/3-redbook-keep-restaurant-scene.jpg" alt=" artifact" />
       
     </div>
 
@@ -263,8 +255,6 @@
   </article>
 
 </div>
-
-<!-- <span class="tag"><a href='/?tags=' /></a></span> -->
 
   </div>
 

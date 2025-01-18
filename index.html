@@ -2,9 +2,7 @@
 <html>
 
 <head>
-  <title>Farshad Nayeri – farshad.io – </title>
-
-  <!-- page.image  Farshad Nayeri {"title"=>"Farshad Nayeri", "layout"=>"default", "content"=>"<style>\n  .info {\n    margin-top: 10px;\n    display: flex;\n    flex-direction: column;\n    /* background-color: white; */\n    border-radius: 40px;\n    gap: 20px;\n    width: 940px;\n    /* padding: 20px; */\n  }\n\n  .info a img {\n    width: 300px;\n    height: 300px;\n    border-radius: 40px;\n  }\n\n  .bio {\n    flex: 1;\n  }\n\n  .info p {\n    font-size: 1.55em;\n    line-height: 1.6em;\n    padding-left: 20px;\n    padding-right: 30px;\n  }\n\n  @media (max-width: 600px) {\n    .info {\n      flex-direction: column;\n      width: 100%;\n    }\n\n    .info p {\n      padding: 20px;\n      font-size: 1.2em;\n      max-width: 300px;\n    }\n\n    .info img {\n      margin-bottom: 5px;\n      /* Add space below the image */\n    }\n  }\n\n\n  table {\n    width: 100%;\n    border-collapse: collapse;\n    margin-top: 20px;\n  }\n\n  th,\n  td {\n    border: none;\n    padding: 8px;\n    text-align: left;\n    font-weight: demibold\n    vertical-align: top;\n  }\n\n  th {\n    background-color: #f2f2f2;\n    text-align: left;\n  }\n\n  /* tr:nth-child(even) {\n    background-color: #f9f9f9;\n  }\n */\n  tr:hover {\n    background-color: #f1f1f1;\n  }\n\n  .view-project {\n    text-decoration: underline;\n    cursor: pointer;\n  }\n\n  .text-lines {\n    display: none;\n  }\n\n  .icon-lines {\n    display: block;\n  }\n\n  .project a:hover {\n      text-decoration: none;\n\n  }\n\n  h1 {\n    font-size: 26px;\n    text-align: center;\n    padding-bottom: 10px;\n    margin: 0;\n  }\n</style>\n<meta property=\"og:image\" content=\"{{ '/assets/about/farshad-nayeri.png' | absolute_url }}\" />\n\n{%if false %}\n\n<meta http-equiv=\"refresh\" content=\"0; url={{ '/docs/' | relative_url }}\" />\n<h1><a href=\"/docs/\">Farshad Nayeri - farshad.io</a></h1>\n\n{% else %}\n\n<div class='container'>\n    <div class=\"info\">\n      <br clear=\"all\"/>\n      <p>Proven product leader with deep experience in technology and product innovation &star; Transforms business, technical, and strategic constraints into scalable,\n        high-impact solutions &star; Thrives in dynamic, hands-on, high-stakes environments, delivering tangible results across the entire product\n        lifecycle &star;\n        </p>\n  </div>\n\n  <div style='clear: both'> </div>\n  \n  <h1>Selected Work</h1>\n\n  <div class=\"icon-lines\">\n    <div class=\"bento-box projects\">\n      {% for p in site.pages %}\n      {% if p.enabled %}\n      <a style='color: \#{{ p.color | default: \"000000\" }}' href='{{ p.permalink | relative_url }}'>\n        <div class='bento' \n             style='\n                    color:            \#{{ p.color | default: \"000000\" }}; \n                    background-color: \#{{ p.background | default: \"ffffff\" }};\n                    border-color:     \#{{ p.border | default: p.background | default: \"FFFFF\" }};\n                    '\n              data-tags='{{p.tags}}'>\n          <h2 class='title'>{{ p.title }} </h2>\n          <img src='{{ p.image | relative_url }}' alt='{{ p.title | default: \"\" }}' />\n          <h2 class='subtitle' style='text-wrap: no-wrap; vertical-align: top;'>{{ p.customer}}→</h2>\n        </div>\n      </a>\n      {% endif %}\n      {% endfor %}\n    </div>\n  </div>\n</div>\n\n<div class=\"text-lines\">\n</div>\n\n{% endif %}\n\n<script>\n  document.addEventListener('DOMContentLoaded', function () {\n    console.log(\"CONTENT LOADED\");\n    const urlParams = new URLSearchParams(window.location.search);\n    const fmt = urlParams.get('fmt');\n    const tags= urlParams.get('tags') || urlParams.get('tag');\n\n    console.log(\"Format\", fmt);\n    console.log(\"Tags\", tags);\n\n    \n    if (fmt) {\n      console.log(\"FMT\", tags);\n      if (fmt === 'list' || fmt == 'text') {\n        document.querySelector('.text-lines').style.display = 'block';\n        document.querySelector('.icon-lines').style.display = 'none';\n      } else if (fmt === 'icons') {\n        document.querySelector('.icon-lines').style.display = 'block';\n        document.querySelector('.text-lines').style.display = 'none';\n      }\n    }\n  \n  if (tags) {\n      console.log(\"TAGS\", tags);\n      const tagArray = tags.split(/[ ]*,[ ]*/);\n      const items = document.querySelectorAll('[data-tags]');\n\n      console.log(\"DATA TAGS\", items);\n\n      items.forEach(item => {\n        console.log(\"EACH TAG\", item);\n        const itemTags = item.getAttribute('data-tags').split(/[ ]*,[ ]*/);\n        const hasTag = tagArray.some(tag => itemTags.includes(tag));\n        console.log(\"TAG\", itemTags, hasTag);\n        if (!hasTag) {\n          item.style.opacity = 0.2;\n        }\n      });\n    }\n  });\n\n\n</script>", "dir"=>"/", "excerpt"=>nil, "name"=>"index.md", "path"=>"index.md", "url"=>"/"}-->
+  <title>Farshad Nayeri - Technology Product Leader – farshad.io – </title>
 
       <meta charset="utf-8" />
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
@@ -17,7 +15,7 @@
     <!-- <meta name="author" content="farshad.io" /> -->
 
     
-    <meta name="title" property="og:title" content="Farshad Nayeri" />
+    <meta name="title" property="og:title" content="Farshad Nayeri - Technology Product Leader" />
     
 
     <meta property="og:image"        content="" />
@@ -27,11 +25,6 @@
 
 
 
-  <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-  <!-- <link rel="stylesheet" type="text/css" href="/style.css" /> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
   <link rel="stylesheet" type="text/css" href="/assets/styles/portfolio.css" />
@@ -184,17 +177,19 @@
     padding-right: 30px;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 800px) {
+
+
     .info {
       flex-direction: column;
-      width: 100%;
+      align-items: center;
     }
 
     .info p {
       padding: 20px;
       font-size: 1.2em;
-      max-width: 300px;
-    }
+      max-width: 550px;
+      }
 
     .info img {
       margin-bottom: 5px;
@@ -259,6 +254,24 @@
 
 <meta property="og:image" content="http://fm1.local:4000//assets/about/farshad-nayeri.png" />
 
+<script>
+  const enable_tags = function (tag) {
+      const items = document.querySelectorAll('[data-tags]');
+      const tagArray = [tag];
+
+      items.forEach(item => {
+        const itemTags = item.getAttribute('data-tags').split(/[ ]*,[ ]*/);
+        const hasTag = tagArray.some(tag => itemTags.includes(tag));
+        if (!hasTag) {
+          item.style.opacity = 0.2;
+        } else {
+          item.style.opacity = 1.0;
+        }
+      });
+  }
+
+  </script>
+
 <div class="container">
     <div class="info">
       <br clear="all" />
@@ -270,6 +283,39 @@
 
   <div style="clear: both"> </div>
   
+
+<div class="container" style="display: none">
+    <div class="info">
+  <!-- List of all tags -->
+  <h2>All Tags</h2>
+  <div class="tags">
+      
+      <a onclick="enable_tag(&quot;financial&quot;)" class="tag">financial</a>
+    
+      <a onclick="enable_tag(&quot;api design&quot;)" class="tag">api design</a>
+    
+      <a onclick="enable_tag(&quot;product strategy&quot;)" class="tag">product strategy</a>
+    
+      <a onclick="enable_tag(&quot;platform&quot;)" class="tag">platform</a>
+    
+      <a onclick="enable_tag(&quot;cloud services&quot;)" class="tag">cloud services</a>
+    
+      <a onclick="enable_tag(&quot;management&quot;)" class="tag">management</a>
+    
+      <a onclick="enable_tag(&quot;native apps&quot;)" class="tag">native apps</a>
+    
+      <a onclick="enable_tag(&quot;analytics&quot;)" class="tag">analytics</a>
+    
+      <a onclick="enable_tag(&quot;visualization&quot;)" class="tag">visualization</a>
+    
+      <a onclick="enable_tag(&quot;architecture&quot;)" class="tag">architecture</a>
+    
+      <a onclick="enable_tag(&quot;web apps&quot;)" class="tag">web apps</a>
+    
+  </div>
+  </div>
+  </div>
+
   <h1>Selected Work</h1>
 
   <div class="icon-lines">
@@ -291,7 +337,7 @@
                     color:            #808080; 
                     background-color: #FFFFFF;
                     border-color:     #FBE74D;
-                    " data-tags="financialcryptoapi designproduct strategyplatformazure">
+                    " data-tags="financialblockchainapi designproduct strategyplatformcloud servicesSaaS">
           <h2 class="title">Enterprise API Platform </h2>
           <img src="/assets/logos/ey-blockchain.png" alt="Enterprise API Platform" />
           <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Ernst &amp; Young Global Innovations 	→</h2>
@@ -305,7 +351,7 @@
                     color:            #B92739; 
                     background-color: #E2E2E2;
                     border-color:     #77787B;
-                    " data-tags="retailnative appsweb appfull stackmulti-platformcommunityanalyticsdata visualizationapi designplatformaws">
+                    " data-tags="retailmanagementnative appsanalyticsweb appplatformvisualizationapi designsaas platformcloud services">
           <h2 class="title">Retail Management Platform &amp; Apps </h2>
           <img src="/assets/logos/redbook-keep.png" alt="Retail Management Platform &amp; Apps" />
           <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Red Book Solutions→</h2>
@@ -319,7 +365,7 @@
                     color:            #000000; 
                     background-color: #FFFFFF;
                     border-color:     #D8383C;
-                    " data-tags="telecommfull stackapi designproduct strategyplatformnative apps">
+                    " data-tags="telecommapi designproduct strategyplatformnative appscloud services">
           <h2 class="title">Interactive Circuit Diagnostic System </h2>
           <img src="/assets/logos/verizon-dti.png" alt="Interactive Circuit Diagnostic System" />
           <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Verizon Labs 	→</h2>
@@ -361,7 +407,7 @@
                     color:            #3A8149; 
                     background-color: #ffffff;
                     border-color:     #FFFFF;
-                    " data-tags="financialnative appsdata visualizationarchitecture">
+                    " data-tags="financialnative appsvisualizationarchitectureapi design">
           <h2 class="title">Portfolio Management UI Framework </h2>
           <img src="/assets/logos/fidelity-pm.png" alt="Portfolio Management UI Framework" />
           <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Fidelity Investments	→</h2>
@@ -389,7 +435,7 @@
                     color:            #22436C; 
                     background-color: #FFFFFF;
                     border-color:     #22436C;
-                    " data-tags="financialvisualizationcommunityanalyticsdata visualizationweb apps">
+                    " data-tags="financialvisualizationcommunityanalyticsvisualizationweb apps">
           <h2 class="title">New Investment Warning System </h2>
           <img src="/assets/logos/baupost-niws.png" alt="New Investment Warning System" />
           <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Baupost Group	→</h2>
@@ -403,7 +449,7 @@
                     color:            #EB4C36; 
                     background-color: #FFFFFF;
                     border-color:     #272058;
-                    " data-tags="managementnative appsweb appbusiness processesapi integrationarchitecture">
+                    " data-tags="managementnative appsweb appapi designarchitecture">
           <h2 class="title">Mobile Apps for Talent Management </h2>
           <img src="/assets/logos/peoplefluent.png" alt="Mobile Apps for Talent Management" />
           <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Peoplefluent 	→</h2>
@@ -417,7 +463,7 @@
                     color:            #5B5BEC; 
                     background-color: #ffffff;
                     border-color:     #72EA4F;
-                    " data-tags="healthcareweb appsapi designarchitecturee-commerce">
+                    " data-tags="healthcareweb appsapi designarchitecturecloud servicesSaaS">
           <h2 class="title">UX &amp; Payment Frameworks </h2>
           <img src="/assets/logos/coniferpoint.png" alt="UX &amp; Payment Frameworks" />
           <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Conifer Point Computational Medicine	→</h2>
@@ -431,7 +477,7 @@
                     color:            #3A8149; 
                     background-color: #ffffff;
                     border-color:     #FFFFF;
-                    " data-tags="data visualizationdata-analytic storytellingnative apps">
+                    " data-tags="Financialanalyticsvisualizationstorytellingnative appsapi designcloud services">
           <h2 class="title">Retirement Readiness Sales App </h2>
           <img src="/assets/logos/fidelity-readiness.png" alt="Retirement Readiness Sales App" />
           <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Fidelity Investments 	→</h2>
@@ -445,7 +491,7 @@
                     color:            #060606; 
                     background-color: #DEDEDE;
                     border-color:     #D8383C;
-                    " data-tags="telecommnative appsapiarchitecture">
+                    " data-tags="telecommanalyticsvisualizationnative appsapi designarchitecturecloud services">
           <h2 class="title">Real-Time QoS Monitoring System </h2>
           <img src="/assets/logos/verizon-tips.png" alt="Real-Time QoS Monitoring System" />
           <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Verizon Labs 	→</h2>
@@ -468,17 +514,11 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    console.log("CONTENT LOADED");
     const urlParams = new URLSearchParams(window.location.search);
     const fmt = urlParams.get('fmt');
     const tags= urlParams.get('tags') || urlParams.get('tag');
 
-    console.log("Format", fmt);
-    console.log("Tags", tags);
-
-    
     if (fmt) {
-      console.log("FMT", tags);
       if (fmt === 'list' || fmt == 'text') {
         document.querySelector('.text-lines').style.display = 'block';
         document.querySelector('.icon-lines').style.display = 'none';
@@ -489,24 +529,18 @@
     }
   
   if (tags) {
-      console.log("TAGS", tags);
       const tagArray = tags.split(/[ ]*,[ ]*/);
       const items = document.querySelectorAll('[data-tags]');
 
-      console.log("DATA TAGS", items);
-
       items.forEach(item => {
-        console.log("EACH TAG", item);
         const itemTags = item.getAttribute('data-tags').split(/[ ]*,[ ]*/);
         const hasTag = tagArray.some(tag => itemTags.includes(tag));
-        console.log("TAG", itemTags, hasTag);
         if (!hasTag) {
           item.style.opacity = 0.2;
         }
       });
     }
   });
-
 
 </script>
 

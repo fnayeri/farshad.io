@@ -4,8 +4,6 @@
 <head>
   <title>New Investment Warning System – farshad.io – </title>
 
-  <!-- page.image /assets/logos/baupost-niws.png New Investment Warning System {"layout"=>"default", "name"=>"baupost-niws", "permalink"=>"/p/baupost-niws", "title"=>"New Investment Warning System", "customer"=>"Baupost Group\t", "role"=>"Product Lead", "link"=>"https://www.baupost.com/", "color"=>"22436C", "background"=>"FFFFFF", "border"=>"22436C", "tags"=>["financial", "visualization", "community", "analytics", "data visualization", "web apps"], "body"=>"Led design & development of a system to track compliance constraints on hedge fund investments.", "problem"=>"Hedge funds often had to wait for specific conditions before executing deals. Research for a deal could precede execution by many months, but deals still had to go through compliance and meet other constraints.", "stakes"=>"Executing deals with invalid compliance constraints could result in significant financial and reputational risks.", "discovery"=>"To adapt to evolving regulatory environments and complex investment instruments, constraints on a hedge had to vary. This needed to be balanced against simplicity of use for researchers, compliance staff, and management.", "outcome"=>"Implemented a compliance tracking system, protecting the firm from regulatory breaches and enhancing operational transparency.", "considerations"=>nil, "image"=>"/assets/logos/baupost-niws.png", "images"=>["/assets/logos/baupost-niws.png"], "enabled"=>true, "artifacts"=>["assets/artifacts/baupost-niws/baupost-niws.png"], "content"=>"<style> \n\n    .tag {\n      /* background-color: #888; */\n      background-color: \#{{ page.color | default: '888'}};\n      color: \#{{ page.background | default: 'FFF' }};\n    }\n\n    body {\n      background-color: \#{{ page.background }};\n    }\n\n    .container {\n      background-color: \#{{ page.background }};\n    }\n\n    div.break {\n      border-bottom: solid 2px \#{{ page.border }};\n      clear: both;\n      margin: 20px 0 20px 20px;\n    }\n\n  .portfolio-item {\n    /* border: 4px solid \#{{ page.border }}; */\n    border-radius: 20px;\n    background-color: \#{{ page.background }};\n    border-color: \#{{ page.border }};\n  }\n\n</style>\n\n<div class=\"container\"> \n  <article class=\"portfolio-item\" >\n    <div class=\"portfolio-title\">\n      <img class='logo' src=\"{{ page.image }}\" alt=\"{{ page.title }}\" />\n      <h1 class=\"synopsis\">\n      {{ page.role }}     \n      <br />\n      {{ page.title }}\n      <br />\n      {{ page.customer }}\n      <br clear=\"all\"/>\n      </h1>\n    </div>\n\n    <p class=\"synopsis\">{{ page.body }}</p>\n\n    <div class=\"tags\">\n      {% for tag in page.tags %}\n        <span class=\"tag\">{{ tag }}</span>\n      {% endfor %}\n    </div>\n\n    <div class=\"break\"></div>\n\n    <h2 class=\"aspect problem\">Problem</h2>\n    <p>{{ page.problem }}</p>\n\n    <h2 class=\"aspect stakes\">Stakes</h2>\n    <p>{{ page.stakes }}</p>\n\n    <h2 class=\"aspect discovery\">Discovery</h2>\n    <p>{{ page.discovery }}</p>\n\n    <h2 class=\"aspect outcome\">Outcome</h2>\n    <p>{{ page.outcome }}</p>\n\n    {% if page.artifacts %}\n    <div class=\"break\"></div>\n    {% endif %}\n\n    <div class=\"artifacts\">\n      {% for image in page.artifacts %}\n        <img class='artifact' src=\"{{ image | relative_url }}\" alt=\"{{name}} artifact\"/>\n      {% endfor %}\n    </div>\n\n    <div class=\"break\"></div>\n\n  </article>\n\n</div>\n\n<!-- <span class=\"tag\"><a href='/?tags={{tag}}' />{{ tag }}</a></span> -->\n", "dir"=>"/p/", "excerpt"=>nil, "path"=>"p/baupost-niws/baupost-niws", "url"=>"/p/baupost-niws"}-->
-
       <meta charset="utf-8" />
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -27,11 +25,6 @@
 
 
 
-  <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-  <!-- <link rel="stylesheet" type="text/css" href="/style.css" /> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
   <link rel="stylesheet" type="text/css" href="/assets/styles/portfolio.css" />
@@ -155,27 +148,28 @@
   </div>
 
   <div id="main" role="main" class="container">
-    <style> 
+    <style>
+  .tag {
+    /* background-color: #888; */
+    background-color: #22436C;
+    color: #FFFFFF;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+  }
 
-    .tag {
-      /* background-color: #888; */
-      background-color: #22436C;
-      color: #FFFFFF;
-    }
+  body {
+    background-color: #FFFFFF;
+  }
 
-    body {
-      background-color: #FFFFFF;
-    }
+  .container {
+    background-color: #FFFFFF;
+  }
 
-    .container {
-      background-color: #FFFFFF;
-    }
-
-    div.break {
-      border-bottom: solid 2px #22436C;
-      clear: both;
-      margin: 20px 0 20px 20px;
-    }
+  div.break {
+    border-bottom: solid 2px #22436C;
+    clear: both;
+    margin: 20px 0 20px 20px;
+  }
 
   .portfolio-item {
     /* border: 4px solid #22436C; */
@@ -186,17 +180,17 @@
 
 </style>
 
-<div class="container"> 
-  <article class="portfolio-item" >
+<div class="container">
+  <article class="portfolio-item">
     <div class="portfolio-title">
       <img class='logo' src="/assets/logos/baupost-niws.png" alt="New Investment Warning System" />
       <h1 class="synopsis">
-      Product Lead     
-      <br />
-      New Investment Warning System
-      <br />
-      Baupost Group	
-      <br clear="all"/>
+        Product Lead
+        <br />
+        New Investment Warning System
+        <br />
+        Baupost Group	
+        <br clear="all" />
       </h1>
     </div>
 
@@ -204,17 +198,17 @@
 
     <div class="tags">
       
-        <span class="tag">financial</span>
+      <span class="tag">financial</span>
       
-        <span class="tag">visualization</span>
+      <span class="tag">visualization</span>
       
-        <span class="tag">community</span>
+      <span class="tag">community</span>
       
-        <span class="tag">analytics</span>
+      <span class="tag">analytics</span>
       
-        <span class="tag">data visualization</span>
+      <span class="tag">visualization</span>
       
-        <span class="tag">web apps</span>
+      <span class="tag">web apps</span>
       
     </div>
 
@@ -238,7 +232,7 @@
 
     <div class="artifacts">
       
-        <img class='artifact' src="/assets/artifacts/baupost-niws/baupost-niws.png" alt=" artifact"/>
+      <img class='artifact' src="/assets/artifacts/baupost-niws/baupost-niws.png" alt=" artifact" />
       
     </div>
 
@@ -247,8 +241,6 @@
   </article>
 
 </div>
-
-<!-- <span class="tag"><a href='/?tags=' /></a></span> -->
 
   </div>
 
