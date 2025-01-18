@@ -1,5 +1,5 @@
 ---
-title: Farshad Nayeri
+title: Farshad Nayeri - Technology Product Leader
 layout: default
 ---
 
@@ -32,17 +32,19 @@ layout: default
     padding-right: 30px;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 800px) {
+
+
     .info {
       flex-direction: column;
-      width: 100%;
+      align-items: center;
     }
 
     .info p {
       padding: 20px;
       font-size: 1.2em;
-      max-width: 300px;
-    }
+      max-width: 550px;
+      }
 
     .info img {
       margin-bottom: 5px;
@@ -106,6 +108,27 @@ layout: default
 </style>
 <meta property="og:image" content="{{ '/assets/about/farshad-nayeri.png' | absolute_url }}" />
 
+<script>
+  const enable_tags = function (tag) {
+      const items = document.querySelectorAll('[data-tags]');
+      const tagArray = [tag];
+
+      items.forEach(item => {
+        const itemTags = item.getAttribute('data-tags').split(/[ ]*,[ ]*/);
+        const hasTag = tagArray.some(tag => itemTags.includes(tag));
+        if (!hasTag) {
+          item.style.opacity = 0.2;
+        } else {
+          item.style.opacity = 1.0;
+        }
+      });
+  }
+
+  </script>
+
+ 
+
+
 {%if false %}
 
 <meta http-equiv="refresh" content="0; url={{ '/docs/' | relative_url }}" />
@@ -124,6 +147,19 @@ layout: default
 
   <div style='clear: both'> </div>
   
+
+<div class='container' style='display: none'>
+    <div class="info">
+  <!-- List of all tags -->
+  <h2>All Tags</h2>
+  <div class='tags'>
+      {% for tag in site.all_tags %}
+      <a onClick='enable_tag("{{tag}}")' class='tag'>{{ tag }}</a>
+    {% endfor %}
+  </div>
+  </div>
+  </div>
+
   <h1>Selected Work</h1>
 
   <div class="icon-lines">
@@ -156,17 +192,11 @@ layout: default
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    console.log("CONTENT LOADED");
     const urlParams = new URLSearchParams(window.location.search);
     const fmt = urlParams.get('fmt');
     const tags= urlParams.get('tags') || urlParams.get('tag');
 
-    console.log("Format", fmt);
-    console.log("Tags", tags);
-
-    
     if (fmt) {
-      console.log("FMT", tags);
       if (fmt === 'list' || fmt == 'text') {
         document.querySelector('.text-lines').style.display = 'block';
         document.querySelector('.icon-lines').style.display = 'none';
@@ -177,23 +207,17 @@ layout: default
     }
   
   if (tags) {
-      console.log("TAGS", tags);
       const tagArray = tags.split(/[ ]*,[ ]*/);
       const items = document.querySelectorAll('[data-tags]');
 
-      console.log("DATA TAGS", items);
-
       items.forEach(item => {
-        console.log("EACH TAG", item);
         const itemTags = item.getAttribute('data-tags').split(/[ ]*,[ ]*/);
         const hasTag = tagArray.some(tag => itemTags.includes(tag));
-        console.log("TAG", itemTags, hasTag);
         if (!hasTag) {
           item.style.opacity = 0.2;
         }
       });
     }
   });
-
 
 </script>

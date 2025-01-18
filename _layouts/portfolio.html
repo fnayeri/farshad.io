@@ -4,51 +4,33 @@ layout: default
 <style>
   .tag {
     /* background-color: #888; */
-    background-color: #{{ page.color | default: '888'}
-  }
-
-  ;
-  color: #{{ page.background | default: 'FFF' }
-  }
-
-  ;
+    background-color: #{{ page.color | default: '888'}};
+    color: #{{ page.background | default: 'FFF' }};
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
   }
 
   body {
-    background-color: #{{ page.background }
-  }
-
-  ;
+    background-color: #{{ page.background }};
   }
 
   .container {
-    background-color: #{{ page.background }
-  }
-
-  ;
+    background-color: #{{ page.background }};
   }
 
   div.break {
-    border-bottom: solid 2px #{{ page.border }
-  }
-
-  ;
-  clear: both;
-  margin: 20px 0 20px 20px;
+    border-bottom: solid 2px #{{ page.border }};
+    clear: both;
+    margin: 20px 0 20px 20px;
   }
 
   .portfolio-item {
     /* border: 4px solid #{{ page.border }}; */
     border-radius: 20px;
-    background-color: #{{ page.background }
+    background-color: #{{ page.background }};
+    border-color: #{{ page.border }};
   }
 
-  ;
-  border-color: #{{ page.border }
-  }
-
-  ;
-  }
 </style>
 
 <div class="container">
