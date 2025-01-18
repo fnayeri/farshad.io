@@ -1,26 +1,15 @@
 /* bento.css */
 
-body {
-    background-color: #f8f8f8;
-    display: flex;
-    line-height: 1.1;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.container {
-    display: grid;
-    box-sizing: border-box;
-}
-
 .bento-box {
-    padding: 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    padding: 20px;
     gap: 20px;
     width: 90%;
     box-sizing: border-box;
     align-content: middle;
+    margin: 0 auto;    
+    /* background-color: lightblue;  */
 }
 
 div .bento {
@@ -28,8 +17,10 @@ div .bento {
     flex-direction: column;
     align-items: center;
     justify-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-width: 5px;
+    border: 5px solid lightgray;
+    border-radius: 15%;
     box-sizing: border-box;
     padding: 10px;
     width: 300px;
@@ -51,6 +42,7 @@ div .bento {
     padding-left: 10px;
     padding-right: 10px;
     background-color: inherit;
+    max-lines: 2;
 }
 
 .superlarge {
@@ -101,7 +93,7 @@ a {
     opacity: 1.0;
     background-color: inherit;
     border-radius: 20px;
-    transition: transform 0.5s ease, opacity 0.5s ease;
+    transition: transform 1s ease, opacity 1s ease;
     margin: 0;
 }
 
@@ -134,15 +126,3 @@ a:visited {
     color: inherit;
 }
 
-@media (max-width: 1000px) {
-    .bento-box {
-        grid-template-columns: repeat(2, 1fr);
-        border-color: red;
-    }
-}
-
-@media (max-width: 600px) {
-    .bento-box {
-        grid-template-columns: 1fr;
-    }
-}

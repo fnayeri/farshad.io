@@ -5,15 +5,14 @@ layout: default
 
 <style>
   .info {
-    margin-top: 10px;
     display: flex;
     flex-direction: column;
-    /* background-color: white; */
-    border-radius: 40px;
-    gap: 20px;
-    width: 940px;
-    /* padding: 20px; */
-  }
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0 50px 0 50px;
+    max-width: 1000px;
+    /* background-color: pink; */
+ }
 
   .info a img {
     width: 300px;
@@ -26,24 +25,18 @@ layout: default
   }
 
   .info p {
-    font-size: 1.55em;
+    font-size: 1.40em;
     line-height: 1.6em;
-    padding-left: 20px;
-    padding-right: 30px;
   }
 
   @media (max-width: 800px) {
-
-
     .info {
       flex-direction: column;
       align-items: center;
     }
 
     .info p {
-      padding: 20px;
-      font-size: 1.2em;
-      max-width: 550px;
+      max-width: 500px;
       }
 
     .info img {
@@ -52,6 +45,38 @@ layout: default
     }
   }
 
+/* bento */
+@media (max-width: 800px) {
+  .bento-box {
+    grid-template-columns: repeat(2, 1fr);
+    width: 80%;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .bento {
+    width: 200px !important;
+    height: 200px !important;
+  }
+  
+  .bento .subtitle {
+    font-size: 1.2em;
+    /* background-color: LightSalmon;  */
+  }
+
+  .bento h2 {
+    font-size: 0.95em;
+  }
+
+  .bento h3 {
+    font-size: 1em;
+  }
+
+  .bento:hover {
+  }
+
+
+}
 
   table {
     width: 100%;
@@ -110,24 +135,21 @@ layout: default
 
 <script>
   const enable_tags = function (tag) {
-      const items = document.querySelectorAll('[data-tags]');
-      const tagArray = [tag];
+  const items = document.querySelectorAll('[data-tags]');
+  const tagArray = [tag];
 
-      items.forEach(item => {
-        const itemTags = item.getAttribute('data-tags').split(/[ ]*,[ ]*/);
-        const hasTag = tagArray.some(tag => itemTags.includes(tag));
-        if (!hasTag) {
-          item.style.opacity = 0.2;
-        } else {
-          item.style.opacity = 1.0;
-        }
-      });
-  }
+  items.forEach(item => {
+    const itemTags = item.getAttribute('data-tags').split(/[ ]*,[ ]*/);
+    const hasTag = tagArray.some(tag => itemTags.includes(tag));
+    if (!hasTag) {
+      item.style.opacity = 0.2;
+    } else {
+      item.style.opacity = 1.0;
+    }
+  });
+}
 
-  </script>
-
- 
-
+</script>
 
 {%if false %}
 
@@ -147,19 +169,6 @@ layout: default
 
   <div style='clear: both'> </div>
   
-
-<div class='container' style='display: none'>
-    <div class="info">
-  <!-- List of all tags -->
-  <h2>All Tags</h2>
-  <div class='tags'>
-      {% for tag in site.all_tags %}
-      <a onClick='enable_tag("{{tag}}")' class='tag'>{{ tag }}</a>
-    {% endfor %}
-  </div>
-  </div>
-  </div>
-
   <h1>Selected Work</h1>
 
   <div class="icon-lines">
@@ -171,7 +180,7 @@ layout: default
              style='
                     color:            #{{ p.color | default: "000000" }}; 
                     background-color: #{{ p.background | default: "ffffff" }};
-                    border-color:     #{{ p.border | default: p.background | default: "FFFFF" }};
+                    border-color:     #{{ p.border | default: p.background | default: "ffffff" }};
                     '
               data-tags='{{p.tags}}'>
           <h2 class='title'>{{ p.title }} </h2>
