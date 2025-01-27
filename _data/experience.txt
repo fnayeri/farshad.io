@@ -1,0 +1,25 @@
+Technical
+"10+ Operating Systems: Unixes, iOS, visionOS, Windows.
+4+ UI Frameworks: ReactJS, Cocoa (Apple), d3js.
+Working knowledge of distributed & Internet protocols: ReST, OAuth, Web3.
+Shipped products on AWS, Salesforce/Heroku, Azure clouds.
+Programming Languages: Typescript, Python, Java, C, SQL, Obj-C, Ruby, 6 others.
+Web: Nodejs, SVG, CSS, Rails, Servlet, XSLT, Web Services.
+Hands-on experience with Databases: Postgres, SQLite, MongoDB, Oracle.
+Graduate-level courses in AI/ML, hands on with OpenAI/ChatGPT, Midjourney."
+
+People
+"20+ years of team leadership, including managing distributed, remote personnel. 
+Exceptional ability to use visual structuring techniques to enhance team and leadership understanding.
+Adaptive to dynamic environment; can be productive in group settings or as individual contributor as the work requires.
+Orchestrated over 25 high-tech conferences, serving thousands of participants.
+Deep knowledge of analytic techniques to assist teams in overcoming obstacles (e.g., Tools of Cooperation)."
+
+Business
+"15+ years platform innovation.
+Ability to synthesize business models and build systems that empower them.
+Experience across diverse sectors: Financial, Medical, Telecomm, Life Sciences, Management, Development Tools, Manufacturing.
+Financial: Cost modeling, Profit & Loss, Balance Sheet, Visualizations.
+Agile Product Planning, Program Management, Story/Technical Specification.
+Product Strategy, Roadmaps, GTM, Launch, Branding.
+Expertise in Jobs to be Done, and Disruptive Innovation."
