@@ -1,0 +1,25 @@
+
+Additional Experience 
+
+Founder & CTO, Pixxa LLC, Boston
+"Bootstrapped company to create a core technology for motion data visualizations. 
+Led team to ship world’s most advanced iPad data visualization app. Adapted to 5 distinct verticals.
+Considered by Microsoft for acquisition. Currently transitioning to VisionOS."
+Platform Lead 
+"Data Cinematography App on the iPad, Pixxa Perspective 	Led team to develop and release 8 versions of advanced iPad apps and supporting SaaS cloud."
+Product Lead 
+"Lean Manufacturing Process Visualization App, GoSee Technologies 	Applied core technology to create a distributed App to measure manufacturing performance."
+"Retirement Readiness Analytic Sales App, Fidelity Investments 	Empowered Fidelity’s institutional sales team to adapt app for 401k sales to Fortune-100 customers.  
+Sales staff used app to present customer data in motion visualizations. Results: $50M in bookings."
+
+
+
+VP, Development, Critical Mass Inc, Cambridge, Massachusetts
+Led team on positioning, specification, development and release of IDE in 7 operating systems.
+Platform Lead 
+"Reactor Web-based IDE, Critical Mass 	Led design and development of pioneering web-based IDE for building distributed applications using a system programming language, Critical Mass Reactor."
+"Open Java Virtual Machine, Critical Mass 	Led design and development of cleanroom Java Virtual Machine on 8 operating systems."
+Product Lead 
+"Core Library for Remote Ship/Shore Control System , SRC Atlanta 	
+Built user interface framework and components for coordinating control of C3 remote sensors. "
+"Core runtime for Emergency Response, Positron Power911, Canada 	Managed integration of multithreaded runtime as a core component in a distributed 911 emergency response system."

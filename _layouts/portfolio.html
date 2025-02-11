@@ -4,8 +4,8 @@ layout: default
 <style>
   .tag {
     /* background-color: #888; */
-    background-color: #{{ page.color | default: '888'}};
-    color: #{{ page.background | default: 'FFF' }};
+    background-color: #{{ page.color | default: "888"}};
+    color: #{{ page.background | default: "FFF" }};
     padding: 5px 10px 5px 10px;
     border-radius: 10px;
   }
@@ -51,7 +51,9 @@ layout: default
 
     <div class="tags">
       {% for tag in page.tags %}
-      <span class="tag">{{ tag }}</span>
+      <a class="tag" style="color: white" href="/?tag={{ tag | url_encode }}">
+        {{ tag }}
+      </a>
       {% endfor %}
     </div>
 

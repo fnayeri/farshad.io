@@ -1,0 +1,14 @@
+<!-- ... existing code ... -->
+
+<div class="tags">
+  {% for tag in page.tags %}
+    <a href="/" 
+       class="tag-bubble" 
+       style="background-color: {{ tag.color }}"
+       onclick="window.location.href='/?tag={{ tag | url_encode }}'; return false;">
+      {{ tag }}
+    </a>
+  {% endfor %}
+</div>
+
+<!-- ... existing code ... -->
