@@ -29,7 +29,7 @@
 <loc>http://fm1.local:4000//p/christensen-institute</loc>
 </url>
 <url>
-<loc>http://fm1.local:4000//p/verizon-dti</loc>
+<loc>http://fm1.local:4000//p/verizon-tips</loc>
 </url>
 <url>
 <loc>http://fm1.local:4000//p/peoplefluent</loc>
@@ -41,9 +41,6 @@
 <loc>http://fm1.local:4000//p/cme-chat</loc>
 </url>
 <url>
-<loc>http://fm1.local:4000//p/verizon-tips</loc>
-</url>
-<url>
 <loc>http://fm1.local:4000//p/baupost-niws</loc>
 </url>
 <url>
@@ -53,6 +50,9 @@
 <loc>http://fm1.local:4000//p/channelfit</loc>
 </url>
 <url>
+<loc>http://fm1.local:4000//p/verizon-dti</loc>
+</url>
+<url>
 <loc>http://fm1.local:4000//p/coniferpoint</loc>
 </url>
 <url>
@@ -60,14 +60,14 @@
 </url>
 <url>
 <loc>http://fm1.local:4000//docs/</loc>
-<lastmod>2025-02-12T16:05:23+00:00</lastmod>
+<lastmod>2025-02-12T23:54:18+00:00</lastmod>
 </url>
 <url>
 <loc>http://fm1.local:4000//docs/resume/Farshad-Nayeri-Resume.pdf</loc>
-<lastmod>2025-02-12T16:05:23+00:00</lastmod>
+<lastmod>2025-02-12T23:54:18+00:00</lastmod>
 </url>
 <url>
 <loc>http://fm1.local:4000//docs/resume/</loc>
-<lastmod>2025-02-12T16:05:23+00:00</lastmod>
+<lastmod>2025-02-12T23:54:18+00:00</lastmod>
 </url>
 </urlset>
