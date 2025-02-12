@@ -30,7 +30,30 @@ layout: default
     margin: 15px 55px 15px 55px;
   }
 
-  @media (max-width: 800px) {
+@media (max-width: 800px) {
+
+  .portfolio-cell {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  div.title {
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  div.customer {
+    font-size: 1em;
+  }
+
+  div.body-text {
+    font-size: 1em;
+  }
+
+    img.portfolio-image {
+      width: 100px;
+      float: left;
+    }
 
     .container .info p {
       max-width: 500px;
@@ -42,10 +65,8 @@ layout: default
       margin-bottom: 5px;
       /* Add space below the image */
     }
-  }
 
 /* bento */
-@media (max-width: 800px) {
   .bento-box {
     grid-template-columns: repeat(2, 1fr);
     width: 80%;
@@ -60,8 +81,6 @@ layout: default
     margin: 5px !important;
   }
   
-  .bento:hover {
-  }
 }
 
   table {
@@ -285,8 +304,8 @@ layout: default
               <div class="content-right">
                 <div class="header">
                   <div class="title-group">
-                    <div class="title">{{ p.title }}</div>
-                    <div class="customer">{{ p.customer }}</div>
+                    <div class="customer">{{ p.customer }}</div>                    <div class="title">{{ p.title }}</div>
+
                 <div class="body-text">{{ p.body }}</div>
                   </div>
                 </div>
