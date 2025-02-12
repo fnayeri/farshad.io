@@ -23,14 +23,14 @@ div .bento {
     box-sizing: border-box;
     padding: 15px;
     width: 250px;
-    height: 250px;
+    height: 200px;
     background-color: white;
 }
 
 .bento .title {
     line-height: 1.1;
     letter-spacing: -3%;
-    font-size: 1.5em;
+    font-size: 1.2em;
     color: inherit;
     background-color: inherit;
     text-wrap: no-wrap;
@@ -44,6 +44,7 @@ div .bento {
     padding-right: 10px;
     background-color: inherit;
     max-lines: 2;
+    margin-top: 0;
 }
 
 .superlarge {
@@ -71,7 +72,7 @@ a {
 
 .bento .subtitle {
     color: inherit;
-    font-size: 1.8em;
+    font-size: 1.4em;
     display: none;
     max-height: 100px;
     line-height: 1.1;
@@ -92,7 +93,7 @@ a {
 
 .bento img {
     position: relative;
-    top: 15px;
+    top: 0;
     z-index: 0;
     width: 90%;
     opacity: 1.0;

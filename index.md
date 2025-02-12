@@ -60,15 +60,6 @@ layout: default
     margin: 5px !important;
   }
   
-  .bento .subtitle {
-    font-size: 1.2em;
-    /* background-color: LightSalmon;  */
-  }
-
-  .bento .title {
-    font-size: 1.05em;
-  }
-
   .bento:hover {
   }
 }
@@ -92,10 +83,6 @@ layout: default
     text-align: left;
   }
 
-  /* tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
- */
   tr:hover {
     background-color: #f1f1f1;
   }
