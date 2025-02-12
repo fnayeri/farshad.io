@@ -88,7 +88,6 @@ layout: default
   th,
   td {
     border: none;
-    padding: 8px;
     text-align: left;
     font-weight: demibold
     vertical-align: top;
@@ -114,6 +113,7 @@ layout: default
 
   .text-lines {
     display: none;
+    padding: 20px 100px 0 100px;
   }
 
   .icon-lines {
@@ -122,6 +122,8 @@ layout: default
   }
 
   .project a:hover {
+    margin: 0;
+    padding: 0;
       /* text-decoration: none; */
 
   }
@@ -140,7 +142,7 @@ layout: default
   }
 
   .portfolio-cell {
-      padding: 20px 40px;
+      padding: 10px 40px;
   }
 
   .portfolio-content {
@@ -182,7 +184,7 @@ layout: default
 
   .customer {
       font-size: 1.2em;
-      font-weight: bold;
+      font-weight: normal;
       color: #666;
   }
 
@@ -304,7 +306,8 @@ layout: default
               <div class="content-right">
                 <div class="header">
                   <div class="title-group">
-                    <div class="customer">{{ p.title }}, {{ p.customer }}</div>
+                    <div class="title">{{ p.title }}</div>
+                    <div class="customer">{{ p.customer }}</div>
                 <div class="body-text">{{ p.body }}</div>
                   </div>
                 </div>
