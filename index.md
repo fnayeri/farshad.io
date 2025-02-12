@@ -114,8 +114,6 @@ layout: default
 
   .text-lines {
     display: none;
-    margin-left: 100px;
-    margin-right: 100px;
   }
 
   .icon-lines {
