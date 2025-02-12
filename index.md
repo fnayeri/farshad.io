@@ -4,7 +4,7 @@ layout: default
 ---
 
 <style>
-  .info {
+  .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,7 +14,7 @@ layout: default
     /* background-color: pink; */
  }
 
-  .info a img {
+  .container .info a img {
     width: 300px;
     height: 300px;
     border-radius: 40px;
@@ -24,21 +24,21 @@ layout: default
     flex: 1;
   }
 
-  .info p {
+  .container .info p {
     font-size: 1.40em;
     line-height: 1.6em;
-    margin: 20px 55px 30px 55px;
+    margin: 15px 55px 15px 55px;
   }
 
   @media (max-width: 800px) {
 
-    .info p {
+    .container .info p {
       max-width: 500px;
       margin: 10px 5px 30px 5px;
       font-size: 1.2em;
     }
 
-    .info img {
+    .container .info img {
       margin-bottom: 5px;
       /* Add space below the image */
     }
@@ -67,12 +67,6 @@ layout: default
 
   .bento .title {
     font-size: 1.05em;
-  }
-
-  .bento img {
-    padding-top: 0;
-    margin-top: 0;
-    margin-bottom: 20px;
   }
 
   .bento:hover {
@@ -113,12 +107,10 @@ layout: default
 
   .text-lines {
     display: none;
-    padding: 20px 100px 0 100px;
   }
 
   .icon-lines {
     display: block;
-    padding: 50px;
   }
 
   .project a:hover {
@@ -156,7 +148,7 @@ layout: default
   }
 
   .portfolio-image {
-      width: 100%;
+      width: 150px;
       height: auto;
       object-fit: cover;
       border-radius: 8px;
@@ -336,8 +328,8 @@ layout: default
                       border-color:     #{{ p.border | append: '77' | default: p.background | default: "ffffff" }};
                       '
                 data-tags='{{p.tags}}'>
-            <h2 class='title'>{{ p.title }} </h2>
-            <img src='{{ p.image | relative_url }}' alt='{{ p.title | default: "" }}' />
+            <h2 class='title'>{{ p.title }}</h2>
+            <img class='portfolio-image' src='{{ p.image | relative_url }}' alt='{{ p.title | default: "" }}' />
             <h2 class='subtitle' style='text-wrap: no-wrap; vertical-align: top;'>{{ p.customer}}→</h2>
           </div>
         </a>
@@ -356,7 +348,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (fmtParam) {
         const decodedFmt = decodeURIComponent(fmtParam);
         fmt = decodedFmt;
-        console.log("FMT", fmt);
         // set the right class to be active
         if (fmt == 'list') {
           document.querySelector(`.text-lines`).style.display = 'block';
@@ -365,7 +356,7 @@ document.addEventListener('DOMContentLoaded', function() {
           document.querySelector(`.icon-lines`).style.display = 'block';
           document.querySelector(`.text-lines`).style.display = 'none';
         }
-        classList.add('active');
+        // classList.add('active');
     }
     
     if (tagParam) {
