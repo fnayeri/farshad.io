@@ -151,7 +151,7 @@
 
   <div id="main" role="main" class="container">
     <style>
-  .info {
+  .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -161,7 +161,7 @@
     /* background-color: pink; */
  }
 
-  .info a img {
+  .container .info a img {
     width: 300px;
     height: 300px;
     border-radius: 40px;
@@ -171,21 +171,21 @@
     flex: 1;
   }
 
-  .info p {
+  .container .info p {
     font-size: 1.40em;
     line-height: 1.6em;
-    margin: 20px 55px 30px 55px;
+    margin: 15px 55px 15px 55px;
   }
 
   @media (max-width: 800px) {
 
-    .info p {
+    .container .info p {
       max-width: 500px;
       margin: 10px 5px 30px 5px;
       font-size: 1.2em;
     }
 
-    .info img {
+    .container .info img {
       margin-bottom: 5px;
       /* Add space below the image */
     }
@@ -214,12 +214,6 @@
 
   .bento .title {
     font-size: 1.05em;
-  }
-
-  .bento img {
-    padding-top: 0;
-    margin-top: 0;
-    margin-bottom: 20px;
   }
 
   .bento:hover {
@@ -260,12 +254,10 @@
 
   .text-lines {
     display: none;
-    padding: 20px 100px 0 100px;
   }
 
   .icon-lines {
     display: block;
-    padding: 50px;
   }
 
   .project a:hover {
@@ -303,7 +295,7 @@
   }
 
   .portfolio-image {
-      width: 100%;
+      width: 150px;
       height: auto;
       object-fit: cover;
       border-radius: 8px;
@@ -991,8 +983,8 @@
                       background-color: #FFFFFF;
                       border-color:     #FBE74D77;
                       " data-tags="financialblockchainapi designproduct strategySaaS platformcloud services">
-            <h2 class="title">Enterprise API Platform </h2>
-            <img src="/assets/logos/ey-blockchain.png" alt="Enterprise API Platform" />
+            <h2 class="title">Enterprise API Platform</h2>
+            <img class="portfolio-image" src="/assets/logos/ey-blockchain.png" alt="Enterprise API Platform" />
             <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Ernst &amp; Young Global Innovations 	→</h2>
           </div>
         </a>
@@ -1005,8 +997,8 @@
                       background-color: #E2E2E2;
                       border-color:     #77787B77;
                       " data-tags="retailmanagementnative appsanalyticsweb appvisualizationapi designsaas platformcloud services">
-            <h2 class="title">Retail Management Platform &amp; Apps </h2>
-            <img src="/assets/logos/redbook-keep.png" alt="Retail Management Platform &amp; Apps" />
+            <h2 class="title">Retail Management Platform &amp; Apps</h2>
+            <img class="portfolio-image" src="/assets/logos/redbook-keep.png" alt="Retail Management Platform &amp; Apps" />
             <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Red Book Solutions→</h2>
           </div>
         </a>
@@ -1019,8 +1011,8 @@
                       background-color: #FCFEFF;
                       border-color:     #77;
                       " data-tags="consumernative appsproduct strategyarchitecture">
-            <h2 class="title">100+ iOS Apps / 7 Million Downloads </h2>
-            <img src="/assets/logos/appstore.png" alt="100+ iOS Apps / 7 Million Downloads" />
+            <h2 class="title">100+ iOS Apps / 7 Million Downloads</h2>
+            <img class="portfolio-image" src="/assets/logos/appstore.png" alt="100+ iOS Apps / 7 Million Downloads" />
             <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">iOS AppStore 	→</h2>
           </div>
         </a>
@@ -1033,8 +1025,8 @@
                       background-color: #ffffff;
                       border-color:     #77;
                       " data-tags="Financialanalyticsvisualizationstorytellingnative appsapi designcloud services">
-            <h2 class="title">Retirement Readiness Analytic Sales App </h2>
-            <img src="/assets/logos/fidelity-readiness.png" alt="Retirement Readiness Analytic Sales App" />
+            <h2 class="title">Retirement Readiness Analytic Sales App</h2>
+            <img class="portfolio-image" src="/assets/logos/fidelity-readiness.png" alt="Retirement Readiness Analytic Sales App" />
             <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Fidelity Investments 	→</h2>
           </div>
         </a>
@@ -1047,8 +1039,8 @@
                       background-color: #E6EFD0;
                       border-color:     #77;
                       " data-tags="managementcommunityproduct strategyinnovation research">
-            <h2 class="title">Disruptive Innovation.com </h2>
-            <img src="/assets/logos/christensen-institute.png" alt="Disruptive Innovation.com" />
+            <h2 class="title">Disruptive Innovation.com</h2>
+            <img class="portfolio-image" src="/assets/logos/christensen-institute.png" alt="Disruptive Innovation.com" />
             <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Clayton Christensen Institute→</h2>
           </div>
         </a>
@@ -1061,8 +1053,8 @@
                       background-color: #FFFFFF;
                       border-color:     #D8383C77;
                       " data-tags="telecommapi designproduct strategyplatformnative appscloud services">
-            <h2 class="title">Interactive Circuit Diagnostic System </h2>
-            <img src="/assets/logos/verizon-dti.png" alt="Interactive Circuit Diagnostic System" />
+            <h2 class="title">Interactive Circuit Diagnostic System</h2>
+            <img class="portfolio-image" src="/assets/logos/verizon-dti.png" alt="Interactive Circuit Diagnostic System" />
             <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Verizon Labs 	→</h2>
           </div>
         </a>
@@ -1075,8 +1067,8 @@
                       background-color: #FFFFFF;
                       border-color:     #EA4F3677;
                       " data-tags="managementnative appsweb appapi designarchitecture">
-            <h2 class="title">Mobile Apps for Talent Management </h2>
-            <img src="/assets/logos/peoplefluent.png" alt="Mobile Apps for Talent Management" />
+            <h2 class="title">Mobile Apps for Talent Management</h2>
+            <img class="portfolio-image" src="/assets/logos/peoplefluent.png" alt="Mobile Apps for Talent Management" />
             <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Peoplefluent 	→</h2>
           </div>
         </a>
@@ -1089,8 +1081,8 @@
                       background-color: #F2F2FE;
                       border-color:     #A38D5577;
                       " data-tags="Financialproduct designblockchaincryptocurrencydefi">
-            <h2 class="title">Proof of First Use on Blockchain </h2>
-            <img src="/assets/logos/og1.png" alt="Proof of First Use on Blockchain" />
+            <h2 class="title">Proof of First Use on Blockchain</h2>
+            <img class="portfolio-image" src="/assets/logos/og1.png" alt="Proof of First Use on Blockchain" />
             <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">OG1.io→</h2>
           </div>
         </a>
@@ -1103,8 +1095,8 @@
                       background-color: #EBEDEE;
                       border-color:     #68A5D577;
                       " data-tags="financialweb appsapi designarchitecture">
-            <h2 class="title">Interactive Trade Clearing Platform </h2>
-            <img src="/assets/logos/cme-chat.png" alt="Interactive Trade Clearing Platform" />
+            <h2 class="title">Interactive Trade Clearing Platform</h2>
+            <img class="portfolio-image" src="/assets/logos/cme-chat.png" alt="Interactive Trade Clearing Platform" />
             <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Chicago Mercantile Exchange 	→</h2>
           </div>
         </a>
@@ -1117,8 +1109,8 @@
                       background-color: #DEDEDE;
                       border-color:     #D8383C77;
                       " data-tags="telecommanalyticsvisualizationnative appsapi designarchitecturecloud services">
-            <h2 class="title">Real-Time QoS Monitoring System </h2>
-            <img src="/assets/logos/verizon-tips.png" alt="Real-Time QoS Monitoring System" />
+            <h2 class="title">Real-Time QoS Monitoring System</h2>
+            <img class="portfolio-image" src="/assets/logos/verizon-tips.png" alt="Real-Time QoS Monitoring System" />
             <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Verizon Labs 	→</h2>
           </div>
         </a>
@@ -1131,8 +1123,8 @@
                       background-color: #FFFFFF;
                       border-color:     #22436C77;
                       " data-tags="financialvisualizationcommunityanalyticsvisualizationweb apps">
-            <h2 class="title">New Investment Warning System </h2>
-            <img src="/assets/logos/baupost-niws.png" alt="New Investment Warning System" />
+            <h2 class="title">New Investment Warning System</h2>
+            <img class="portfolio-image" src="/assets/logos/baupost-niws.png" alt="New Investment Warning System" />
             <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Baupost Group	→</h2>
           </div>
         </a>
@@ -1145,8 +1137,8 @@
                       background-color: #F0F6F8;
                       border-color:     #EEF2F677;
                       " data-tags="healthcarevisualizationplatformnative appsweb appautomationcloud servicessaas platform">
-            <h2 class="title">Symptom Tracking Platform &amp; App </h2>
-            <img src="/assets/logos/symtrend.png" alt="Symptom Tracking Platform &amp; App" />
+            <h2 class="title">Symptom Tracking Platform &amp; App</h2>
+            <img class="portfolio-image" src="/assets/logos/symtrend.png" alt="Symptom Tracking Platform &amp; App" />
             <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Symtrend→</h2>
           </div>
         </a>
@@ -1159,8 +1151,8 @@
                       background-color: #BFCCE2;
                       border-color:     #3E629777;
                       " data-tags="healthcarevisualizationweb appcommunityautomation">
-            <h2 class="title">Fitness &amp; Nutrition Platform &amp; Apps </h2>
-            <img src="/assets/logos/channelfit.png" alt="Fitness &amp; Nutrition Platform &amp; Apps" />
+            <h2 class="title">Fitness &amp; Nutrition Platform &amp; Apps</h2>
+            <img class="portfolio-image" src="/assets/logos/channelfit.png" alt="Fitness &amp; Nutrition Platform &amp; Apps" />
             <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Channelfit  	→</h2>
           </div>
         </a>
@@ -1173,8 +1165,8 @@
                       background-color: #ffffff;
                       border-color:     #72EA4F77;
                       " data-tags="healthcareweb appsapi designarchitecturecloud servicesSaaS">
-            <h2 class="title">UX &amp; Payment Frameworks </h2>
-            <img src="/assets/logos/coniferpoint.png" alt="UX &amp; Payment Frameworks" />
+            <h2 class="title">UX &amp; Payment Frameworks</h2>
+            <img class="portfolio-image" src="/assets/logos/coniferpoint.png" alt="UX &amp; Payment Frameworks" />
             <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Conifer Point Computational Medicine	→</h2>
           </div>
         </a>
@@ -1187,8 +1179,8 @@
                       background-color: #ffffff;
                       border-color:     #77;
                       " data-tags="financialnative appsvisualizationarchitectureapi design">
-            <h2 class="title">Portfolio Management UI Framework </h2>
-            <img src="/assets/logos/fidelity-pm.png" alt="Portfolio Management UI Framework" />
+            <h2 class="title">Portfolio Management UI Framework</h2>
+            <img class="portfolio-image" src="/assets/logos/fidelity-pm.png" alt="Portfolio Management UI Framework" />
             <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Fidelity Investments	→</h2>
           </div>
         </a>
@@ -1213,7 +1205,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (fmtParam) {
         const decodedFmt = decodeURIComponent(fmtParam);
         fmt = decodedFmt;
-        console.log("FMT", fmt);
         // set the right class to be active
         if (fmt == 'list') {
           document.querySelector(`.text-lines`).style.display = 'block';
@@ -1222,7 +1213,7 @@ document.addEventListener('DOMContentLoaded', function() {
           document.querySelector(`.icon-lines`).style.display = 'block';
           document.querySelector(`.text-lines`).style.display = 'none';
         }
-        classList.add('active');
+        // classList.add('active');
     }
     
     if (tagParam) {
