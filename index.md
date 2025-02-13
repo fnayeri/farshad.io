@@ -178,6 +178,11 @@ layout: default
   }
 @media (max-width: 800px) {
 
+  div#main {
+    margin: 0;
+    padding: 0;
+  }
+
   .portfolio-cell {
     padding: 0 !important;
     margin: 0 !important;
