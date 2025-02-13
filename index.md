@@ -50,7 +50,7 @@ layout: default
     font-size: 1em;
   }
 
-    img.portfolio-image {
+  .text-lines img.portfolio-image {
       width: 100px;
       float: left;
     }
