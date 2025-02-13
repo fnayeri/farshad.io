@@ -179,59 +179,6 @@
     margin: 15px 55px 15px 55px;
   }
 
-@media (max-width: 800px) {
-
-  .portfolio-cell {
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  div.title {
-    font-size: 1em;
-    font-weight: bold;
-  }
-
-  div.customer {
-    font-size: 1em;
-  }
-
-  div.body-text {
-    font-size: 1em;
-  }
-
-  .text-lines img.portfolio-image {
-      width: 100px;
-      float: left;
-    }
-
-    .container .info p {
-      max-width: 500px;
-      margin: 10px 5px 30px 5px;
-      font-size: 1.2em;
-    }
-
-    .container .info img {
-      margin-bottom: 5px;
-      /* Add space below the image */
-    }
-
-/* bento */
-  .bento-box {
-    grid-template-columns: repeat(2, 1fr);
-    width: 80%;
-    justify-content: center;
-    gap: 5px;
-  }
-
-  .bento {
-    width: 180px !important;
-    height: 180px !important;
-    padding: 5px !important;
-    margin: 5px !important;
-  }
-  
-}
-
   table {
     width: 100%;
     border-collapse: collapse;
@@ -350,34 +297,88 @@
       gap: 8px;
   }
 
-.view-controls {
-    display: flex;
-    align-items: center;
+  .view-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+  }
+
+  .view-icons {
+      display: flex;
+      gap: 8px;
+  }
+
+  .view-icon {
+      color: #666;
+      padding: 4px;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+  }
+
+  .view-icon:hover {
+      color: #000;
+      background: #f5f5f5;
+  }
+
+  .view-icon.active {
+      color: #000;
+      background: #eee;
+  }
+@media (max-width: 800px) {
+
+  .portfolio-cell {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  div.title {
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  div.customer {
+    font-size: 1em;
+  }
+
+  div.body-text {
+    font-size: 1em;
+    width: 320px;
+  }
+
+  .text-lines img.portfolio-image {
+      width: 100px;
+      float: left;
+    }
+
+    .container .info p {
+      max-width: 500px;
+      margin: 10px 5px 30px 5px;
+      font-size: 1.2em;
+    }
+
+    .container .info img {
+      margin-bottom: 5px;
+      /* Add space below the image */
+    }
+
+/* bento */
+  .bento-box {
+    grid-template-columns: repeat(2, 1fr);
+    width: 80%;
     justify-content: center;
-    gap: 16px;
+    gap: 5px;
+  }
+
+  .bento {
+    width: 180px !important;
+    height: 180px !important;
+    padding: 5px !important;
+    margin: 5px !important;
+  }
+  
 }
 
-.view-icons {
-    display: flex;
-    gap: 8px;
-}
-
-.view-icon {
-    color: #666;
-    padding: 4px;
-    border-radius: 4px;
-    transition: all 0.2s ease;
-}
-
-.view-icon:hover {
-    color: #000;
-    background: #f5f5f5;
-}
-
-.view-icon.active {
-    color: #000;
-    background: #eee;
-}
 </style>
 
 <meta property="og:image" content="http://fm1.local:4000//assets/about/farshad-nayeri.png" />
