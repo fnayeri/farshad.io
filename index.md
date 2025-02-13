@@ -199,7 +199,7 @@ layout: default
 
   div.body-text {
     font-size: 1em;
-    width: 300px;
+    width: 310px;
   }
 
   .text-lines img.portfolio-image {
