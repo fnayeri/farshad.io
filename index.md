@@ -110,7 +110,7 @@ layout: default
       width: 150px;
       height: auto;
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: 40px;
   }
 
   .header-row {
