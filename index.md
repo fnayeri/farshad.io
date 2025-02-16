@@ -370,8 +370,8 @@ layout: default
         Pixxa platform brings the power of Data Cinematography to the ordinary presenter. Pixxa's Perspective app has been used in many high-stakes presentations in such companies as Apple, Samsung, and Fidelity.<br/><br/> <a class='button' href="/#" id='fullscreen-play'>Expand ⛶</a> <a class='button' href='https://pixxa.com/'>Learn &rarr;</a>
       </p>
       <video id="showcase-video" controls 
-            poster="{{ '/assets/video/pixxa-sankey.png' | absolute_url }}"> 
-          <source src="{{ '/assets/video/farshad-nayeri-pixxa.m4v' | absolute_url}}"      type="video/mp4"/>
+            poster="{{ '/assets/video/pixxa-sankey.png' | relative_url }}"> 
+          <source src="{{ '/assets/video/farshad-nayeri-pixxa.m4v' | relative_url}}"      type="video/mp4"/>
       </video>
     </div>
   </div>
