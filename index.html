@@ -160,8 +160,7 @@
     margin: 0 auto;
     padding: 0 50px 0 50px;
     max-width: 1000px;
-    /* background-color: pink; */
- }
+  }
 
   .container .info a img {
     width: 300px;
@@ -229,6 +228,13 @@
     margin: 0;
   }
 
+  h3 {
+    text-align: center;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 15%;
+  }
+
   .portfolio-table {
       width: 100%;
       border-spacing: 0;
@@ -254,6 +260,70 @@
       height: auto;
       object-fit: cover;
       border-radius: 8px;
+  }
+
+  .header-row {
+    background-color: #DDD;
+    border-radius: 40px;
+    margin-top: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  .showcase {
+    align-items: middle;
+    background-color: gray;
+    padding: 0 5px 10px 15px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    background-color: black;
+    color: white;
+  }
+
+  div.showcase h3 {
+    padding: 0;
+    padding-top: 10px;
+    margin: 10px;
+  }
+
+  .showcase-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+    position: relative;
+  }
+
+  div.showcase-content video {
+    background-color: black;
+    height: 200px;
+  }
+  
+  div.showcase-content p {
+    line-height: 1.6em;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  div.showcase-content p b {
+    text-transform: uppercase;
+  }
+
+  .fullscreen-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .fullscreen-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
   }
 
   .content-right {
@@ -325,6 +395,18 @@
       color: #000;
       background: #eee;
   }
+
+  a.button {
+    font-size: smaller;
+    border: solid white 1px;
+    padding: 3px;
+    border-radius: 5px;
+    margin: 5px;
+    height: 1.4em;
+    color: white;
+  }
+
+  
 @media (max-width: 800px) {
 
   div#main {
@@ -351,23 +433,26 @@
     width: 310px;
   }
 
+  div.showcase-content {
+    flex-direction: column;
+  }
+
   .text-lines img.portfolio-image {
       width: 100px;
       float: left;
-    }
+  }
 
-    .container .info p {
-      max-width: 500px;
-      margin: 10px 5px 30px 5px;
-      font-size: 1.2em;
-    }
+  .container .info p {
+    max-width: 500px;
+    margin: 10px 5px 30px 5px;
+    font-size: 1.2em;
+  }
 
-    .container .info img {
-      margin-bottom: 5px;
-      /* Add space below the image */
-    }
+  .container .info img {
+    margin-bottom: 5px;
+    /* Add space below the image */
+  }
 
-/* bento */
   .bento-box {
     grid-template-columns: repeat(2, 1fr);
     width: 80%;
@@ -380,6 +465,12 @@
     height: 180px !important;
     padding: 5px !important;
     margin: 5px !important;
+  }
+
+  .title {
+    padding-top: 10px;
+    font-size: 1em !important;
+    max-lines: 2;
   }
   
 }
@@ -407,17 +498,30 @@
 </script>
 
 <div class="container">
-    <div class="info">
-      <br clear="all" />
-      <p>Proven product leader with deep experience in technology and product innovation &star; Transforms business, technical, and strategic constraints into scalable,
-        high-impact solutions &star; Thrives in dynamic, hands-on, high-stakes environments, delivering tangible results across the entire product
-        lifecycle &star;
-        </p>
+  <div class="info">
+    <br clear="all" />
+    <p>Proven product leader with deep experience in technology and product innovation &star;        Transforms business, technical, and strategic constraints into scalable,
+      high-impact solutions &star; Thrives in dynamic, hands-on, high-stakes environments, delivering tangible results across the entire product
+      lifecycle &star;
+      </p>
   </div>
+  <div class="showcase">
+    <h3><b>Showcase:</b> Pixxa</h3>
+    <div class="showcase-content">
+      <p>
+        Pixxa platform brings the power of Data Cinematography to the ordinary presenter. Pixxa's Perspective app has been used in many high-stakes presentations in such companies as Apple, Samsung, and Fidelity.<br /><br /> <a class="button" href="/#" id="fullscreen-play">Expand ⛶</a> <a class="button" href="https://pixxa.com/">Learn &rarr;</a>
+      </p>
+      <video id="showcase-video" controls="" poster="http://fm1.local:4000//assets/video/pixxa-sankey.png"> 
+          <source src="http://fm1.local:4000//assets/video/farshad-nayeri-pixxa.m4v" type="video/mp4" />
+      </video>
+    </div>
+  </div>
+</div>
 
-  <div style="clear: both"> </div>
-  
-  <div class="header-row">
+<div style="clear: both"> </div>
+
+<div class="header-row">
+    <h3>Selected Work</h3>
     <div class="view-controls">
       <div class="view-icons">
         <a href="?fmt=bento" class="view-icon ">
@@ -563,7 +667,7 @@
               <div class="content-right">
                 <div class="header">
                   <div class="title-group">
-                    <div class="customer">Fidelity Investments 	</div>                    <div class="title">Retirement Readiness Analytic Sales App</div>
+                    <div class="customer">Fidelity Investments 	</div>                    <div class="title">Retirement Readiness Analytic App</div>
 
                 <div class="body-text">	 Empowered Fidelity’s institutional sales team to adapt app for 401k sales to Fortune-100 customers.  </div>
                   </div>
@@ -1037,8 +1141,8 @@
                       background-color: #ffffff;
                       border-color:     #77;
                       " data-tags="financialanalyticsvisualizationstorytellingnative appsapi designcloud services">
-            <h2 class="title">Retirement Readiness Analytic Sales App</h2>
-            <img class="portfolio-image" src="/assets/logos/fidelity-readiness.png" alt="Retirement Readiness Analytic Sales App" />
+            <h2 class="title">Retirement Readiness Analytic App</h2>
+            <img class="portfolio-image" src="/assets/logos/fidelity-readiness.png" alt="Retirement Readiness Analytic App" />
             <h2 class="subtitle" style="text-wrap: no-wrap; vertical-align: top;">Fidelity Investments 	→</h2>
           </div>
         </a>
@@ -1233,9 +1337,21 @@ document.addEventListener('DOMContentLoaded', function() {
         filterByTag(decodedTag);
     }
 });
+
+document.getElementById('fullscreen-play').addEventListener('click', function() {
+    const video = document.getElementById('showcase-video');
+    if (video.requestFullscreen) {
+      video.requestFullscreen();
+    } else if (video.mozRequestFullScreen) { /* Firefox */
+      video.mozRequestFullScreen();
+    } else if (video.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+      video.webkitRequestFullscreen();
+    } else if (video.msRequestFullscreen) { /* IE/Edge */
+      video.msRequestFullscreen();
+    }
+});
 </script>
 
-</div>
 
   </div>
 
