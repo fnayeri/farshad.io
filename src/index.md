@@ -122,6 +122,7 @@ layout: default
   }
 
   .showcase {
+    display: none;
     align-items: middle;
     background-color: gray;
     padding: 0 5px 10px 15px;
