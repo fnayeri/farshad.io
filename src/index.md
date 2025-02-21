@@ -13,10 +13,10 @@ layout: default
     max-width: 1000px;
   }
 
+
   .container .info a img {
     width: 300px;
     height: 300px;
-    border-radius: 40px;
   }
 
   .bio {
@@ -63,6 +63,7 @@ layout: default
 
   .icon-lines {
     display: block;
+    border-radius: 40px;
   }
 
   .project a:hover {
@@ -122,10 +123,11 @@ layout: default
   }
 
   .showcase {
+    display: none;
+    /* display: flex; */
     align-items: middle;
     background-color: gray;
     padding: 0 5px 10px 15px;
-    display: flex;
     flex-direction: column;
     border-radius: 30px;
     background-color: black;
@@ -289,7 +291,7 @@ layout: default
   }
 
   .text-lines img.portfolio-image {
-      width: 100px;
+      max-width: 100px;
       float: left;
   }
 
@@ -329,6 +331,7 @@ layout: default
 </style>
 
 <meta property="og:image" content="{{ '/assets/about/farshad-nayeri.png' | absolute_url }}" />
+
 
 <script>
   const enable_tags = function (tag) {
@@ -380,7 +383,6 @@ layout: default
   
   <div style='clear: both'> </div>
 
-  
   <div class="header-row">
     <h3>Selected Work</h3>
     <div class="view-controls">
@@ -417,9 +419,9 @@ layout: default
               <div class="content-right">
                 <div class="header">
                   <div class="title-group">
-                    <div class="customer">{{ p.customer }}</div>                    <div class="title">{{ p.title }}</div>
-
-                <div class="body-text">{{ p.body }}</div>
+                    <div class="customer">{{ p.customer }}</div>                    
+                    <div class="title">{{ p.title }}</div>
+                    <div class="body-text">{{ p.body }}</div>
                   </div>
                 </div>
                 <div class="tags-cell">
@@ -497,5 +499,6 @@ document.getElementById('fullscreen-play').addEventListener('click', function() 
     }
 });
 </script>
+
 
 {% endif %}
