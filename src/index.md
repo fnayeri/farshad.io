@@ -4,9 +4,8 @@ layout: default
 ---
 
 <style>
-
   .container {
-    display: flex;
+    display: flex ;
     flex-direction: column;
     justify-content: center;
     margin: 0 30px;
