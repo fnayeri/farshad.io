@@ -1,5 +1,38 @@
 <!-- bio --> 
-<p>
+<style>
+
+.star-list {
+    list-style: none; /* Remove default bullets */
+    padding-left: 0; /* Remove default padding */
+    padding: 0;
+    margin: 0;
+}
+
+.star-list li {
+        margin-left: 1.5em; /* Indent the entire list item */
+        text-indent: -1.5em; /* Pull the first line back to align the star */
+        line-height: 1.2em;
+    }
+
+.star-list li::before {
+    content: "★"; /* Unicode star symbol */
+    color: gold; /* Optional: Change star color */
+    font-size: 1.2em; /* Optional: Adjust star size */
+    margin-right: 5px; /* Add spacing between star and text */
+}
+</style>
+
+<br/>
+<p ><b>Proven Product Leader</b>
+    <ul class='star-list'>
+    <li>Brings deep experience in technology and product innovation.</li>
+    <li>Transforms business, technical, and strategic constraints into scalable, high-impact solutions.</li>
+    <li>Delivers tangible results across the entire product lifecycle.</li>
+    <li>Thrives in dynamic, hands-on, high-stakes environments.</li>
+    </ul>
+</p>
+    
+<p style='display: none'>
     Experienced product leader with deep knowledge of platform innovation and a proven track record of delivering results.
     Unique ability to combine and reshape business and technical constraints into leveraged, scalable solutions. 
     Adept at integrating emergent business visions into tangible outcomes across the entire product lifecycle. 

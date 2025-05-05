@@ -4,12 +4,13 @@ layout: default
 ---
 
 <style>
+
   .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 0 auto;
-    padding: 0 50px 0 50px;
+    margin: 0 30px;
+    padding: 5px 50px 5px 50px;
     max-width: 1000px;
   }
 
@@ -123,8 +124,7 @@ layout: default
   }
 
   .showcase {
-    display: none;
-    /* display: flex; */
+    display: flex;
     align-items: middle;
     background-color: gray;
     padding: 0 5px 10px 15px;
@@ -132,6 +132,23 @@ layout: default
     border-radius: 30px;
     background-color: black;
     color: white;
+  }
+
+  .showcase a {
+    color: white;
+    font-weight: bold;
+  }
+
+  .showcase a:hover {
+    text-decoration: underline;
+  }
+
+  .showcase img {
+    width: 300pt;
+  }
+
+  img {
+    /* width: 700px; */
   }
 
   div.showcase h3 {
@@ -316,8 +333,8 @@ layout: default
   .bento {
     width: 180px !important;
     height: 180px !important;
-    padding: 5px !important;
-    margin: 5px !important;
+    padding: 10px !important;
+    margin: 10px !important;
   }
 
   .title {
@@ -361,23 +378,13 @@ layout: default
 <div class='container'>
   <div class="info">
     <br clear="all"/>
-    <p>Proven product leader with deep experience in technology and product innovation &star;        Transforms business, technical, and strategic constraints into scalable,
+    <p style='display: none'>Proven product leader with deep experience in technology and product innovation &star;        Transforms business, technical, and strategic constraints into scalable,
       high-impact solutions &star; Thrives in dynamic, hands-on, high-stakes environments, delivering tangible results across the entire product
       lifecycle &star;
       </p>
   </div>
 
-  <div class='showcase'>
-    <h3><b>Latest:</b> HarvarXR</h3>
-    <div class='showcase-content'>
-      <p>
-      I spoke at <a href='https://harvardxr.com/>HarvardXR 2025 on the topic of <a href='https://www.linkedin.com/posts/farshadnayeri_harvard-harvardxr-harvardxr2026-activity-7321267481459712000-xfqF' />Data Cinematography'>. 
-      </p>
-        <img src='/assets/artifacts/harvardxr/Data%20Cinematography%20-%20HarvardXR%20v1.0.png' />
-    </div>
-  </div>
-
-  <div class='xxxshowcase' style="display: none">
+  <div class='showcase' style='display:none'>
     <h3><b>Showcase:</b> Pixxa</h3>
     <div class='showcase-content'>
       <p>
@@ -389,9 +396,20 @@ layout: default
       </video>
     </div>
   </div>
+
+  <div style='padding: 0; margin: 0;'> <p style='text-align: center; font-weight: bold'><a href='/about/'>About Farshad &rarr;</a></p></div>
+  
+  <div class='showcase'>
+    <h3>Harvard XR 2025</h3>
+    <div class='showcase-content' style='background: url(/assets/artifacts/harvardxr/harvardxr.png)'>
+      <p> 
+        <a href='https://harvardxr.com/'>HarvardXR</a> invited me to <a href='https://www.harvardxr.com/2025/speakers'>speak</a> about <a href='https://www.linkedin.com/posts/farshadnayeri_harvard-harvardxr-harvardxr2026-activity-7321267481459712000-xfqF'>Data&nbsp;Cinematography</a>. This made for a great opportunity to showcase the data cinematography app  <a href='https://itunes.apple.com/us/app/perspective/id516098684?ls=1'>Perspective</a> whose development I led at <a href='https://pixxa.com/'> Pixxa</a>.
+      </p>
+      <a href='https://www.harvardxr.com/events/immersive-storytelling-games-and-design'><img width="40%" src='/assets/artifacts/harvardxr/Data%20Cinematography%20-%20HarvardXR%20v1.0.png' /></a>
+    </div>
+  </div>
+
 </div>
-  
-  
   <div style='clear: both'> </div>
 
   <div class="header-row">

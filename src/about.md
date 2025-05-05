@@ -11,6 +11,7 @@ permalink: /about/
         width: 200px;
         padding: 20px;
         margin: 0;
+        float: left;
     }
 
     .about {
@@ -27,6 +28,7 @@ permalink: /about/
     }
 
     .medium {
+        padding-top: 80px;
         font-size: 1.0em;
         line-height: 1.3em;
     }
@@ -53,14 +55,14 @@ permalink: /about/
 <div class="container">
         <article class="about" >
             <img class='photo' src='/assets/about/farshad-nayeri.png'>
-            <br clear='all'/>
             <p class='medium'>
-                <br/><b >Farshad Nayeri</b>
+                     <b >Farshad Nayeri</b>
                 <br/><b>Email:</b> <a href="mailto:farshad@igencorp.com">farshad@igencorp.com</a>
                 <br/><b>Phone:</b> <a href="tel:+16178233876">+1.617.823.3876</a>
                 <br/><a href="./resume/Farshad-Nayeri-Resume.pdf" target="_blank"><b>Resumé</b></a> | 
                 <a href="https://www.linkedin.com/in/farshadnayeri/" target="_blank"><b>LinkedIn</b></a>
             </p>
+            <br clear='all'/>
            {% include bio.html %} 
         </article>
 </div>
