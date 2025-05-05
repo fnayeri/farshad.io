@@ -366,7 +366,18 @@ layout: default
       lifecycle &star;
       </p>
   </div>
+
   <div class='showcase'>
+    <h3><b>Latest:</b> HarvarXR</h3>
+    <div class='showcase-content'>
+      <p>
+      I spoke at <a href='https://harvardxr.com/>HarvardXR 2025 on the topic of <a href='https://www.linkedin.com/posts/farshadnayeri_harvard-harvardxr-harvardxr2026-activity-7321267481459712000-xfqF' />Data Cinematography'>. 
+      </p>
+        <img src='/assets/artifacts/harvardxr/Data%20Cinematography%20-%20HarvardXR%20v1.0.png' />
+    </div>
+  </div>
+
+  <div class='xxxshowcase' style="display: none">
     <h3><b>Showcase:</b> Pixxa</h3>
     <div class='showcase-content'>
       <p>
