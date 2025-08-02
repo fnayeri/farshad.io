@@ -1,5 +1,5 @@
 ---
-title: Farshad Nayeri - Technology Product Leader
+title: Farshad Nayeri - Technologist
 layout: default
 ---
 
