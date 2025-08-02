@@ -1,1 +1,1 @@
-Sitemap: http://fm1.local:4000//sitemap.xml
+Sitemap: /sitemap.xml
