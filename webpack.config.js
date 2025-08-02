@@ -9,6 +9,13 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(ts|tsx)$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: "ts-loader"
+        }
+      },
+      {
         test: /\.jsx?$/,
         exclude: /(node_modules)/,
         use: {
@@ -24,7 +31,7 @@ module.exports = {
     alias: {
       components: path.resolve(__dirname, 'webpack/components/')
     },
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
   mode: 'development'
 };
