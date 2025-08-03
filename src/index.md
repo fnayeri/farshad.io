@@ -436,13 +436,13 @@ layout: default
 
   <div class="text-lines">
     <table class="portfolio-table">
-      {% for p in site.pages %}{% if p.enabled %}
+      {% for p in site.data.portfolio %}{% if p.name %}
       <tr class="project" data-tags="{{ p.tags | join: ',' }}">
         <td class="portfolio-cell">
           <a href='{{ p.permalink | relative_url }}' class="portfolio-link">
             <div class="portfolio-content">
               <div class="image-column">
-                <img src="{{ p.image }}" class="portfolio-image">
+                <img src="/assets/logos/{{ p.name }}.png" class="portfolio-image">
               </div>
               <div class="content-right">
                 <div class="header">
@@ -454,7 +454,7 @@ layout: default
                 </div>
                 <div class="tags-cell">
                   {% for tag in p.tags %}
-                    <span class="tag-bubble" style="background-color: {{ tag.color }}">{{ tag }}</span>
+                    <span class="tag-bubble">{{ tag }}</span>
                   {% endfor %}
                 </div>
               </div>
@@ -467,8 +467,8 @@ layout: default
   </div>
     <div class="icon-lines">
       <div class="bento-box projects">
-        {% for p in site.pages %}
-        {% if p.enabled %}
+        {% for p in site.data.portfolio %}
+        {% if p.name %}
         <a style='color: #{{ p.color | default: "000000" }}' href='{{ p.permalink | relative_url }}'>
           <div class='bento' 
                style='
@@ -478,7 +478,7 @@ layout: default
                       '
                 data-tags='{{p.tags}}'>
             <h2 class='title'>{{ p.title }}</h2>
-            <img class='portfolio-image' src='{{ p.image | relative_url }}' alt='{{ p.title | default: "" }}' />
+            <img class='portfolio-image' src='/assets/logos/{{ p.name }}.png' alt='{{ p.title | default: "" }}' />
             <h2 class='subtitle' style='text-wrap: no-wrap; vertical-align: top;'>{{ p.customer}}→</h2>
           </div>
         </a>
