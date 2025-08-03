@@ -1,7 +1,10 @@
 source "https://rubygems.org"
 
 # If you want to use GitHub Pages, use the github-pages gem
-gem "github-pages", group: :jekyll_plugins
+# gem "github-pages", group: :jekyll_plugins
+
+# Use regular Jekyll for local development with custom plugins
+gem "jekyll", "~> 4.3.4"
 
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
 gem "minima", "~> 2.5"
