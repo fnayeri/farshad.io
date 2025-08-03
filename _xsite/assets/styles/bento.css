@@ -1,0 +1,132 @@
+/* bento.css */
+
+.bento-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 20px;
+    gap: 20px;
+    width: 90%;
+    box-sizing: border-box;
+    align-content: middle;
+    margin: 0 auto;    
+    /* background-color: lightblue;  */
+}
+
+div .bento {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-width: 5px;
+    border-radius: 15%;
+    box-sizing: border-box;
+    padding: 15px;
+    width: 240px;
+    height: 220px;
+    background-color: white;
+}
+
+.bento .title {
+    line-height: 1.1;
+    letter-spacing: -3%;
+    font-size: 1.2em;
+    color: inherit;
+    background-color: inherit;
+    text-wrap: no-wrap;
+    line-clamp: 2;
+}
+
+.bento h2 {
+    display: block;
+    color: inherit;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: inherit;
+    max-lines: 2;
+    margin-top: 0;
+}
+
+.superlarge {
+    font-size: 3em;
+}
+
+.bento .arrow {
+    margin: 0;
+    padding: 0;
+    display: none;
+    background-color: inherit;
+}
+
+a:hover .bento .arrow {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+.bento a:hover {
+    color: inherit;
+}
+
+.bento .subtitle {
+    color: inherit;
+    font-size: 1.4em;
+    display: none;
+    max-height: 100px;
+    line-height: 1.1;
+    margin-top: 10%;
+    margin-bottom: 20%;
+    max-lines: 3;
+}
+
+.bento:hover {
+    border: 5px solid;
+    padding: 10px;
+}
+
+
+.bento:hover .subtitle {
+    display: block;
+}
+
+.bento img {
+    position: relative;
+    top: 0;
+    z-index: 0;
+    width: 90%;
+    opacity: 1.0;
+    background-color: inherit;
+    border-radius: 20px;
+    margin: 0;
+}
+
+a:hover .bento img {
+    display: none;
+    color: inherit;
+    background-color: inherit;
+    border-radius: 20px;
+    transition: transform 0.5s ease, display 0.5s ease;
+}
+
+.bento .subtitle>a {
+    opacity: 0;
+}
+
+.bento:first-child {
+    background-color: white;
+}
+
+.bento .subtitle>a:hover {
+    opacity: 1.0;
+}
+
+a {
+    color: black;
+}
+
+a:visited {
+    color: inherit;
+}
+

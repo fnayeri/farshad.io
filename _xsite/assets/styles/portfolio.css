@@ -1,0 +1,120 @@
+/* portfolio.css */
+
+img.logo {
+    width: 50%;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 0;
+}
+
+article {
+    justify-self: center;
+    padding: 5px;
+    max-width: 800px;
+}
+
+article h2 {
+    margin-bottom: 0;
+    margin-left: 0px;
+}
+
+article p {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 28px;
+    line-height: 1.2em;
+}
+
+article img {
+    margin-left:   28px;
+    padding-left:  28px;
+    float: auto;
+    width: 100%;
+    
+}
+
+.artifacts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px; 
+    margin-top: 20px;
+  }
+
+  .artifacts img {
+    border-radius: 20px;
+    height: auto;
+    width: 90%;
+    box-shadow: 3px 3px rgba(0,0,0,0.1);
+    padding: 0;
+    margin: 10px;
+  }
+
+
+/* 
+  D03A21	discovery
+  F0C768	outcome
+  5A62BC	problem
+  306F53	stakes 
+  */
+
+.synopsis {
+    line-height: 1.2em;
+    margin-left: 24px;
+}
+
+.aspect {
+    line-height: 1.5em;
+    padding-left: 28px;
+}
+
+.problem {
+    color: #D03A21;
+    background: url('/assets/icons/problem.png') no-repeat left center;
+    background-size: 24px 24px;
+}
+
+.stakes {
+    color: #F0C768;
+    background: url('/assets/icons/stakes.png') no-repeat left center;
+    background-size: 24px 24px;
+}
+    
+
+.discovery {
+    color: #5A62BC;
+    background: url('/assets/icons/discovery.png') no-repeat left;
+    background-size: 24px 24px;
+}
+
+.outcome {
+    color: #306F53;
+    background: url('/assets/icons/outcome.png') no-repeat left center;
+    background-size: 24px 24px;
+}
+
+.portfolio-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.tags {
+    margin-top: 24px;
+    margin-left: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tag {
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 5px 5px;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    vertical-align: middle;
+}

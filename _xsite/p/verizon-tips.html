@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Real-Time QoS Monitoring System – farshad.io – </title>
+
+      <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" property="og:description"  content="-Designed and developed real-time system to monitor and visualize network quality of service for the entire Verizon management network. ">
+    
+    <!-- <meta name="author" content="farshad.io" /> -->
+
+    
+    <meta name="title" property="og:title" content="Real-Time QoS Monitoring System" />
+    
+
+    <meta property="og:image"        content="http://fm1.local:4000/assets/logos/verizon-tips.png" />
+    <meta property="og:url"          content="http://fm1.local:4000/p/verizon-tips" />
+    <meta property="og:type"         content="article" />
+    <meta property="og:locale"       content="" />
+
+
+  <script defer data-domain="farshad.io" src="https://plausible.io/js/script.file-downloads.hash.outbound-links.js"></script>
+<script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+  <link rel="stylesheet" type="text/css" href="/assets/styles/portfolio.css" />
+  <link rel="stylesheet" type="text/css" href="/assets/styles/bento.css" />
+  <link rel="alternate" type="application/rss+xml" title="farshad.io - "
+    href="/feed.xml" />
+  <link rel="icon" href="/assets/about/fn.png" type="image/x-icon">
+
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      padding-top: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    /* TODO - move to styles. */
+
+    nav {
+      width: 100%;
+      position: fixed;
+      /* Fix the nav at the top */
+      top: 0;
+      left: 0;
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: auto;
+      padding: 0px;
+      display: flex;
+      justify-content: space-evenly;
+      max-width: 1000px;
+      align-content: middle;
+      gap: 10px;
+    }
+
+    nav ul li:first-child {
+      white-space: nowrap;
+      margin-right: auto;
+    }
+
+    nav li h2 {
+      height: 1em;
+    }
+
+    nav ul li {
+      margin: auto 10px !important;
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul li a {
+      margin: 0 !important;
+      text-decoration: none;
+      color: #333;
+    }
+
+    nav ul li a:hover {
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    @media (max-width: 900px) {
+      nav ul li span {
+        display: none;
+      }
+    }
+
+    img.icon {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+    }
+
+    img.icon+span {
+      margin-left: 2px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="wrapper-header" role="header">
+    <div class="container">
+      <nav>
+        <ul>
+          <li>
+            <h2>
+              <a href='/about'><img src='/assets/about/farshad-nayeri-headshot.jpeg'
+                  style='vertical-align: middle; width: 1em; height: 1em; border-radius: 50%; padding-bottom: 0.2em; padding-right: 0.2em; ' /></a>
+              <a href='/'>Farshad Nayeri</a>
+            </h2>
+          </li>
+          <li><a href="mailto:farshad@igencorp.com">
+              <img class='icon' src='/assets/icons/email.svg' />
+              <span>farshad@igencorp.com</span></a></li>
+          <li>
+            <a href="sms:+16178233876">
+              <img class='icon' src='/assets/icons/call.svg' /> <span>+1.617.823.3876</span></a>
+          </li>
+          <li>
+            <a href="/docs/resume/Farshad-Nayeri-Resume.pdf" target="_blank">
+              <img class='icon' src='/assets/icons/resume.svg' /> <span>resumé</span></a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/farshadnayeri/" target="_blank">
+              <img class='icon' src='/assets/icons/linkedin.svg' />
+              <span>linkedin</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  </div>
+
+  <div id="main" role="main" class="container">
+    <style>
+  .tag {
+    /* background-color: #888; */
+    background-color: #060606;
+    color: #DEDEDE;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+  }
+
+  body {
+    background-color: #DEDEDE;
+  }
+
+  .container {
+    background-color: #DEDEDE;
+  }
+
+  div.break {
+    border-bottom: solid 2px #D8383C;
+    clear: both;
+    margin: 20px 0 20px 20px;
+  }
+
+  .portfolio-item {
+    /* border: 4px solid #D8383C; */
+    border-radius: 20px;
+    background-color: #DEDEDE;
+    border-color: #D8383C;
+  }
+
+</style>
+
+<div class="container">
+  <article class="portfolio-item">
+    <div class="portfolio-title">
+      <img class='logo' src="/assets/logos/verizon-tips.png" alt="Real-Time QoS Monitoring System" />
+      <h1 class="synopsis">
+        System Architect
+        <br />
+        Real-Time QoS Monitoring System
+        <br />
+        Verizon Labs 	
+        <br clear="all" />
+      </h1>
+    </div>
+
+    <p class="synopsis">Designed and developed real-time system to monitor and visualize network quality of service for the entire Verizon management network. </p>
+
+    <div class="tags">
+      
+      <span class="tag">telecomm</span>
+      
+      <span class="tag">analytics</span>
+      
+      <span class="tag">visualization</span>
+      
+      <span class="tag">native apps</span>
+      
+      <span class="tag">api design</span>
+      
+      <span class="tag">architecture</span>
+      
+      <span class="tag">cloud services</span>
+      
+    </div>
+
+    <div class="break"></div>
+
+    <h2 class="aspect problem">Problem</h2>
+    <p>Verizon's existing network monitoring systems provided only a low-level, hardware-focused view of performance, lacking the ability to measure customer Quality of Service (QoS) holistically across diverse network technologies. This created challenges in troubleshooting, diagnosing issues, and delivering actionable insights to improve customer service.</p>
+
+    <h2 class="aspect stakes">Stakes</h2>
+    <p>Verizon needed a scalable system to integrate data across multiple network technologies, ensuring real-time QoS insights and improving operational efficiency while maintaining customer satisfaction.</p>
+
+    <h2 class="aspect discovery">Discovery</h2>
+    <p>The integration of a dynamic system enabled real-time aggregation of QoS metrics across the entire Verizon footprint by integrating metrics from diverse network components. Metadata-driven data Visualization components such as tables, and charts provided easy access to state of the network at Verizon’s distributed Network Operating Centers.</p>
+
+    <h2 class="aspect outcome">Outcome</h2>
+    <p>The new system allowed Verizon to monitor QoS across its entire network, reducing troubleshooting times, improving customer service, and providing a scalable platform for future enhancements. The solution positioned Verizon as a leader in delivering high-quality network services.</p>
+
+    
+    <div class="break"></div>
+    
+
+    <div class="artifacts">
+      
+      <img class='artifact' src="/assets/artifacts/verizon-tips/noc-example.jpg" alt=" artifact" />
+      
+      <img class='artifact' src="/assets/artifacts/verizon-tips/verizon-tips-patent-01.png" alt=" artifact" />
+      
+    </div>
+
+    <div class="break"></div>
+
+  </article>
+
+</div>
+
+  </div>
+
+  <div class="wrapper-footer">
+    <div class="container">
+      <footer class="footer">
+        <p>&copy; 2025 farshad.io. All rights reserved.</p>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+      </footer>
+    </div>
+  </div>
+
+  
+
+</body>
+
+</html>
