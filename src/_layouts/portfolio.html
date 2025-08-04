@@ -41,6 +41,72 @@ layout: default
     border-color: #{{ page.border }};
   }
 
+  .aspects-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+  }
+
+  .aspect-card {
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: left;
+  }
+
+  .aspect-card.problem {
+    background: rgba(208, 58, 33, 0.1);
+  }
+
+  .aspect-card.stakes {
+    background: rgba(255, 165, 0, 0.1);
+  }
+
+  .aspect-card.discovery {
+    background: rgba(90, 98, 188, 0.1);
+  }
+
+  .aspect-card.outcome {
+    background: rgba(48, 111, 83, 0.1);
+  }
+
+  .aspect-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 12px;
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .aspect-card h2 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .aspect-card p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 14px;
+    color: black;
+  }
+
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .aspects-grid {
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+  }
+
 </style>
 
 <div class="container">
@@ -67,17 +133,31 @@ layout: default
 
     <div class="break"></div>
 
-    <h2 class="aspect problem">Problem</h2>
-    <p>{{ page.problem }}</p>
+    <div class="aspects-grid">
+      <div class="aspect-card problem">
+        <div class="aspect-icon" style="background-image: url('/assets/icons/problem.png');"></div>
+        <h2 class="aspect problem">Problem</h2>
+        <p>{{ page.problem }}</p>
+      </div>
 
-    <h2 class="aspect stakes">Stakes</h2>
-    <p>{{ page.stakes }}</p>
+      <div class="aspect-card stakes">
+        <div class="aspect-icon" style="background-image: url('/assets/icons/stakes.png');"></div>
+        <h2 class="aspect stakes">Stakes</h2>
+        <p>{{ page.stakes }}</p>
+      </div>
 
-    <h2 class="aspect discovery">Discovery</h2>
-    <p>{{ page.discovery }}</p>
+      <div class="aspect-card discovery">
+        <div class="aspect-icon" style="background-image: url('/assets/icons/discovery.png');"></div>
+        <h2 class="aspect discovery">Discovery</h2>
+        <p>{{ page.discovery }}</p>
+      </div>
 
-    <h2 class="aspect outcome">Outcome</h2>
-    <p>{{ page.outcome }}</p>
+      <div class="aspect-card outcome">
+        <div class="aspect-icon" style="background-image: url('/assets/icons/outcome.png');"></div>
+        <h2 class="aspect outcome">Outcome</h2>
+        <p>{{ page.outcome }}</p>
+      </div>
+    </div>
 
     {% if page.artifacts %}
     <div class="break"></div>
