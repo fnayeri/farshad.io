@@ -8,6 +8,16 @@ layout: default
     color: #{{ page.background | default: 'FFF' }};
     padding: 5px 10px 5px 10px;
     border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-block;
+    margin: 2px;
+  }
+
+  .tag:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    opacity: 0.9;
   }
 
   body {

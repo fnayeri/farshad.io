@@ -231,9 +231,26 @@ layout: default
   }
 
   .tags-cell {
-      display: none;
+      display: flex;
       flex-wrap: wrap;
       gap: 8px;
+      margin-top: 8px;
+  }
+
+  .tag-bubble {
+      background-color: #f0f0f0;
+      color: #333;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 0.8em;
+      transition: all 0.2s ease;
+      border: 1px solid #ddd;
+  }
+
+  .tag-bubble:hover {
+      background-color: #e0e0e0;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
 
   .view-controls {
@@ -512,7 +529,126 @@ document.addEventListener('DOMContentLoaded', function() {
         const decodedTag = decodeURIComponent(tagParam);
         filterByTag(decodedTag);
     }
+    
+    // Make tags clickable
+    makeTagsClickable();
 });
+
+function makeTagsClickable() {
+    // Make tag bubbles clickable in list view
+    const tagBubbles = document.querySelectorAll('.tag-bubble');
+    tagBubbles.forEach(tag => {
+        tag.style.cursor = 'pointer';
+        tag.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const tagText = this.textContent.trim();
+            filterByTag(tagText);
+        });
+    });
+    
+    // Make tags clickable in portfolio detail pages
+    const portfolioTags = document.querySelectorAll('.portfolio-item .tag');
+    portfolioTags.forEach(tag => {
+        tag.style.cursor = 'pointer';
+        tag.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const tagText = this.textContent.trim();
+            // Navigate to main page with tag filter, preserving fmt parameter
+            const url = new URL('/', window.location.origin);
+            url.searchParams.set('tag', tagText);
+            // Check if there's a fmt parameter in the current URL and preserve it
+            const currentUrl = new URL(window.location);
+            const currentFmt = currentUrl.searchParams.get('fmt');
+            if (currentFmt) {
+                url.searchParams.set('fmt', currentFmt);
+            }
+            window.location.href = url.toString();
+        });
+    });
+}
+
+function filterByTag(selectedTag) {
+    const projects = document.querySelectorAll('.project, .bento');
+    let visibleCount = 0;
+    
+    projects.forEach(project => {
+        const tags = project.getAttribute('data-tags');
+        if (tags && tags.toLowerCase().includes(selectedTag.toLowerCase())) {
+            project.style.display = '';
+            visibleCount++;
+        } else {
+            project.style.display = 'none';
+        }
+    });
+    
+    // Update URL without reloading the page, preserving fmt parameter
+    const url = new URL(window.location);
+    url.searchParams.set('tag', selectedTag);
+    // Preserve the fmt parameter if it exists
+    const currentFmt = url.searchParams.get('fmt');
+    if (currentFmt) {
+        url.searchParams.set('fmt', currentFmt);
+    }
+    window.history.pushState({}, '', url);
+    
+    // Show filter indicator
+    showFilterIndicator(selectedTag, visibleCount);
+}
+
+function showFilterIndicator(tag, count) {
+    // Remove existing filter indicator
+    const existingIndicator = document.querySelector('.filter-indicator');
+    if (existingIndicator) {
+        existingIndicator.remove();
+    }
+    
+    // Create new filter indicator
+    const indicator = document.createElement('div');
+    indicator.className = 'filter-indicator';
+    indicator.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #333;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        z-index: 1000;
+        font-size: 14px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    `;
+    indicator.innerHTML = `
+        Filtering by: <strong>${tag}</strong> (${count} items)
+        <button onclick="clearFilter()" style="margin-left: 10px; background: #666; border: none; color: white; padding: 2px 8px; border-radius: 3px; cursor: pointer;">×</button>
+    `;
+    
+    document.body.appendChild(indicator);
+}
+
+function clearFilter() {
+    const projects = document.querySelectorAll('.project, .bento');
+    projects.forEach(project => {
+        project.style.display = '';
+    });
+    
+    // Remove filter indicator
+    const indicator = document.querySelector('.filter-indicator');
+    if (indicator) {
+        indicator.remove();
+    }
+    
+    // Update URL, preserving fmt parameter
+    const url = new URL(window.location);
+    url.searchParams.delete('tag');
+    // Preserve the fmt parameter if it exists
+    const currentFmt = url.searchParams.get('fmt');
+    if (currentFmt) {
+        url.searchParams.set('fmt', currentFmt);
+    }
+    window.history.pushState({}, '', url);
+}
 
 document.getElementById('fullscreen-play').addEventListener('click', function() {
     const video = document.getElementById('showcase-video');
