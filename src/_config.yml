@@ -3,7 +3,7 @@
 #
 
 destination: public
-source: src
+source: .
 
 # Name of your site (displayed in the header)
 name: farshad.io
@@ -103,3 +103,7 @@ exclude:
   - tsconfig.json
   - .babelrc
   - webpack/
+
+# Development server settings
+host: 0.0.0.0
+port: 4000

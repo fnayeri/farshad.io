@@ -1,0 +1,1232 @@
+---
+title: Farshad Nayeri - Technologist
+layout: default
+---
+
+<style>
+  .container {
+    display: flex ;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 5px 20px;
+    max-width: 1000px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+
+  .container .info a img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .bio {
+    flex: 1;
+  }
+
+  .container .info p {
+    font-size: 1.40em;
+    line-height: 1.6em;
+    margin: 15px 55px 15px 55px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th,
+  td {
+    border: none;
+    text-align: left;
+    font-weight: demibold
+    vertical-align: top;
+  }
+
+  th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  .view-project {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .text-lines {
+    display: none;
+  }
+
+  .text-lines .tags-cell {
+    display: none;
+  }
+
+  .filtered-projects-container {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+  }
+
+  .filtered-projects-container .portfolio-cell {
+    width: 100%;
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .filtered-projects-container .portfolio-content {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .filtered-projects-container .content-right {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .icon-lines {
+    display: block;
+    border-radius: 40px;
+  }
+
+  .project a:hover {
+    margin: 0;
+    padding: 0;
+      /* text-decoration: none; */
+
+  }
+
+  h1 {
+    font-size: 26px;
+    text-align: center;
+    padding-bottom: 10px;
+    margin: 0;
+  }
+
+  h3 {
+    text-align: center;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 15%;
+  }
+
+  .portfolio-table {
+      width: 100%;
+      border-spacing: 0;
+      border-collapse: separate;
+  }
+
+  .portfolio-cell {
+      padding: 8px 40px;
+  }
+
+  /* Styles for filtered items in row layout */
+  .portfolio-table.filtered {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 20px !important;
+      justify-content: flex-start !important;
+      align-items: flex-start !important;
+      width: 100% !important;
+      border: none !important;
+  }
+
+  .portfolio-table.filtered tr {
+      display: contents !important;
+      border: none !important;
+  }
+
+  .portfolio-table.filtered td {
+      display: block !important;
+      border: none !important;
+      padding: 0 !important;
+  }
+
+  .portfolio-table.filtered .portfolio-cell {
+      width: 300px !important;
+      min-width: 300px !important;
+      flex: 0 0 auto !important;
+      padding: 8px 15px !important;
+      margin: 0 !important;
+      display: block !important;
+      border: none !important;
+  }
+
+  .portfolio-table.filtered .portfolio-cell .project {
+      width: 100% !important;
+      margin: 0 !important;
+  }
+
+  .portfolio-content {
+      display: flex;
+      gap: 20px;
+  }
+
+  .image-column {
+      flex: 0 0 25%;
+      max-width: 150px;
+  }
+
+  .portfolio-image {
+      width: 150px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 40px;
+  }
+
+  /* List view specific image styling */
+  .text-lines .portfolio-image {
+      width: 100px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 8px;
+  }
+
+  .text-lines .image-column {
+      flex: 0 0 100px;
+      max-width: 100px;
+  }
+
+  .header-row {
+    background-color: #ffffff;
+    border-radius: 40px;
+    margin-top: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 20px;
+    /* box-shadow: 0 2px 8px rgba(0,0,0,0.1); */
+  }
+
+  .header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .title-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .showcase {
+    display: flex;
+    align-items: middle;
+    background-color: gray;
+    padding: 0 5px 10px 15px;
+    flex-direction: column;
+    border-radius: 30px;
+    background-color: black;
+    color: white;
+  }
+
+  .showcase a {
+    color: white;
+    font-weight: bold;
+  }
+
+  .showcase a:hover {
+    text-decoration: underline;
+  }
+
+  .showcase img {
+    width: 300pt;
+  }
+
+  img {
+    /* width: 700px; */
+  }
+
+  div.showcase h3 {
+    padding: 0;
+    padding-top: 10px;
+    margin: 10px;
+  }
+
+  .showcase-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+    position: relative;
+  }
+
+  div.showcase-content video {
+    background-color: black;
+    height: 200px;
+  }
+  
+  div.showcase-content p {
+    line-height: 1.6em;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  div.showcase-content p b {
+    text-transform: uppercase;
+  }
+
+  .fullscreen-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .fullscreen-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .content-right {
+      flex: 1;
+  }
+
+  .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+  }
+
+  .title-group {
+      margin-bottom: 8px;
+  }
+
+  .title {
+      font-size: 1.2em;
+      font-weight: bold;
+  }
+
+  .customer {
+      font-size: 1.2em;
+      font-weight: normal;
+      color: #666;
+  }
+
+  .description {
+      margin-bottom: 8px;
+  }
+
+  .body-text {
+      color: #666;
+      margin-bottom: 12px;
+  }
+
+  .tags-cell {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+  }
+
+  /* Unified tag styling for all tag types */
+  .tag-bubble, .filter-tag, .tag {
+      background-color: #e0e0e0;
+      color: #666;
+      padding: 5px 10px 5px 10px;
+      border-radius: 10px;
+      font-size: 0.8em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-block;
+      margin: 2px;
+      border: none;
+      user-select: none;
+  }
+
+
+
+  .tag-bubble:hover, .filter-tag:hover, .tag:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      opacity: 0.9;
+  }
+
+  .filter-tag.active {
+      background-color: #000;
+      color: #FFF;
+  }
+
+  .filter-tag.active:hover {
+      background-color: #333;
+      opacity: 0.9;
+  }
+
+  .filter-container {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+  }
+
+  .view-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 10px;
+  }
+
+  .view-icons {
+      display: flex;
+      gap: 8px;
+  }
+
+  .view-icon {
+      color: #666;
+      padding: 4px;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .view-icon:hover {
+      color: #000;
+      background: #f5f5f5;
+  }
+
+  .view-icon.active {
+      color: #000;
+      background: #eee;
+  }
+
+  /* Filter Section Styles */
+  .filter-content {
+    flex: 1;
+    max-width: none;
+  }
+
+
+
+
+  .filter-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    min-height: 24px;
+  }
+
+
+
+  .filter-group {
+    margin-bottom: 12px;
+  }
+
+  .filter-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .filter-label {
+    font-weight: 600;
+    font-size: 13px;
+    color: #495057;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+
+  .filter-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: center;
+  }
+
+
+
+  a.button {
+    font-size: smaller;
+    border: solid white 1px;
+    padding: 3px;
+    border-radius: 5px;
+    margin: 5px;
+    height: 1.4em;
+    color: white;
+  }
+
+  
+@media (max-width: 800px) {
+
+  .container {
+    margin: 0 auto;
+    padding: 5px 15px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  div#main {
+    margin: 0;
+    padding: 0;
+  }
+
+  .portfolio-cell {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  div.title {
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  div.customer {
+    font-size: 1em;
+  }
+
+  div.body-text {
+    font-size: 1em;
+    width: 310px;
+  }
+
+  div.showcase-content {
+    flex-direction: column;
+  }
+
+  .text-lines img.portfolio-image {
+      max-width: 80px;
+      width: 80px;
+      float: left;
+      border-radius: 6px;
+  }
+
+  .container .info p {
+    max-width: 500px;
+    margin: 10px 5px 30px 5px;
+    font-size: 1.2em;
+  }
+
+  .container .info img {
+    margin-bottom: 5px;
+    /* Add space below the image */
+  }
+
+  .bento-box {
+    grid-template-columns: repeat(2, 1fr);
+    width: 80%;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .bento {
+    width: 180px !important;
+    height: 180px !important;
+    padding: 10px !important;
+    margin: 10px !important;
+  }
+
+  .title {
+    padding-top: 10px;
+    font-size: 1em !important;
+    max-lines: 2;
+  }
+
+  .filter-container {
+    padding: 15px !important;
+    margin-bottom: 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  .view-controls {
+    margin-top: 8px !important;
+  }
+
+  .filter-header {
+    flex-direction: column !important;
+    gap: 10px !important;
+    align-items: flex-start !important;
+  }
+
+  .filter-tags {
+    gap: 6px !important;
+  }
+
+  .filter-tag, .tag-bubble, .tag {
+    font-size: 0.8em !important;
+    padding: 5px 10px 5px 10px !important;
+    background-color: #e0e0e0 !important;
+    color: #666 !important;
+    border-radius: 10px !important;
+    margin: 2px !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    display: inline-block !important;
+    border: none !important;
+    user-select: none !important;
+  }
+
+  .filter-tag.active {
+    background-color: #000 !important;
+    color: #FFF !important;
+  }
+  
+}
+
+@media (max-width: 600px) {
+  .container {
+    margin: 0 auto;
+    padding: 5px 10px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .bento-box {
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .bento {
+    width: 100% !important;
+    max-width: 300px !important;
+    height: auto !important;
+    min-height: 200px !important;
+    padding: 15px !important;
+    margin: 5px auto !important;
+  }
+
+  .filter-container {
+    padding: 10px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .filter-tags {
+    gap: 4px !important;
+  }
+
+  .filter-tag, .tag-bubble, .tag {
+    font-size: 0.7em !important;
+    padding: 4px 8px !important;
+  }
+
+  .portfolio-table.filtered .portfolio-cell {
+    width: 100% !important;
+    min-width: 100% !important;
+    padding: 6px 10px !important;
+  }
+
+  .body-text {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .text-lines img.portfolio-image {
+    max-width: 60px !important;
+    width: 60px !important;
+    border-radius: 4px !important;
+  }
+
+  .text-lines .image-column {
+    flex: 0 0 60px !important;
+    max-width: 60px !important;
+  }
+
+  .showcase img {
+    width: 80% !important;
+    max-width: 250px !important;
+    height: auto !important;
+  }
+
+  .showcase-content {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+}
+
+</style>
+
+<meta property="og:image" content="{{ '/assets/about/farshad-nayeri.png' | absolute_url }}" />
+
+
+<script>
+  const enable_tags = function (tag) {
+  const items = document.querySelectorAll('[data-tags]');
+  const tagArray = [tag];
+
+  items.forEach(item => {
+    const itemTags = item.getAttribute('data-tags').split(/[ ]*,[ ]*/);
+    const hasTag = tagArray.some(tag => itemTags.includes(tag));
+    if (!hasTag) {
+      item.style.opacity = 0.15;
+      item.style.transition = 'opacity 0.3s ease';
+      item.style.pointerEvents = 'none';
+    } else {
+      item.style.opacity = 1.0;
+      item.style.transition = 'opacity 0.3s ease';
+      item.style.pointerEvents = '';
+    }
+  });
+}
+
+</script>
+
+{%if false %}
+
+<meta http-equiv="refresh" content="0; url={{ '/docs/' | relative_url }}" />
+<h1><a href="/docs/">Farshad Nayeri - farshad.io</a></h1>
+
+{% else %}
+
+<div class='container'>
+  <div class="info">
+    <br clear="all"/>
+    <p style='display: none'>Proven product leader with deep experience in technology and product innovation &star;        Transforms business, technical, and strategic constraints into scalable,
+      high-impact solutions &star; Thrives in dynamic, hands-on, high-stakes environments, delivering tangible results across the entire product
+      lifecycle &star;
+      </p>
+  </div>
+
+  <div class='showcase' style='display:none'>
+    <h3><b>Showcase:</b> Pixxa</h3>
+    <div class='showcase-content'>
+      <p>
+        Pixxa platform brings the power of Data Cinematography to the ordinary presenter. Pixxa's Perspective app has been used in many high-stakes presentations in such companies as Apple, Samsung, and Fidelity.<br/><br/> <a class='button' href="/#" id='fullscreen-play'>Expand ⛶</a> <a class='button' href='https://pixxa.com/'>Learn &rarr;</a>
+      </p>
+      <video id="showcase-video" controls 
+            poster="{{ '/assets/video/pixxa-sankey.png' | relative_url }}"> 
+          <source src="{{ '/assets/video/farshad-nayeri-pixxa.m4v' | relative_url}}"      type="video/mp4"/>
+      </video>
+    </div>
+  </div>
+
+  <div style='padding: 0; margin: 0;'> <p style='text-align: center; font-weight: bold'><a href='/about/'>About Farshad &rarr;</a></p></div>
+  
+  <div class='showcase'>
+    <h3>Harvard XR 2025</h3>
+    <div class='showcase-content' style='background: url(/assets/artifacts/harvardxr/harvardxr.png)'>
+      <p> 
+        <a href='https://harvardxr.com/'>HarvardXR</a> invited me to <a href='https://www.harvardxr.com/2025/speakers'>speak</a> about <a href='https://www.linkedin.com/posts/farshadnayeri_harvard-harvardxr-harvardxr2026-activity-7321267481459712000-xfqF'>Data&nbsp;Cinematography</a>. This made for a great opportunity to showcase the data cinematography app  <a href='https://itunes.apple.com/us/app/perspective/id516098684?ls=1'>Perspective</a> whose development I led at <a href='https://pixxa.com/'> Pixxa</a>.
+      </p>
+      <a href='https://www.harvardxr.com/events/immersive-storytelling-games-and-design'><img width="40%" src='/assets/artifacts/harvardxr/Data%20Cinematography%20-%20HarvardXR%20v1.0.png' /></a>
+    </div>
+  </div>
+
+</div>
+  <div style='clear: both'> </div>
+
+  <div class="header-row">
+    <div class="header-content">
+      <div class="title-section">
+        <h3>Selected Work</h3>
+      </div>
+
+    </div>
+    <div class="filter-container">
+      <div class="filter-group">
+        <div class="filter-label">Industry</div>
+        <div class="filter-tags">
+          <span class="filter-tag" data-category="industry" data-tag="financial">financial</span>
+          <span class="filter-tag" data-category="industry" data-tag="healthcare">healthcare</span>
+          <span class="filter-tag" data-category="industry" data-tag="retail">retail</span>
+          <span class="filter-tag" data-category="industry" data-tag="consumer">consumer</span>
+          <span class="filter-tag" data-category="industry" data-tag="telecomm">telecomm</span>
+          <span class="filter-tag" data-category="industry" data-tag="management">management</span>
+        </div>
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">Technology</div>
+        <div class="filter-tags">
+          <span class="filter-tag" data-category="technology" data-tag="native apps">native apps</span>
+          <span class="filter-tag" data-category="technology" data-tag="web apps">web apps</span>
+          <span class="filter-tag" data-category="technology" data-tag="api design">api design</span>
+          <span class="filter-tag" data-category="technology" data-tag="blockchain">blockchain</span>
+          <span class="filter-tag" data-category="technology" data-tag="cloud services">cloud services</span>
+          <span class="filter-tag" data-category="technology" data-tag="saas platform">saas platform</span>
+          <span class="filter-tag" data-category="technology" data-tag="analytics">analytics</span>
+          <span class="filter-tag" data-category="technology" data-tag="visualization">visualization</span>
+          <span class="filter-tag" data-category="technology" data-tag="architecture">architecture</span>
+          <span class="filter-tag" data-category="technology" data-tag="product strategy">product strategy</span>
+        </div>
+      </div>
+      <div class="view-controls">
+        <div class="view-icons">
+          <button class="view-icon" id="bento-icon" data-view="bento">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
+              <rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
+              <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
+              <rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </button>
+          <button class="view-icon" id="list-icon" data-view="list">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="6" width="18" height="2" rx="1" stroke="currentColor" stroke-width="2"/>
+              <rect x="3" y="11" width="18" height="2" rx="1" stroke="currentColor" stroke-width="2"/>
+              <rect x="3" y="16" width="18" height="2" rx="1" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-lines">
+    <table class="portfolio-table">
+      {% for p in site.data.portfolio %}{% if p.name %}
+      <tr class="project" data-tags="{{ p.tags | join: ',' }}">
+        <td class="portfolio-cell">
+          <a href='{{ p.permalink | relative_url }}' class="portfolio-link">
+            <div class="portfolio-content">
+              <div class="image-column">
+                <img src="/assets/logos/{{ p.name }}.png" class="portfolio-image">
+              </div>
+              <div class="content-right">
+                <div class="header">
+                  <div class="title-group">
+                    <div class="customer">{{ p.customer }}</div>                    
+                    <div class="title">{{ p.title }}</div>
+                    <div class="body-text">{{ p.body }}</div>
+                  </div>
+                </div>
+                <div class="tags-cell">
+                  {% for tag in p.tags %}
+                    <span class="tag-bubble" data-tag="{{ tag }}">{{ tag }}</span>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </a>
+        </td>
+      </tr>
+      {% endif %}{% endfor %}
+    </table>
+  </div>
+    <div class="icon-lines">
+      <div class="bento-box projects">
+        {% for p in site.data.portfolio %}
+        {% if p.name %}
+        <a style='color: #{{ p.color | default: "000000" }}' href='{{ p.permalink | relative_url }}'>
+          <div class='bento' 
+               style='
+                      color:            #{{ p.color | default: "000000" }}; 
+                      background-color: #{{ p.background | default: "ffffff" }};
+                      border-color:     #{{ p.border | append: '77' | default: p.background | default: "ffffff" }};
+                      '
+                data-tags='{{ p.tags | join: ',' }}'>
+            <h2 class='title'>{{ p.title }}</h2>
+            <img class='portfolio-image' src='/assets/logos/{{ p.name }}.png' alt='{{ p.title | default: "" }}' />
+            <h2 class='subtitle' style='text-wrap: no-wrap; vertical-align: top;'>{{ p.customer}}→</h2>
+          </div>
+        </a>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // React-like state management
+    let appState = {
+        view: 'bento', // 'bento' or 'list'
+        activeTag: null,
+        activeFilter: null
+    };
+    
+    // Make appState globally accessible for filter functions
+    window.appState = appState;
+
+    // State management functions
+    function setState(newState) {
+        appState = { ...appState, ...newState };
+        window.appState = appState; // Keep global reference in sync
+        render();
+    }
+
+    function getState() {
+        return appState;
+    }
+
+    // URL management
+    function updateURL() {
+        const url = new URL(window.location);
+        if (appState.view !== 'bento') {
+            url.searchParams.set('fmt', appState.view);
+        } else {
+            url.searchParams.delete('fmt');
+        }
+        if (appState.activeTag) {
+            url.searchParams.set('tag', appState.activeTag);
+        } else {
+            url.searchParams.delete('tag');
+        }
+        window.history.pushState(appState, '', url);
+    }
+
+    function parseURL() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const fmtParam = urlParams.get('fmt');
+        const tagParam = urlParams.get('tag');
+        
+        return {
+            view: fmtParam || 'bento',
+            activeTag: tagParam ? decodeURIComponent(tagParam) : null
+        };
+    }
+
+    // Render function (React-like)
+    function render() {
+        // Update view
+        const textLines = document.querySelector('.text-lines');
+        const iconLines = document.querySelector('.icon-lines');
+        const bentoIcon = document.getElementById('bento-icon');
+        const listIcon = document.getElementById('list-icon');
+
+        if (appState.view === 'list') {
+            textLines.style.display = 'block';
+            iconLines.style.display = 'none';
+            listIcon.classList.add('active');
+            bentoIcon.classList.remove('active');
+        } else {
+            iconLines.style.display = 'block';
+            textLines.style.display = 'none';
+            bentoIcon.classList.add('active');
+            listIcon.classList.remove('active');
+        }
+
+        // Update filter if needed
+        if (appState.activeTag) {
+            filterByTag(appState.activeTag);
+            highlightActiveFilterTag(appState.activeTag);
+        } else {
+            clearFilter();
+        }
+
+        // Update URL without triggering setState
+        const url = new URL(window.location);
+        if (appState.view !== 'bento') {
+            url.searchParams.set('fmt', appState.view);
+        } else {
+            url.searchParams.delete('fmt');
+        }
+        if (appState.activeTag) {
+            url.searchParams.set('tag', appState.activeTag);
+        } else {
+            url.searchParams.delete('tag');
+        }
+        window.history.pushState(appState, '', url);
+    }
+
+    // Initialize from URL
+    const urlState = parseURL();
+    appState = { ...appState, ...urlState };
+    render();
+
+    // Add view switching event listeners
+    document.getElementById('bento-icon').addEventListener('click', function(e) {
+        e.preventDefault();
+        setState({ view: 'bento' });
+    });
+
+    document.getElementById('list-icon').addEventListener('click', function(e) {
+        e.preventDefault();
+        setState({ view: 'list' });
+    });
+
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', function(event) {
+        const urlState = parseURL();
+        setState(urlState);
+    });
+
+    // Make tags clickable
+    makeTagsClickable();
+    
+    // Initialize filter functionality
+    initializeFilterTags();
+    
+    // Add click outside to clear filter
+    document.addEventListener('click', function(e) {
+        // Check if click is outside the filter container and header
+        const filterContainer = document.querySelector('.filter-container');
+        const headerRow = document.querySelector('.header-row');
+        const isClickInFilter = filterContainer && filterContainer.contains(e.target);
+        const isClickInHeader = headerRow && headerRow.contains(e.target);
+        
+        // If click is outside both filter and header areas, clear the filter
+        if (!isClickInFilter && !isClickInHeader) {
+            // Check if there's an active filter
+            const activeTags = document.querySelectorAll('.filter-tag.active');
+            if (activeTags.length > 0) {
+                setState({ activeTag: null });
+                // Remove active state from all tags
+                activeTags.forEach(tag => {
+                    tag.classList.remove('active');
+                });
+            }
+        }
+    });
+
+    function initializeFilterTags() {
+        const filterTags = document.querySelectorAll('.filter-tag');
+        
+        filterTags.forEach(tag => {
+            tag.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const tagText = this.getAttribute('data-tag');
+                const category = this.getAttribute('data-category');
+                
+                // Check if this tag is already active
+                if (this.classList.contains('active')) {
+                    // Second click: deactivate this tag and clear filter
+                    this.classList.remove('active');
+                    setState({ activeTag: null });
+                } else {
+                    // First click: clear other active tags in the same category, then activate this tag
+                    clearActiveTagsInCategory(category);
+                    this.classList.add('active');
+                    setState({ activeTag: tagText });
+                }
+            });
+        });
+    }
+
+    function clearActiveTagsInCategory(category) {
+        const activeTags = document.querySelectorAll(`.filter-tag[data-category="${category}"].active`);
+        activeTags.forEach(tag => {
+            tag.classList.remove('active');
+        });
+    }
+
+    function highlightActiveFilterTag(tagText) {
+        // Remove all active states
+        document.querySelectorAll('.filter-tag').forEach(tag => {
+            tag.classList.remove('active');
+        });
+        
+        // Find and highlight the matching filter tag
+        const filterTag = document.querySelector(`.filter-tag[data-tag="${tagText}"]`);
+        if (filterTag) {
+            filterTag.classList.add('active');
+        }
+    }
+
+    function makeTagsClickable() {
+        // Make tag bubbles clickable in list view
+        const tagBubbles = document.querySelectorAll('.tag-bubble');
+        tagBubbles.forEach(tag => {
+            tag.style.cursor = 'pointer';
+            tag.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const tagText = this.textContent.trim();
+                setState({ activeTag: tagText });
+            });
+        });
+        
+        // Make tags clickable in portfolio detail pages
+        const portfolioTags = document.querySelectorAll('.portfolio-item .tag');
+        portfolioTags.forEach(tag => {
+            tag.style.cursor = 'pointer';
+            tag.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const tagText = this.textContent.trim();
+                // Navigate to main page with tag filter, preserving fmt parameter
+                const url = new URL('/', window.location.origin);
+                url.searchParams.set('tag', tagText);
+                // Check if there's a fmt parameter in the current URL and preserve it
+                const currentUrl = new URL(window.location);
+                const currentFmt = currentUrl.searchParams.get('fmt');
+                if (currentFmt) {
+                    url.searchParams.set('fmt', currentFmt);
+                }
+                window.location.href = url.toString();
+            });
+        });
+    }
+});
+
+function filterByTag(selectedTag) {
+    console.log('filterByTag called with:', selectedTag);
+    const projects = document.querySelectorAll('.project, .bento');
+    console.log('Found projects:', projects.length);
+    let visibleCount = 0;
+    
+    // Use the global appState to determine which view is active
+    const isListView = window.appState && window.appState.view === 'list';
+    const isBentoView = window.appState && window.appState.view === 'bento';
+    console.log('View state:', { isListView, isBentoView, appState: window.appState });
+    
+    projects.forEach(project => {
+        const tags = project.getAttribute('data-tags');
+        console.log('Project tags:', tags);
+        if (tags) {
+            // Parse tags properly - split by comma and trim whitespace
+            const tagArray = tags.split(',').map(tag => tag.trim().toLowerCase());
+            const selectedTagLower = selectedTag.toLowerCase();
+            console.log('Tag comparison:', { tagArray, selectedTagLower, includes: tagArray.includes(selectedTagLower) });
+            
+            if (tagArray.includes(selectedTagLower)) {
+                project.style.display = '';
+                project.style.opacity = '1';
+                project.style.transition = 'opacity 0.3s ease';
+                visibleCount++;
+                console.log('Match found for project');
+            } else {
+                // Fade out non-matching items instead of hiding them
+                project.style.opacity = '0.15';
+                project.style.transition = 'opacity 0.3s ease';
+                project.style.pointerEvents = 'none'; // Disable interactions
+            }
+        } else {
+            // No tags, fade out
+            project.style.opacity = '0.15';
+            project.style.transition = 'opacity 0.3s ease';
+            project.style.pointerEvents = 'none';
+        }
+    });
+    
+    console.log('Visible count:', visibleCount);
+    
+    // Handle container styling based on active view
+    if (isListView) {
+        // For list view, create a new flex container and move filtered items
+        const portfolioTable = document.querySelector('.portfolio-table');
+        const textLinesContainer = document.querySelector('.text-lines');
+        
+        // Remove existing filtered container if it exists
+        const existingFilteredContainer = document.querySelector('.filtered-projects-container');
+        if (existingFilteredContainer) {
+            existingFilteredContainer.remove();
+        }
+        
+        // Create new flex container
+        const filteredContainer = document.createElement('div');
+        filteredContainer.className = 'filtered-projects-container';
+        filteredContainer.style.cssText = `
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: flex-start;
+            align-items: stretch;
+            width: 100%;
+            max-width: 100%;
+            min-width: 100%;
+        `;
+        
+        // Move visible projects to the new container
+        projects.forEach(project => {
+            if (project.style.opacity === '1' || project.style.opacity === '') {
+                const cell = project.querySelector('.portfolio-cell');
+                if (cell) {
+                    const clonedCell = cell.cloneNode(true);
+                    clonedCell.style.cssText = `
+                        width: 100%;
+                        min-width: 100%;
+                        flex: 1 1 100%;
+                        padding: 8px 15px;
+                        margin: 0;
+                        display: block;
+                        box-sizing: border-box;
+                    `;
+                    filteredContainer.appendChild(clonedCell);
+                }
+            }
+        });
+        
+        // Hide original table and show new container
+        if (portfolioTable) {
+            portfolioTable.style.display = 'none';
+        }
+        textLinesContainer.appendChild(filteredContainer);
+        
+    } else if (isBentoView) {
+        // For bento view, apply grid styling directly
+        const bentoBox = document.querySelector('.bento-box');
+        if (bentoBox) {
+            bentoBox.style.display = 'grid';
+            bentoBox.style.gridTemplateColumns = 'repeat(3, 1fr)';
+            bentoBox.style.gap = '20px';
+            bentoBox.style.justifyContent = 'center';
+        }
+    }
+}
+
+
+
+function clearFilter() {
+    const projects = document.querySelectorAll('.project, .bento');
+    projects.forEach(project => {
+        project.style.display = '';
+        project.style.width = '';
+        project.style.margin = '';
+        project.style.opacity = '1';
+        project.style.pointerEvents = '';
+    });
+    
+    // Restore original container layouts
+    const portfolioTable = document.querySelector('.portfolio-table');
+    const bentoBox = document.querySelector('.bento-box');
+    
+    // Remove filtered container and restore original table
+    const filteredContainer = document.querySelector('.filtered-projects-container');
+    if (filteredContainer) {
+        filteredContainer.remove();
+    }
+    
+    if (portfolioTable) {
+        portfolioTable.style.display = '';
+    }
+    
+    if (bentoBox) {
+        bentoBox.style.display = '';
+        bentoBox.style.gridTemplateColumns = '';
+        bentoBox.style.gap = '';
+        bentoBox.style.justifyContent = '';
+    }
+    
+
+    
+    // Clear active filter tags
+    document.querySelectorAll('.filter-tag.active').forEach(tag => {
+        tag.classList.remove('active');
+    });
+}
+
+
+
+document.getElementById('fullscreen-play').addEventListener('click', function() {
+    const video = document.getElementById('showcase-video');
+    if (video.requestFullscreen) {
+      video.requestFullscreen();
+    } else if (video.mozRequestFullScreen) { /* Firefox */
+      video.mozRequestFullScreen();
+    } else if (video.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+      video.webkitRequestFullscreen();
+    } else if (video.msRequestFullscreen) { /* IE/Edge */
+      video.msRequestFullscreen();
+    }
+});
+</script>
+
+
+{% endif %}

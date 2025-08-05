@@ -3,15 +3,18 @@ layout: default
 ---
 <style>
   .tag {
-    /* background-color: #888; */
     background-color: #{{ page.color | default: '888'}};
     color: #{{ page.background | default: 'FFF' }};
     padding: 5px 10px 5px 10px;
     border-radius: 10px;
+    font-size: 0.8em;
+    text-transform: uppercase;
     cursor: pointer;
     transition: all 0.2s ease;
     display: inline-block;
     margin: 2px;
+    border: none;
+    user-select: none;
   }
 
   .tag:hover {
@@ -127,7 +130,7 @@ layout: default
 
     <div class="tags">
       {% for tag in page.tags %}
-      <span class="tag">{{ tag }}</span>
+      <span class="tag" onclick="filterFromPortfolio('{{ tag }}')">{{ tag }}</span>
       {% endfor %}
     </div>
 
@@ -174,3 +177,12 @@ layout: default
   </article>
 
 </div>
+
+<script>
+function filterFromPortfolio(tag) {
+    // Navigate to main page with tag filter
+    const url = new URL('/', window.location.origin);
+    url.searchParams.set('tag', tag);
+    window.location.href = url.toString();
+}
+</script>
