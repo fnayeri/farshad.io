@@ -195,10 +195,10 @@ layout: default
   .header-row {
     background-color: #ffffff;
     border-radius: 40px;
-    margin-top: 30px;
-    margin-left: 50px;
-    margin-right: 50px;
-    padding: 20px;
+    margin-top: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px;
     /* box-shadow: 0 2px 8px rgba(0,0,0,0.1); */
   }
 
@@ -586,6 +586,10 @@ layout: default
     background-color: #000 !important;
     color: #FFF !important;
   }
+
+  .filter-label {
+    text-align: center !important;
+  }
   
 }
 
@@ -657,6 +661,10 @@ layout: default
   .showcase-content {
     flex-direction: column !important;
     align-items: center !important;
+  }
+
+  .filter-label {
+    text-align: center !important;
   }
 }
 
@@ -801,7 +809,7 @@ layout: default
                 <div class="header">
                   <div class="title-group">
                     <div class="customer">{{ p.customer }}</div>                    
-                    <div class="title">{{ p.title }}</div>
+                    <div class="title">{{ p.role }}, {{ p.title }}</div>
                     <div class="body-text">{{ p.body }}</div>
                   </div>
                 </div>
