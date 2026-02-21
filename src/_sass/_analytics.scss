@@ -1,14 +1,7 @@
-// Format Chart view — light theme (white bg, dark text)
 .format-chart-view {
   display: none;
   padding: 20px 0;
   margin: 0;
-  animation: analyticsIn 0.4s ease;
-}
-
-@keyframes analyticsIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0);   }
 }
 
 .analytics-grid {
@@ -17,6 +10,14 @@
   gap: 20px;
 
   @include tablet { grid-template-columns: 1fr; }
+
+  > .chart-card {
+    animation: stackIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+
+    @for $i from 1 through 12 {
+      &:nth-child(#{$i}) { animation-delay: #{$i * 0.04}s; }
+    }
+  }
 }
 
 .chart-card {
@@ -75,6 +76,9 @@
 
 .industry-section {
   margin-top: 20px;
+  animation: stackIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation-delay: 0.2s;
+  animation-fill-mode: backwards;
 }
 
 .industry-cards-grid {
@@ -82,6 +86,14 @@
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 12px;
   margin-top: 16px;
+
+  .industry-card {
+    animation: stackIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+
+    @for $i from 1 through 12 {
+      &:nth-child(#{$i}) { animation-delay: #{0.26 + $i * 0.04}s; }
+    }
+  }
 }
 
 .industry-card {
