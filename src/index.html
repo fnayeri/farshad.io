@@ -75,19 +75,39 @@ layout: default
 </div>
 
 <div class="header-row">
-  <div class="header-content">
-    <div class="title-section">
-      <h3 class="home-subheading">Selected Work</h3>
-    </div>
-  </div>
   <div class="filter-container">
+    <div class="view-controls">
+      <div class="view-icons">
+        <button class="view-icon" id="bento-icon" data-view="bento">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2" />
+            <rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2" />
+            <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2" />
+            <rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2" />
+          </svg>
+        </button>
+        <button class="view-icon" id="list-icon" data-view="list">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="6" width="18" height="2" rx="1" stroke="currentColor" stroke-width="2" />
+            <rect x="3" y="11" width="18" height="2" rx="1" stroke="currentColor" stroke-width="2" />
+            <rect x="3" y="16" width="18" height="2" rx="1" stroke="currentColor" stroke-width="2" />
+          </svg>
+        </button>
+        <button class="view-icon" id="chart-icon" data-view="chart">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="14" width="4" height="6" rx="1" stroke="currentColor" stroke-width="2" />
+            <rect x="10" y="8" width="4" height="12" rx="1" stroke="currentColor" stroke-width="2" />
+            <rect x="16" y="4" width="4" height="16" rx="1" stroke="currentColor" stroke-width="2" />
+          </svg>
+        </button>
+      </div>
+    </div>
     <div class="filter-group">
       <div class="filter-label">Industry</div>
       <div class="filter-tags">
         <span class="filter-tag" data-category="industry" data-tag="financial">financial</span>
         <span class="filter-tag" data-category="industry" data-tag="healthcare">healthcare</span>
-        <span class="filter-tag" data-category="industry" data-tag="retail">retail</span>
-        <span class="filter-tag" data-category="industry" data-tag="consumer">consumer</span>
+        <span class="filter-tag" data-category="industry" data-tag="retail,consumer">Retail & Consumer</span>
         <span class="filter-tag" data-category="industry" data-tag="telecomm">telecomm</span>
         <span class="filter-tag" data-category="industry" data-tag="management">management</span>
       </div>
@@ -107,32 +127,33 @@ layout: default
         <span class="filter-tag" data-category="technology" data-tag="product strategy">product strategy</span>
       </div>
     </div>
-    <div class="view-controls">
-      <div class="view-icons">
-        <button class="view-icon" id="bento-icon" data-view="bento">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2" />
-            <rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2" />
-            <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2" />
-            <rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2" />
-          </svg>
-        </button>
-        <button class="view-icon" id="list-icon" data-view="list">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="3" y="6" width="18" height="2" rx="1" stroke="currentColor" stroke-width="2" />
-            <rect x="3" y="11" width="18" height="2" rx="1" stroke="currentColor" stroke-width="2" />
-            <rect x="3" y="16" width="18" height="2" rx="1" stroke="currentColor" stroke-width="2" />
-          </svg>
-        </button>
-      </div>
-    </div>
+  </div>
+</div>
+
+<div class="icon-lines">
+  <div class="bento-box projects">
+    {% for p in site.data.portfolio %}
+    {% if p.name %}
+    <a style='color: #{{ p.color | default: "000000" }}' href='{{ p.permalink | relative_url }}'>
+          <div class='bento'
+            style='color: #{{ p.color | default: "000000" }}; background-color: #{{ p.background | default: "ffffff" }}; border-color: #{{ p.border | append: "77" | default: p.background | default: "ffffff" }};'
+            data-tags='{{ p.tags | join: "," }}' data-role='{{ p.role | strip }}'>
+            <div class='icon-area'>
+              <img class='portfolio-image' src='/assets/logos/{{ p.name }}.png' alt='{{ p.title | default: "" }}' />
+              <h2 class='subtitle'>{{ p.customer }} &rarr;</h2>
+            </div>
+            <h2 class='title'>{{ p.title }}</h2>
+          </div>
+    </a>
+    {% endif %}
+    {% endfor %}
   </div>
 </div>
 
 <div class="text-lines">
   <table class="portfolio-table">
     {% for p in site.data.portfolio %}{% if p.name %}
-    <tr class="project" data-tags="{{ p.tags | join: ',' }}">
+    <tr class="project" data-tags="{{ p.tags | join: ',' }}" data-role="{{ p.role | strip }}">
       <td class="portfolio-cell">
         <a href='{{ p.permalink | relative_url }}' class="portfolio-link">
           <div class="portfolio-content">
@@ -161,29 +182,308 @@ layout: default
   </table>
 </div>
 
-<div class="icon-lines">
-  <div class="bento-box projects">
-    {% for p in site.data.portfolio %}
-    {% if p.name %}
-    <a style='color: #{{ p.color | default: "000000" }}' href='{{ p.permalink | relative_url }}'>
-      <div class='bento'
-        style='color: #{{ p.color | default: "000000" }}; background-color: #{{ p.background | default: "ffffff" }}; border-color: #{{ p.border | append: "77" | default: p.background | default: "ffffff" }};'
-        data-tags='{{ p.tags | join: "," }}'>
-        <h2 class='title'>{{ p.title }}</h2>
-        <img class='portfolio-image' src='/assets/logos/{{ p.name }}.png' alt='{{ p.title | default: "" }}' />
-        <h2 class='subtitle' style='vertical-align: top;'>{{ p.customer}}&rarr;</h2>
-      </div>
-    </a>
-    {% endif %}
-    {% endfor %}
+<div class="format-chart-view">
+  <div class="analytics-grid">
+    <div class="chart-card">
+      <h4>Roles</h4>
+      <p class="chart-description">Leadership positions held across projects</p>
+      <div class="chart-area"><canvas id="roles-chart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Industry</h4>
+      <p class="chart-description">Sector diversification across engagements</p>
+      <div class="chart-area"><canvas id="industry-chart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Core Skills</h4>
+      <p class="chart-description">Technology skills by role</p>
+      <div class="chart-area chart-area--tall"><canvas id="tech-chart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Experience</h4>
+      <p class="chart-description">Strengths across key dimensions</p>
+      <div class="chart-area"><canvas id="capability-chart"></canvas></div>
+    </div>
+  </div>
+  <div class="chart-card industry-section">
+    <h4>Industry Experience</h4>
+    <p class="chart-description">Sectors with direct project engagement</p>
+    <div class="industry-cards-grid" id="industry-cards"></div>
   </div>
 </div>
+
+<script>
+const portfolioData = [
+  {% for p in site.data.portfolio %}{% if p.name %}
+  { name: {{ p.name | jsonify }}, customer: {{ p.customer | strip | jsonify }}, role: {{ p.role | strip | jsonify }}, tags: [{% for tag in p.tags %}{{ tag | strip | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}], title: {{ p.title | jsonify }} },
+  {% endif %}{% endfor %}
+];
+
+let chartsInitialized = false;
+
+function initCharts() {
+  if (chartsInitialized) return;
+  if (typeof Chart === 'undefined') {
+    const s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/chart.js@4';
+    s.onload = createCharts;
+    document.head.appendChild(s);
+  } else {
+    createCharts();
+  }
+}
+
+function createCharts() {
+  try {
+    chartsInitialized = true;
+    const rolePalette = ['#6366f1','#22c55e','#f59e0b','#06b6d4','#a855f7','#f43f5e','#ec4899','#14b8a6'];
+    const industryPalette = ['#0ea5e9','#8b5cf6','#10b981','#f97316','#e11d48','#64748b','#14b8a6','#a855f7'];
+
+    Chart.defaults.color = '#333';
+    Chart.defaults.borderColor = 'rgba(0,0,0,0.08)';
+    Chart.defaults.font.family = 'Inter';
+    Chart.defaults.font.size = 11;
+
+    var hoverLabelPlugin = {
+      id: 'hoverLabel',
+      beforeInit: function(chart) { chart._hoverIdx = -1; },
+      afterEvent: function(chart, args) {
+        var e = args.event;
+        if (e.type === 'mousemove' || e.type === 'mouseout') {
+          var els = chart.getElementsAtEventForMode(e, 'nearest', { intersect: true });
+          var idx = els.length ? els[0].index : -1;
+          if (chart._hoverIdx !== idx) {
+            chart._hoverIdx = idx;
+            chart.update('active');
+          }
+        }
+      }
+    };
+    Chart.register(hoverLabelPlugin);
+
+    const ttCfg = {
+      backgroundColor: 'rgba(255,255,255,0.95)',
+      titleColor: '#222',
+      bodyColor: '#333',
+      borderColor: 'rgba(0,0,0,0.1)',
+      titleFont: { size: 13, weight: '600' },
+      bodyFont: { size: 12 },
+      padding: 12,
+      cornerRadius: 8,
+      displayColors: true,
+      boxPadding: 4
+    };
+
+    function gotoList(filterType, value) {
+      var url = '/?fmt=list';
+      if (filterType === 'role') url += '&role=' + encodeURIComponent(value);
+      else if (filterType === 'tag') url += '&tag=' + encodeURIComponent(value);
+      window.location.href = url;
+    }
+
+    // Industry → tag for links (Retail & Consumer uses multi-tag)
+    var indToTag = { 'Financial Services': 'financial', 'Healthcare': 'healthcare', 'Innovation': 'management', 'Telecom': 'telecomm', 'Retail & Consumer': 'retail,consumer', 'Government': 'government' };
+    var capToTag = { 'Product Strategy': 'product strategy', 'Native Apps': 'native apps', 'Web Development': 'web apps', 'Data & Analytics': 'analytics', 'Cloud & APIs': 'api design', 'Architecture': 'architecture' };
+
+    // Roles
+    var roleCounts = {};
+    portfolioData.forEach(function(p) { roleCounts[p.role] = (roleCounts[p.role] || 0) + 1; });
+    var roleLabels = Object.keys(roleCounts).sort(function(a, b) { return roleCounts[b] - roleCounts[a]; });
+    var roleValues = roleLabels.map(function(r) { return roleCounts[r]; });
+
+    // Industries (Retail + Consumer combined, Management & Innovation → Innovation)
+    var industryMap = {
+      'Financial Services': ['financial'],
+      'Healthcare': ['healthcare'],
+      'Innovation': ['management', 'innovation research'],
+      'Telecom': ['telecomm'],
+      'Retail & Consumer': ['retail', 'consumer'],
+      'Government': ['government']
+    };
+    var industryCounts = {};
+    Object.keys(industryMap).forEach(function(k) { industryCounts[k] = 0; });
+    portfolioData.forEach(function(p) {
+      var tags = p.tags.map(function(t) { return t.toLowerCase(); });
+      Object.keys(industryMap).forEach(function(ind) {
+        if (industryMap[ind].some(function(kw) { return tags.indexOf(kw) !== -1; })) industryCounts[ind]++;
+      });
+    });
+    var indLabels = Object.keys(industryCounts).filter(function(k) { return industryCounts[k] > 0; }).sort(function(a, b) { return industryCounts[b] - industryCounts[a]; });
+    var indValues = indLabels.map(function(k) { return industryCounts[k]; });
+
+    // Core Skills: horizontal stacked bars by role
+    var industryTags = ['financial','healthcare','telecomm','retail','consumer','government','management','innovation research'];
+    var techCounts = {};
+    portfolioData.forEach(function(p) {
+      p.tags.forEach(function(t) {
+        var tl = t.toLowerCase();
+        if (industryTags.indexOf(tl) === -1) techCounts[tl] = (techCounts[tl] || 0) + 1;
+      });
+    });
+    var techLabels = Object.keys(techCounts).sort(function(a, b) { return techCounts[b] - techCounts[a]; });
+    var roleOrder = roleLabels.slice();
+    var techStackData = roleOrder.map(function(role, roleIdx) {
+      return {
+        label: role,
+        data: techLabels.map(function(tag) {
+          var c = 0;
+          portfolioData.forEach(function(p) {
+            if (p.role !== role) return;
+            var ptags = p.tags.map(function(t) { return t.toLowerCase(); });
+            if (ptags.indexOf(tag) !== -1) c++;
+          });
+          return c;
+        }),
+        backgroundColor: rolePalette[roleIdx % rolePalette.length],
+        borderWidth: 0,
+        techLabels: techLabels,
+        role: role
+      };
+    });
+
+    // Capability radar
+    var capGroups = {
+      'Product Strategy': ['product strategy', 'product design'],
+      'Native Apps': ['native apps'],
+      'Web Development': ['web apps', 'web app'],
+      'Cloud & APIs': ['cloud services', 'saas platform', 'api design'],
+      'Data & Analytics': ['analytics', 'visualization'],
+      'Architecture': ['architecture', 'platform']
+    };
+    var capLabels = Object.keys(capGroups);
+    var capValues = capLabels.map(function(cap) {
+      var kws = capGroups[cap];
+      var c = 0;
+      portfolioData.forEach(function(p) {
+        var ptags = p.tags.map(function(t) { return t.toLowerCase(); });
+        if (kws.some(function(kw) { return ptags.indexOf(kw) !== -1; })) c++;
+      });
+      return c;
+    });
+
+    // --- Charts ---
+
+    new Chart(document.getElementById('roles-chart'), {
+      type: 'doughnut',
+      data: {
+        labels: roleLabels,
+        datasets: [{ data: roleValues, backgroundColor: rolePalette.slice(0, roleLabels.length), borderWidth: 0, hoverOffset: 12, hoverBorderWidth: 2 }]
+      },
+      options: {
+        cutout: '65%',
+        responsive: true,
+        maintainAspectRatio: false,
+        onClick: function(evt, els) {
+          if (els.length && roleLabels[els[0].index]) gotoList('role', roleLabels[els[0].index]);
+        },
+        plugins: {
+          legend: { position: 'right', labels: { usePointStyle: true, pointStyle: 'circle', font: { size: 11 }, padding: 16, color: '#333' }, onClick: function(e, legendItem, legend) {
+            if (roleLabels[legendItem.index] !== undefined) gotoList('role', roleLabels[legendItem.index]);
+          } },
+          tooltip: ttCfg
+        }
+      }
+    });
+
+    new Chart(document.getElementById('industry-chart'), {
+      type: 'polarArea',
+      data: {
+        labels: indLabels,
+        datasets: [{ data: indValues, backgroundColor: indLabels.map(function(_, i) { return industryPalette[i % industryPalette.length] + '99'; }), borderWidth: 0, hoverBorderWidth: 2 }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        onClick: function(evt, els) {
+          if (els.length && indLabels[els[0].index] && indToTag[indLabels[els[0].index]]) gotoList('tag', indToTag[indLabels[els[0].index]]);
+        },
+        scales: { r: { grid: { color: 'rgba(0,0,0,0.06)' }, ticks: { display: false }, beginAtZero: true } },
+        plugins: {
+          legend: { position: 'right', labels: { usePointStyle: true, pointStyle: 'circle', font: { size: 10 }, padding: 12, color: '#333' }, onClick: function(e, legendItem, legend) {
+            if (indLabels[legendItem.index] && indToTag[indLabels[legendItem.index]]) gotoList('tag', indToTag[indLabels[legendItem.index]]);
+          } },
+          tooltip: ttCfg
+        }
+      }
+    });
+
+    new Chart(document.getElementById('tech-chart'), {
+      type: 'bar',
+      data: {
+        labels: techLabels,
+        datasets: techStackData
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: { stacked: true, grid: { color: 'rgba(0,0,0,0.06)' }, ticks: { color: '#333' } },
+          y: { stacked: true, grid: { display: false }, ticks: { color: '#333' } }
+        },
+        onClick: function(evt, els) {
+          if (els.length) {
+            var tag = techLabels[els[0].index];
+            if (tag) gotoList('tag', tag);
+          }
+        },
+        plugins: {
+          legend: { position: 'right', labels: { usePointStyle: true, pointStyle: 'rect', font: { size: 11 }, padding: 10, color: '#333' } },
+          tooltip: Object.assign({}, ttCfg, { callbacks: { label: function(ctx) { var role = techStackData[ctx.datasetIndex].role; var val = ctx.raw; return role + ': ' + val; } } })
+        }
+      }
+    });
+
+    new Chart(document.getElementById('capability-chart'), {
+      type: 'radar',
+      data: {
+        labels: capLabels,
+        datasets: [{
+          data: capValues,
+          backgroundColor: rolePalette[4] + '44',
+          borderColor: rolePalette[4],
+          borderWidth: 2,
+          pointBackgroundColor: rolePalette[4],
+          pointBorderColor: '#fff',
+          pointBorderWidth: 2,
+          pointRadius: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        onClick: function(evt, els) {
+          if (els.length && capLabels[els[0].index] && capToTag[capLabels[els[0].index]]) gotoList('tag', capToTag[capLabels[els[0].index]]);
+        },
+        scales: { r: { grid: { color: 'rgba(0,0,0,0.06)' }, angleLines: { color: 'rgba(0,0,0,0.06)' }, ticks: { display: false }, beginAtZero: true } },
+        plugins: { legend: { display: false }, tooltip: ttCfg }
+      }
+    });
+
+    // Industry cards (links)
+    var cardsEl = document.getElementById('industry-cards');
+    cardsEl.innerHTML = '';
+    indLabels.forEach(function(ind, i) {
+      var tag = indToTag[ind] || ind.toLowerCase().replace(/\s+/g, '-');
+      var card = document.createElement('a');
+      card.className = 'industry-card';
+      card.href = '/?fmt=list&tag=' + encodeURIComponent(tag);
+      card.innerHTML = '<div class="industry-count" style="color:' + industryPalette[i % industryPalette.length] + '">' + industryCounts[ind] + '</div><div class="industry-name">' + ind + '</div>';
+      cardsEl.appendChild(card);
+    });
+
+  } catch (e) {
+    console.error('Chart initialization failed:', e);
+  }
+}
+</script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     let appState = {
         view: 'bento',
         activeTag: null,
+        activeRole: null,
         activeFilter: null
     };
 
@@ -211,44 +511,74 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             url.searchParams.delete('tag');
         }
+        if (appState.activeRole) {
+            url.searchParams.set('role', appState.activeRole);
+        } else {
+            url.searchParams.delete('role');
+        }
         window.history.pushState(appState, '', url);
     }
 
     function parseURL() {
         const urlParams = new URLSearchParams(window.location.search);
         const fmtParam = urlParams.get('fmt');
-        const tagParam = urlParams.get('tag');
+        var tagParam = urlParams.get('tag');
+        const roleParam = urlParams.get('role');
+        if (tagParam) {
+            tagParam = decodeURIComponent(tagParam);
+            if (tagParam === 'retail' || tagParam === 'consumer') tagParam = 'retail,consumer';
+        }
 
+        var view = fmtParam || 'bento';
+        if (view === 'analytics') view = 'chart';
         return {
-            view: fmtParam || 'bento',
-            activeTag: tagParam ? decodeURIComponent(tagParam) : null
+            view: view,
+            activeTag: tagParam || null,
+            activeRole: roleParam ? decodeURIComponent(roleParam) : null
         };
     }
 
     function render() {
         const textLines = document.querySelector('.text-lines');
         const iconLines = document.querySelector('.icon-lines');
+        const chartView = document.querySelector('.format-chart-view');
         const bentoIcon = document.getElementById('bento-icon');
         const listIcon = document.getElementById('list-icon');
+        const chartIcon = document.getElementById('chart-icon');
+        const filterGroups = document.querySelectorAll('.filter-group');
 
-        if (appState.view === 'list') {
+        textLines.style.display = 'none';
+        iconLines.style.display = 'none';
+        chartView.style.display = 'none';
+        bentoIcon.classList.remove('active');
+        listIcon.classList.remove('active');
+        chartIcon.classList.remove('active');
+        filterGroups.forEach(function(g) { g.style.display = ''; });
+
+        if (appState.view === 'chart') {
+            chartView.style.display = 'block';
+            chartIcon.classList.add('active');
+            filterGroups.forEach(function(g) { g.style.display = 'none'; });
+            initCharts();
+        } else if (appState.view === 'list') {
             textLines.style.display = 'block';
-            iconLines.style.display = 'none';
             listIcon.classList.add('active');
-            bentoIcon.classList.remove('active');
         } else {
             iconLines.style.display = 'block';
-            textLines.style.display = 'none';
             bentoIcon.classList.add('active');
-            listIcon.classList.remove('active');
         }
 
-        if (appState.activeTag) {
+        if (appState.activeRole) {
+            filterByRole(appState.activeRole);
+            highlightActiveFilterRole(appState.activeRole);
+        } else if (appState.activeTag) {
             filterByTag(appState.activeTag);
             highlightActiveFilterTag(appState.activeTag);
         } else {
             clearFilter();
         }
+
+        if (appState.view === 'chart') initCharts();
 
         const url = new URL(window.location);
         if (appState.view !== 'bento') {
@@ -260,6 +590,11 @@ document.addEventListener('DOMContentLoaded', function() {
             url.searchParams.set('tag', appState.activeTag);
         } else {
             url.searchParams.delete('tag');
+        }
+        if (appState.activeRole) {
+            url.searchParams.set('role', appState.activeRole);
+        } else {
+            url.searchParams.delete('role');
         }
         window.history.pushState(appState, '', url);
     }
@@ -278,6 +613,11 @@ document.addEventListener('DOMContentLoaded', function() {
         setState({ view: 'list' });
     });
 
+    document.getElementById('chart-icon').addEventListener('click', function(e) {
+        e.preventDefault();
+        setState({ view: 'chart' });
+    });
+
     window.addEventListener('popstate', function(event) {
         const urlState = parseURL();
         setState(urlState);
@@ -294,8 +634,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (!isClickInFilter && !isClickInHeader) {
             const activeTags = document.querySelectorAll('.filter-tag.active');
-            if (activeTags.length > 0) {
-                setState({ activeTag: null });
+            if (activeTags.length > 0 || appState.activeRole) {
+                setState({ activeTag: null, activeRole: null });
                 activeTags.forEach(tag => {
                     tag.classList.remove('active');
                 });
@@ -315,11 +655,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if (this.classList.contains('active')) {
                     this.classList.remove('active');
-                    setState({ activeTag: null });
+                    setState({ activeTag: null, activeRole: null });
                 } else {
                     clearActiveTagsInCategory(category);
                     this.classList.add('active');
-                    setState({ activeTag: tagText });
+                    setState({ activeTag: tagText, activeRole: null });
                 }
             });
         });
@@ -344,15 +684,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function makeTagsClickable() {
-        const tagBubbles = document.querySelectorAll('.tag-bubble');
-        tagBubbles.forEach(tag => {
-            tag.style.cursor = 'pointer';
-            tag.addEventListener('click', function(e) {
+        document.querySelectorAll('.tag-bubble').forEach(tag => { tag.style.cursor = 'pointer'; });
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.tag-bubble')) {
                 e.preventDefault();
                 e.stopPropagation();
-                const tagText = this.textContent.trim();
-                setState({ activeTag: tagText });
-            });
+                var tagText = e.target.closest('.tag-bubble').textContent.trim().toLowerCase();
+                if (tagText === 'retail' || tagText === 'consumer') tagText = 'retail,consumer';
+                setState({ activeTag: tagText, activeRole: null });
+            }
         });
 
         const portfolioTags = document.querySelectorAll('.portfolio-item .tag');
@@ -375,34 +715,64 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-function filterByTag(selectedTag) {
+function filterByRole(role) {
     const projects = document.querySelectorAll('.project, .bento');
-    let visibleCount = 0;
-
     const isListView = window.appState && window.appState.view === 'list';
     const isBentoView = window.appState && window.appState.view === 'bento';
 
     projects.forEach(project => {
+        const projRole = project.getAttribute('data-role');
+        var show = projRole && projRole.trim() === role.trim();
+        project.style.display = show ? '' : 'none';
+        if (show) { project.style.opacity = '1'; project.style.pointerEvents = ''; }
+        var parent = project.closest('a');
+        if (parent && project.classList.contains('bento')) parent.style.display = show ? '' : 'none';
+    });
+
+    if (isListView) {
+        const portfolioTable = document.querySelector('.portfolio-table');
+        const textLinesContainer = document.querySelector('.text-lines');
+        const existingFilteredContainer = document.querySelector('.filtered-projects-container');
+        if (existingFilteredContainer) existingFilteredContainer.remove();
+        const filteredContainer = document.createElement('div');
+        filteredContainer.className = 'filtered-projects-container';
+        filteredContainer.style.cssText = 'display:flex;flex-direction:column;gap:20px;justify-content:flex-start;align-items:stretch;width:100%;max-width:100%;min-width:100%;';
+        projects.forEach(project => {
+            if (project.style.display !== 'none') {
+                var cell = project.querySelector('.portfolio-cell');
+                if (cell) {
+                    var cloned = cell.cloneNode(true);
+                    cloned.style.cssText = 'width:100%;min-width:100%;flex:1 1 100%;padding:8px 15px;margin:0;display:block;box-sizing:border-box;';
+                    filteredContainer.appendChild(cloned);
+                }
+            }
+        });
+        if (portfolioTable) portfolioTable.style.display = 'none';
+        textLinesContainer.appendChild(filteredContainer);
+    }
+}
+
+function highlightActiveFilterRole(role) {
+    document.querySelectorAll('.filter-tag.active').forEach(t => t.classList.remove('active'));
+}
+
+function filterByTag(selectedTag) {
+    const projects = document.querySelectorAll('.project, .bento');
+    const isListView = window.appState && window.appState.view === 'list';
+    const isBentoView = window.appState && window.appState.view === 'bento';
+    var selectedTags = selectedTag.split(',').map(function(t) { return t.trim().toLowerCase(); }).filter(Boolean);
+
+    projects.forEach(project => {
         const tags = project.getAttribute('data-tags');
+        var show = false;
         if (tags) {
             const tagArray = tags.split(',').map(tag => tag.trim().toLowerCase());
-            const selectedTagLower = selectedTag.toLowerCase();
-
-            if (tagArray.includes(selectedTagLower)) {
-                project.style.display = '';
-                project.style.opacity = '1';
-                project.style.transition = 'opacity 0.3s ease';
-                visibleCount++;
-            } else {
-                project.style.opacity = '0.15';
-                project.style.transition = 'opacity 0.3s ease';
-                project.style.pointerEvents = 'none';
-            }
-        } else {
-            project.style.opacity = '0.15';
-            project.style.transition = 'opacity 0.3s ease';
-            project.style.pointerEvents = 'none';
+            show = selectedTags.some(function(st) { return tagArray.includes(st); });
         }
+        project.style.display = show ? '' : 'none';
+        if (show) { project.style.opacity = '1'; project.style.pointerEvents = ''; }
+        var parent = project.closest('a');
+        if (parent && project.classList.contains('bento')) parent.style.display = show ? '' : 'none';
     });
 
     if (isListView) {
@@ -428,7 +798,7 @@ function filterByTag(selectedTag) {
         `;
 
         projects.forEach(project => {
-            if (project.style.opacity === '1' || project.style.opacity === '') {
+            if (project.style.display !== 'none') {
                 const cell = project.querySelector('.portfolio-cell');
                 if (cell) {
                     const clonedCell = cell.cloneNode(true);
@@ -454,10 +824,10 @@ function filterByTag(selectedTag) {
     } else if (isBentoView) {
         const bentoBox = document.querySelector('.bento-box');
         if (bentoBox) {
-            bentoBox.style.display = 'grid';
-            bentoBox.style.gridTemplateColumns = 'repeat(3, 1fr)';
-            bentoBox.style.gap = '20px';
-            bentoBox.style.justifyContent = 'center';
+            bentoBox.style.display = '';
+            bentoBox.style.gridTemplateColumns = '';
+            bentoBox.style.gap = '';
+            bentoBox.style.justifyContent = '';
         }
     }
 }
@@ -470,6 +840,8 @@ function clearFilter() {
         project.style.margin = '';
         project.style.opacity = '1';
         project.style.pointerEvents = '';
+        var parent = project.closest('a');
+        if (parent && project.classList.contains('bento')) parent.style.display = '';
     });
 
     const portfolioTable = document.querySelector('.portfolio-table');

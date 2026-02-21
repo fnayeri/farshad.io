@@ -227,24 +227,24 @@ a.button {
   }
 }
 
-// View controls
+// View controls (above filter keywords)
 .view-controls {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  margin-top: 10px;
+  gap: 20px;
+  margin-bottom: 16px;
 }
 
 .view-icons {
   display: flex;
-  gap: 8px;
+  gap: 12px;
 }
 
 .view-icon {
   color: $secondary;
-  padding: 4px;
-  border-radius: 4px;
+  padding: 10px;
+  border-radius: 8px;
   transition: all 0.2s ease;
   background: none;
   border: none;
@@ -253,8 +253,26 @@ a.button {
   align-items: center;
   justify-content: center;
 
+  svg {
+    width: 40px;
+    height: 40px;
+    shape-rendering: crispEdges;
+    @include small { width: 36px; height: 36px; }
+  }
+
   &:hover { color: $black; background: $bg-light; }
   &.active { color: $black; background: $light; }
+}
+
+@keyframes lineIn {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 // Portfolio list view
@@ -304,6 +322,14 @@ a.button {
   width: 100%;
   border-spacing: 0;
   border-collapse: separate;
+
+  tr.project {
+    animation: lineIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+
+    @for $i from 1 through 25 {
+      &:nth-child(#{$i}) { animation-delay: #{$i * 0.04}s; }
+    }
+  }
 
   &.filtered {
     display: flex;
@@ -418,6 +444,14 @@ a.button {
 // Filtered projects container
 .filtered-projects-container {
   width: 100%;
+
+  > * {
+    animation: lineIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+
+    @for $i from 1 through 25 {
+      &:nth-child(#{$i}) { animation-delay: #{$i * 0.04}s; }
+    }
+  }
 
   .portfolio-cell {
     width: 100%;

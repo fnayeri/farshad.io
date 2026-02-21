@@ -1,0 +1,119 @@
+// Format Chart view — light theme (white bg, dark text)
+.format-chart-view {
+  display: none;
+  padding: 20px 0;
+  margin: 0;
+  animation: analyticsIn 0.4s ease;
+}
+
+@keyframes analyticsIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0);   }
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+
+  @include tablet { grid-template-columns: 1fr; }
+}
+
+.chart-card {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.06), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    border-color: rgba(0, 0, 0, 0.15);
+    &::before { opacity: 1; }
+  }
+
+  h4 {
+    color: #222;
+    font-size: 1em;
+    margin: 0 0 4px 0;
+    font-weight: 600;
+  }
+
+  @include mobile {
+    padding: 16px;
+    border-radius: 14px;
+  }
+}
+
+.chart-description {
+  color: #666;
+  font-size: 11px;
+  margin: 0 0 16px 0;
+}
+
+.chart-area {
+  position: relative;
+  height: 280px;
+}
+
+.chart-area--tall {
+  height: 380px;
+}
+
+.industry-section {
+  margin-top: 20px;
+}
+
+.industry-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.industry-card {
+  background: #f8f8f8;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 14px;
+  padding: 20px 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+
+  &:hover {
+    border-color: rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+    background: #f0f0f0;
+  }
+}
+
+.industry-count {
+  font-size: 2em;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 8px;
+  color: inherit;
+}
+
+.industry-name {
+  color: #666;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
