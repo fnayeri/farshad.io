@@ -24,6 +24,7 @@
   flex-direction: column;
   padding: 0 5px 10px 15px;
   border-radius: 30px;
+  overflow: hidden;
   background-color: $black;
   color: $white;
 
@@ -31,6 +32,8 @@
     color: $white;
     font-weight: bold;
     &:hover { text-decoration: underline; }
+
+    &.no-bold { font-weight: normal; }
   }
 
   img {
@@ -66,7 +69,7 @@
     line-height: 1.6em;
     padding: 0 10px;
 
-    b { text-transform: uppercase; }
+    b { text-transform: uppercase; letter-spacing: $uppercase-letter-spacing; }
   }
 
   @include mobile { flex-direction: column; }
@@ -84,6 +87,316 @@ a.button {
   margin: 5px;
   height: 1.4em;
   color: $white;
+}
+
+// Showcase carousel
+.showcase-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  .showcase-slide:first-child .showcase {
+    padding-top: 0;
+    padding-bottom: 0;
+
+    h3 {
+      margin-top: 0;
+      padding-top: 0;
+      margin-bottom: 8px;
+    }
+  }
+
+  .carousel-card {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 24px;
+    padding: 24px 28px;
+    background: $black;
+    min-height: 220px;
+    border-radius: 30px;
+    overflow: hidden;
+
+    .carousel-description {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      p {
+        margin: 0;
+        padding: 0;
+        line-height: 1.55em;
+        font-size: 1.25em;
+        flex: 1;
+        padding-right: 16px;
+        text-align: left;
+
+        @include small {
+          font-size: 1.1em;
+        }
+      }
+
+      .carousel-link {
+        display: inline-block;
+        margin-top: 16px;
+        font-size: 1em;
+        font-weight: bold;
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 8px;
+        color: $white;
+        text-decoration: none;
+        transition: background 0.2s, border-color 0.2s;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.25);
+          border-color: $white;
+        }
+      }
+    }
+
+    .carousel-graphic {
+      flex: 0 0 auto;
+      display: block;
+
+      img {
+        display: block;
+        max-width: 280px;
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        object-fit: cover;
+
+        @include small {
+          max-width: 200px;
+        }
+      }
+    }
+
+    &.carousel-card-hero {
+      padding: 8px 28px 8px;
+      margin: 0;
+      min-height: auto;
+
+      .carousel-description {
+        p {
+          font-size: 1.45em;
+          line-height: 1.5em;
+        }
+
+        .carousel-links {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin-top: 12px;
+
+          .carousel-link {
+            margin: 0;
+          }
+        }
+      }
+
+      @include mobile {
+        padding: 8px 20px 8px;
+        gap: 16px;
+
+        .carousel-description p {
+          font-size: 1.15em;
+          line-height: 1.45em;
+        }
+
+        .carousel-links {
+          gap: 8px;
+          margin-top: 10px;
+
+          .carousel-link {
+            font-size: 0.9em;
+            padding: 6px 12px;
+          }
+        }
+
+        .carousel-graphic img {
+          max-width: 180px;
+        }
+      }
+
+      @include small {
+        padding: 6px 16px 6px;
+        gap: 12px;
+
+        .carousel-description p {
+          font-size: 1em;
+          line-height: 1.4em;
+        }
+
+        .carousel-links {
+          gap: 6px;
+          margin-top: 8px;
+
+          .carousel-link {
+            font-size: 0.85em;
+            padding: 5px 10px;
+          }
+        }
+
+        .carousel-graphic img {
+          max-width: 140px;
+        }
+      }
+    }
+
+    &.carousel-card-vertical {
+      flex-direction: column;
+      align-items: stretch;
+      text-align: left;
+      padding: 0;
+
+      .carousel-description {
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 24px 28px 16px;
+        gap: 20px;
+
+        .carousel-link-left {
+          flex-shrink: 0;
+          margin-top: 0;
+        }
+
+        p {
+          flex: 1;
+          padding-right: 0;
+          text-align: left;
+          margin: 0;
+        }
+      }
+
+      .carousel-graphic {
+        width: calc(100% - 48px);
+        margin: 0 24px;
+        align-self: stretch;
+        overflow: hidden;
+        min-width: 0;
+        flex: 1;
+        min-height: 200px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          display: block;
+          object-fit: cover;
+          object-position: left center;
+        }
+      }
+    }
+
+    @include mobile {
+      flex-direction: column;
+      gap: 16px;
+      min-height: auto;
+    }
+
+    @include small {
+      flex-direction: column;
+      align-items: stretch;
+      text-align: left;
+      padding: 20px;
+
+      .carousel-description {
+        align-items: flex-start;
+
+        p {
+          padding-right: 0;
+          text-align: left;
+        }
+      }
+
+      &.carousel-card-vertical .carousel-description {
+        flex-direction: column;
+      }
+
+      &.carousel-card-vertical .carousel-graphic {
+        width: calc(100% - 24px);
+        margin: 0 12px;
+      }
+
+      .carousel-graphic img {
+        max-width: none;
+      }
+    }
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.4s ease;
+  }
+
+  .showcase-slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .carousel-prev,
+  .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: $white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+    z-index: 2;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.35);
+      border-color: $white;
+    }
+  }
+
+  .carousel-prev { left: 12px; }
+  .carousel-next { right: 12px; }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 0;
+    z-index: 2;
+    position: relative;
+
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s;
+
+      &.active {
+        background: $white;
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.7);
+      }
+    }
+  }
 }
 
 .fullscreen-btn {
@@ -112,6 +425,7 @@ a.button {
   text-align: center;
   font-size: 1em;
   text-transform: uppercase;
+  letter-spacing: $uppercase-letter-spacing;
 }
 
 .header-row {
@@ -177,14 +491,14 @@ a.button {
   color: #495057;
   margin-bottom: 6px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: $uppercase-letter-spacing;
   text-align: center;
 }
 
 .filter-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 6px;
   justify-content: center;
 
   @include mobile { gap: 6px; }
@@ -194,16 +508,20 @@ a.button {
 .tag-bubble {
   background-color: #e0e0e0;
   color: $secondary;
-  padding: 5px 10px;
-  border-radius: $border-radius;
-  font-size: 0.8em;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  font-size: 0.75em;
+  font-weight: 600;
   text-transform: uppercase;
+  letter-spacing: $uppercase-letter-spacing;
   cursor: pointer;
   transition: all 0.2s ease;
   display: inline-block;
-  margin: 2px;
+  margin: 0;
   border: none;
   user-select: none;
+  line-height: 1.2;
 
   &:hover {
     transform: translateY(-1px);
@@ -213,7 +531,7 @@ a.button {
 
   @include small {
     font-size: 0.7em;
-    padding: 4px 8px;
+    padding: 5px 10px;
   }
 }
 
@@ -233,17 +551,17 @@ a.button {
   align-items: center;
   justify-content: center;
   gap: 20px;
-  margin-bottom: 16px;
+  margin-bottom: 4px;
 }
 
 .view-icons {
   display: flex;
-  gap: 12px;
+  gap: 24px;
 }
 
 .view-icon {
   color: $secondary;
-  padding: 10px;
+  padding: 8px;
   border-radius: 8px;
   transition: all 0.2s ease;
   background: none;
@@ -254,10 +572,10 @@ a.button {
   justify-content: center;
 
   svg {
-    width: 40px;
-    height: 40px;
+    width: 28px;
+    height: 28px;
     shape-rendering: crispEdges;
-    @include small { width: 36px; height: 36px; }
+    @include small { width: 24px; height: 24px; }
   }
 
   &:hover { color: $black; background: $bg-light; }
@@ -282,33 +600,71 @@ a.button {
   .tags-cell { display: none; }
 
   .portfolio-image {
-    width: 100px;
+    width: 130px;
     height: auto;
     object-fit: cover;
     border-radius: 8px;
 
     @include mobile {
-      max-width: 80px;
-      width: 80px;
+      max-width: 105px;
+      width: 105px;
       float: left;
       border-radius: 6px;
     }
 
     @include small {
-      max-width: 60px;
-      width: 60px;
+      max-width: 80px;
+      width: 80px;
       border-radius: 4px;
     }
   }
 
   .image-column {
-    flex: 0 0 100px;
-    max-width: 100px;
+    flex: 0 0 130px;
+    max-width: 130px;
+
+    @include mobile {
+      flex: 0 0 105px;
+      max-width: 105px;
+    }
 
     @include small {
-      flex: 0 0 60px;
-      max-width: 60px;
+      flex: 0 0 80px;
+      max-width: 80px;
     }
+  }
+
+  // Role + Subtitle/Project layout
+  .role {
+    font-size: 0.9em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: $uppercase-letter-spacing;
+    color: $secondary;
+    margin-bottom: 2px;
+
+    @include mobile { font-size: 0.8em; }
+  }
+
+  .subtitle-project {
+    font-size: 1em;
+    font-weight: 500;
+    color: inherit;
+
+    @include mobile { font-size: 0.9em; }
+  }
+
+  .body-text {
+    font-size: 0.75em;
+    color: $secondary;
+    line-height: 1.2;
+    margin-top: 4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    @include mobile { font-size: 0.7em; }
   }
 }
 
@@ -411,6 +767,7 @@ a.button {
   font-size: 1.2em;
   font-weight: normal;
   color: $secondary;
+  line-height: 1.1;
 
   @include mobile { font-size: 1em; }
 }

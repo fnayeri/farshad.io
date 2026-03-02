@@ -25,9 +25,7 @@ layout: default
 
     <div class="tags">
       {% for tag in page.tags %}
-      <span class="tag"
-        style="background-color: #{{ page.color | default: '888'}}; color: #{{ page.background | default: 'FFF' }};"
-        onclick="filterFromPortfolio('{{ tag }}')">{{ tag }}</span>
+      <span class="tag" onclick="filterFromPortfolio('{{ tag }}')">{{ tag }}</span>
       {% endfor %}
     </div>
 

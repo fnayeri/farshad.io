@@ -85,7 +85,7 @@ article {
     font-size: 20px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: $uppercase-letter-spacing;
     padding-left: 0;
     text-align: center;
   }
@@ -136,25 +136,26 @@ article {
   margin: 24px 0 20px 24px;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 6px;
 }
 
 .tag {
-  border-radius: $border-radius;
-  font-weight: bold;
-  padding: 5px 10px;
-  font-size: 0.8em;
+  background-color: #e0e0e0;
+  color: $secondary;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  font-size: 0.75em;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  vertical-align: middle;
+  letter-spacing: $uppercase-letter-spacing;
   cursor: pointer;
   transition: all 0.2s ease;
   display: inline-block;
-  margin: 2px;
+  margin: 0;
   border: none;
   user-select: none;
-  background-color: var(--tag-bg, #e0e0e0);
-  color: var(--tag-color, $secondary);
+  line-height: 1.2;
 
   &:hover {
     transform: translateY(-1px);
