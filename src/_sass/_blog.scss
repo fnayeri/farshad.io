@@ -1,0 +1,195 @@
+// Apple Newsroom–inspired blog styling
+$blog-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", sans-serif;
+$blog-text: #1d1d1f;
+$blog-text-secondary: #6e6e73;
+$blog-text-muted: #86868b;
+$blog-divider: rgba(0, 0, 0, 0.1);
+$blog-max-width: 680px;
+$blog-headline-size: 2.75rem;
+$blog-body-size: 1.0625rem;
+$blog-line-height: 1.5;
+
+.blog-page,
+.post {
+  font-family: $blog-font;
+  color: $blog-text;
+  max-width: $blog-max-width;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blog-page {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+
+  h1 {
+    font-size: $blog-headline-size;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin: 0 0 0.5rem;
+  }
+
+  .blog-intro {
+    font-size: $blog-body-size;
+    color: $blog-text-secondary;
+    line-height: $blog-line-height;
+    margin: 0 0 3rem;
+  }
+
+  .posts-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .post-item {
+    padding: 2rem 0;
+    border-bottom: 1px solid $blog-divider;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    a {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+
+      &:hover .post-title {
+        color: $blog-text-secondary;
+      }
+    }
+  }
+
+  .post-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+    margin: 0 0 0.5rem;
+  }
+
+  .post-date {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: $blog-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .post-excerpt {
+    margin: 0.75rem 0 0;
+    font-size: $blog-body-size;
+    color: $blog-text-secondary;
+    line-height: $blog-line-height;
+  }
+}
+
+// Individual post article (Apple Newsroom article style)
+article.post {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+
+  .post-back {
+    display: inline-block;
+    font-size: 0.875rem;
+    color: $blog-text-muted;
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+
+    &:hover {
+      color: $blog-text;
+    }
+  }
+
+  h1 {
+    font-size: $blog-headline-size;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin: 0 0 1rem;
+  }
+
+  .date {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: $blog-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 2rem;
+  }
+
+  .entry {
+    font-size: $blog-body-size;
+    line-height: 1.6;
+
+    p {
+      margin: 0 0 1em;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      margin: 2rem 0 0.75rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    strong {
+      font-weight: 600;
+    }
+
+    blockquote {
+      margin: 2rem 0;
+      padding: 0;
+      border: none;
+      font-size: 1.25rem;
+      font-weight: 500;
+      line-height: 1.4;
+      color: $blog-text-secondary;
+    }
+
+    ul, ol {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    table {
+      width: 100%;
+      margin: 1.5rem 0;
+      border-collapse: collapse;
+      font-size: 0.9375rem;
+
+      th, td {
+        padding: 0.5rem 1rem;
+        text-align: left;
+        border-bottom: 1px solid $blog-divider;
+      }
+
+      th {
+        font-weight: 600;
+        color: $blog-text-secondary;
+      }
+    }
+
+    a {
+      color: $blog-text;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+
+      &:hover {
+        color: $blog-text-secondary;
+      }
+    }
+  }
+}
