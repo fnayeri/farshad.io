@@ -697,7 +697,7 @@ function createCharts() {
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     let appState = {
-        view: 'chart',
+        view: 'list',
         activeTag: null,
         activeRole: null,
         activeFilter: null
@@ -747,7 +747,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (tagParam === 'cloud services' || tagParam === 'saas platform') tagParam = 'cloud saas';
         }
 
-        var view = fmtParam || 'chart';
+        var view = fmtParam || 'list';
         if (view === 'analytics' || view === 'graph') view = 'chart';
         return {
             view: view,
