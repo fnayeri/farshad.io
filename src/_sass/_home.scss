@@ -94,17 +94,52 @@ a.button {
   position: relative;
   overflow: hidden;
   border-radius: 30px;
-  margin-top: 0;
+  margin-top: 20px;
   margin-bottom: 0;
+  padding-left: 68px;
+  padding-right: 68px;
+
+  // Override .showcase img width so carousel images can fill their container
+  .carousel-graphic img {
+    width: 100%;
+  }
+
+  .showcase-slide .showcase {
+    padding-top: 0;
+  }
 
   .showcase-slide:first-child .showcase {
-    padding-top: 0;
     padding-bottom: 0;
 
     h3 {
       margin-top: 0;
       padding-top: 0;
-      margin-bottom: 8px;
+    }
+  }
+
+  .showcase-slide h3 {
+    margin-bottom: 4px;
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  @include mobile {
+    .carousel-card {
+      font-size: 0.85em;
+    }
+
+    .carousel-desc-text {
+      font-size: 1.05em !important;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      cursor: pointer;
+
+      &.carousel-desc-expanded {
+        -webkit-line-clamp: unset;
+        display: block;
+      }
     }
   }
 
@@ -113,8 +148,9 @@ a.button {
     flex-direction: row;
     align-items: stretch;
     gap: 24px;
-    padding: 24px 28px;
+    padding: 0 28px 24px;
     background: $black;
+    font-size: 0.92em;
     min-height: 220px;
     border-radius: 30px;
     overflow: hidden;
@@ -131,13 +167,13 @@ a.button {
         margin: 0;
         padding: 0;
         line-height: 1.55em;
-        font-size: 1.25em;
+        font-size: 1.2em;
         flex: 1;
         padding-right: 16px;
         text-align: left;
 
         @include small {
-          font-size: 1.1em;
+          font-size: 1.2em;
         }
       }
 
@@ -180,43 +216,54 @@ a.button {
     }
 
     &.carousel-card-hero {
-      padding: 8px 28px 8px;
+      padding: 0 28px 8px;
       margin: 0;
       min-height: auto;
 
       .carousel-description {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 12px 20px;
+
         p {
-          font-size: 1.45em;
+          font-size: 1.2em;
           line-height: 1.5em;
+          flex: 1 1 200px;
+          min-width: 0;
+          margin: 0;
         }
 
         .carousel-links {
           display: flex;
           flex-wrap: wrap;
-          gap: 12px;
-          margin-top: 12px;
+          gap: 8px;
+          margin: 0;
+          align-items: center;
 
           .carousel-link {
             margin: 0;
+            flex-shrink: 0;
           }
         }
       }
 
       @include mobile {
-        padding: 8px 20px 8px;
+        padding: 0 20px 8px;
         gap: 16px;
 
         .carousel-description p {
-          font-size: 1.15em;
+          font-size: 1.2em;
           line-height: 1.45em;
         }
 
         .carousel-links {
           gap: 8px;
-          margin-top: 10px;
+          margin-top: 0;
 
           .carousel-link {
-            font-size: 0.9em;
+            font-size: 1em;
             padding: 6px 12px;
           }
         }
@@ -227,26 +274,94 @@ a.button {
       }
 
       @include small {
-        padding: 6px 16px 6px;
+        padding: 0 16px 6px;
         gap: 12px;
 
         .carousel-description p {
-          font-size: 1em;
+          font-size: 1.2em;
           line-height: 1.4em;
         }
 
         .carousel-links {
           gap: 6px;
-          margin-top: 8px;
+          margin-top: 0;
 
           .carousel-link {
-            font-size: 0.85em;
+            font-size: 1em;
             padding: 5px 10px;
           }
         }
 
         .carousel-graphic img {
           max-width: 140px;
+        }
+      }
+    }
+
+    &.carousel-card-harvardxr {
+      flex-direction: column;
+      align-items: stretch;
+      text-align: left;
+      padding: 0;
+      gap: 0;
+
+      .carousel-header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        flex: none;
+        padding: 0 28px 0;
+      }
+
+      .carousel-text {
+        flex: 1;
+        min-width: 0;
+        margin: 0;
+        padding: 0;
+        line-height: 1.55em;
+        font-size: 1.2em;
+
+        @include small {
+          font-size: 1.2em;
+        }
+      }
+
+      .carousel-link-right {
+        flex: none;
+        align-self: flex-start;
+        margin: 0;
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 8px;
+        color: $white;
+        font-weight: bold;
+        text-decoration: none;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.25);
+          border-color: $white;
+        }
+      }
+
+      .carousel-graphic {
+        width: 100%;
+        margin: 0;
+        flex: 1;
+        min-height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: $black;
+        overflow: hidden;
+
+        img {
+          width: auto;
+          max-width: 100%;
+          height: auto;
+          max-height: 100%;
+          object-fit: contain;
         }
       }
     }
@@ -260,8 +375,27 @@ a.button {
       .carousel-description {
         flex-direction: row;
         align-items: flex-start;
+        flex-shrink: 0;
         padding: 24px 28px 16px;
         gap: 20px;
+
+        &.carousel-description-compact {
+          flex-direction: column;
+          justify-content: flex-start;
+          padding: 20px 28px 0;
+          gap: 0;
+
+          p {
+            flex: none;
+            margin: 0;
+          }
+
+          .carousel-link-right {
+            margin-left: 0;
+            margin-top: 0;
+            align-self: flex-start;
+          }
+        }
 
         .carousel-link-left {
           flex-shrink: 0;
@@ -279,12 +413,13 @@ a.button {
           padding-right: 0;
           text-align: left;
           margin: 0;
+          min-width: 0;
         }
       }
 
       .carousel-graphic {
-        width: calc(100% - 48px);
-        margin: 0 24px;
+        width: 100%;
+        margin: 0;
         align-self: stretch;
         overflow: hidden;
         min-width: 0;
@@ -298,6 +433,21 @@ a.button {
           object-fit: cover;
           object-position: left center;
         }
+
+        &.carousel-graphic-fullwidth {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: $black;
+
+          img {
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 100%;
+            object-fit: contain;
+          }
+        }
       }
     }
 
@@ -305,6 +455,10 @@ a.button {
       flex-direction: column;
       gap: 16px;
       min-height: auto;
+
+      &.carousel-card-harvardxr {
+        gap: 0;
+      }
     }
 
     @include small {
@@ -312,6 +466,24 @@ a.button {
       align-items: stretch;
       text-align: left;
       padding: 20px;
+
+      &.carousel-card-harvardxr {
+        padding: 0 20px 0;
+
+        .carousel-header {
+          padding: 0 20px 0;
+          gap: 12px;
+        }
+
+        .carousel-text {
+          font-size: 1.2em;
+        }
+
+        .carousel-link-right {
+          font-size: 1em;
+          padding: 6px 12px;
+        }
+      }
 
       .carousel-description {
         align-items: flex-start;
@@ -332,8 +504,8 @@ a.button {
       }
 
       &.carousel-card-vertical .carousel-graphic {
-        width: calc(100% - 24px);
-        margin: 0 12px;
+        width: 100%;
+        margin: 0;
       }
 
       .carousel-graphic img {
@@ -351,6 +523,11 @@ a.button {
     flex: 0 0 100%;
     min-width: 100%;
     box-sizing: border-box;
+
+    &:not(.active) {
+      visibility: hidden;
+      pointer-events: none;
+    }
   }
 
   .carousel-prev,
@@ -358,28 +535,36 @@ a.button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    color: $white;
-    width: 40px;
-    height: 40px;
+    background: $white;
+    border: 2px solid rgba(0, 0, 0, 0.25);
+    color: $black;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 28px;
+    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s, border-color 0.2s;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+    transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
     z-index: 2;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.35);
-      border-color: $white;
+      background: rgba(255, 255, 255, 0.95);
+      border-color: rgba(0, 0, 0, 0.4);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     }
   }
 
   .carousel-prev { left: 12px; }
   .carousel-next { right: 12px; }
+
+  @include small {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
 
   .carousel-dots {
     display: flex;
@@ -533,7 +718,7 @@ a.button {
 }
 
 .filter-group {
-  margin-bottom: 4px;
+  margin-bottom: 12px;
   &:last-child { margin-bottom: 0; }
 }
 
@@ -555,7 +740,11 @@ a.button {
   align-items: center;
   min-height: 20px;
 
-  @include mobile { gap: 4px; }
+  @include mobile {
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: center;
+  }
 }
 
 .filter-tag,
@@ -773,7 +962,8 @@ a.button {
 .portfolio-cell {
   padding: 8px 40px;
 
-  @include mobile { padding: 0; }
+  @include mobile { padding: 8px 16px; }
+  @include small { padding: 8px 12px; }
 }
 
 .portfolio-content {
@@ -873,4 +1063,101 @@ a.button {
 
 @include mobile {
   div#main { margin: 0; padding: 0; }
+}
+
+// About popover
+.about-popover-trigger {
+  font-size: 0.85em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  padding: 0 2px;
+  vertical-align: middle;
+  line-height: 1;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+
+  &:hover { opacity: 1; }
+}
+
+.about-popover {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+
+  &[hidden] {
+    display: none !important;
+  }
+
+  .about-popover-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    cursor: pointer;
+  }
+
+  .about-popover-panel {
+    position: relative;
+    background: $white;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    max-width: 520px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    z-index: 1;
+  }
+
+  .about-popover-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    font-size: 28px;
+    line-height: 1;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $secondary;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s, color 0.2s;
+
+    &:hover {
+      background: $bg-light;
+      color: $black;
+    }
+  }
+
+  .about-popover-body {
+    padding: 24px 48px 24px 24px;
+
+    .about .photo {
+      width: 120px;
+      padding: 12px;
+    }
+
+    .about .medium {
+      padding-top: 12px;
+    }
+
+    @include small {
+      padding: 20px 40px 20px 20px;
+
+      .about .photo {
+        width: 80px;
+        padding: 8px;
+      }
+    }
+  }
 }

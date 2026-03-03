@@ -25,7 +25,7 @@
   }
 
   @include small {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
     gap: 10px;
     width: 100%;
     padding: 12px;
@@ -62,6 +62,16 @@
   background-color: $white;
   transition: border-color 0.2s ease, transform 0.25s ease, box-shadow 0.25s ease;
 
+  @include mobile {
+    aspect-ratio: auto;
+    min-height: 125px;
+  }
+
+  @include small {
+    aspect-ratio: auto;
+    min-height: 130px;
+  }
+
   &:hover {
     transform: translateY(-4px) scale(1.02);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
@@ -80,6 +90,18 @@
     position: relative;
     border-radius: 20px;
     overflow: hidden;
+
+    @include mobile {
+      flex: 0 0 auto;
+      min-height: 56px;
+      max-height: 68px;
+    }
+
+    @include small {
+      flex: 0 0 auto;
+      min-height: 52px;
+      max-height: 64px;
+    }
   }
 
   .portfolio-image {
@@ -87,10 +109,13 @@
     height: 100%;
     max-height: 100px;
     object-fit: contain;
+    object-position: center;
     border-radius: 20px;
 
     @include mobile { max-height: 80px; }
-    @include small { max-height: 72px; }
+    @include small {
+      max-height: 56px;
+    }
   }
 
   .icon-area .subtitle {
@@ -131,7 +156,11 @@
     overflow: hidden;
 
     @include mobile { font-size: 0.8em; }
-    @include small { font-size: 0.75em; }
+    @include small {
+      font-size: 0.78em;
+      margin-top: 6px;
+      -webkit-line-clamp: 2;
+    }
   }
 
   h2 {

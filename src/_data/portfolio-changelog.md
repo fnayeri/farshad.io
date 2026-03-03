@@ -48,3 +48,10 @@ Each entry includes:
 - **Column:** tags
 - **Before** → **After:** Added `product strategy` to tags list
 
+### #5 – 2025-03-03
+- **Type:** edit
+- **Target:** verizon-tips, symtrend, verizon-dti, coniferpoint, fidelity-pm
+- **Description:** Combine Platform Architect & System Architect into Lead Architect
+- **Column:** role
+- **Before** → **After:** `Platform Architect` and `System Architect` → `Lead Architect`
+
