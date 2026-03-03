@@ -119,7 +119,7 @@ layout: default
           <span class="filter-tag" data-category="industry" data-tag="healthcare">healthcare</span>
           <span class="filter-tag" data-category="industry" data-tag="retail,consumer">Retail & Consumer</span>
           <span class="filter-tag" data-category="industry" data-tag="telecomm">telecomm</span>
-          <span class="filter-tag" data-category="industry" data-tag="management">management</span>
+          <span class="filter-tag" data-category="industry" data-tag="management,innovation research">innovation</span>
         </div>
       </div>
       <div class="filter-group">
@@ -326,7 +326,7 @@ function createCharts() {
     }
 
     // Industry → tag for links (Retail & Consumer uses multi-tag)
-    var indToTag = { 'Financial Services': 'financial', 'Healthcare': 'healthcare', 'Innovation': 'management', 'Telecom': 'telecomm', 'Retail & Consumer': 'retail,consumer', 'Government': 'government' };
+    var indToTag = { 'Financial Services': 'financial', 'Healthcare': 'healthcare', 'Innovation': 'management,innovation research', 'Telecom': 'telecomm', 'Retail & Consumer': 'retail,consumer', 'Government': 'government' };
     var capToTag = { 'Product': 'product strategy', 'Native Apps': 'native apps', 'Web': 'web apps', 'Data & Analytics': 'analytics', 'Cloud & APIs': 'cloud saas', 'Architecture': 'architecture' };
 
     // Roles (order: Product Lead → Platform Lead → Lead Architect; others after)
@@ -342,7 +342,7 @@ function createCharts() {
     });
     var roleValues = roleLabels.map(function(r) { return roleCounts[r]; });
 
-    // Industries (Retail + Consumer combined, Management & Innovation → Innovation)
+    // Industries (Retail + Consumer combined, Innovation)
     var industryMap = {
       'Financial Services': ['financial'],
       'Healthcare': ['healthcare'],
@@ -351,6 +351,11 @@ function createCharts() {
       'Retail & Consumer': ['retail', 'consumer'],
       'Government': ['government']
     };
+    var industryColorMap = {
+      'Financial Services': industryPalette[0], 'Healthcare': industryPalette[1], 'Innovation': industryPalette[2],
+      'Telecom': industryPalette[3], 'Retail & Consumer': industryPalette[4], 'Government': industryPalette[5]
+    };
+    function industryColor(lbl) { return (industryColorMap[lbl] || industryPalette[0]) + '99'; }
     var industryCounts = {};
     Object.keys(industryMap).forEach(function(k) { industryCounts[k] = 0; });
     data.forEach(function(p) {
@@ -361,20 +366,13 @@ function createCharts() {
     });
     var indLabels = Object.keys(industryCounts).filter(function(k) { return industryCounts[k] > 0; }).sort(function(a, b) { return industryCounts[b] - industryCounts[a]; });
     var indValues = indLabels.map(function(k) { return industryCounts[k]; });
-    // Reorder so Financial Services wedge renders at bottom
-    var finIdx = indLabels.indexOf('Financial Services');
-    if (finIdx !== -1) {
-      var n = indLabels.length;
-      var bottomIdx = Math.floor(n / 2);
-      if (finIdx !== bottomIdx) {
-        var lbl = indLabels[finIdx];
-        var val = indValues[finIdx];
-        indLabels.splice(finIdx, 1);
-        indValues.splice(finIdx, 1);
-        indLabels.splice(bottomIdx, 0, lbl);
-        indValues.splice(bottomIdx, 0, val);
-      }
+    // Reorder so Innovation is last in the list
+    var others = indLabels.filter(function(l) { return l !== 'Innovation'; });
+    var innovationIdx = indLabels.indexOf('Innovation');
+    if (innovationIdx !== -1) {
+      indLabels = others.concat(['Innovation']);
     }
+    indValues = indLabels.map(function(k) { return industryCounts[k]; });
 
     // Core Skills: horizontal stacked bars by role (platform merged into architecture)
     var industryTags = ['financial','healthcare','telecomm','retail','consumer','government','management','innovation research'];
@@ -491,13 +489,15 @@ function createCharts() {
       });
       if (_rolesChart) { _rolesChart.data.datasets[0].backgroundColor = roleColors; _rolesChart.update('none'); }
 
-      // Industry chart - when dimmed, use faded opacity (not black)
+      // Industry chart - when dimmed, use faded opacity (stable colors by label)
       var fadeOpacity = 0.45;
-      var indColors = il.map(function(lbl, i) {
-        if (!h) return industryPalette[i % industryPalette.length] + '99';
-        if (h.type === 'industry') return h.value === lbl ? industryPalette[i % industryPalette.length] + '99' : dimColor(industryPalette[i % industryPalette.length], fadeOpacity);
-        if (h.type === 'role' || h.type === 'tag' || h.type === 'capability') return dimColor(industryPalette[i % industryPalette.length], fadeOpacity);
-        return industryPalette[i % industryPalette.length] + '99';
+      var indColors = il.map(function(lbl) {
+        var base = industryColorMap[lbl] || industryPalette[0];
+        var full = base + '99';
+        if (!h) return full;
+        if (h.type === 'industry') return h.value === lbl ? full : dimColor(base, fadeOpacity);
+        if (h.type === 'role' || h.type === 'tag' || h.type === 'capability') return dimColor(base, fadeOpacity);
+        return full;
       });
       if (_industryChart) { _industryChart.data.datasets[0].backgroundColor = indColors; _industryChart.update('none'); }
 
@@ -542,7 +542,7 @@ function createCharts() {
 
       _industryChart.data.labels = indLabels;
       _industryChart.data.datasets[0].data = indValues;
-      _industryChart.data.datasets[0].backgroundColor = indLabels.map(function(_, i) { return industryPalette[i % industryPalette.length] + '99'; });
+      _industryChart.data.datasets[0].backgroundColor = indLabels.map(industryColor);
       _industryChart.update('none');
 
       _techChart.data.labels = baseTechLabels;
@@ -605,9 +605,10 @@ function createCharts() {
       type: 'polarArea',
       data: {
         labels: indLabels,
-        datasets: [{ data: indValues, backgroundColor: indLabels.map(function(_, i) { return industryPalette[i % industryPalette.length] + '99'; }), borderWidth: 0, hoverBorderWidth: 2 }]
+        datasets: [{ data: indValues, backgroundColor: indLabels.map(industryColor), borderWidth: 0, hoverBorderWidth: 2 }]
       },
       options: {
+        startAngle: 90,
         responsive: true,
         maintainAspectRatio: false,
         onClick: function(evt, els) {
@@ -742,6 +743,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (tagParam) {
             tagParam = decodeURIComponent(tagParam);
             if (tagParam === 'retail' || tagParam === 'consumer') tagParam = 'retail,consumer';
+            if (tagParam === 'innovation') tagParam = 'management,innovation research';
             if (tagParam === 'cloud services' || tagParam === 'saas platform') tagParam = 'cloud saas';
         }
 

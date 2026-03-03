@@ -847,19 +847,19 @@ a.button {
     width: 130px;
     height: auto;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 12px;
 
     @include mobile {
       max-width: 105px;
       width: 105px;
       float: left;
-      border-radius: 6px;
+      border-radius: 10px;
     }
 
     @include small {
       max-width: 80px;
       width: 80px;
-      border-radius: 4px;
+      border-radius: 8px;
     }
   }
 
@@ -976,11 +976,12 @@ a.button {
   max-width: 150px;
 }
 
-.portfolio-image {
+.portfolio-table .portfolio-image,
+.portfolio-cell .portfolio-image {
   width: 150px;
   height: auto;
   object-fit: cover;
-  border-radius: 40px;
+  border-radius: 12px;
 }
 
 .content-right {
