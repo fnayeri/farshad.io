@@ -1,7 +1,21 @@
+.portfolio-page-outer {
+  background-color: $bg-light;
+}
+
+.portfolio-page-embody {
+  border: 2px solid;
+  border-radius: 20px;
+  margin: 20px 0;
+  padding: 0;
+  background-color: $white;
+  overflow: hidden;
+}
+
 .portfolio-item {
   background-color: var(--portfolio-bg, $white);
-  border-radius: 20px;
-  border-color: var(--portfolio-border);
+  border-radius: 18px;
+  border: none;
+  margin: 20px;
 }
 
 .portfolio-title {

@@ -3,8 +3,6 @@ title: Farshad Nayeri - Technologist
 layout: default
 ---
 
-<meta property="og:image" content="{{ '/assets/about/farshad-nayeri.png' | absolute_url }}" />
-
 <script>
   const enable_tags = function (tag) {
   const items = document.querySelectorAll('[data-tags]');
@@ -63,11 +61,11 @@ layout: default
       <div class='showcase-content carousel-card carousel-card-hero'>
         <div class='carousel-description'>
           <p class='carousel-desc-text'>
-            <strong>The Health of Nations</strong> is a data-cinematographic exploration of global populations and health, presented during Global Health Exhibit 2026, and in front of 200 leaders at the Saudi Ministry of Health.
+            <strong>The Health of Nations</strong> (1950–2050) is a data-cinematographic presentation spanning global populations and health across three acts: Lifespans, Lives of Nations, and Health of a Nation. It traces lifespans, migration, and population growth in some countries and concludes with a question about the future if we do not address the diseases of prosperity. Presented at Global Health Exhibit (GHE 2025) and in 2026 in front of 200 leaders at the Saudi Ministry of Health.
           </p>
           <div class="carousel-links">
+            <a class='carousel-link' href='https://www.globalhealthsaudi.com/en/home.html'>Global Health Exhibition &rarr;</a>
             <a class='carousel-link' href='https://thehealthofnations.org/'>The Health of Nations &rarr;</a>
-            <a class='carousel-link' href='https://www.globalhealthsaudi.com/en/home.html'>GHE 2026 &rarr;</a>
           </div>
         </div>
         <a class='carousel-graphic' href='https://thehealthofnations.org/'>
@@ -102,13 +100,6 @@ layout: default
 <p style='text-align: center; font-weight: bold; font-size: 1.4em; margin: 0'>
   Farshad Nayeri <button type="button" class="about-popover-trigger" id="about-popover-trigger" aria-label="About">ⓘ</button>
 </p>
-<div id="about-popover" class="about-popover" role="dialog" aria-modal="true" aria-label="About Farshad Nayeri" hidden>
-  <div class="about-popover-backdrop"></div>
-  <div class="about-popover-panel">
-    <button type="button" class="about-popover-close" aria-label="Close">&times;</button>
-    <div class="about-popover-body">{% include about-popover-content.html %}</div>
-  </div>
-</div>
 
 <div class="header-row" style="margin-top: 0;">
   <div class="filter-container">
@@ -189,7 +180,7 @@ layout: default
     {% for p in site.data.portfolio %}{% if p.name %}
     <tr class="project" data-tags="{{ p.tags | join: ',' }}" data-role="{{ p.role | strip }}">
       <td class="portfolio-cell">
-        <a href='{{ p.permalink | relative_url }}' class="portfolio-link">
+        <a href='{{ p.permalink | relative_url }}' class="portfolio-link" style="--project-border: #{{ p.border | default: p.color | default: "666666" }};">
           <div class="portfolio-content">
             <div class="image-column">
               <img src="/assets/logos/{{ p.name }}.png" class="portfolio-image">
@@ -285,7 +276,7 @@ function createCharts() {
       window._chartDefaultsSet = true;
       Chart.defaults.color = '#333';
       Chart.defaults.borderColor = 'rgba(0,0,0,0.08)';
-      Chart.defaults.font.family = 'Inter';
+      Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", sans-serif';
       Chart.defaults.font.size = 11;
       var hoverLabelPlugin = {
         id: 'hoverLabel',
@@ -1142,28 +1133,6 @@ function clearFilter() {
         el.classList.toggle('carousel-desc-expanded');
       }
     });
-  });
-})();
-
-(function initAboutPopover() {
-  var trigger = document.getElementById('about-popover-trigger');
-  var popover = document.getElementById('about-popover');
-  if (!trigger || !popover) return;
-  function open() {
-    popover.removeAttribute('hidden');
-    document.body.style.overflow = 'hidden';
-    popover.querySelector('.about-popover-close').focus();
-  }
-  function close() {
-    popover.setAttribute('hidden', '');
-    document.body.style.overflow = '';
-    trigger.focus();
-  }
-  trigger.addEventListener('click', function(e) { e.preventDefault(); open(); });
-  popover.querySelector('.about-popover-backdrop').addEventListener('click', close);
-  popover.querySelector('.about-popover-close').addEventListener('click', close);
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && !popover.hasAttribute('hidden')) close();
   });
 })();
 

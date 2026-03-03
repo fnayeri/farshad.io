@@ -4,10 +4,12 @@ html {
 
 body {
   font-family: $font-family;
-  background: $white;
+  background: $bg-light;
   color: $primary;
-  font-size: 18px;
-  line-height: 1.4;
+  font-size: 17px;
+  line-height: 1.47059;
+  font-weight: 400;
+  letter-spacing: -0.022em;
   padding-top: $nav-height;
   display: flex;
   flex-direction: column;
@@ -34,24 +36,25 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-family;
   color: $dark;
-  font-weight: bold;
-  line-height: 1.7;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
   margin: 1em 0 15px;
   padding: 0;
 
   @include mobile {
-    line-height: 1.4;
+    line-height: 1.15;
   }
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 2rem;
   a { color: inherit; }
 }
 
-h2 { font-size: 24px; }
-h3 { font-size: 20px; }
-h4 { font-size: 18px; color: $secondary; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.0625rem; color: $secondary; font-weight: 600; }
 
 p { margin: 15px 0; }
 
@@ -61,6 +64,8 @@ a {
   cursor: pointer;
 
   &:visited { color: inherit; }
+
+  &:hover { color: $link; }
 }
 
 ul, ol {

@@ -8,7 +8,6 @@
   {% include plausible.html %}
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
   <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
   <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}"
     href="{{ site.baseurl }}/feed.xml" />
@@ -20,7 +19,9 @@
     <ul>
       <li>
         <h2>
-          <a href='/about'><img class='nav-avatar' src='/assets/about/fn.png' /></a>
+          <button type="button" class="about-popover-trigger nav-avatar-btn" id="about-popover-trigger-nav" aria-label="About">
+            <img class='nav-avatar' src='/assets/about/fn.png' alt="" />
+          </button>
           <a href='/'>Farshad Nayeri</a>
         </h2>
       </li>
@@ -54,6 +55,14 @@
     {{ content }}
   </div>
 
+  <div id="about-popover" class="about-popover" role="dialog" aria-modal="true" aria-label="About Farshad Nayeri" hidden>
+    <div class="about-popover-backdrop"></div>
+    <div class="about-popover-panel">
+      <button type="button" class="about-popover-close" aria-label="Close">&times;</button>
+      <div class="about-popover-body">{% include about-popover-content.html %}</div>
+    </div>
+  </div>
+
   <div class="wrapper-footer">
     <div class="container">
       <footer class="footer">
@@ -63,6 +72,31 @@
   </div>
 
   {% include analytics.html %}
+  <script>
+(function initAboutPopover() {
+  var popover = document.getElementById('about-popover');
+  if (!popover) return;
+  var triggers = document.querySelectorAll('.about-popover-trigger');
+  var lastTrigger = null;
+  function open(e) {
+    lastTrigger = e && e.currentTarget;
+    popover.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+    popover.querySelector('.about-popover-close').focus();
+  }
+  function close() {
+    popover.setAttribute('hidden', '');
+    document.body.style.overflow = '';
+    if (lastTrigger && lastTrigger.focus) lastTrigger.focus();
+  }
+  triggers.forEach(function(t) { t.addEventListener('click', function(e) { e.preventDefault(); open(e); }); });
+  popover.querySelector('.about-popover-backdrop').addEventListener('click', close);
+  popover.querySelector('.about-popover-close').addEventListener('click', close);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && !popover.hasAttribute('hidden')) close();
+  });
+})();
+  </script>
 </body>
 
 </html>

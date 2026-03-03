@@ -1,18 +1,20 @@
-// Typography
-$font-family: 'Inter', sans-serif;
+// Typography (Apple IR style: SF Pro / system fonts)
+$font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", sans-serif;
 
-// Colors
+// Colors (Apple Investor Relations palette)
 $black: #000;
-$dark: #222;
-$primary: #333;
-$secondary: #666;
-$muted: #999;
-$border: #ddd;
-$light: #eee;
-$bg-hover: #f1f1f1;
-$bg-light: #f5f5f5;
+$dark: #1d1d1f;
+$primary: #1d1d1f;
+$secondary: #6e6e73;
+$muted: #86868b;
+$border: #d2d2d7;
+$light: #e8e8ed;
+$bg-hover: #e8e8ed;
+$bg-light: #f5f5f7;
 $white: #fff;
-$link: #4183C4;
+$link: #0066cc;
+$nav-bg: #1d1d1f;
+$nav-text: #f5f5f7;
 
 // Aspect colors (portfolio)
 $color-problem: #D03A21;

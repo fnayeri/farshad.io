@@ -623,8 +623,6 @@ a.button {
 }
 
 .header-row {
-  background-color: $white;
-  border-radius: 40px;
   margin-top: 0;
   margin-left: 20px;
   margin-right: 20px;
@@ -647,8 +645,6 @@ a.button {
 
 // Filter UI
 .filter-container {
-  background: $white;
-  border-radius: 12px;
   padding: 8px 12px;
   margin-bottom: 0;
   display: flex;
@@ -747,8 +743,8 @@ a.button {
 
 .filter-tag,
 .tag-bubble {
-  background-color: #e0e0e0;
-  color: $secondary;
+  background-color: #d2d2d7;
+  color: #4d4d52;
   padding: 4px 8px;
   border-radius: 9999px;
   border: 1px solid rgba(255, 255, 255, 0.8);
@@ -778,8 +774,8 @@ a.button {
 }
 
 .filter-tag.active {
-  background-color: $black;
-  color: $white;
+  background-color: $nav-bg;
+  color: $nav-text;
 
   &:hover {
     background-color: $primary;
@@ -821,7 +817,7 @@ a.button {
   }
 
   &:hover { color: $black; background: $bg-light; }
-  &.active { color: $black; background: $light; }
+  &.active { background-color: $nav-bg; color: $nav-text; }
 }
 
 @keyframes lineIn {
@@ -841,68 +837,82 @@ a.button {
 
   .tags-cell { display: none; }
 
+  .portfolio-content {
+    align-items: flex-start;
+  }
+
   .portfolio-image {
     width: 130px;
-    height: auto;
-    object-fit: cover;
-    border-radius: 12px;
+    height: 130px;
+    object-fit: contain;
+    border-radius: 18px;
+    display: block;
 
     @include mobile {
-      max-width: 105px;
       width: 105px;
-      float: left;
-      border-radius: 10px;
+      height: 105px;
+      border-radius: 14px;
     }
 
     @include small {
-      max-width: 80px;
       width: 80px;
-      border-radius: 8px;
+      height: 80px;
+      border-radius: 12px;
     }
   }
 
   .image-column {
     flex: 0 0 130px;
-    max-width: 130px;
+    width: 130px;
+    min-width: 130px;
+    height: 130px;
+    min-height: 130px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
 
     @include mobile {
       flex: 0 0 105px;
-      max-width: 105px;
+      width: 105px;
+      min-width: 105px;
+      height: 105px;
+      min-height: 105px;
     }
 
     @include small {
       flex: 0 0 80px;
-      max-width: 80px;
+      width: 80px;
+      min-width: 80px;
+      height: 80px;
+      min-height: 80px;
     }
   }
 
   // Role + Subtitle/Project layout
   .role {
-    font-size: 0.9em;
+    font-size: 1.2em;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: $uppercase-letter-spacing;
-    color: $secondary;
+    color: $black;
     margin-bottom: 2px;
 
-    @include mobile { font-size: 0.8em; }
+    @include mobile { font-size: 1.1em; }
   }
 
   .subtitle-project {
-    font-size: 1em;
-    font-weight: 500;
-    color: inherit;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #4d4d52;
 
-    @include mobile { font-size: 0.9em; }
+    @include mobile { font-size: 1.1em; }
   }
 
   .body-text {
-    font-size: 0.75em;
+    font-size: 0.95em;
     color: $secondary;
     line-height: 1.4;
     margin-top: 4px;
 
-    @include mobile { font-size: 0.7em; }
+    @include mobile { font-size: 0.9em; }
   }
 }
 
@@ -916,6 +926,10 @@ a.button {
   width: 100%;
   border-spacing: 0;
   border-collapse: separate;
+
+  tr:hover {
+    background-color: transparent;
+  }
 
   tr.project {
     animation: lineIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) backwards;
@@ -959,9 +973,31 @@ a.button {
 
 .portfolio-cell {
   padding: 8px 40px;
+  vertical-align: top;
 
   @include mobile { padding: 8px 16px; }
   @include small { padding: 8px 12px; }
+}
+
+.portfolio-link {
+  display: block;
+  background: $white;
+  padding: 16px 20px;
+  min-height: 162px;
+  border-radius: 16px;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+
+  &:hover,
+  &:focus {
+    border-color: var(--project-border, $muted);
+    color: inherit;
+    transform: none;
+    box-shadow: none;
+    outline: none;
+    padding: 16px 20px;
+  }
 }
 
 .portfolio-content {
@@ -1033,9 +1069,9 @@ a.button {
   margin-top: 6px;
 }
 
-.project a:hover {
+.project a.portfolio-link:hover {
   margin: 0;
-  padding: 0;
+  padding: 16px 20px;
 }
 
 // Filtered projects container
@@ -1106,7 +1142,7 @@ a.button {
     background: $white;
     border-radius: 16px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-    max-width: 520px;
+    max-width: 600px;
     width: 100%;
     max-height: 85vh;
     overflow-y: auto;
@@ -1139,23 +1175,29 @@ a.button {
   }
 
   .about-popover-body {
-    padding: 24px 48px 24px 24px;
+    padding: 28px 52px 28px 28px;
 
     .about .photo {
-      width: 120px;
-      padding: 12px;
+      width: 200px;
+      padding: 16px;
     }
 
     .about .medium {
-      padding-top: 12px;
+      padding-top: 24px;
+      font-size: 1.15em;
+      line-height: 1.5em;
     }
 
     @include small {
-      padding: 20px 40px 20px 20px;
+      padding: 24px 44px 24px 24px;
 
       .about .photo {
-        width: 80px;
-        padding: 8px;
+        width: 140px;
+        padding: 12px;
+      }
+
+      .about .medium {
+        font-size: 1.05em;
       }
     }
   }

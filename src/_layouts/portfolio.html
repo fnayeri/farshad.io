@@ -1,15 +1,11 @@
 ---
 layout: default
 ---
-<style>
-  body { background-color: #{{ page.background }}; }
-  .container { background-color: #{{ page.background }}; }
-</style>
 
-<div class="container"
-  style="--portfolio-bg: #{{ page.background }}; --portfolio-color: #{{ page.color }}; --portfolio-border: #{{ page.border }};">
-  <article class="portfolio-item"
-    style="--portfolio-bg: #{{ page.background }}; --portfolio-border: #{{ page.border }};">
+<div class="container portfolio-page-outer">
+  <div class="portfolio-page-embody" style="border-color: #{{ page.border | default: page.color | default: "666666" }}; --portfolio-bg: #{{ page.background | default: "ffffff" }}; --portfolio-color: #{{ page.color }}; --portfolio-border: #{{ page.border | default: page.color | default: "666666" }};">
+    <article class="portfolio-item"
+      style="--portfolio-bg: #{{ page.background | default: "ffffff" }}; --portfolio-border: #{{ page.border | default: page.color | default: "666666" }};">
     <div class="portfolio-title">
       <img class='logo' src="{{ page.image }}" alt="{{ page.title }}" />
       <h1 class="synopsis">
@@ -69,7 +65,8 @@ layout: default
 
     <div class="portfolio-break"></div>
 
-  </article>
+    </article>
+  </div>
 </div>
 
 <script>
