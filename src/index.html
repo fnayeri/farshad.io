@@ -86,7 +86,7 @@ layout: default
               href='https://itunes.apple.com/us/app/perspective/id516098684?ls=1'>Perspective</a> whose development I led at
             <a href='https://pixxa.com/'>Pixxa</a>.
           </p>
-          <a class='carousel-link carousel-link-right' href='https://www.harvardxr.com/events/immersive-storytelling-games-and-design'>Visit HarvardXR &rarr;</a>
+          <a class='carousel-link carousel-link-right' href='https://www.harvardxr.com/events/immersive-storytelling-games-and-design'>To Harvard XR &rarr;</a>
         </div>
         <a class='carousel-graphic' href='https://www.harvardxr.com/events/immersive-storytelling-games-and-design'>
           <img src='/assets/artifacts/harvardxr/Data%20Cinematography%20-%20HarvardXR%20v1.0.png' alt="Data Cinematography HarvardXR" />
@@ -99,9 +99,38 @@ layout: default
   <div class="carousel-dots"></div>
 </div>
 
-<p style='text-align: center; font-weight: bold; font-size: 1.4em'><a href='/about/'>Farshad Nayeri &rarr;</a></p>
+<p style='text-align: center; font-weight: bold; font-size: 1.4em; margin: 0'><a href='/about/'>Farshad Nayeri &rarr;</a></p>
 
-<div class="view-controls" style="margin-top: 20px; margin-bottom: 8px;">
+<div class="header-row" style="margin-top: 0;">
+  <div class="filter-container">
+    <div class="filter-content">
+      <div class="filter-group">
+        <div class="filter-tags">
+          <span class="filter-tag" data-category="industry" data-tag="financial">financial</span>
+          <span class="filter-tag" data-category="industry" data-tag="healthcare">healthcare</span>
+          <span class="filter-tag" data-category="industry" data-tag="retail,consumer">Retail & Consumer</span>
+          <span class="filter-tag" data-category="industry" data-tag="telecomm">telecomm</span>
+          <span class="filter-tag" data-category="industry" data-tag="management">management</span>
+        </div>
+      </div>
+      <div class="filter-group">
+        <div class="filter-tags">
+          <span class="filter-tag" data-category="technology" data-tag="product strategy">product strategy</span>
+          <span class="filter-tag" data-category="technology" data-tag="architecture">architecture</span>
+          <span class="filter-tag" data-category="technology" data-tag="api design">api design</span>
+          <span class="filter-tag" data-category="technology" data-tag="analytics">analytics</span>
+          <span class="filter-tag" data-category="technology" data-tag="visualization">visualization</span>
+          <span class="filter-tag" data-category="technology" data-tag="blockchain">blockchain</span>
+          <span class="filter-tag" data-category="technology" data-tag="cloud saas">Cloud / SaaS</span>
+          <span class="filter-tag" data-category="technology" data-tag="native apps">native apps</span>
+          <span class="filter-tag" data-category="technology" data-tag="web apps">web apps</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="view-controls" style="margin-top: 8px; margin-bottom: 4px;">
   <div class="view-icons">
     <button class="view-icon" id="bento-icon" data-view="bento">
       <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1pt" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
@@ -123,42 +152,6 @@ layout: default
         <circle cx="12" cy="12" r="4" />
       </svg>
     </button>
-  </div>
-</div>
-
-<div class="header-row">
-  <div class="filter-container" data-collapsed="false">
-    <button type="button" class="filter-disclosure-toggle" aria-expanded="true">
-      <span>Selected Experience</span>
-      <svg class="filter-disclosure-triangle" width="12" height="12" viewBox="0 0 10 10"><path d="M2 1l6 4-6 4V1z" fill="currentColor"/></svg>
-    </button>
-    <div class="filter-content">
-      <div class="filter-group">
-        <div class="filter-label">Industry</div>
-        <div class="filter-tags">
-          <span class="filter-tag" data-category="industry" data-tag="financial">financial</span>
-          <span class="filter-tag" data-category="industry" data-tag="healthcare">healthcare</span>
-          <span class="filter-tag" data-category="industry" data-tag="retail,consumer">Retail & Consumer</span>
-          <span class="filter-tag" data-category="industry" data-tag="telecomm">telecomm</span>
-          <span class="filter-tag" data-category="industry" data-tag="management">management</span>
-        </div>
-      </div>
-      <div class="filter-group">
-        <div class="filter-label">Technology</div>
-        <div class="filter-tags">
-          <span class="filter-tag" data-category="technology" data-tag="native apps">native apps</span>
-          <span class="filter-tag" data-category="technology" data-tag="web apps">web apps</span>
-          <span class="filter-tag" data-category="technology" data-tag="api design">api design</span>
-          <span class="filter-tag" data-category="technology" data-tag="blockchain">blockchain</span>
-          <span class="filter-tag" data-category="technology" data-tag="cloud services">cloud services</span>
-          <span class="filter-tag" data-category="technology" data-tag="saas platform">saas platform</span>
-          <span class="filter-tag" data-category="technology" data-tag="analytics">analytics</span>
-          <span class="filter-tag" data-category="technology" data-tag="visualization">visualization</span>
-          <span class="filter-tag" data-category="technology" data-tag="architecture">architecture</span>
-          <span class="filter-tag" data-category="technology" data-tag="product strategy">product strategy</span>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -236,11 +229,6 @@ layout: default
       <p class="chart-description">Strengths across key dimensions</p>
       <div class="chart-area"><canvas id="capability-chart"></canvas></div>
     </div>
-  </div>
-  <div class="chart-card industry-section">
-    <h4>Industry Experience</h4>
-    <p class="chart-description">Sectors with direct project engagement</p>
-    <div class="industry-cards-grid" id="industry-cards"></div>
   </div>
 </div>
 
@@ -330,27 +318,20 @@ function createCharts() {
 
     // Industry → tag for links (Retail & Consumer uses multi-tag)
     var indToTag = { 'Financial Services': 'financial', 'Healthcare': 'healthcare', 'Innovation': 'management', 'Telecom': 'telecomm', 'Retail & Consumer': 'retail,consumer', 'Government': 'government' };
-    var capToTag = { 'Product Strategy': 'product strategy', 'Native Apps': 'native apps', 'Web Development': 'web apps', 'Data & Analytics': 'analytics', 'Cloud & APIs': 'api design', 'Architecture': 'architecture' };
+    var capToTag = { 'Product Strategy': 'product strategy', 'Native Apps': 'native apps', 'Web Development': 'web apps', 'Data & Analytics': 'analytics', 'Cloud & APIs': 'cloud saas', 'Architecture': 'architecture' };
 
-    // Roles
+    // Roles (order: Product Lead → Platform Lead → Platform Architect → System Architect; others after)
+    var roleOrder = ['Product Lead', 'Platform Lead', 'Platform Architect', 'System Architect'];
     var roleCounts = {};
     data.forEach(function(p) { roleCounts[p.role] = (roleCounts[p.role] || 0) + 1; });
-    var roleLabels = Object.keys(roleCounts).sort(function(a, b) { return roleCounts[b] - roleCounts[a]; });
+    var roleLabels = Object.keys(roleCounts).sort(function(a, b) {
+      var ia = roleOrder.indexOf(a); var ib = roleOrder.indexOf(b);
+      if (ia !== -1 && ib !== -1) return ia - ib;
+      if (ia !== -1) return -1;
+      if (ib !== -1) return 1;
+      return roleCounts[b] - roleCounts[a];
+    });
     var roleValues = roleLabels.map(function(r) { return roleCounts[r]; });
-    // Reorder so System Architect wedge renders at bottom
-    var sysArchIdx = roleLabels.indexOf('System Architect');
-    if (sysArchIdx !== -1) {
-      var n = roleLabels.length;
-      var bottomIdx = Math.floor(n / 2);
-      if (sysArchIdx !== bottomIdx) {
-        var lbl = roleLabels[sysArchIdx];
-        var val = roleValues[sysArchIdx];
-        roleLabels.splice(sysArchIdx, 1);
-        roleValues.splice(sysArchIdx, 1);
-        roleLabels.splice(bottomIdx, 0, lbl);
-        roleValues.splice(bottomIdx, 0, val);
-      }
-    }
 
     // Industries (Retail + Consumer combined, Management & Innovation → Innovation)
     var industryMap = {
@@ -386,26 +367,38 @@ function createCharts() {
       }
     }
 
-    // Core Skills: horizontal stacked bars by role
+    // Core Skills: horizontal stacked bars by role (platform merged into architecture)
     var industryTags = ['financial','healthcare','telecomm','retail','consumer','government','management','innovation research'];
+    var excludedTechTags = ['blockchain','cryptocurrency','e-commerce','community','automation','storytelling'];
     var techCounts = {};
     data.forEach(function(p) {
       p.tags.forEach(function(t) {
         var tl = t.toLowerCase();
-        if (industryTags.indexOf(tl) === -1) techCounts[tl] = (techCounts[tl] || 0) + 1;
+        if (industryTags.indexOf(tl) === -1 && excludedTechTags.indexOf(tl) === -1) {
+          var key = (tl === 'platform') ? 'architecture' : tl;
+          techCounts[key] = (techCounts[key] || 0) + 1;
+        }
       });
     });
-    var techLabels = Object.keys(techCounts).sort(function(a, b) { return techCounts[b] - techCounts[a]; });
+    var techOrder = ['product design', 'architecture', 'native apps'];
+    var techLabels = Object.keys(techCounts).sort(function(a, b) {
+      var ia = techOrder.indexOf(a); var ib = techOrder.indexOf(b);
+      if (ia !== -1 && ib !== -1) return ia - ib;
+      if (ia !== -1) return -1;
+      if (ib !== -1) return 1;
+      return techCounts[b] - techCounts[a];
+    });
     var roleOrder = roleLabels.slice();
     var techStackData = roleOrder.map(function(role, roleIdx) {
       return {
         label: role,
         data: techLabels.map(function(tag) {
           var c = 0;
+          var tagsToMatch = (tag === 'architecture') ? ['architecture', 'platform'] : [tag];
           data.forEach(function(p) {
             if (p.role !== role) return;
             var ptags = p.tags.map(function(t) { return t.toLowerCase(); });
-            if (ptags.indexOf(tag) !== -1) c++;
+            if (tagsToMatch.some(function(t) { return ptags.indexOf(t) !== -1; })) c++;
           });
           return c;
         }),
@@ -420,8 +413,8 @@ function createCharts() {
     var capGroups = {
       'Product Strategy': ['product strategy', 'product design'],
       'Native Apps': ['native apps'],
-      'Web Development': ['web apps', 'web app'],
-      'Cloud & APIs': ['cloud services', 'saas platform', 'api design'],
+      'Web Development': ['web apps'],
+      'Cloud & APIs': ['cloud saas', 'api design'],
       'Data & Analytics': ['analytics', 'visualization'],
       'Architecture': ['architecture', 'platform']
     };
@@ -498,15 +491,6 @@ function createCharts() {
         return dimColor(rolePalette[4], dim);
       });
       if (_capabilityChart) { _capabilityChart.data.datasets[0].pointBackgroundColor = capPointBg; _capabilityChart.data.datasets[0].pointBorderColor = '#fff'; _capabilityChart.update('none'); }
-
-      // Industry cards
-      var cardsEl = document.getElementById('industry-cards');
-      if (cardsEl) cardsEl.querySelectorAll('.industry-card').forEach(function(card, i) {
-        var ind = il[i];
-        if (!h) { card.style.opacity = '1'; card.style.filter = ''; return; }
-        if (h.type === 'industry') { card.style.opacity = h.value === ind ? '1' : '0.3'; card.style.filter = ''; return; }
-        card.style.opacity = '0.3'; card.style.filter = '';
-      });
     }
 
     // Update path: charts exist, just refresh data
@@ -528,18 +512,6 @@ function createCharts() {
       _capabilityChart.data.datasets[0].data = capValues;
       _capabilityChart.update('none');
 
-      var cardsEl = document.getElementById('industry-cards');
-      if (cardsEl) {
-        cardsEl.innerHTML = '';
-        indLabels.forEach(function(ind, i) {
-          var tag = indToTag[ind] || ind.toLowerCase().replace(/\s+/g, '-');
-          var card = document.createElement('a');
-          card.className = 'industry-card';
-          card.href = '/?fmt=list&tag=' + encodeURIComponent(tag);
-          card.innerHTML = '<div class="industry-count" style="color:' + industryPalette[i % industryPalette.length] + '">' + industryCounts[ind] + '</div><div class="industry-name">' + ind + '</div>';
-          cardsEl.appendChild(card);
-        });
-      }
       applyChartHighlight(null);
       return;
     }
@@ -671,25 +643,6 @@ function createCharts() {
       }
     });
 
-    // Industry cards (links)
-    var cardsEl = document.getElementById('industry-cards');
-    cardsEl.innerHTML = '';
-    indLabels.forEach(function(ind, i) {
-      var tag = indToTag[ind] || ind.toLowerCase().replace(/\s+/g, '-');
-      var card = document.createElement('a');
-      card.className = 'industry-card';
-      card.href = '/?fmt=list&tag=' + encodeURIComponent(tag);
-      card.innerHTML = '<div class="industry-count" style="color:' + industryPalette[i % industryPalette.length] + '">' + industryCounts[ind] + '</div><div class="industry-name">' + ind + '</div>';
-      card.addEventListener('click', function(e) {
-        e.preventDefault();
-        var prev = chartHighlight ? chartHighlight.type + ':' + chartHighlight.value : '';
-        applyChartHighlight({ type: 'industry', value: ind });
-        var next = chartHighlight ? chartHighlight.type + ':' + chartHighlight.value : '';
-        if (prev === 'industry:' + ind) window.location.href = '/?fmt=list&tag=' + encodeURIComponent(tag);
-      });
-      cardsEl.appendChild(card);
-    });
-
   } catch (e) {
     console.error('Chart initialization failed:', e);
   }
@@ -745,6 +698,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (tagParam) {
             tagParam = decodeURIComponent(tagParam);
             if (tagParam === 'retail' || tagParam === 'consumer') tagParam = 'retail,consumer';
+            if (tagParam === 'cloud services' || tagParam === 'saas platform') tagParam = 'cloud saas';
         }
 
         var view = fmtParam || 'chart';
@@ -922,6 +876,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.stopPropagation();
                 var tagText = e.target.closest('.tag-bubble').textContent.trim().toLowerCase();
                 if (tagText === 'retail' || tagText === 'consumer') tagText = 'retail,consumer';
+                if (tagText === 'cloud services' || tagText === 'saas platform') tagText = 'cloud saas';
                 setState({ activeTag: tagText, activeRole: null });
             }
         });

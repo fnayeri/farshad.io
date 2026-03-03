@@ -21,8 +21,7 @@ The portfolio includes a comprehensive filter system that allows users to filter
 - **Web Apps**: Web-based applications and platforms
 - **API Design**: API development and integration
 - **Blockchain**: Cryptocurrency and blockchain solutions
-- **Cloud Services**: Cloud infrastructure and services
-- **SaaS Platform**: Software-as-a-Service platforms
+- **Cloud / SaaS**: Cloud infrastructure, services, and SaaS platforms
 - **Analytics**: Data analysis and business intelligence
 - **Visualization**: Data visualization and reporting tools
 - **Architecture**: System architecture and design
