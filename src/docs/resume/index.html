@@ -1,59 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
+---
+layout: default
+title: Resumé
+---
+
 <style>
-body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    text-align: center;
+.resume-embed-wrap {
+  margin: 0 -20px;
 }
-.center {
-  margin: auto;
-  width: 60%;
-  padding: 10px;
-  text-align: center;
-}
-.resume {
+.resume-embed {
+  width: 100%;
+  min-height: 80vh;
   border: none;
-  color: white;
-  background-color: #333;
-  border-color: solid black 1px;
-  padding: 10px 30px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 10px;
+}
+.resume-fallback {
+  margin-top: 0.5em;
+  font-size: 0.9em;
 }
 </style>
-</head>
-<body>
 
-  
-<div class="center">
-  <h2>Farshad Nayeri</h2>
-  <button class= 'resume' onclick="resume()">Resume</button>
-
-  <noscript>
-      <a href="./Farshad-Nayeri-Resume.pdf">Farshad Nayeri Resume</a>
-  </noscript>
+<div class="resume-embed-wrap">
+  <iframe
+    src="/docs/resume/Farshad-Nayeri-Resume.pdf"
+    class="resume-embed"
+    title="Farshad Nayeri Resumé"
+  ></iframe>
 </div>
-
-</body>
-</html>
-
-<script>
-function resume() {
-  location.replace("./Farshad-Nayeri-Resume.pdf")
-}
-</script>
-
-</body>
-</html> 
+<p class="resume-fallback">
+  <a href="/docs/resume/Farshad-Nayeri-Resume.pdf" target="_blank">Download PDF</a> if it doesn’t display.
+</p> 
