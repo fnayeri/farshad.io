@@ -2,6 +2,7 @@
 
 require 'csv'
 require 'fileutils'
+require 'json'
 
 # Read the CSV data
 csv_file = 'src/_data/portfolio.csv'
@@ -16,7 +17,8 @@ CSV.foreach(csv_file, headers: true) do |row|
   next if row['name'].strip.start_with?('#')
   
   name = row['name'].strip
-  permalink = row['permalink'] || name
+  url_slug = row['slug'].to_s.strip.empty? ? name : row['slug'].strip.downcase
+  url_slug = url_slug.gsub(%r{[^a-z0-9-]}, '')
   title = row['title'] || name
   customer = row['customer'] || ''
   role = row['role'] || ''
@@ -49,7 +51,7 @@ color: "#{color}"
 background: "#{background}"
 border: "#{border}"
 image: "/assets/logos/#{name}.png"
-permalink: "/#{permalink}/"
+permalink: "/#{url_slug}/"
 ---
 
 #{body}

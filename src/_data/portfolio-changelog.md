@@ -55,3 +55,10 @@ Each entry includes:
 - **Column:** role
 - **Before** → **After:** `Platform Architect` and `System Architect` → `Lead Architect`
 
+### #6 – 2025-03-23
+- **Type:** edit
+- **Target:** pixxa (pixxa-data-visualization-platform-saas)
+- **Description:** Add native apps tag (Perspective and related client apps)
+- **Column:** tags
+- **Before** → **After:** Added `native apps` after `cloud saas`
+

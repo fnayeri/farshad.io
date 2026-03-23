@@ -9,26 +9,45 @@
   }
 }
 
+// Portfolio bento: single grid (3 cols desktop, 2 on small)
 .bento-box {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   gap: 16px;
   padding: 20px;
   box-sizing: border-box;
   margin: 0 auto;
-  max-width: 100%;
-  width: 90%;
+  max-width: min(100%, 720px);
+  width: 100%;
 
   @include tablet {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+    max-width: min(100%, 680px);
+  }
+
+  @include small {
+    gap: 10px;
+    width: 100%;
+    padding: 12px;
+    max-width: 100%;
+  }
+}
+
+.bento-grid-main {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+  justify-items: center;
+
+  @include tablet {
     gap: 12px;
   }
 
   @include small {
-    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
-    width: 100%;
-    padding: 12px;
   }
 
   a {
@@ -36,12 +55,11 @@
     color: inherit;
     display: block;
     animation: stackIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+    &:visited { color: inherit; }
 
-    @for $i from 1 through 20 {
+    @for $i from 1 through 32 {
       &:nth-child(#{$i}) { animation-delay: #{$i * 0.04}s; }
     }
-
-    &:visited { color: inherit; }
   }
 }
 

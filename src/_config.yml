@@ -81,14 +81,13 @@ plugins:
 
 data_pages:
   - dataset: portfolio
-    root: /p
     layout: portfolio
     logo_dir: /assets/logos
 
 collections:
   portfolio:
     output: true
-    permalink: /p/:name/
+    permalink: /:name/
 
 # Exclude these files from your production _site
 exclude:

@@ -91,6 +91,23 @@ layout: default
         </a>
       </div>
     </div>
+    <div class="showcase showcase-slide showcase-slide-linguistic-ai" data-slide="2">
+      <div class='showcase-content carousel-card carousel-card-harvardxr carousel-card-linguistic-ai'>
+        <h3 class="carousel-linguistic-title">What Linguistic Categories Reveal about AI</h3>
+        <a class='carousel-graphic carousel-graphic-fullwidth' href='https://www.linkedin.com/pulse/ai-linguistic-categories-farshad-nayeri-tkxge/'>
+          <img src='/assets/artifacts/linguistic-categories-ai/carousel.png' alt="What Linguistic Categories Reveal about AI — reality, pragmatics, semantics, syntax; inferred by humans vs created by AI" />
+        </a>
+        <div class='carousel-header'>
+          <p class='carousel-text carousel-desc-text'>
+            AI chatbots are masters of syntax: fluent, fast, and positively confident. But exuberant fluency is not the same as understanding. Beneath AI chatbots' eloquence lies no grasp of meaning or causality. Human conversations, by contrast, are the result of interplay between syntax, semantics, and pragmatics: words, meanings, and intentions.
+          </p>
+          <p class='carousel-text carousel-desc-text'>
+            Using a Cognitive Linguistics lens can help explain the profound effects of this dichotomy on how we interact with AI, and how designers are evolving AI interfaces to compensate.
+          </p>
+          <a class='carousel-link carousel-link-right' href='https://www.linkedin.com/pulse/ai-linguistic-categories-farshad-nayeri-tkxge/'>Read on LinkedIn &rarr;</a>
+        </div>
+      </div>
+    </div>
   </div>
   <button class="carousel-prev" aria-label="Previous slide">◀</button>
   <button class="carousel-next" aria-label="Next slide">▶</button>
@@ -120,6 +137,7 @@ layout: default
           <span class="filter-tag" data-category="technology" data-tag="architecture">architecture</span>
           <span class="filter-tag" data-category="technology" data-tag="api design">api design</span>
           <span class="filter-tag" data-category="technology" data-tag="analytics">analytics</span>
+          <span class="filter-tag" data-category="technology" data-tag="artificial intelligence">artificial intelligence</span>
           <span class="filter-tag" data-category="technology" data-tag="visualization">visualization</span>
           <span class="filter-tag" data-category="technology" data-tag="blockchain">blockchain</span>
           <span class="filter-tag" data-category="technology" data-tag="cloud saas">Cloud / SaaS</span>
@@ -159,6 +177,7 @@ layout: default
 
 <div class="icon-lines">
   <div class="bento-box projects">
+    <div class="bento-grid-main">
     {% for p in site.data.portfolio %}
     {% if p.name %}
     <a style='color: #{{ p.color | default: "000000" }}' href='{{ p.permalink | relative_url }}'>
@@ -174,6 +193,7 @@ layout: default
     </a>
     {% endif %}
     {% endfor %}
+    </div>
   </div>
 </div>
 
@@ -426,7 +446,7 @@ function createCharts() {
       'Native Apps': ['native apps'],
       'Web': ['web apps'],
       'Cloud & APIs': ['cloud saas', 'api design'],
-      'Data & Analytics': ['analytics', 'visualization'],
+      'Data & Analytics': ['analytics', 'visualization', 'artificial intelligence'],
       'Architecture': ['architecture', 'platform']
     };
     var capLabels = Object.keys(capGroups);

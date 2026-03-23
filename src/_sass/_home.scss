@@ -123,6 +123,22 @@ a.button {
     margin-top: 0;
   }
 
+  .showcase-slide-linguistic-ai.showcase {
+    // Reset global .showcase asymmetry (padding / black bg) so the white card has a uniform frame
+    align-items: stretch;
+    background: transparent;
+    padding: 16px;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+    color: inherit;
+
+    a:not(.carousel-graphic):not(.carousel-link-right) {
+      color: inherit;
+    }
+  }
+
   @include mobile {
     .carousel-card {
       font-size: 0.85em;
@@ -364,6 +380,85 @@ a.button {
       }
     }
 
+    // Linguistic AI slide: single white panel, uniform border + symmetric shadow
+    &.carousel-card-linguistic-ai {
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 100%;
+      min-height: 0;
+      padding: 24px;
+      gap: 20px;
+      background: #ffffff;
+      color: #1f2937;
+      border: 1px solid #e5e7eb;
+      border-radius: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+
+      .carousel-linguistic-title {
+        margin: 0;
+        padding: 0;
+        line-height: 1.25;
+        font-size: 1.2em;
+        font-weight: 700;
+        color: #111827;
+        flex: 0 0 auto;
+      }
+
+      a {
+        color: #1d4ed8;
+
+        &:hover {
+          color: #1e40af;
+        }
+      }
+
+      .carousel-text {
+        color: #1f2937;
+      }
+
+      .carousel-link-right {
+        color: #111827;
+        background: rgba(0, 0, 0, 0.06);
+        border: 1px solid rgba(0, 0, 0, 0.2);
+
+        &:hover {
+          background: rgba(0, 0, 0, 0.1);
+          border-color: #111827;
+        }
+      }
+
+      .carousel-graphic.carousel-graphic-fullwidth {
+        background: transparent;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+
+        img {
+          max-width: min(420px, 88vw);
+          max-height: min(640px, 58vh);
+          width: auto;
+          height: auto;
+          object-fit: contain;
+          margin: 0 auto;
+        }
+      }
+
+      .carousel-header {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+      }
+
+      @include small {
+        padding: 20px;
+
+        .carousel-graphic.carousel-graphic-fullwidth img {
+          max-width: min(360px, 92vw);
+          max-height: min(520px, 50vh);
+        }
+      }
+    }
+
     &.carousel-card-vertical {
       flex-direction: column;
       align-items: stretch;
@@ -457,6 +552,10 @@ a.button {
       &.carousel-card-harvardxr {
         gap: 0;
       }
+
+      &.carousel-card-harvardxr.carousel-card-linguistic-ai {
+        gap: 20px;
+      }
     }
 
     @include small {
@@ -480,6 +579,15 @@ a.button {
         .carousel-link-right {
           font-size: 1em;
           padding: 6px 12px;
+        }
+      }
+
+      &.carousel-card-harvardxr.carousel-card-linguistic-ai {
+        padding: 20px;
+        gap: 16px;
+
+        .carousel-header {
+          padding: 0;
         }
       }
 
