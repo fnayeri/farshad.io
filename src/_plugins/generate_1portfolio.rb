@@ -1,3 +1,4 @@
+require 'set'
 
 module Jekyll
   class PortfolioPageGenerator < Generator
@@ -11,10 +12,23 @@ module Jekyll
       Jekyll.logger.info "Found data_spec: #{data_spec}"
       Jekyll.logger.info "Portfolio data count: #{site.data['portfolio'].length}"
 
-      site.data['portfolio'].each do |item|
-        next if item['name'].nil? || item['name'].strip.empty?
-        next if item['name'].strip.start_with?('#')
+      portfolio_items = site.data['portfolio'].select do |item|
+        name = item['name'].to_s.strip
+        !name.empty? && !name.start_with?('#')
+      end
 
+      slugs = portfolio_items.map { |item| PortfolioPage.effective_slug(item) }
+      slug_set = slugs.to_set
+
+      prefix_to_full_slugs = Hash.new { |h, k| h[k] = [] }
+      slugs.each do |slug|
+        next unless slug.include?('-')
+
+        prefix = slug.split('-', 2).first
+        prefix_to_full_slugs[prefix] << slug
+      end
+
+      portfolio_items.each do |item|
         Jekyll.logger.info "generating #{item['name']}"
 
         page = PortfolioPage.new(site, site.source, item, data_spec)
@@ -31,20 +45,35 @@ module Jekyll
         item.delete('legacy_permalink')
       end
 
+      prefix_to_full_slugs.each do |prefix, full_slugs|
+        next unless full_slugs.size == 1
+        next if slug_set.include?(prefix)
+
+        full = full_slugs.first
+        redirect = PortfolioAliasRedirectPage.new(site, site.source, prefix, "/#{full}/")
+        site.pages << redirect
+        Jekyll.logger.info "Created slug alias redirect: /#{prefix}/ → /#{full}/"
+      end
+
       Jekyll.logger.info "Total pages after portfolio generation: #{site.pages.length}"
     end
   end
 
   class PortfolioPage < Page
+    def self.effective_slug(item)
+      name = item['name'].to_s.strip.downcase
+      slug_field = item['slug'].to_s.strip
+      url_slug = slug_field.empty? ? name : slug_field.downcase
+      url_slug.gsub(%r{[^a-z0-9-]}, '')
+    end
+
     def initialize(site, base, item, data_spec)
       @site = site
       @base = base
       @name = item['name'].strip.downcase
 
       legacy_permalink = item['permalink'].to_s.strip
-      slug_field = item['slug'].to_s.strip
-      url_slug = slug_field.empty? ? @name : slug_field.downcase
-      url_slug = url_slug.gsub(%r{[^a-z0-9-]}, '')
+      url_slug = self.class.effective_slug(item)
 
       item['legacy_permalink'] = legacy_permalink
       item['permalink'] = "/#{url_slug}/"
@@ -87,6 +116,29 @@ module Jekyll
       self.content = ''
 
       Jekyll.logger.info "Legacy redirect url: #{self.url}"
+    end
+  end
+
+  # Short first-segment alias: /cme/ → /cme-chat/ when prefix is unique among portfolio slugs
+  class PortfolioAliasRedirectPage < Page
+    def initialize(site, base, alias_segment, target_path)
+      @site = site
+      @base = base
+      @name = 'index.html'
+      self.process(@name)
+
+      target = target_path.to_s
+      target = "/#{target}" unless target.start_with?('/')
+      target = "#{target}/" unless target.end_with?('/')
+
+      self.data = {
+        'layout' => 'redirect',
+        'redirect_to' => target,
+        'permalink' => "/#{alias_segment}/"
+      }
+      self.content = ''
+
+      Jekyll.logger.info "Slug alias redirect url: #{self.url}"
     end
   end
 end
