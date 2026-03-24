@@ -18,7 +18,7 @@ Deep knowledge of analytic techniques to assist teams in overcoming obstacles (e
 Business
 "15+ years platform innovation.
 Ability to synthesize business models and build systems that empower them.
-Experience across diverse sectors: Financial, Medical, Telecomm, Life Sciences, Management, Development Tools, Manufacturing.
+Experience across diverse sectors: Financial, Medical, Telecom, Life Sciences, Management, Development Tools, Manufacturing.
 Financial: Cost modeling, Profit & Loss, Balance Sheet, Visualizations.
 Agile Product Planning, Program Management, Story/Technical Specification.
 Product Strategy, Roadmaps, GTM, Launch, Branding.

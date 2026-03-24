@@ -119,9 +119,10 @@ layout: default
 </div>
 
 <div class="main-header-sticky">
-  <p style='text-align: center; font-weight: bold; font-size: 1.9em; margin: 0'>
-    Farshad Nayeri <button type="button" class="about-popover-trigger" id="about-popover-trigger" aria-label="About">ⓘ</button>
+  <p class="main-header-name">
+    <span class="main-header-name-text">Farshad Nayeri</span><button type="button" class="about-popover-trigger" id="about-popover-trigger" aria-label="About">ⓘ</button>
   </p>
+  <p class="keyword-subtitle" id="keyword-subtitle" aria-live="polite"></p>
 
   <div class="header-row" style="margin-top: 0;">
   <div class="filter-container">
@@ -131,7 +132,7 @@ layout: default
           <span class="filter-tag" data-category="industry" data-tag="financial">financial</span>
           <span class="filter-tag" data-category="industry" data-tag="healthcare">healthcare</span>
           <span class="filter-tag" data-category="industry" data-tag="retail,consumer">Retail & Consumer</span>
-          <span class="filter-tag" data-category="industry" data-tag="telecomm">telecomm</span>
+          <span class="filter-tag" data-category="industry" data-tag="telecom">telecom</span>
           <span class="filter-tag" data-category="industry" data-tag="management,innovation research">innovation</span>
         </div>
       </div>
@@ -141,7 +142,7 @@ layout: default
           <span class="filter-tag" data-category="technology" data-tag="architecture">architecture</span>
           <span class="filter-tag" data-category="technology" data-tag="api design">api design</span>
           <span class="filter-tag" data-category="technology" data-tag="analytics">analytics</span>
-          <span class="filter-tag" data-category="technology" data-tag="artificial intelligence">artificial intelligence</span>
+          <span class="filter-tag" data-category="technology" data-tag="artificial intelligence">Artificial Intelligence</span>
           <span class="filter-tag" data-category="technology" data-tag="visualization">visualization</span>
           <span class="filter-tag" data-category="technology" data-tag="blockchain">blockchain</span>
           <span class="filter-tag" data-category="technology" data-tag="cloud saas">Cloud / SaaS</span>
@@ -342,7 +343,7 @@ function createCharts() {
     }
 
     // Industry → tag for links (Retail & Consumer uses multi-tag)
-    var indToTag = { 'Financial Services': 'financial', 'Healthcare': 'healthcare', 'Innovation': 'management,innovation research', 'Telecom': 'telecomm', 'Retail & Consumer': 'retail,consumer', 'Government': 'government' };
+    var indToTag = { 'Financial Services': 'financial', 'Healthcare': 'healthcare', 'Innovation': 'management,innovation research', 'Telecom': 'telecom', 'Retail & Consumer': 'retail,consumer', 'Government': 'government' };
     var capToTag = { 'Product': 'product strategy', 'Native Apps': 'native apps', 'Web': 'web apps', 'Data & Analytics': 'analytics', 'Cloud & APIs': 'cloud saas', 'Architecture': 'architecture' };
 
     // Roles (order: Product Lead → Platform Lead → Lead Architect; others after)
@@ -363,7 +364,7 @@ function createCharts() {
       'Financial Services': ['financial'],
       'Healthcare': ['healthcare'],
       'Innovation': ['management', 'innovation research'],
-      'Telecom': ['telecomm'],
+      'Telecom': ['telecom'],
       'Retail & Consumer': ['retail', 'consumer'],
       'Government': ['government']
     };
@@ -391,7 +392,7 @@ function createCharts() {
     indValues = indLabels.map(function(k) { return industryCounts[k]; });
 
     // Core Skills: horizontal stacked bars by role (platform merged into architecture)
-    var industryTags = ['financial','healthcare','telecomm','retail','consumer','government','management','innovation research'];
+    var industryTags = ['financial','healthcare','telecom','retail','consumer','government','management','innovation research'];
     var excludedTechTags = ['blockchain','cryptocurrency','e-commerce','community','automation','storytelling'];
     var techCounts = {};
     data.forEach(function(p) {
@@ -780,6 +781,30 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 
+    function syncKeywordSubtitle() {
+        const el = document.getElementById('keyword-subtitle');
+        if (!el) return;
+        if (appState.activeTag) {
+            var found = null;
+            document.querySelectorAll('.filter-tag').forEach(function (t) {
+                if (t.getAttribute('data-tag') === appState.activeTag) found = t;
+            });
+            if (found) {
+                el.textContent = found.textContent.trim();
+            } else {
+                el.textContent = appState.activeTag.split(',').map(function (part) {
+                    return part.trim().split(/\s+/).map(function (w) {
+                        return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+                    }).join(' ');
+                }).join(', ');
+            }
+        } else if (appState.activeRole) {
+            el.textContent = appState.activeRole;
+        } else {
+            el.textContent = '';
+        }
+    }
+
     function render() {
         const textLines = document.querySelector('.text-lines');
         const iconLines = document.querySelector('.icon-lines');
@@ -821,6 +846,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (appState.view === 'chart') initCharts();
 
+        syncKeywordSubtitle();
         updateURL();
     }
 
@@ -855,11 +881,13 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('click', function(e) {
         const filterContainer = document.querySelector('.filter-container');
         const headerRow = document.querySelector('.header-row');
+        const clickEl = e.target instanceof Element ? e.target : e.target.parentElement;
         const isClickInFilter = filterContainer && filterContainer.contains(e.target);
         const isClickInHeader = headerRow && headerRow.contains(e.target);
         const isClickInViewControls = e.target.closest('.view-controls');
+        const isClickInByline = clickEl && clickEl.closest('.keyword-subtitle');
 
-        if (!isClickInFilter && !isClickInHeader && !isClickInViewControls) {
+        if (!isClickInFilter && !isClickInHeader && !isClickInViewControls && !isClickInByline) {
             const activeTags = document.querySelectorAll('.filter-tag.active');
             if (activeTags.length > 0 || appState.activeRole) {
                 setState({ activeTag: null, activeRole: null });
@@ -1118,7 +1146,7 @@ function clearFilter() {
   var total = slides.length;
   var current = 0;
   var autoplayTimer = null;
-  var autoplayMs = 10000;
+  var autoplayMs = 20000;
   var hoverPaused = false;
 
   function goTo(n) {

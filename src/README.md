@@ -13,7 +13,7 @@ The portfolio includes a comprehensive filter system that allows users to filter
 - **Healthcare**: Medical, health tech, and wellness applications
 - **Retail**: E-commerce, store management, and retail solutions
 - **Consumer**: Consumer-facing applications and products
-- **Telecomm**: Telecommunications and network infrastructure
+- **Telecom**: Telecommunications and network infrastructure
 - **Management**: Business management and organizational tools
 
 #### Technology Categories:
