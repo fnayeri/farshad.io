@@ -23,6 +23,9 @@ jobs:
         gem install bundler
         bundle install
 
+    - name: Install SVG rasterizer
+      run: sudo apt-get update && sudo apt-get install -y librsvg2-bin
+
     - name: Build the site
       run: bundle exec jekyll build
 

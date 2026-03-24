@@ -15,6 +15,7 @@
     {% endif %}
 
     <meta property="og:image"        content="{{ page.image | default: '/assets/about/fn.png' | absolute_url | escape}}" />
+    <meta name="twitter:card" content="summary" />
     <meta property="og:url"          content="{{ page.url | absolute_url | escape}}" />
     <meta property="og:type"         content="article" />
     <meta property="og:locale"       content="{{ site.locale }}" />

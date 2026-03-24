@@ -1,0 +1,93 @@
+<script>
+(function () {
+  var PROJECTS = [
+{% for p in site.data.portfolio %}
+{% if p.name and p.name != "" %}
+    { "name": {{ p.name | jsonify }}, "customer": {{ p.customer | strip | replace: "	", " " | jsonify }}, "slug": {{ p.slug | strip | jsonify }} }{% unless forloop.last %},{% endunless %}
+{% endif %}
+{% endfor %}
+  ];
+
+  function norm(s) {
+    return (s || "").trim().toLowerCase().replace(/\s+/g, " ").replace(/\t/g, " ");
+  }
+
+  function titleCaseWords(s) {
+    return norm(s).replace(/\b[a-z]/g, function (c) { return c.toUpperCase(); });
+  }
+
+  function setMetaByProperty(prop, content) {
+    var el = document.querySelector('meta[property="' + prop + '"]');
+    if (!el) {
+      el = document.createElement("meta");
+      el.setAttribute("property", prop);
+      document.head.appendChild(el);
+    }
+    el.setAttribute("content", content);
+  }
+
+  function setMetaByName(name, content) {
+    var el = document.querySelector('meta[name="' + name + '"]');
+    if (!el) {
+      el = document.createElement("meta");
+      el.setAttribute("name", name);
+      document.head.appendChild(el);
+    }
+    el.setAttribute("content", content);
+  }
+
+  function ensureTwitter() {
+    if (!document.querySelector('meta[name="twitter:card"]')) {
+      var m = document.createElement("meta");
+      m.setAttribute("name", "twitter:card");
+      m.setAttribute("content", "summary");
+      document.head.appendChild(m);
+    }
+  }
+
+  try {
+    var params = new URLSearchParams(window.location.search);
+    var raw = params.get("keywords");
+    if (!raw) return;
+
+    var kw = norm(decodeURIComponent(raw));
+    if (!kw) return;
+
+    var project = null;
+    for (var i = 0; i < PROJECTS.length; i++) {
+      var p = PROJECTS[i];
+      var n = norm(p.name);
+      var slug = norm(p.slug || "");
+      var cust = norm((p.customer || "").replace(/\t/g, " "));
+      if (kw === n || (slug && kw === slug) || (cust && kw === cust)) {
+        project = p;
+        break;
+      }
+    }
+
+    var label;
+    var imagePath;
+    if (project) {
+      label = (project.customer || "").trim().replace(/\t/g, " ").replace(/\s+/g, " ");
+      imagePath = "/assets/og/keywords/" + project.name + ".png";
+    } else {
+      label = titleCaseWords(raw);
+      imagePath = "/assets/about/fn.png";
+    }
+
+    var ogTitle = "Farshad Nayeri > " + label;
+    var absImage = new URL(imagePath, window.location.origin).href;
+
+    setMetaByProperty("og:title", ogTitle);
+    setMetaByName("title", ogTitle);
+    setMetaByProperty("og:image", absImage);
+    setMetaByProperty("og:url", window.location.href);
+
+    ensureTwitter();
+    setMetaByName("twitter:title", ogTitle);
+    setMetaByName("twitter:image", absImage);
+
+    document.title = ogTitle + " – " + {{ site.name | jsonify }};
+  } catch (e) {}
+})();
+</script>

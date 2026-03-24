@@ -41,6 +41,8 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
+      - name: Install SVG rasterizer
+        run: sudo apt-get update && sudo apt-get install -y librsvg2-bin
       - name: Build with Jekyll
         run: bundle exec jekyll build --source src --destination public --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
