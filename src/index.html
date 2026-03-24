@@ -55,6 +55,8 @@ layout: default
 </div>
 
 <div class="showcase-carousel">
+  <div class="carousel-viewport-row">
+  <button type="button" class="carousel-prev" aria-label="Previous slide">◀</button>
   <div class="carousel-viewport">
   <div class="carousel-track">
     <div class="showcase showcase-slide active" data-slide="0">
@@ -110,7 +112,7 @@ layout: default
       </div>
     </div>
   </div>
-  <button type="button" class="carousel-prev" aria-label="Previous slide">◀</button>
+  </div>
   <button type="button" class="carousel-next" aria-label="Next slide">▶</button>
   </div>
   <div class="carousel-dots" role="group" aria-label="Carousel slides"></div>
@@ -238,22 +240,18 @@ layout: default
   <div class="analytics-grid">
     <div class="chart-card">
       <h4>Roles</h4>
-      <p class="chart-description">Leadership positions held across projects</p>
       <div class="chart-area"><canvas id="roles-chart"></canvas></div>
     </div>
     <div class="chart-card">
       <h4>Industry</h4>
-      <p class="chart-description">Sector diversification across engagements</p>
       <div class="chart-area"><canvas id="industry-chart"></canvas></div>
     </div>
     <div class="chart-card">
       <h4>Core Skills</h4>
-      <p class="chart-description">Technology skills by role</p>
       <div class="chart-area chart-area--tall"><canvas id="tech-chart"></canvas></div>
     </div>
     <div class="chart-card">
       <h4>Experience</h4>
-      <p class="chart-description">Strengths across key dimensions</p>
       <div class="chart-area"><canvas id="capability-chart"></canvas></div>
     </div>
   </div>
@@ -859,8 +857,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const headerRow = document.querySelector('.header-row');
         const isClickInFilter = filterContainer && filterContainer.contains(e.target);
         const isClickInHeader = headerRow && headerRow.contains(e.target);
+        const isClickInViewControls = e.target.closest('.view-controls');
 
-        if (!isClickInFilter && !isClickInHeader) {
+        if (!isClickInFilter && !isClickInHeader && !isClickInViewControls) {
             const activeTags = document.querySelectorAll('.filter-tag.active');
             if (activeTags.length > 0 || appState.activeRole) {
                 setState({ activeTag: null, activeRole: null });

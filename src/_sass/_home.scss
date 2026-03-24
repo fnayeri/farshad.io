@@ -93,14 +93,29 @@ a.button {
 .showcase-carousel {
   position: relative;
   overflow: visible;
-  max-width: min(820px, 94vw);
+  max-width: min(900px, 96vw);
   margin: 16px auto 0;
   padding: 0;
+
+  .carousel-viewport-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+
+    @include small {
+      gap: 6px;
+    }
+  }
 
   .carousel-viewport {
     position: relative;
     overflow: hidden;
     border-radius: 22px;
+    flex: 1;
+    min-width: 0;
   }
 
   // Override .showcase img width so carousel images can fill their container
@@ -697,9 +712,9 @@ a.button {
 
   .carousel-prev,
   .carousel-next {
-    position: absolute;
-    top: 36%;
-    transform: translateY(-50%);
+    position: relative;
+    flex-shrink: 0;
+    align-self: center;
     background: rgba(255, 255, 255, 0.9);
     border: 1px solid rgba(0, 0, 0, 0.18);
     border-radius: 50%;
@@ -721,15 +736,8 @@ a.button {
       opacity: 1;
       background: $white;
     }
-  }
 
-  .carousel-prev { left: 6px; }
-  .carousel-next { right: 6px; }
-
-  @include small {
-    .carousel-prev,
-    .carousel-next {
-      top: 34%;
+    @include small {
       width: 44px;
       height: 44px;
       font-size: 22px;

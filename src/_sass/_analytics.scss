@@ -58,21 +58,17 @@
 
   h4 {
     color: $dark;
-    font-size: 1em;
-    margin: 0 0 4px 0;
+    font-size: 1.35rem;
+    line-height: 1.25;
+    margin: 0 0 16px 0;
     font-weight: 600;
+    letter-spacing: -0.02em;
   }
 
   @include mobile {
     padding: 16px;
     border-radius: 14px;
   }
-}
-
-.chart-description {
-  color: $secondary;
-  font-size: 11px;
-  margin: 0 0 16px 0;
 }
 
 .chart-area {
