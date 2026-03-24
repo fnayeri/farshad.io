@@ -1,5 +1,6 @@
 ---
 layout: portfolio
+artifacts_key: thehealthofnations
 title: "Public Health Data Visualization Platform"
 customer: "TheHealthOfNations.org"
 role: "Platform Lead"
