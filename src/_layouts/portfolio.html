@@ -2,18 +2,32 @@
 layout: default
 ---
 
-<div class="container portfolio-page-outer">
+<div class="portfolio-page-outer">
   <div class="portfolio-page-embody" style="border-color: #{{ page.border | default: page.color | default: "666666" }}; --portfolio-bg: #{{ page.background | default: "ffffff" }}; --portfolio-color: #{{ page.color }}; --portfolio-border: #{{ page.border | default: page.color | default: "666666" }};">
     <article class="portfolio-item"
       style="--portfolio-bg: #{{ page.background | default: "ffffff" }}; --portfolio-border: #{{ page.border | default: page.color | default: "666666" }};">
     <div class="portfolio-title">
+      {% assign portfolio_site = page.link | strip %}
+      {% if portfolio_site != "" %}
+      <a class="portfolio-logo-link" href="{{ portfolio_site }}" target="_blank" rel="noopener noreferrer">
+        <img class='logo' src="{{ page.image }}" alt="{{ page.title }}" />
+      </a>
+      {% else %}
       <img class='logo' src="{{ page.image }}" alt="{{ page.title }}" />
+      {% endif %}
       <h1 class="synopsis">
         {{ page.role }}
         <br />
         {{ page.title }}
         <br />
+        {% if portfolio_site != "" %}
+        <span class="portfolio-customer-row">
+          <a class="portfolio-customer-link" href="{{ portfolio_site }}" target="_blank" rel="noopener noreferrer">{{ page.customer }}</a>
+          <a class="portfolio-customer-external" href="{{ portfolio_site }}" target="_blank" rel="noopener noreferrer" aria-label="Project website"><span aria-hidden="true">→</span></a>
+        </span>
+        {% else %}
         {{ page.customer }}
+        {% endif %}
       </h1>
     </div>
 

@@ -55,6 +55,7 @@ layout: default
 </div>
 
 <div class="showcase-carousel">
+  <div class="carousel-viewport">
   <div class="carousel-track">
     <div class="showcase showcase-slide active" data-slide="0">
       <h3>The Health of Nations</h3>
@@ -109,9 +110,10 @@ layout: default
       </div>
     </div>
   </div>
-  <button class="carousel-prev" aria-label="Previous slide">◀</button>
-  <button class="carousel-next" aria-label="Next slide">▶</button>
-  <div class="carousel-dots"></div>
+  <button type="button" class="carousel-prev" aria-label="Previous slide">◀</button>
+  <button type="button" class="carousel-next" aria-label="Next slide">▶</button>
+  </div>
+  <div class="carousel-dots" role="group" aria-label="Carousel slides"></div>
 </div>
 
 <div class="main-header-sticky">
@@ -182,13 +184,16 @@ layout: default
     {% if p.name %}
     <a style='color: #{{ p.color | default: "000000" }}' href='{{ p.permalink | relative_url }}'>
           <div class='bento'
-            style='color: #{{ p.color | default: "000000" }}; background-color: #{{ p.background | default: "ffffff" }}; border-color: #{{ p.border | append: "77" | default: p.background | default: "ffffff" }};'
+            style='color: #{{ p.color | default: "000000" }}; background-color: #{{ p.background | default: "ffffff" }};'
             data-tags='{{ p.tags | join: "," }}' data-role='{{ p.role | strip }}'>
             <div class='icon-area'>
               <img class='portfolio-image' src='/assets/logos/{{ p.name }}.png' alt='{{ p.title | default: "" }}' />
-              <h2 class='subtitle'>{{ p.customer }} &rarr;</h2>
             </div>
-            <h2 class='title'>{{ p.title }}</h2>
+            <span class="bento-arrow" aria-hidden="true">→</span>
+            <div class="bento-labels">
+              <h2 class="bento-customer">{{ p.customer | strip }}</h2>
+              <p class="bento-description">{{ p.title }}</p>
+            </div>
           </div>
     </a>
     {% endif %}
@@ -606,8 +611,8 @@ function createCharts() {
         },
         plugins: {
           legend: {
-            position: 'top',
-            align: 'end',
+            position: 'bottom',
+            align: 'center',
             labels: { usePointStyle: true, pointStyle: 'circle', font: { size: 11 }, padding: 14, boxWidth: 8, color: '#333' },
             onClick: function(e, legendItem, legend) {
             var v = _rolesChart.data.labels[legendItem.index];
@@ -637,8 +642,8 @@ function createCharts() {
         scales: { r: { grid: { color: 'rgba(0,0,0,0.06)' }, ticks: { display: false }, beginAtZero: true } },
         plugins: {
           legend: {
-            position: 'top',
-            align: 'end',
+            position: 'bottom',
+            align: 'center',
             labels: { usePointStyle: true, pointStyle: 'circle', font: { size: 10 }, padding: 10, boxWidth: 8, color: '#333' },
             onClick: function(e, legendItem, legend) {
             var v = _industryChart.data.labels[legendItem.index];
@@ -671,8 +676,8 @@ function createCharts() {
         },
         plugins: {
           legend: {
-            position: 'top',
-            align: 'end',
+            position: 'bottom',
+            align: 'center',
             labels: { usePointStyle: true, pointStyle: 'rect', font: { size: 11 }, padding: 12, boxWidth: 10, color: '#333' },
             onClick: function(e, legendItem, legend) {
             var ds = _techChart.data.datasets[legendItem.datasetIndex];
@@ -742,11 +747,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateURL() {
         const url = new URL(window.location);
-        if (appState.view !== 'bento') {
-            url.searchParams.set('fmt', appState.view);
-        } else {
-            url.searchParams.delete('fmt');
-        }
+        url.searchParams.set('fmt', appState.view);
         if (appState.activeTag) {
             url.searchParams.set('tag', appState.activeTag);
         } else {
@@ -822,23 +823,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (appState.view === 'chart') initCharts();
 
-        const url = new URL(window.location);
-        if (appState.view !== 'bento') {
-            url.searchParams.set('fmt', appState.view);
-        } else {
-            url.searchParams.delete('fmt');
-        }
-        if (appState.activeTag) {
-            url.searchParams.set('tag', appState.activeTag);
-        } else {
-            url.searchParams.delete('tag');
-        }
-        if (appState.activeRole) {
-            url.searchParams.set('role', appState.activeRole);
-        } else {
-            url.searchParams.delete('role');
-        }
-        window.history.pushState(appState, '', url);
+        updateURL();
     }
 
     const urlState = parseURL();
@@ -1133,6 +1118,9 @@ function clearFilter() {
   var dotsContainer = carousel.querySelector('.carousel-dots');
   var total = slides.length;
   var current = 0;
+  var autoplayTimer = null;
+  var autoplayMs = 6000;
+  var hoverPaused = false;
 
   function goTo(n) {
     current = (n + total) % total;
@@ -1142,23 +1130,71 @@ function clearFilter() {
     });
     dotsContainer.querySelectorAll('.carousel-dot').forEach(function(d, i) {
       d.classList.toggle('active', i === current);
+      d.setAttribute('aria-pressed', i === current ? 'true' : 'false');
     });
+  }
+
+  function stopAutoplay() {
+    if (autoplayTimer) {
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+  function prefersReducedMotion() {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    if (prefersReducedMotion()) return;
+    autoplayTimer = setInterval(function() { goTo(current + 1); }, autoplayMs);
+  }
+
+  function kickAutoplay() {
+    if (!hoverPaused) {
+      stopAutoplay();
+      startAutoplay();
+    }
   }
 
   slides.forEach(function(slide, i) {
     slide.classList.toggle('active', i === 0);
   });
 
-  carousel.querySelector('.carousel-prev').addEventListener('click', function() { goTo(current - 1); });
-  carousel.querySelector('.carousel-next').addEventListener('click', function() { goTo(current + 1); });
+  carousel.addEventListener('mouseenter', function() {
+    hoverPaused = true;
+    stopAutoplay();
+  });
+  carousel.addEventListener('mouseleave', function() {
+    hoverPaused = false;
+    startAutoplay();
+  });
+
+  carousel.querySelector('.carousel-prev').addEventListener('click', function() {
+    goTo(current - 1);
+    kickAutoplay();
+  });
+  carousel.querySelector('.carousel-next').addEventListener('click', function() {
+    goTo(current + 1);
+    kickAutoplay();
+  });
 
   slides.forEach(function(_, i) {
     var dot = document.createElement('button');
+    dot.type = 'button';
     dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
     dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-    dot.addEventListener('click', function() { goTo(i); });
+    dot.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+    dot.textContent = '\u2022';
+    dot.addEventListener('click', function() {
+      goTo(i);
+      kickAutoplay();
+    });
     dotsContainer.appendChild(dot);
   });
+
+  startAutoplay();
 
   carousel.querySelectorAll('.carousel-desc-text').forEach(function(el) {
     el.addEventListener('click', function(e) {

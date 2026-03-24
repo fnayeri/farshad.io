@@ -89,15 +89,19 @@ a.button {
   color: $white;
 }
 
-// Showcase carousel
+// Showcase carousel (compact; dots sit below viewport)
 .showcase-carousel {
   position: relative;
-  overflow: hidden;
-  border-radius: 30px;
-  margin-top: 20px;
-  margin-bottom: 0;
-  padding-left: 68px;
-  padding-right: 68px;
+  overflow: visible;
+  max-width: min(820px, 94vw);
+  margin: 16px auto 0;
+  padding: 0;
+
+  .carousel-viewport {
+    position: relative;
+    overflow: hidden;
+    border-radius: 22px;
+  }
 
   // Override .showcase img width so carousel images can fill their container
   .carousel-graphic img {
@@ -118,9 +122,21 @@ a.button {
   }
 
   .showcase-slide h3 {
-    margin-bottom: 4px;
+    margin-bottom: 8px;
     padding-top: 0;
     margin-top: 0;
+    font-size: 2.1rem;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+
+    @include mobile {
+      font-size: 1.75rem;
+    }
+
+    @include small {
+      font-size: 1.5rem;
+    }
   }
 
   .showcase-slide-linguistic-ai.showcase {
@@ -163,11 +179,11 @@ a.button {
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    gap: 24px;
-    padding: 0 28px 24px;
+    gap: 16px;
+    padding: 0 20px 18px;
     background: $black;
-    font-size: 0.92em;
-    border-radius: 30px;
+    font-size: 0.82em;
+    border-radius: 22px;
     overflow: hidden;
 
     .carousel-description {
@@ -181,14 +197,14 @@ a.button {
       p {
         margin: 0;
         padding: 0;
-        line-height: 1.55em;
-        font-size: 1.2em;
+        line-height: 1.5em;
+        font-size: 1.05em;
         flex: 1;
-        padding-right: 16px;
+        padding-right: 12px;
         text-align: left;
 
         @include small {
-          font-size: 1.2em;
+          font-size: 1em;
         }
       }
 
@@ -218,20 +234,20 @@ a.button {
 
       img {
         display: block;
-        max-width: 280px;
+        max-width: 200px;
         width: 100%;
         height: auto;
-        border-radius: 12px;
+        border-radius: 10px;
         object-fit: cover;
 
         @include small {
-          max-width: 200px;
+          max-width: 160px;
         }
       }
     }
 
     &.carousel-card-hero {
-      padding: 0 28px 8px;
+      padding: 0 20px 8px;
       margin: 0;
       min-height: auto;
 
@@ -240,11 +256,11 @@ a.button {
         flex-wrap: wrap;
         align-items: flex-start;
         justify-content: flex-start;
-        gap: 12px 20px;
+        gap: 10px 16px;
 
         p {
-          font-size: 1.2em;
-          line-height: 1.5em;
+          font-size: 1.05em;
+          line-height: 1.45em;
           flex: 1 1 200px;
           min-width: 0;
           margin: 0;
@@ -262,6 +278,14 @@ a.button {
             flex-shrink: 0;
           }
         }
+
+        .carousel-desc-text strong {
+          font-size: clamp(1.45rem, 5.2vw + 0.5rem, 2.4rem);
+          font-weight: 700;
+          line-height: 1.2;
+          letter-spacing: -0.03em;
+          color: inherit;
+        }
       }
 
       @include mobile {
@@ -271,6 +295,10 @@ a.button {
         .carousel-description p {
           font-size: 1.2em;
           line-height: 1.45em;
+        }
+
+        .carousel-description .carousel-desc-text strong {
+          font-size: clamp(1.35rem, 4.5vw + 0.45rem, 2.1rem);
         }
 
         .carousel-links {
@@ -284,17 +312,21 @@ a.button {
         }
 
         .carousel-graphic img {
-          max-width: 180px;
+          max-width: 150px;
         }
       }
 
       @include small {
-        padding: 0 16px 6px;
-        gap: 12px;
+        padding: 0 14px 6px;
+        gap: 10px;
 
         .carousel-description p {
-          font-size: 1.2em;
-          line-height: 1.4em;
+          font-size: 1em;
+          line-height: 1.38em;
+        }
+
+        .carousel-description .carousel-desc-text strong {
+          font-size: clamp(1.2rem, 4vw + 0.4rem, 1.85rem);
         }
 
         .carousel-links {
@@ -302,13 +334,13 @@ a.button {
           margin-top: 0;
 
           .carousel-link {
-            font-size: 1em;
+            font-size: 0.95em;
             padding: 5px 10px;
           }
         }
 
         .carousel-graphic img {
-          max-width: 140px;
+          max-width: 120px;
         }
       }
     }
@@ -324,9 +356,9 @@ a.button {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
+        gap: 6px;
         flex: none;
-        padding: 0 28px 0;
+        padding: 0 20px 0;
       }
 
       .carousel-text {
@@ -334,11 +366,29 @@ a.button {
         min-width: 0;
         margin: 0;
         padding: 0;
-        line-height: 1.55em;
-        font-size: 1.2em;
+        line-height: 1.5em;
+        font-size: 1.05em;
 
         @include small {
-          font-size: 1.2em;
+          font-size: 1em;
+        }
+      }
+
+      &:not(.carousel-card-linguistic-ai) {
+        // First link in Harvard XR slide body is the HarvardXR brand
+        .carousel-text.carousel-desc-text a:first-of-type {
+          font-size: clamp(1.45rem, 5.2vw + 0.5rem, 2.4rem);
+          font-weight: 700;
+          letter-spacing: -0.03em;
+          color: $white;
+          text-decoration: none;
+          border-bottom: 2px solid rgba(255, 255, 255, 0.35);
+          line-height: 1.2;
+
+          &:hover {
+            border-bottom-color: rgba(255, 255, 255, 0.95);
+            color: $white;
+          }
         }
       }
 
@@ -374,7 +424,7 @@ a.button {
           width: auto;
           max-width: 100%;
           height: auto;
-          max-height: 400px;
+          max-height: 260px;
           object-fit: contain;
         }
       }
@@ -386,22 +436,31 @@ a.button {
       width: 100%;
       max-width: 100%;
       min-height: 0;
-      padding: 24px;
-      gap: 20px;
+      padding: 18px;
+      gap: 14px;
       background: #ffffff;
       color: #1f2937;
       border: 1px solid #e5e7eb;
-      border-radius: 30px;
+      border-radius: 22px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
 
       .carousel-linguistic-title {
         margin: 0;
         padding: 0;
-        line-height: 1.25;
-        font-size: 1.2em;
+        line-height: 1.15;
+        font-size: 2.1rem;
         font-weight: 700;
         color: #111827;
         flex: 0 0 auto;
+        letter-spacing: -0.03em;
+
+        @include mobile {
+          font-size: 1.75rem;
+        }
+
+        @include small {
+          font-size: 1.5rem;
+        }
       }
 
       a {
@@ -434,8 +493,8 @@ a.button {
         width: 100%;
 
         img {
-          max-width: min(420px, 88vw);
-          max-height: min(640px, 58vh);
+          max-width: min(300px, 82vw);
+          max-height: min(420px, 42vh);
           width: auto;
           height: auto;
           object-fit: contain;
@@ -450,11 +509,11 @@ a.button {
       }
 
       @include small {
-        padding: 20px;
+        padding: 16px;
 
         .carousel-graphic.carousel-graphic-fullwidth img {
-          max-width: min(360px, 92vw);
-          max-height: min(520px, 50vh);
+          max-width: min(260px, 90vw);
+          max-height: min(360px, 44vh);
         }
       }
     }
@@ -639,57 +698,83 @@ a.button {
   .carousel-prev,
   .carousel-next {
     position: absolute;
-    top: 50%;
+    top: 36%;
     transform: translateY(-50%);
-    background: none;
-    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    border-radius: 50%;
     color: $black;
     cursor: pointer;
-    font-size: 28px;
+    font-size: 26px;
+    line-height: 1;
+    width: 52px;
+    height: 52px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px;
-    transition: opacity 0.2s;
+    padding: 0;
+    transition: opacity 0.2s, background 0.2s;
     z-index: 2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.14);
 
     &:hover {
-      opacity: 0.7;
+      opacity: 1;
+      background: $white;
     }
   }
 
-  .carousel-prev { left: 12px; }
-  .carousel-next { right: 12px; }
+  .carousel-prev { left: 6px; }
+  .carousel-next { right: 6px; }
 
   @include small {
-    padding-left: 64px;
-    padding-right: 64px;
+    .carousel-prev,
+    .carousel-next {
+      top: 34%;
+      width: 44px;
+      height: 44px;
+      font-size: 22px;
+    }
   }
 
   .carousel-dots {
     display: flex;
     justify-content: center;
-    gap: 8px;
-    padding: 12px 0;
+    align-items: center;
+    gap: 0.08em;
+    padding: 0 0 2px;
+    margin: -8px 0 0;
     z-index: 2;
     position: relative;
 
     .carousel-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.4);
+      width: auto;
+      min-width: 2.5rem;
+      height: auto;
+      line-height: 1;
+      padding: 2px 4px;
+      border-radius: 0;
+      background: transparent;
       border: none;
       cursor: pointer;
-      padding: 0;
-      transition: background 0.2s;
+      font: inherit;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.22);
+      transition: color 0.2s, transform 0.2s;
+
+      @include small {
+        font-size: 2.1rem;
+        min-width: 2.1rem;
+        padding: 2px 3px;
+      }
 
       &.active {
-        background: $white;
+        color: $dark;
+        transform: scale(1.12);
       }
 
       &:hover {
-        background: rgba(255, 255, 255, 0.7);
+        color: rgba(0, 0, 0, 0.45);
       }
     }
   }

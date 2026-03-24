@@ -51,7 +51,7 @@
     </ul>
   </nav>
 
-  <div id="main" role="main" class="container">
+  <div id="main" role="main" class="container{% if page.layout == 'portfolio' %} container--portfolio{% endif %}">
     {{ content }}
   </div>
 

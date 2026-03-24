@@ -9,7 +9,7 @@ stakes: "Insight quality and delivery speed directly impact subscriber retention
 discovery: "Unifying data pipelines and content workflows into a single system enables continuous output across formats. AI-assisted, spec-driven development accelerated iteration while keeping architecture coherent as the platform expanded."
 outcome: "Delivered a production platform that integrates research, curation, publishing, and subscriptions. Enabled high-frequency, multi-format output and repeatable workflows, supporting a sustainable subscription business."
 tags: ["financial","innovation research","analytics","visualization","architecture","product design","product strategy","web apps","artificial intelligence"]
-color: "1a5f7a"
+color: "717072"
 background: "F5F9FC"
 border: "1a5f7a"
 image: "/assets/logos/asymco.png"
