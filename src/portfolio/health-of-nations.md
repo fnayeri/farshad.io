@@ -13,7 +13,7 @@ color: "1B6B93"
 background: "E8F4F8"
 border: "2389A8"
 image: "/assets/logos/health-of-nations.png"
-permalink: "/thon/"
+permalink: "/thehealthofnations/"
 ---
 
 Built TheHealthOfNations.org, a global public health data visualization and analytics platform. Conducted large-scale longitudinal analysis, including a 100-year demographic study across all countries. Applied AI methods for modeling, anomaly detection, and real-time data cleaning across heterogeneous datasets. Presented platform and findings at international venues, including the Global Health Exhibition 2025 and conferences hosted by the Saudi Ministry of Health.

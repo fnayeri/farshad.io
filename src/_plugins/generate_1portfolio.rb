@@ -17,6 +17,10 @@ module Jekyll
         !name.empty? && !name.start_with?('#')
       end
 
+      # Collection `portfolio/*.md` already emits /:name/; skip plugin Page to avoid duplicate destinations.
+      # (Check filesystem — collection docs may not be populated yet when this generator runs.)
+      portfolio_dir = File.join(site.source, 'portfolio')
+
       slugs = portfolio_items.map { |item| PortfolioPage.effective_slug(item) }
       slug_set = slugs.to_set
 
@@ -29,11 +33,17 @@ module Jekyll
       end
 
       portfolio_items.each do |item|
-        Jekyll.logger.info "generating #{item['name']}"
-
-        page = PortfolioPage.new(site, site.source, item, data_spec)
-        Jekyll.logger.info "Created page: #{page.url}"
-        site.pages << page
+        name_key = item['name'].to_s.strip.downcase
+        collection_doc_path = File.join(portfolio_dir, "#{name_key}.md")
+        if File.file?(collection_doc_path)
+          Jekyll.logger.info "skip plugin portfolio page for #{name_key} (collection file portfolio/#{name_key}.md)"
+          PortfolioPage.prepare_item!(site, item, data_spec)
+        else
+          Jekyll.logger.info "generating #{item['name']}"
+          page = PortfolioPage.new(site, site.source, item, data_spec)
+          Jekyll.logger.info "Created page: #{page.url}"
+          site.pages << page
+        end
 
         legacy = item['legacy_permalink'].to_s.strip
         target = item['permalink'].to_s
@@ -67,23 +77,29 @@ module Jekyll
       url_slug.gsub(%r{[^a-z0-9-]}, '')
     end
 
+    # Same item mutations as #initialize, without emitting a Page (used when collection doc exists).
+    def self.prepare_item!(site, item, data_spec)
+      name = item['name'].to_s.strip.downcase
+      legacy_permalink = item['permalink'].to_s.strip
+      url_slug = effective_slug(item)
+
+      item['legacy_permalink'] = legacy_permalink
+      item['permalink'] = "/#{url_slug}/"
+      item['image'] = File.join(data_spec['logo_dir'], name + '.png') if data_spec['logo_dir'] && !name.empty?
+      item['image'] ||= name
+      item['images'] = [item['image']]
+
+      item['tags'] = item['tags'].split(',').map(&:strip) if item['tags'].is_a?(String)
+      Jekyll.logger.info "tags: #{item['tags']}"
+      item['enabled'] = true
+    end
+
     def initialize(site, base, item, data_spec)
       @site = site
       @base = base
       @name = item['name'].strip.downcase
 
-      legacy_permalink = item['permalink'].to_s.strip
-      url_slug = self.class.effective_slug(item)
-
-      item['legacy_permalink'] = legacy_permalink
-      item['permalink'] = "/#{url_slug}/"
-      item['image'] = File.join(data_spec['logo_dir'], @name + '.png') if data_spec['logo_dir'] && @name
-      item['image'] ||= @name
-      item['images'] = [item['image']]
-
-      item['tags'] = item['tags'].split(',').map(&:strip) if item['tags']
-      Jekyll.logger.info "tags: #{item['tags']}"
-      item['enabled'] = true
+      self.class.prepare_item!(site, item, data_spec)
 
       self.process('index.html')
 

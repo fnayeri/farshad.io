@@ -55,72 +55,107 @@ layout: default
 </div>
 
 <div class="showcase-carousel">
-  <div class="carousel-viewport-row">
-  <button type="button" class="carousel-prev" aria-label="Previous slide">◀</button>
-  <div class="carousel-viewport">
-  <div class="carousel-track">
-    <div class="showcase showcase-slide active" data-slide="0">
-      <h3>The Health of Nations</h3>
-      <div class='showcase-content carousel-card carousel-card-hero'>
-        <div class='carousel-description'>
-          <p class='carousel-desc-text'>
-            <strong>The Health of Nations</strong> (1950–2050) is a data-cinematographic presentation spanning global populations and health across three acts: Lifespans, Lives of Nations, and Health of a Nation. It traces lifespans, migration, and population growth in some countries and concludes with a question about the future if we do not address the diseases of prosperity. Presented at Global Health Exhibit (GHE 2025) and in 2026 in front of 200 leaders at the Saudi Ministry of Health.
-          </p>
-          <div class="carousel-links">
-            <a class='carousel-link' href='https://www.globalhealthsaudi.com/en/home.html'>Global Health Exhibition &rarr;</a>
-            <a class='carousel-link' href='https://thehealthofnations.org/'>The Health of Nations &rarr;</a>
+  <div class="showcase-bento-tiles">
+    <button type="button" class="showcase-bento-tile showcase-bento-tile--label-on-dark" data-slide-index="0" aria-label="Open details: The Health of Nations">
+      <span class="showcase-bento-tile-inner">
+        <span class="showcase-bento-tile-img-wrap">
+          <img src="/assets/artifacts/thehealthofnations/thehealthofnations.png" alt="" />
+        </span>
+        <span class="showcase-bento-tile-label">The Health of Nations</span>
+      </span>
+    </button>
+    <button type="button" class="showcase-bento-tile" data-slide-index="1" aria-label="Open details: Harvard XR 2025">
+      <span class="showcase-bento-tile-inner">
+        <span class="showcase-bento-tile-img-wrap">
+          <img src="/assets/artifacts/harvardxr/Data%20Cinematography%20-%20HarvardXR%20v1.0.png" alt="" />
+        </span>
+        <span class="showcase-bento-tile-label">Harvard XR 2025</span>
+      </span>
+    </button>
+    <button type="button" class="showcase-bento-tile showcase-bento-tile--label-on-dark" data-slide-index="2" aria-label="Open details: What Linguistic Categories Reveal about AI">
+      <span class="showcase-bento-tile-inner">
+        <span class="showcase-bento-tile-img-wrap">
+          <img src="/assets/artifacts/linguistic-categories-ai/carousel.png" alt="" />
+        </span>
+        <span class="showcase-bento-tile-label">Linguistic Categories &amp; AI</span>
+      </span>
+    </button>
+  </div>
+  <div class="carousel-modal" id="showcase-carousel-modal" hidden>
+    <div class="carousel-modal-dialog" role="dialog" aria-modal="true" aria-label="Showcase project details">
+      <div class="carousel-viewport-row">
+        <button type="button" class="carousel-prev" aria-label="Previous slide">◀</button>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <div class="showcase showcase-slide active" data-slide="0">
+              <div class='showcase-content carousel-card carousel-card-hero'>
+                <div class='carousel-description'>
+                  <p class='carousel-desc-text'>
+                    <strong>The Health of Nations</strong> (1950–2050) is a data-cinematographic presentation spanning global populations and health across three acts: Lifespans, Lives of Nations, and Health of a Nation. It traces lifespans, migration, and population growth in some countries and concludes with a question about the future if we do not address the diseases of prosperity. Presented at Global Health Exhibit (GHE 2025) and in 2026 in front of 200 leaders at the Saudi Ministry of Health.
+                  </p>
+                  <div class="carousel-links">
+                    <a class='carousel-link' href='https://www.globalhealthsaudi.com/en/home.html'>Global Health Exhibition &rarr;</a>
+                    <a class='carousel-link' href='https://thehealthofnations.org/'>The Health of Nations &rarr;</a>
+                  </div>
+                </div>
+                <a class='carousel-graphic' href='https://thehealthofnations.org/'>
+                  <img src='/assets/artifacts/thehealthofnations/thehealthofnations.png' alt="The Health of Nations" />
+                </a>
+              </div>
+            </div>
+            <div class="showcase showcase-slide" data-slide="1">
+              <div class='showcase-content carousel-card carousel-card-harvardxr'>
+                <div class='carousel-header'>
+                  <p class='carousel-text carousel-desc-text'>
+                    <a href='https://harvardxr.com/'>HarvardXR</a> invited me to <a class="no-bold" href='https://www.harvardxr.com/2025/speakers'>speak</a> about <a
+                      href='https://www.linkedin.com/posts/farshadnayeri_harvard-harvardxr-harvardxr2026-activity-7321267481459712000-xfqF'>Data&nbsp;Cinematography</a>.
+                    This made for a great opportunity to showcase the data cinematography app <a
+                      href='https://itunes.apple.com/us/app/perspective/id516098684?ls=1'>Perspective</a> whose development I led at
+                    <a href='https://pixxa.com/'>Pixxa</a>.
+                  </p>
+                  <a class='carousel-link carousel-link-right' href='https://www.harvardxr.com/events/immersive-storytelling-games-and-design'>Harvard XR &rarr;</a>
+                </div>
+                <a class='carousel-graphic carousel-graphic-fullwidth' href='https://www.harvardxr.com/events/immersive-storytelling-games-and-design'>
+                  <img src='/assets/artifacts/harvardxr/Data%20Cinematography%20-%20HarvardXR%20v1.0.png' alt="Data Cinematography HarvardXR" />
+                </a>
+              </div>
+            </div>
+            <div class="showcase showcase-slide showcase-slide-linguistic-ai" data-slide="2">
+              <div class='showcase-content carousel-card carousel-card-harvardxr carousel-card-linguistic-ai'>
+                <h3 class="carousel-linguistic-title">What Linguistic Categories Reveal about AI</h3>
+                <a class='carousel-graphic carousel-graphic-fullwidth' href='https://www.linkedin.com/pulse/ai-linguistic-categories-farshad-nayeri-tkxge/'>
+                  <img src='/assets/artifacts/linguistic-categories-ai/carousel.png' alt="What Linguistic Categories Reveal about AI — reality, pragmatics, semantics, syntax; inferred by humans vs created by AI" />
+                </a>
+                <div class='carousel-header'>
+                  <p class='carousel-text carousel-desc-text'>
+                    AI chatbots are masters of syntax: fluent, fast, and positively confident. But exuberant fluency is not the same as understanding. Beneath AI chatbots' eloquence lies no grasp of meaning or causality. Human conversations, by contrast, are the result of interplay between syntax, semantics, and pragmatics: words, meanings, and intentions.
+                  </p>
+                  <p class='carousel-text carousel-desc-text'>
+                    Using a Cognitive Linguistics lens can help explain the profound effects of this dichotomy on how we interact with AI, and how designers are evolving AI interfaces to compensate.
+                  </p>
+                  <a class='carousel-link carousel-link-right' href='https://www.linkedin.com/pulse/ai-linguistic-categories-farshad-nayeri-tkxge/'>Read on LinkedIn &rarr;</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <a class='carousel-graphic' href='https://thehealthofnations.org/'>
-          <img src='/assets/artifacts/thehealthofnations/thehealthofnations.png' alt="The Health of Nations" />
-        </a>
+        <button type="button" class="carousel-next" aria-label="Next slide">▶</button>
       </div>
-    </div>
-    <div class="showcase showcase-slide" data-slide="1">
-      <h3>Harvard XR 2025</h3>
-      <div class='showcase-content carousel-card carousel-card-harvardxr'>
-        <div class='carousel-header'>
-          <p class='carousel-text carousel-desc-text'>
-            <a href='https://harvardxr.com/'>HarvardXR</a> invited me to <a class="no-bold" href='https://www.harvardxr.com/2025/speakers'>speak</a> about <a
-              href='https://www.linkedin.com/posts/farshadnayeri_harvard-harvardxr-harvardxr2026-activity-7321267481459712000-xfqF'>Data&nbsp;Cinematography</a>.
-            This made for a great opportunity to showcase the data cinematography app <a
-              href='https://itunes.apple.com/us/app/perspective/id516098684?ls=1'>Perspective</a> whose development I led at
-            <a href='https://pixxa.com/'>Pixxa</a>.
-          </p>
-          <a class='carousel-link carousel-link-right' href='https://www.harvardxr.com/events/immersive-storytelling-games-and-design'>Harvard XR &rarr;</a>
-        </div>
-        <a class='carousel-graphic carousel-graphic-fullwidth' href='https://www.harvardxr.com/events/immersive-storytelling-games-and-design'>
-          <img src='/assets/artifacts/harvardxr/Data%20Cinematography%20-%20HarvardXR%20v1.0.png' alt="Data Cinematography HarvardXR" />
-        </a>
-      </div>
-    </div>
-    <div class="showcase showcase-slide showcase-slide-linguistic-ai" data-slide="2">
-      <div class='showcase-content carousel-card carousel-card-harvardxr carousel-card-linguistic-ai'>
-        <h3 class="carousel-linguistic-title">What Linguistic Categories Reveal about AI</h3>
-        <a class='carousel-graphic carousel-graphic-fullwidth' href='https://www.linkedin.com/pulse/ai-linguistic-categories-farshad-nayeri-tkxge/'>
-          <img src='/assets/artifacts/linguistic-categories-ai/carousel.png' alt="What Linguistic Categories Reveal about AI — reality, pragmatics, semantics, syntax; inferred by humans vs created by AI" />
-        </a>
-        <div class='carousel-header'>
-          <p class='carousel-text carousel-desc-text'>
-            AI chatbots are masters of syntax: fluent, fast, and positively confident. But exuberant fluency is not the same as understanding. Beneath AI chatbots' eloquence lies no grasp of meaning or causality. Human conversations, by contrast, are the result of interplay between syntax, semantics, and pragmatics: words, meanings, and intentions.
-          </p>
-          <p class='carousel-text carousel-desc-text'>
-            Using a Cognitive Linguistics lens can help explain the profound effects of this dichotomy on how we interact with AI, and how designers are evolving AI interfaces to compensate.
-          </p>
-          <a class='carousel-link carousel-link-right' href='https://www.linkedin.com/pulse/ai-linguistic-categories-farshad-nayeri-tkxge/'>Read on LinkedIn &rarr;</a>
-        </div>
-      </div>
+      <div class="carousel-dots" role="group" aria-label="Carousel slides"></div>
     </div>
   </div>
-  </div>
-  <button type="button" class="carousel-next" aria-label="Next slide">▶</button>
-  </div>
-  <div class="carousel-dots" role="group" aria-label="Carousel slides"></div>
 </div>
 
 <div class="main-header-sticky">
   <p class="main-header-name">
-    <span class="main-header-name-text">Farshad Nayeri</span><button type="button" class="about-popover-trigger" id="about-popover-trigger" aria-label="About">ⓘ</button>
+    <button type="button" class="about-popover-trigger" id="about-popover-trigger" aria-label="About">ⓘ</button>
+    <span class="main-header-name-text">Farshad Nayeri</span>
+    <button type="button" class="copy-url-trigger" id="copy-url-trigger" aria-label="Copy page URL" title="Copy page URL">
+      <svg class="copy-url-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.75"/>
+        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+      </svg>
+    </button>
   </p>
   <p class="keyword-subtitle" id="keyword-subtitle" aria-live="polite"></p>
 
@@ -886,8 +921,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const isClickInHeader = headerRow && headerRow.contains(e.target);
         const isClickInViewControls = e.target.closest('.view-controls');
         const isClickInByline = clickEl && clickEl.closest('.keyword-subtitle');
+        const isClickInNameRow = clickEl && clickEl.closest('.main-header-name');
 
-        if (!isClickInFilter && !isClickInHeader && !isClickInViewControls && !isClickInByline) {
+        if (!isClickInFilter && !isClickInHeader && !isClickInViewControls && !isClickInByline && !isClickInNameRow) {
             const activeTags = document.querySelectorAll('.filter-tag.active');
             if (activeTags.length > 0 || appState.activeRole) {
                 setState({ activeTag: null, activeRole: null });
@@ -1140,14 +1176,15 @@ function clearFilter() {
 (function initCarousel() {
   var carousel = document.querySelector('.showcase-carousel');
   if (!carousel) return;
+  var modal = carousel.querySelector('.carousel-modal');
+  var modalDialog = carousel.querySelector('.carousel-modal-dialog');
+  var bentoTiles = carousel.querySelectorAll('.showcase-bento-tile');
   var track = carousel.querySelector('.carousel-track');
   var slides = carousel.querySelectorAll('.showcase-slide');
   var dotsContainer = carousel.querySelector('.carousel-dots');
   var total = slides.length;
   var current = 0;
-  var autoplayTimer = null;
-  var autoplayMs = 20000;
-  var hoverPaused = false;
+  var previousFocus = null;
 
   function goTo(n) {
     current = (n + total) % total;
@@ -1161,50 +1198,57 @@ function clearFilter() {
     });
   }
 
-  function stopAutoplay() {
-    if (autoplayTimer) {
-      clearInterval(autoplayTimer);
-      autoplayTimer = null;
+  function openModal(i) {
+    goTo(i);
+    previousFocus = document.activeElement;
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    var firstNav = carousel.querySelector('.carousel-prev');
+    if (firstNav && typeof firstNav.focus === 'function') firstNav.focus();
+  }
+
+  function closeModal() {
+    modal.hidden = true;
+    document.body.style.overflow = '';
+    if (previousFocus && typeof previousFocus.focus === 'function') {
+      previousFocus.focus();
     }
+    previousFocus = null;
   }
 
-  function prefersReducedMotion() {
-    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  }
-
-  function startAutoplay() {
-    stopAutoplay();
-    if (prefersReducedMotion()) return;
-    autoplayTimer = setInterval(function() { goTo(current + 1); }, autoplayMs);
-  }
-
-  function kickAutoplay() {
-    if (!hoverPaused) {
-      stopAutoplay();
-      startAutoplay();
-    }
-  }
-
-  slides.forEach(function(slide, i) {
-    slide.classList.toggle('active', i === 0);
+  slides.forEach(function(slide, idx) {
+    slide.classList.toggle('active', idx === 0);
   });
 
-  carousel.addEventListener('mouseenter', function() {
-    hoverPaused = true;
-    stopAutoplay();
+  bentoTiles.forEach(function(tile) {
+    tile.addEventListener('click', function() {
+      var idx = parseInt(tile.getAttribute('data-slide-index'), 10);
+      if (!isNaN(idx)) openModal(idx);
+    });
   });
-  carousel.addEventListener('mouseleave', function() {
-    hoverPaused = false;
-    startAutoplay();
+
+  if (modal) {
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeModal();
+    });
+  }
+  if (modalDialog) {
+    modalDialog.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal && !modal.hidden) {
+      closeModal();
+    }
   });
 
   carousel.querySelector('.carousel-prev').addEventListener('click', function() {
     goTo(current - 1);
-    kickAutoplay();
   });
   carousel.querySelector('.carousel-next').addEventListener('click', function() {
     goTo(current + 1);
-    kickAutoplay();
   });
 
   slides.forEach(function(_, i) {
@@ -1216,12 +1260,9 @@ function clearFilter() {
     dot.textContent = '\u2022';
     dot.addEventListener('click', function() {
       goTo(i);
-      kickAutoplay();
     });
     dotsContainer.appendChild(dot);
   });
-
-  startAutoplay();
 
   carousel.querySelectorAll('.carousel-desc-text').forEach(function(el) {
     el.addEventListener('click', function(e) {
@@ -1231,6 +1272,42 @@ function clearFilter() {
       }
     });
   });
+})();
+
+(function initCopyPageUrl() {
+  var btn = document.getElementById('copy-url-trigger');
+  if (!btn) return;
+  btn.addEventListener('click', function() {
+    var url = window.location.href;
+    function done() {
+      var prev = btn.getAttribute('aria-label');
+      btn.setAttribute('aria-label', 'Copied');
+      setTimeout(function() {
+        btn.setAttribute('aria-label', prev || 'Copy page URL');
+      }, 2000);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(done).catch(function() {
+        fallbackCopy(url, done);
+      });
+    } else {
+      fallbackCopy(url, done);
+    }
+  });
+  function fallbackCopy(text, cb) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+    } catch (e) {}
+    document.body.removeChild(ta);
+    if (cb) cb();
+  }
 })();
 
 var fullscreenBtn = document.getElementById('fullscreen-play');

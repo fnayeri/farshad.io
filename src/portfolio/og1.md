@@ -8,7 +8,7 @@ problem: "OG1 codifies and backs up bragging rights as to who owned which crypto
 stakes: "A consumer facing product for HODLers needs to clear "
 discovery: "The system had to preserve the integrity of foundational theories while ensuring accessibility to diverse audiences."
 outcome: "Launched Crypto DeFi service from conception to release in 3 months. "
-tags: ["retail","product design","blockchain","cryptocurrency"]
+tags: ["retail","product design","product strategy","blockchain","web apps","cryptocurrency"]
 color: "A38D55"
 background: "F2F2FE"
 border: "A38D55"

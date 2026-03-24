@@ -8,7 +8,7 @@ problem: "Augment EY's consulting business with a family of subscription service
 stakes: "As a global services company, EY has many subsidiary businesses with conflicting interests. A new platform had to be available to both existing and new applications, based on Azure Cloud."
 discovery: "The legacy system tightly integrated front-end applications with the API platform. The new platform needed to decouple this into a set of microservices around core platform services such as authentication and metering."
 outcome: "Successfully launched a robust blockchain API platform, an accompanying website, and a full launch and migration plan."
-tags: ["financial","innovation research","blockchain","api design","product design","product strategy","cloud saas","cryptocurrency"]
+tags: ["financial","innovation research","analytics","blockchain","api design","product design","product strategy","architecture","cloud saas","web apps","cryptocurrency"]
 color: "808080"
 background: "FFFFFF"
 border: "FBE74D"

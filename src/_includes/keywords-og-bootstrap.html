@@ -8,12 +8,22 @@
 {% endfor %}
   ];
 
+  var DEFAULT_OG_IMAGE = "/assets/about/fn.png";
+  var siteName = {{ site.name | jsonify }};
+
   function norm(s) {
     return (s || "").trim().toLowerCase().replace(/\s+/g, " ").replace(/\t/g, " ");
   }
 
   function titleCaseWords(s) {
     return norm(s).replace(/\b[a-z]/g, function (c) { return c.toUpperCase(); });
+  }
+
+  /** Multi-value tags (e.g. retail,consumer) → "Retail · Consumer" */
+  function formatFilterLabel(raw) {
+    var parts = norm(raw).split(",").map(function (p) { return p.trim(); }).filter(Boolean);
+    if (!parts.length) return "";
+    return parts.map(function (p) { return titleCaseWords(p); }).join(" · ");
   }
 
   function setMetaByProperty(prop, content) {
@@ -45,36 +55,7 @@
     }
   }
 
-  try {
-    var params = new URLSearchParams(window.location.search);
-    var raw = params.get("keywords");
-    if (!raw) return;
-
-    var kw = norm(decodeURIComponent(raw));
-    if (!kw) return;
-
-    var project = null;
-    for (var i = 0; i < PROJECTS.length; i++) {
-      var p = PROJECTS[i];
-      var n = norm(p.name);
-      var slug = norm(p.slug || "");
-      var cust = norm((p.customer || "").replace(/\t/g, " "));
-      if (kw === n || (slug && kw === slug) || (cust && kw === cust)) {
-        project = p;
-        break;
-      }
-    }
-
-    var label;
-    var imagePath;
-    if (project) {
-      label = (project.customer || "").trim().replace(/\t/g, " ").replace(/\s+/g, " ");
-      imagePath = "/assets/og/keywords/" + project.name + ".png";
-    } else {
-      label = titleCaseWords(raw);
-      imagePath = "/assets/about/fn.png";
-    }
-
+  function applyOgCard(label, imagePath, description) {
     var ogTitle = "Farshad Nayeri > " + label;
     var absImage = new URL(imagePath, window.location.origin).href;
 
@@ -82,12 +63,75 @@
     setMetaByName("title", ogTitle);
     setMetaByProperty("og:image", absImage);
     setMetaByProperty("og:url", window.location.href);
+    if (description) {
+      setMetaByProperty("og:description", description);
+      setMetaByName("description", description);
+    }
 
     ensureTwitter();
     setMetaByName("twitter:title", ogTitle);
     setMetaByName("twitter:image", absImage);
+    if (description) {
+      setMetaByName("twitter:description", description);
+    }
 
-    document.title = ogTitle + " – " + {{ site.name | jsonify }};
+    document.title = ogTitle + " – " + siteName;
+  }
+
+  try {
+    var params = new URLSearchParams(window.location.search);
+
+    // 1) ?keywords=… (project / free-text)
+    var raw = params.get("keywords");
+    if (raw) {
+      var kw = norm(decodeURIComponent(raw));
+      if (!kw) return;
+
+      var project = null;
+      for (var i = 0; i < PROJECTS.length; i++) {
+        var p = PROJECTS[i];
+        var n = norm(p.name);
+        var slug = norm(p.slug || "");
+        var cust = norm((p.customer || "").replace(/\t/g, " "));
+        if (kw === n || (slug && kw === slug) || (cust && kw === cust)) {
+          project = p;
+          break;
+        }
+      }
+
+      var label;
+      var imagePath;
+      if (project) {
+        label = (project.customer || "").trim().replace(/\t/g, " ").replace(/\s+/g, " ");
+        imagePath = DEFAULT_OG_IMAGE;
+      } else {
+        label = titleCaseWords(raw);
+        imagePath = DEFAULT_OG_IMAGE;
+      }
+
+      applyOgCard(label, imagePath);
+      return;
+    }
+
+    // 2) ?tag=… (list/chart filters — same param as app state)
+    var tagRaw = params.get("tag");
+    if (tagRaw) {
+      var tagLabel = formatFilterLabel(tagRaw.replace(/\+/g, " "));
+      if (!tagLabel) return;
+      var desc = "Portfolio and experience on farshad.io, filtered by tag: " + tagLabel + ".";
+      applyOgCard(tagLabel, DEFAULT_OG_IMAGE, desc);
+      return;
+    }
+
+    // 3) ?role=…
+    var roleRaw = params.get("role");
+    if (roleRaw) {
+      var roleLabel = formatFilterLabel(roleRaw.replace(/\+/g, " "));
+      if (!roleLabel) return;
+      var desc2 = "Portfolio and experience on farshad.io, filtered by role: " + roleLabel + ".";
+      applyOgCard(roleLabel, DEFAULT_OG_IMAGE, desc2);
+      return;
+    }
   } catch (e) {}
 })();
 </script>

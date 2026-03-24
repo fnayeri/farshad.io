@@ -8,7 +8,7 @@ problem: "Patients struggled to track symptoms effectively, hindering health man
 stakes: "Poor patient engagement and suboptimal health outcomes due to the lack of reliable tracking solutions."
 discovery: "Developed a mobile app with user-friendly interfaces and data visualization tools for effective symptom monitoring and sharing with healthcare providers."
 outcome: "Enabled better health management and communication through an innovative symptom tracking app."
-tags: ["healthcare","visualization","analytics","platform","native apps","web apps","automation","cloud saas"]
+tags: ["healthcare","innovation research","visualization","analytics","platform","native apps","web apps","automation","cloud saas"]
 color: "2F6492"
 background: "F0F6F8"
 border: "C8D8E4"
