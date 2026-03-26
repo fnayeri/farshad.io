@@ -1,0 +1,12 @@
+{
+  "name": "farshad.io",
+  "private": true,
+  "description": "Jekyll site (source: src, output: public)",
+  "scripts": {
+    "start": "bundle exec jekyll serve --livereload",
+    "serve": "bundle exec jekyll serve --livereload",
+    "build": "bundle exec jekyll build",
+    "clean": "bundle exec jekyll clean",
+    "ship": "git push origin HEAD"
+  }
+}

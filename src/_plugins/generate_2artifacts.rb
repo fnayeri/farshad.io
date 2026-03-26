@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Jekyll
-  # Attaches page.data['artifacts'] (image paths under assets/artifacts/<key>/) for portfolio pages.
+  # Attaches page.data['artifacts'] (image and video paths under assets/artifacts/<key>/) for portfolio pages.
   # Collection markdown files have no `name` in front matter (unlike CSV-generated pages), so the
   # artifact folder key defaults to the portfolio file basename (e.g. verizon-tips.md → verizon-tips).
   # Override with front matter: artifacts_key: other-folder-name
@@ -18,12 +18,12 @@ module Jekyll
         artifact_dir = File.join(site.source, artifacts_path)
         next unless Dir.exist?(artifact_dir)
 
-        images = Dir.entries(artifact_dir).select do |f|
-          File.file?(File.join(artifact_dir, f)) && f =~ /\.(png|jpe?g|gif)$/i
+        media = Dir.entries(artifact_dir).select do |f|
+          File.file?(File.join(artifact_dir, f)) && f =~ /\.(png|jpe?g|gif|m4v|mp4|webm|mov)$/i
         end.sort
 
-        Jekyll.logger.info "found #{images.length} images: #{images.inspect}" if images.any?
-        page.data['artifacts'] = images.map { |img| File.join(artifacts_path, img) }
+        Jekyll.logger.info "found #{media.length} artifacts: #{media.inspect}" if media.any?
+        page.data['artifacts'] = media.map { |f| File.join(artifacts_path, f) }
       end
     end
 

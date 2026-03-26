@@ -6,6 +6,4 @@ _site
 .sass-cache
 Gemfile.lock
 node_modules
-package.json
-node_modules
 public

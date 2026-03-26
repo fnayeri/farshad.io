@@ -116,12 +116,6 @@ a.button {
     width: 100%;
     margin: 0;
     padding: 0;
-    border: none;
-    appearance: none;
-    background: transparent;
-    cursor: pointer;
-    font: inherit;
-    text-align: left;
     border-radius: 18px;
     aspect-ratio: 1;
     box-sizing: border-box;
@@ -143,10 +137,28 @@ a.button {
         0 16px 40px rgba(0, 0, 0, 0.1);
       border-color: rgba(29, 29, 31, 0.22);
     }
+  }
+
+  .showcase-bento-tile-open {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    font: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+    border-radius: 0;
 
     &:focus-visible {
       outline: 2px solid $dark;
-      outline-offset: 3px;
+      outline-offset: -2px;
     }
   }
 
@@ -179,21 +191,66 @@ a.button {
   .showcase-bento-tile-label {
     flex-shrink: 0;
     padding: 10px 10px 12px;
+    background: $white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+    text-align: center;
+  }
+
+  .showcase-bento-tile-title-text {
     font-size: clamp(0.6rem, 1.2vw + 0.4rem, 0.82rem);
     font-weight: 600;
     line-height: 1.15;
     letter-spacing: -0.02em;
     color: $black;
-    background: $white;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    width: 100%;
+  }
+
+  .showcase-bento-tile-site-link {
+    flex-shrink: 0;
+    color: $link;
+    font-size: clamp(0.85rem, 1.4vw + 0.45rem, 1.05rem);
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    padding: 2px 6px;
+    border-radius: 4px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $link;
+      outline-offset: 2px;
+    }
   }
 
   .showcase-bento-tile--label-on-dark .showcase-bento-tile-label {
-    color: $white;
     background: $black;
+  }
+
+  .showcase-bento-tile--label-on-dark .showcase-bento-tile-title-text {
+    color: $white;
+  }
+
+  .showcase-bento-tile--label-on-dark .showcase-bento-tile-site-link {
+    color: rgba(255, 255, 255, 0.95);
+
+    &:hover {
+      color: $white;
+    }
+
+    &:focus-visible {
+      outline-color: $white;
+    }
   }
 
   .carousel-modal {

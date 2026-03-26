@@ -56,30 +56,45 @@ layout: default
 
 <div class="showcase-carousel">
   <div class="showcase-bento-tiles">
-    <button type="button" class="showcase-bento-tile showcase-bento-tile--label-on-dark" data-slide-index="0" aria-label="Open details: The Health of Nations">
-      <span class="showcase-bento-tile-inner">
-        <span class="showcase-bento-tile-img-wrap">
-          <img src="/assets/artifacts/thehealthofnations/thehealthofnations.png" alt="" />
-        </span>
-        <span class="showcase-bento-tile-label">The Health of Nations</span>
-      </span>
-    </button>
-    <button type="button" class="showcase-bento-tile" data-slide-index="1" aria-label="Open details: Harvard XR 2025">
-      <span class="showcase-bento-tile-inner">
-        <span class="showcase-bento-tile-img-wrap">
-          <img src="/assets/artifacts/harvardxr/Data%20Cinematography%20-%20HarvardXR%20v1.0.png" alt="" />
-        </span>
-        <span class="showcase-bento-tile-label">Harvard XR 2025</span>
-      </span>
-    </button>
-    <button type="button" class="showcase-bento-tile showcase-bento-tile--label-on-dark" data-slide-index="2" aria-label="Open details: What Linguistic Categories Reveal about AI">
-      <span class="showcase-bento-tile-inner">
-        <span class="showcase-bento-tile-img-wrap">
-          <img src="/assets/artifacts/linguistic-categories-ai/carousel.png" alt="" />
-        </span>
-        <span class="showcase-bento-tile-label">Linguistic Categories &amp; AI</span>
-      </span>
-    </button>
+    <div class="showcase-bento-tile showcase-bento-tile--label-on-dark" data-slide-index="0">
+      <div class="showcase-bento-tile-inner">
+        <button type="button" class="showcase-bento-tile-open" aria-label="Open details: The Health of Nations">
+          <span class="showcase-bento-tile-img-wrap">
+            <img src="/assets/thehealthofnations/thehealthofnations.png" alt="" />
+          </span>
+        </button>
+        <div class="showcase-bento-tile-label">
+          <span class="showcase-bento-tile-title-text">The Health of Nations</span>
+          <a class="showcase-bento-tile-site-link" href="https://thehealthofnations.org/" target="_blank" rel="noopener noreferrer" aria-label="The Health of Nations website">→</a>
+        </div>
+      </div>
+    </div>
+    <div class="showcase-bento-tile" data-slide-index="1">
+      <div class="showcase-bento-tile-inner">
+        <button type="button" class="showcase-bento-tile-open" aria-label="Open details: Harvard XR 2025">
+          <span class="showcase-bento-tile-img-wrap">
+            <img src="/assets/artifacts/harvardxr/Data%20Cinematography%20-%20HarvardXR%20v1.0.png" alt="" />
+          </span>
+        </button>
+        <div class="showcase-bento-tile-label">
+          <span class="showcase-bento-tile-title-text">Harvard XR 2025</span>
+          <a class="showcase-bento-tile-site-link" href="https://harvardxr.com/" target="_blank" rel="noopener noreferrer" aria-label="HarvardXR website">→</a>
+        </div>
+      </div>
+    </div>
+    <div class="showcase-bento-tile showcase-bento-tile--label-on-dark" data-slide-index="2">
+      <div class="showcase-bento-tile-inner">
+        <button type="button" class="showcase-bento-tile-open" aria-label="Open details: What Linguistic Categories Reveal about AI">
+          <span class="showcase-bento-tile-img-wrap">
+            <img src="/assets/artifacts/linguistic-categories-ai/carousel.png" alt="" />
+          </span>
+        </button>
+        <div class="showcase-bento-tile-label">
+          <span class="showcase-bento-tile-title-text">Linguistic Categories &amp; AI</span>
+          <a class="showcase-bento-tile-site-link" href="https://www.linkedin.com/pulse/ai-linguistic-categories-farshad-nayeri-tkxge/" target="_blank" rel="noopener noreferrer" aria-label="Article on LinkedIn">→</a>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="carousel-modal" id="showcase-carousel-modal" hidden>
     <div class="carousel-modal-dialog" role="dialog" aria-modal="true" aria-label="Showcase project details">
@@ -99,7 +114,7 @@ layout: default
                   </div>
                 </div>
                 <a class='carousel-graphic' href='https://thehealthofnations.org/'>
-                  <img src='/assets/artifacts/thehealthofnations/thehealthofnations.png' alt="The Health of Nations" />
+                  <img src='/assets/thehealthofnations/thehealthofnations.png' alt="The Health of Nations" />
                 </a>
               </div>
             </div>
@@ -225,7 +240,7 @@ layout: default
             style='color: #{{ p.color | default: "000000" }}; background-color: #{{ p.background | default: "ffffff" }};'
             data-tags='{{ p.tags | join: "," }}' data-role='{{ p.role | strip }}'>
             <div class='icon-area'>
-              <img class='portfolio-image' src='/assets/logos/{{ p.name }}.png' alt='{{ p.title | default: "" }}' />
+              <img class='portfolio-image' src="{{ '/assets/logos/' | append: p.name | append: '.png' | relative_url }}" alt='{{ p.title | default: "" }}' />
             </div>
             <span class="bento-arrow" aria-hidden="true">→</span>
             <div class="bento-labels">
@@ -248,7 +263,7 @@ layout: default
         <a href='{{ p.permalink | relative_url }}' class="portfolio-link" style="--project-border: #{{ p.border | default: p.color | default: "666666" }};">
           <div class="portfolio-content">
             <div class="image-column">
-              <img src="/assets/logos/{{ p.name }}.png" class="portfolio-image">
+              <img src="{{ '/assets/logos/' | append: p.name | append: '.png' | relative_url }}" class="portfolio-image">
             </div>
             <div class="content-right">
               <div class="header">
@@ -1178,7 +1193,7 @@ function clearFilter() {
   if (!carousel) return;
   var modal = carousel.querySelector('.carousel-modal');
   var modalDialog = carousel.querySelector('.carousel-modal-dialog');
-  var bentoTiles = carousel.querySelectorAll('.showcase-bento-tile');
+  var bentoOpenButtons = carousel.querySelectorAll('.showcase-bento-tile-open');
   var track = carousel.querySelector('.carousel-track');
   var slides = carousel.querySelectorAll('.showcase-slide');
   var dotsContainer = carousel.querySelector('.carousel-dots');
@@ -1220,8 +1235,10 @@ function clearFilter() {
     slide.classList.toggle('active', idx === 0);
   });
 
-  bentoTiles.forEach(function(tile) {
-    tile.addEventListener('click', function() {
+  bentoOpenButtons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var tile = btn.closest('.showcase-bento-tile');
+      if (!tile) return;
       var idx = parseInt(tile.getAttribute('data-slide-index'), 10);
       if (!isNaN(idx)) openModal(idx);
     });
