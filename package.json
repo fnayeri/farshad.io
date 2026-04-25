@@ -1,12 +1,35 @@
 {
-  "name": "farshad.io",
+  "name": "farshad-io-nextjs",
+  "version": "0.1.0",
   "private": true,
-  "description": "Jekyll site (source: src, output: public)",
   "scripts": {
-    "start": "bundle exec jekyll serve --livereload",
-    "serve": "bundle exec jekyll serve --livereload",
-    "build": "bundle exec jekyll build",
-    "clean": "bundle exec jekyll clean",
-    "ship": "git push origin HEAD"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "preview": "npm run pages:build && wrangler pages dev .vercel/output/static",
+    "deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static"
+  },
+  "dependencies": {
+    "next": "15.1.6",
+    "papaparse": "5.4.1",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "devDependencies": {
+    "@cloudflare/next-on-pages": "1.13.7",
+    "@types/node": "22.10.5",
+    "@types/papaparse": "5.3.15",
+    "@types/react": "19.0.4",
+    "@types/react-dom": "19.0.2",
+    "autoprefixer": "10.4.20",
+    "eslint": "9.18.0",
+    "eslint-config-next": "15.1.6",
+    "postcss": "8.5.1",
+    "tailwindcss": "3.4.17",
+    "typescript": "5.7.3",
+    "vercel": "39.3.0",
+    "wrangler": "3.99.0"
   }
 }

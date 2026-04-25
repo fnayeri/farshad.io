@@ -1,0 +1,81 @@
+{
+  "items": [
+    {
+      "id": "the-health-of-nations",
+      "title": "The Health of Nations",
+      "tile": {
+        "image": "/assets/thehealthofnations/thehealthofnations.png",
+        "labelOnDark": true
+      },
+      "siteUrl": "https://thehealthofnations.org/",
+      "siteLabel": "The Health of Nations",
+      "body": "The Health of Nations (1950–2050) is a data-cinematographic presentation spanning global populations and health across three acts: Lifespans, Lives of Nations, and Health of a Nation. It traces lifespans, migration, and population growth across countries and concludes with a question about the future if we do not address the diseases of prosperity. Presented at Global Health Exhibit (GHE 2025) and in 2026 in front of 200 leaders at the Saudi Ministry of Health.",
+      "links": [
+        { "label": "Global Health Exhibition", "href": "https://www.globalhealthsaudi.com/en/home.html" },
+        { "label": "The Health of Nations", "href": "https://thehealthofnations.org/" }
+      ],
+      "graphic": {
+        "image": "/assets/thehealthofnations/thehealthofnations.png",
+        "href": "https://thehealthofnations.org/",
+        "alt": "The Health of Nations"
+      }
+    },
+    {
+      "id": "harvard-xr-2025",
+      "title": "Harvard XR 2025",
+      "tile": {
+        "image": "/assets/artifacts/harvardxr/Data Cinematography - HarvardXR v1.0.png",
+        "labelOnDark": false
+      },
+      "siteUrl": "https://harvardxr.com/",
+      "siteLabel": "HarvardXR website",
+      "body": "HarvardXR invited me to speak about Data Cinematography. This made for a great opportunity to showcase the data cinematography app Perspective whose development I led at Pixxa.",
+      "links": [
+        { "label": "Harvard XR", "href": "https://www.harvardxr.com/events/immersive-storytelling-games-and-design" }
+      ],
+      "graphic": {
+        "image": "/assets/artifacts/harvardxr/Data Cinematography - HarvardXR v1.0.png",
+        "href": "https://www.harvardxr.com/events/immersive-storytelling-games-and-design",
+        "alt": "Data Cinematography HarvardXR"
+      }
+    },
+    {
+      "id": "linguistic-categories-ai",
+      "title": "Linguistic Categories & AI",
+      "tile": {
+        "image": "/assets/artifacts/linguistic-categories-ai/carousel.png",
+        "labelOnDark": true
+      },
+      "siteUrl": "https://www.linkedin.com/pulse/ai-linguistic-categories-farshad-nayeri-tkxge/",
+      "siteLabel": "Article on LinkedIn",
+      "body": "AI chatbots are masters of syntax: fluent, fast, and positively confident. But exuberant fluency is not the same as understanding. Beneath AI chatbots' eloquence lies no grasp of meaning or causality. Human conversations, by contrast, are the result of interplay between syntax, semantics, and pragmatics: words, meanings, and intentions. Using a Cognitive Linguistics lens can help explain the profound effects of this dichotomy on how we interact with AI, and how designers are evolving AI interfaces to compensate.",
+      "links": [
+        { "label": "Read on LinkedIn", "href": "https://www.linkedin.com/pulse/ai-linguistic-categories-farshad-nayeri-tkxge/" }
+      ],
+      "graphic": {
+        "image": "/assets/artifacts/linguistic-categories-ai/carousel.png",
+        "href": "https://www.linkedin.com/pulse/ai-linguistic-categories-farshad-nayeri-tkxge/",
+        "alt": "What Linguistic Categories Reveal about AI — reality, pragmatics, semantics, syntax; inferred by humans vs created by AI"
+      }
+    },
+    {
+      "id": "pixxa",
+      "title": "Pixxa",
+      "tile": {
+        "image": "/assets/video/pixxa-sankey.png",
+        "labelOnDark": true
+      },
+      "siteUrl": "https://pixxa.com/",
+      "siteLabel": "Pixxa",
+      "body": "Pixxa platform brings the power of Data Cinematography to the ordinary presenter. Pixxa's Perspective app has been used in many high-stakes presentations in such companies as Apple, Samsung, and Fidelity.",
+      "links": [
+        { "label": "Pixxa", "href": "https://pixxa.com/" }
+      ],
+      "graphic": {
+        "image": "/assets/video/pixxa-sankey.png",
+        "href": "https://pixxa.com/",
+        "alt": "Pixxa data cinematography"
+      }
+    }
+  ]
+}

@@ -1,9 +1,26 @@
+# Jekyll legacy
 _site
-.DS_Store
 .jekyll
 .jekyll-metadata
 .bundle
 .sass-cache
 Gemfile.lock
+
+# OS / editors
+.DS_Store
+
+# Node
 node_modules
-public
+npm-debug.log*
+
+# Next.js
+.next/
+out/
+
+# Cloudflare Pages / next-on-pages
+.vercel/
+.wrangler/
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts.bak

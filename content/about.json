@@ -1,0 +1,18 @@
+{
+  "name": "Farshad Nayeri",
+  "headshot": "/assets/about/farshad-nayeri.png",
+  "headline": "Proven Product Leader",
+  "email": "farshad@igencorp.com",
+  "phone": "+1.617.823.3876",
+  "phoneHref": "tel:+16178233876",
+  "smsHref": "sms:+16178233876",
+  "resume": "/docs/resume/Farshad-Nayeri-Resume.pdf",
+  "linkedin": "https://www.linkedin.com/in/farshadnayeri/",
+  "blog": "https://farshad.io/blog/",
+  "bullets": [
+    "Brings deep experience in technology and product innovation.",
+    "Transforms business, technical, and strategic constraints into scalable, high-impact solutions.",
+    "Delivers tangible results across the entire product lifecycle.",
+    "Thrives in dynamic, hands-on, high-stakes environments."
+  ]
+}
