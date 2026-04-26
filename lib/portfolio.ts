@@ -2,6 +2,12 @@ import fs from "node:fs";
 import path from "node:path";
 import Papa from "papaparse";
 
+export type Artifact = {
+  src: string;
+  kind: "image" | "video";
+  poster?: string;
+};
+
 export type Project = {
   name: string;
   slug: string;
@@ -21,11 +27,48 @@ export type Project = {
   background: string;
   border: string;
   logo: string;
+  artifacts: Artifact[];
 };
 
 type RawRow = Record<string, string | undefined>;
 
 const CSV_PATH = path.join(process.cwd(), "src", "_data", "portfolio.csv");
+const ARTIFACTS_ROOT = path.join(process.cwd(), "public", "assets", "artifacts");
+
+const ARTIFACT_KEY_OVERRIDES: Record<string, string> = {
+  "health-of-nations": "thehealthofnations",
+};
+
+const VIDEO_EXT = new Set(["m4v", "mp4", "webm", "mov"]);
+const IMAGE_EXT = new Set(["png", "jpg", "jpeg", "gif"]);
+
+function loadArtifacts(name: string): Artifact[] {
+  const key = ARTIFACT_KEY_OVERRIDES[name] ?? name;
+  const dir = path.join(ARTIFACTS_ROOT, key);
+  if (!fs.existsSync(dir)) return [];
+
+  const entries = fs
+    .readdirSync(dir, { withFileTypes: true })
+    .filter((e) => e.isFile())
+    .map((e) => e.name)
+    .sort();
+
+  const result: Artifact[] = [];
+  for (const file of entries) {
+    const ext = file.split(".").pop()?.toLowerCase() ?? "";
+    const src = `/assets/artifacts/${key}/${file}`;
+    if (VIDEO_EXT.has(ext)) {
+      let poster: string | undefined;
+      if (key === "pixxa") poster = "/assets/video/pixxa-sankey.png";
+      else if (key === "thehealthofnations")
+        poster = "/assets/thehealthofnations/thehealthofnations.png";
+      result.push({ src, kind: "video", poster });
+    } else if (IMAGE_EXT.has(ext)) {
+      result.push({ src, kind: "image" });
+    }
+  }
+  return result;
+}
 
 const sanitizeSlug = (s: string) =>
   s
@@ -81,6 +124,7 @@ export function getProjects(): Project[] {
       background: background || "FFF",
       border: borderTrim || colorTrim || "666",
       logo: `/assets/logos/${name}.png`,
+      artifacts: loadArtifacts(name),
     });
   }
 

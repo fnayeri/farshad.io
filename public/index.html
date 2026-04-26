@@ -1,0 +1,2672 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Farshad Nayeri - Technologist – farshad.io – </title>
+
+      <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" property="og:description"  content="-">
+    
+    <!-- <meta name="author" content="farshad.io" /> -->
+
+    
+    <meta name="title" property="og:title" content="Farshad Nayeri - Technologist" />
+    
+
+    <meta property="og:image"        content="http://localhost:4000/assets/about/fn.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta property="og:url"          content="http://localhost:4000/" />
+    <meta property="og:type"         content="article" />
+    <meta property="og:locale"       content="" />
+
+
+  <script>
+(function () {
+  var PROJECTS = [
+
+
+    { "name": "asymco", "customer": "Asymco One", "slug": "" },
+
+
+
+    { "name": "health-of-nations", "customer": "TheHealthOfNations.org", "slug": "thehealthofnations" },
+
+
+
+    { "name": "ey-blockchain", "customer": "Ernst & Young", "slug": "" },
+
+
+
+    { "name": "pixxa", "customer": "Pixxa", "slug": "" },
+
+
+
+    { "name": "redbook-keep", "customer": "Red Book Solutions", "slug": "" },
+
+
+
+    { "name": "appstore", "customer": "iOS AppStore", "slug": "" },
+
+
+
+    { "name": "fidelity-readiness", "customer": "Fidelity Investments", "slug": "" },
+
+
+
+    { "name": "christensen-institute", "customer": "Clayton Christensen Institute", "slug": "" },
+
+
+
+    { "name": "verizon-tips", "customer": "Verizon Labs", "slug": "" },
+
+
+
+    { "name": "peoplefluent", "customer": "Peoplefluent", "slug": "" },
+
+
+
+    { "name": "og1", "customer": "OG1.io", "slug": "" },
+
+
+
+    { "name": "cme-chat", "customer": "Chicago Mercantile Exchange", "slug": "" },
+
+
+
+    { "name": "baupost-niws", "customer": "Baupost Group", "slug": "" },
+
+
+
+    { "name": "symtrend", "customer": "Symtrend", "slug": "trackware" },
+
+
+
+    { "name": "channelfit", "customer": "Channelfit", "slug": "" },
+
+
+
+    { "name": "verizon-dti", "customer": "Verizon Labs", "slug": "" },
+
+
+
+    { "name": "coniferpoint", "customer": "Conifer Point Computational Medicine", "slug": "" },
+
+
+
+    { "name": "fidelity-pm", "customer": "Fidelity Investments", "slug": "" }
+
+
+  ];
+
+  var DEFAULT_OG_IMAGE = "/assets/about/fn.png";
+  var siteName = "farshad.io";
+
+  function norm(s) {
+    return (s || "").trim().toLowerCase().replace(/\s+/g, " ").replace(/\t/g, " ");
+  }
+
+  function titleCaseWords(s) {
+    return norm(s).replace(/\b[a-z]/g, function (c) { return c.toUpperCase(); });
+  }
+
+  /** Multi-value tags (e.g. retail,consumer) → "Retail · Consumer" */
+  function formatFilterLabel(raw) {
+    var parts = norm(raw).split(",").map(function (p) { return p.trim(); }).filter(Boolean);
+    if (!parts.length) return "";
+    return parts.map(function (p) { return titleCaseWords(p); }).join(" · ");
+  }
+
+  function setMetaByProperty(prop, content) {
+    var el = document.querySelector('meta[property="' + prop + '"]');
+    if (!el) {
+      el = document.createElement("meta");
+      el.setAttribute("property", prop);
+      document.head.appendChild(el);
+    }
+    el.setAttribute("content", content);
+  }
+
+  function setMetaByName(name, content) {
+    var el = document.querySelector('meta[name="' + name + '"]');
+    if (!el) {
+      el = document.createElement("meta");
+      el.setAttribute("name", name);
+      document.head.appendChild(el);
+    }
+    el.setAttribute("content", content);
+  }
+
+  function ensureTwitter() {
+    if (!document.querySelector('meta[name="twitter:card"]')) {
+      var m = document.createElement("meta");
+      m.setAttribute("name", "twitter:card");
+      m.setAttribute("content", "summary");
+      document.head.appendChild(m);
+    }
+  }
+
+  function applyOgCard(label, imagePath, description) {
+    var ogTitle = "Farshad Nayeri > " + label;
+    var absImage = new URL(imagePath, window.location.origin).href;
+
+    setMetaByProperty("og:title", ogTitle);
+    setMetaByName("title", ogTitle);
+    setMetaByProperty("og:image", absImage);
+    setMetaByProperty("og:url", window.location.href);
+    if (description) {
+      setMetaByProperty("og:description", description);
+      setMetaByName("description", description);
+    }
+
+    ensureTwitter();
+    setMetaByName("twitter:title", ogTitle);
+    setMetaByName("twitter:image", absImage);
+    if (description) {
+      setMetaByName("twitter:description", description);
+    }
+
+    document.title = ogTitle + " – " + siteName;
+  }
+
+  try {
+    var params = new URLSearchParams(window.location.search);
+
+    // 1) ?keywords=… (project / free-text)
+    var raw = params.get("keywords");
+    if (raw) {
+      var kw = norm(decodeURIComponent(raw));
+      if (!kw) return;
+
+      var project = null;
+      for (var i = 0; i < PROJECTS.length; i++) {
+        var p = PROJECTS[i];
+        var n = norm(p.name);
+        var slug = norm(p.slug || "");
+        var cust = norm((p.customer || "").replace(/\t/g, " "));
+        if (kw === n || (slug && kw === slug) || (cust && kw === cust)) {
+          project = p;
+          break;
+        }
+      }
+
+      var label;
+      var imagePath;
+      if (project) {
+        label = (project.customer || "").trim().replace(/\t/g, " ").replace(/\s+/g, " ");
+        imagePath = DEFAULT_OG_IMAGE;
+      } else {
+        label = titleCaseWords(raw);
+        imagePath = DEFAULT_OG_IMAGE;
+      }
+
+      applyOgCard(label, imagePath);
+      return;
+    }
+
+    // 2) ?tag=… (list/chart filters — same param as app state)
+    var tagRaw = params.get("tag");
+    if (tagRaw) {
+      var tagLabel = formatFilterLabel(tagRaw.replace(/\+/g, " "));
+      if (!tagLabel) return;
+      var desc = "Portfolio and experience on farshad.io, filtered by tag: " + tagLabel + ".";
+      applyOgCard(tagLabel, DEFAULT_OG_IMAGE, desc);
+      return;
+    }
+
+    // 3) ?role=…
+    var roleRaw = params.get("role");
+    if (roleRaw) {
+      var roleLabel = formatFilterLabel(roleRaw.replace(/\+/g, " "));
+      if (!roleLabel) return;
+      var desc2 = "Portfolio and experience on farshad.io, filtered by role: " + roleLabel + ".";
+      applyOgCard(roleLabel, DEFAULT_OG_IMAGE, desc2);
+      return;
+    }
+  } catch (e) {}
+})();
+</script>
+
+  <script defer data-domain="farshad.io" src="https://plausible.io/js/script.file-downloads.hash.outbound-links.js"></script>
+<script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+  <link rel="alternate" type="application/rss+xml" title="farshad.io - "
+    href="/feed.xml" />
+  <link rel="icon" href="/assets/about/fn.png" type="image/x-icon">
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li>
+        <h2>
+          <button type="button" class="about-popover-trigger nav-avatar-btn" id="about-popover-trigger-nav" aria-label="About">
+            <img class='nav-avatar' src='/assets/about/fn.png' alt="" />
+          </button>
+          <a href='/'>Farshad Nayeri</a>
+        </h2>
+      </li>
+      <li><a href="mailto:farshad@igencorp.com">
+          <img class='icon' src='/assets/icons/email.svg' />
+          <span>Email</span></a></li>
+      <li>
+        <a href="sms:+16178233876">
+          <img class='icon' src='/assets/icons/call.svg' /> <span>Message</span></a>
+      </li>
+      <li>
+        <a href="/docs/resume/Farshad-Nayeri-Resume.pdf" target="_blank">
+          <img class='icon' src='/assets/icons/resume.svg' /> <span>Resumé</span></a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/in/farshadnayeri/" target="_blank">
+          <img class='icon' src='/assets/icons/linkedin.svg' />
+          <span>LinkedIn</span>
+        </a>
+      </li>
+      <li style="display: none">
+        <a href="/blog/">
+          <img class='icon' src='/assets/icons/blog.svg' />
+          <span>Blog</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div id="main" role="main" class="container">
+    <script>
+  const enable_tags = function (tag) {
+  const items = document.querySelectorAll('[data-tags]');
+  const tagArray = [tag];
+
+  items.forEach(item => {
+    const itemTags = item.getAttribute('data-tags').split(/[ ]*,[ ]*/);
+    const hasTag = tagArray.some(tag => itemTags.includes(tag));
+    if (!hasTag) {
+      item.style.opacity = 0.15;
+      item.style.transition = 'opacity 0.3s ease';
+      item.style.pointerEvents = 'none';
+    } else {
+      item.style.opacity = 1.0;
+      item.style.transition = 'opacity 0.3s ease';
+      item.style.pointerEvents = '';
+    }
+  });
+}
+</script>
+
+
+
+<div class="info">
+  <p style='display: none'>Proven product leader with deep experience in technology and product innovation &star;
+    Transforms business, technical, and strategic constraints into scalable,
+    high-impact solutions &star; Thrives in dynamic, hands-on, high-stakes environments, delivering tangible results
+    across the entire product lifecycle &star;
+  </p>
+</div>
+
+<div class='showcase' style='display:none'>
+  <h3><b>Showcase:</b> Pixxa</h3>
+  <div class='showcase-content'>
+    <p>
+      Pixxa platform brings the power of Data Cinematography to the ordinary presenter. Pixxa's Perspective app has
+      been used in many high-stakes presentations in such companies as Apple, Samsung, and Fidelity.<br /><br /> <a
+        class='button' href="/#" id='fullscreen-play'>Expand ⛶</a> <a class='button'
+        href='https://pixxa.com/'>Learn &rarr;</a>
+    </p>
+    <video id="showcase-video" controls poster="/assets/video/pixxa-sankey.png">
+      <source src="/assets/video/farshad-nayeri-pixxa.m4v" type="video/mp4" />
+    </video>
+  </div>
+</div>
+
+<div class="showcase-carousel">
+  <div class="showcase-bento-tiles">
+    <div class="showcase-bento-tile showcase-bento-tile--label-on-dark" data-slide-index="0">
+      <div class="showcase-bento-tile-inner">
+        <button type="button" class="showcase-bento-tile-open" aria-label="Open details: The Health of Nations">
+          <span class="showcase-bento-tile-img-wrap">
+            <img src="/assets/thehealthofnations/thehealthofnations.png" alt="" />
+          </span>
+        </button>
+        <div class="showcase-bento-tile-label">
+          <span class="showcase-bento-tile-title-text">The Health of Nations</span>
+          <a class="showcase-bento-tile-site-link" href="https://thehealthofnations.org/" target="_blank" rel="noopener noreferrer" aria-label="The Health of Nations website">→</a>
+        </div>
+      </div>
+    </div>
+    <div class="showcase-bento-tile" data-slide-index="1">
+      <div class="showcase-bento-tile-inner">
+        <button type="button" class="showcase-bento-tile-open" aria-label="Open details: Harvard XR 2025">
+          <span class="showcase-bento-tile-img-wrap">
+            <img src="/assets/artifacts/harvardxr/Data%20Cinematography%20-%20HarvardXR%20v1.0.png" alt="" />
+          </span>
+        </button>
+        <div class="showcase-bento-tile-label">
+          <span class="showcase-bento-tile-title-text">Harvard XR 2025</span>
+          <a class="showcase-bento-tile-site-link" href="https://harvardxr.com/" target="_blank" rel="noopener noreferrer" aria-label="HarvardXR website">→</a>
+        </div>
+      </div>
+    </div>
+    <div class="showcase-bento-tile showcase-bento-tile--label-on-dark" data-slide-index="2">
+      <div class="showcase-bento-tile-inner">
+        <button type="button" class="showcase-bento-tile-open" aria-label="Open details: What Linguistic Categories Reveal about AI">
+          <span class="showcase-bento-tile-img-wrap">
+            <img src="/assets/artifacts/linguistic-categories-ai/carousel.png" alt="" />
+          </span>
+        </button>
+        <div class="showcase-bento-tile-label">
+          <span class="showcase-bento-tile-title-text">Linguistic Categories &amp; AI</span>
+          <a class="showcase-bento-tile-site-link" href="https://www.linkedin.com/pulse/ai-linguistic-categories-farshad-nayeri-tkxge/" target="_blank" rel="noopener noreferrer" aria-label="Article on LinkedIn">→</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="carousel-modal" id="showcase-carousel-modal" hidden>
+    <div class="carousel-modal-dialog" role="dialog" aria-modal="true" aria-label="Showcase project details">
+      <div class="carousel-viewport-row">
+        <button type="button" class="carousel-prev" aria-label="Previous slide">◀</button>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <div class="showcase showcase-slide active" data-slide="0">
+              <div class='showcase-content carousel-card carousel-card-hero'>
+                <div class='carousel-description'>
+                  <p class='carousel-desc-text'>
+                    <strong>The Health of Nations</strong> (1950–2050) is a data-cinematographic presentation spanning global populations and health across three acts: Lifespans, Lives of Nations, and Health of a Nation. It traces lifespans, migration, and population growth in some countries and concludes with a question about the future if we do not address the diseases of prosperity. Presented at Global Health Exhibit (GHE 2025) and in 2026 in front of 200 leaders at the Saudi Ministry of Health.
+                  </p>
+                  <div class="carousel-links">
+                    <a class='carousel-link' href='https://www.globalhealthsaudi.com/en/home.html'>Global Health Exhibition &rarr;</a>
+                    <a class='carousel-link' href='https://thehealthofnations.org/'>The Health of Nations &rarr;</a>
+                  </div>
+                </div>
+                <a class='carousel-graphic' href='https://thehealthofnations.org/'>
+                  <img src='/assets/thehealthofnations/thehealthofnations.png' alt="The Health of Nations" />
+                </a>
+              </div>
+            </div>
+            <div class="showcase showcase-slide" data-slide="1">
+              <div class='showcase-content carousel-card carousel-card-harvardxr'>
+                <div class='carousel-header'>
+                  <p class='carousel-text carousel-desc-text'>
+                    <a href='https://harvardxr.com/'>HarvardXR</a> invited me to <a class="no-bold" href='https://www.harvardxr.com/2025/speakers'>speak</a> about <a
+                      href='https://www.linkedin.com/posts/farshadnayeri_harvard-harvardxr-harvardxr2026-activity-7321267481459712000-xfqF'>Data&nbsp;Cinematography</a>.
+                    This made for a great opportunity to showcase the data cinematography app <a
+                      href='https://itunes.apple.com/us/app/perspective/id516098684?ls=1'>Perspective</a> whose development I led at
+                    <a href='https://pixxa.com/'>Pixxa</a>.
+                  </p>
+                  <a class='carousel-link carousel-link-right' href='https://www.harvardxr.com/events/immersive-storytelling-games-and-design'>Harvard XR &rarr;</a>
+                </div>
+                <a class='carousel-graphic carousel-graphic-fullwidth' href='https://www.harvardxr.com/events/immersive-storytelling-games-and-design'>
+                  <img src='/assets/artifacts/harvardxr/Data%20Cinematography%20-%20HarvardXR%20v1.0.png' alt="Data Cinematography HarvardXR" />
+                </a>
+              </div>
+            </div>
+            <div class="showcase showcase-slide showcase-slide-linguistic-ai" data-slide="2">
+              <div class='showcase-content carousel-card carousel-card-harvardxr carousel-card-linguistic-ai'>
+                <h3 class="carousel-linguistic-title">What Linguistic Categories Reveal about AI</h3>
+                <a class='carousel-graphic carousel-graphic-fullwidth' href='https://www.linkedin.com/pulse/ai-linguistic-categories-farshad-nayeri-tkxge/'>
+                  <img src='/assets/artifacts/linguistic-categories-ai/carousel.png' alt="What Linguistic Categories Reveal about AI — reality, pragmatics, semantics, syntax; inferred by humans vs created by AI" />
+                </a>
+                <div class='carousel-header'>
+                  <p class='carousel-text carousel-desc-text'>
+                    AI chatbots are masters of syntax: fluent, fast, and positively confident. But exuberant fluency is not the same as understanding. Beneath AI chatbots' eloquence lies no grasp of meaning or causality. Human conversations, by contrast, are the result of interplay between syntax, semantics, and pragmatics: words, meanings, and intentions.
+                  </p>
+                  <p class='carousel-text carousel-desc-text'>
+                    Using a Cognitive Linguistics lens can help explain the profound effects of this dichotomy on how we interact with AI, and how designers are evolving AI interfaces to compensate.
+                  </p>
+                  <a class='carousel-link carousel-link-right' href='https://www.linkedin.com/pulse/ai-linguistic-categories-farshad-nayeri-tkxge/'>Read on LinkedIn &rarr;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="carousel-next" aria-label="Next slide">▶</button>
+      </div>
+      <div class="carousel-dots" role="group" aria-label="Carousel slides"></div>
+    </div>
+  </div>
+</div>
+
+<div class="main-header-sticky">
+  <p class="main-header-name">
+    <button type="button" class="about-popover-trigger" id="about-popover-trigger" aria-label="About">ⓘ</button>
+    <span class="main-header-name-text">Farshad Nayeri</span>
+    <button type="button" class="copy-url-trigger" id="copy-url-trigger" aria-label="Copy page URL" title="Copy page URL">
+      <svg class="copy-url-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.75"/>
+        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </p>
+  <p class="keyword-subtitle" id="keyword-subtitle" aria-live="polite"></p>
+
+  <div class="header-row" style="margin-top: 0;">
+  <div class="filter-container">
+    <div class="filter-content">
+      <div class="filter-group">
+        <div class="filter-tags">
+          <span class="filter-tag" data-category="industry" data-tag="financial">financial</span>
+          <span class="filter-tag" data-category="industry" data-tag="healthcare">healthcare</span>
+          <span class="filter-tag" data-category="industry" data-tag="retail,consumer">Retail & Consumer</span>
+          <span class="filter-tag" data-category="industry" data-tag="telecom">telecom</span>
+          <span class="filter-tag" data-category="industry" data-tag="management,innovation research">innovation</span>
+        </div>
+      </div>
+      <div class="filter-group">
+        <div class="filter-tags">
+          <span class="filter-tag" data-category="technology" data-tag="product strategy">product strategy</span>
+          <span class="filter-tag" data-category="technology" data-tag="architecture">architecture</span>
+          <span class="filter-tag" data-category="technology" data-tag="api design">api design</span>
+          <span class="filter-tag" data-category="technology" data-tag="analytics">analytics</span>
+          <span class="filter-tag" data-category="technology" data-tag="artificial intelligence">Artificial Intelligence</span>
+          <span class="filter-tag" data-category="technology" data-tag="visualization">visualization</span>
+          <span class="filter-tag" data-category="technology" data-tag="blockchain">blockchain</span>
+          <span class="filter-tag" data-category="technology" data-tag="cloud saas">Cloud / SaaS</span>
+          <span class="filter-tag" data-category="technology" data-tag="native apps">native apps</span>
+          <span class="filter-tag" data-category="technology" data-tag="web apps">web apps</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="view-controls" style="margin-top: 8px; margin-bottom: 4px;">
+    <div class="view-icons">
+    <button class="view-icon" id="bento-icon" data-view="bento">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1pt" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+        <rect x="3" y="3" width="7" height="7" rx="1.5" />
+        <rect x="14" y="3" width="7" height="7" rx="1.5" />
+        <rect x="3" y="14" width="7" height="7" rx="1.5" />
+        <rect x="14" y="14" width="7" height="7" rx="1.5" />
+      </svg>
+    </button>
+    <button class="view-icon" id="list-icon" data-view="list">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1pt" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 6h12M8 12h12M8 18h12" />
+        <path d="M4 6h2M4 12h2M4 18h2" />
+      </svg>
+    </button>
+    <button class="view-icon" id="chart-icon" data-view="chart">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1pt" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="8" />
+        <circle cx="12" cy="12" r="4" />
+      </svg>
+    </button>
+    </div>
+  </div>
+</div>
+
+<div class="icon-lines">
+  <div class="bento-box projects">
+    <div class="bento-grid-main">
+    
+    
+    <a style='color: #717072' href='/asymco/'>
+          <div class='bento'
+            style='color: #717072; background-color: #ffffff;'
+            data-tags='financial,innovation research,analytics,visualization,architecture,product design,product strategy,web apps,artificial intelligence' data-role='Platform Lead'>
+            <div class='icon-area'>
+              <img class='portfolio-image' src="/assets/logos/asymco.png" alt='Financial Analytics Platform' />
+            </div>
+            <span class="bento-arrow" aria-hidden="true">→</span>
+            <div class="bento-labels">
+              <h2 class="bento-customer">Asymco One</h2>
+              <p class="bento-description">Financial Analytics Platform</p>
+            </div>
+          </div>
+    </a>
+    
+    
+    
+    <a style='color: #1B6B93' href='/thehealthofnations/'>
+          <div class='bento'
+            style='color: #1B6B93; background-color: #E8F4F8;'
+            data-tags='healthcare,visualization,analytics,artificial intelligence' data-role='Platform Lead'>
+            <div class='icon-area'>
+              <img class='portfolio-image' src="/assets/logos/health-of-nations.png" alt='Public Health Data Visualization Platform' />
+            </div>
+            <span class="bento-arrow" aria-hidden="true">→</span>
+            <div class="bento-labels">
+              <h2 class="bento-customer">TheHealthOfNations.org</h2>
+              <p class="bento-description">Public Health Data Visualization Platform</p>
+            </div>
+          </div>
+    </a>
+    
+    
+    
+    <a style='color: #808080' href='/ey-blockchain/'>
+          <div class='bento'
+            style='color: #808080; background-color: #FFFFFF;'
+            data-tags='financial,innovation research,analytics,blockchain,api design,product design,product strategy,architecture,cloud saas,web apps,cryptocurrency' data-role='Platform Lead'>
+            <div class='icon-area'>
+              <img class='portfolio-image' src="/assets/logos/ey-blockchain.png" alt='Enterprise API Platform' />
+            </div>
+            <span class="bento-arrow" aria-hidden="true">→</span>
+            <div class="bento-labels">
+              <h2 class="bento-customer">Ernst & Young</h2>
+              <p class="bento-description">Enterprise API Platform</p>
+            </div>
+          </div>
+    </a>
+    
+    
+    
+    <a style='color: #6D28D9' href='/pixxa/'>
+          <div class='bento'
+            style='color: #6D28D9; background-color: #F5F3FF;'
+            data-tags='visualization,analytics,cloud saas,native apps,architecture,api design,artificial intelligence' data-role='Product Lead'>
+            <div class='icon-area'>
+              <img class='portfolio-image' src="/assets/logos/pixxa.png" alt='Data Cinematography Platform' />
+            </div>
+            <span class="bento-arrow" aria-hidden="true">→</span>
+            <div class="bento-labels">
+              <h2 class="bento-customer">Pixxa</h2>
+              <p class="bento-description">Data Cinematography Platform</p>
+            </div>
+          </div>
+    </a>
+    
+    
+    
+    <a style='color: #B92739' href='/redbook-keep/'>
+          <div class='bento'
+            style='color: #B92739; background-color: #E2E2E2;'
+            data-tags='retail,management,e-commerce,native apps,analytics,web apps,visualization,api design,product design,cloud saas' data-role='Platform Lead'>
+            <div class='icon-area'>
+              <img class='portfolio-image' src="/assets/logos/redbook-keep.png" alt='Retail Management Platform & Apps' />
+            </div>
+            <span class="bento-arrow" aria-hidden="true">→</span>
+            <div class="bento-labels">
+              <h2 class="bento-customer">Red Book Solutions</h2>
+              <p class="bento-description">Retail Management Platform & Apps</p>
+            </div>
+          </div>
+    </a>
+    
+    
+    
+    <a style='color: #3568E6' href='/appstore/'>
+          <div class='bento'
+            style='color: #3568E6; background-color: #FCFEFF;'
+            data-tags='retail,native apps,product design,product strategy,architecture' data-role='Product Lead'>
+            <div class='icon-area'>
+              <img class='portfolio-image' src="/assets/logos/appstore.png" alt='100+ iOS Apps / 7 Million Downloads' />
+            </div>
+            <span class="bento-arrow" aria-hidden="true">→</span>
+            <div class="bento-labels">
+              <h2 class="bento-customer">iOS AppStore</h2>
+              <p class="bento-description">100+ iOS Apps / 7 Million Downloads</p>
+            </div>
+          </div>
+    </a>
+    
+    
+    
+    <a style='color: #3A8149' href='/fidelity-readiness/'>
+          <div class='bento'
+            style='color: #3A8149; background-color: #ffffff;'
+            data-tags='financial,innovation research,analytics,visualization,storytelling,native apps,api design,product design,cloud saas' data-role='Platform Lead'>
+            <div class='icon-area'>
+              <img class='portfolio-image' src="/assets/logos/fidelity-readiness.png" alt='Retirement Readiness Sales' />
+            </div>
+            <span class="bento-arrow" aria-hidden="true">→</span>
+            <div class="bento-labels">
+              <h2 class="bento-customer">Fidelity Investments</h2>
+              <p class="bento-description">Retirement Readiness Sales</p>
+            </div>
+          </div>
+    </a>
+    
+    
+    
+    <a style='color: #233955' href='/christensen-institute/'>
+          <div class='bento'
+            style='color: #233955; background-color: #E6EFD0;'
+            data-tags='management,product design,product strategy,innovation research' data-role='Product Lead'>
+            <div class='icon-area'>
+              <img class='portfolio-image' src="/assets/logos/christensen-institute.png" alt='Disruptive  Innovation Community' />
+            </div>
+            <span class="bento-arrow" aria-hidden="true">→</span>
+            <div class="bento-labels">
+              <h2 class="bento-customer">Clayton Christensen Institute</h2>
+              <p class="bento-description">Disruptive  Innovation Community</p>
+            </div>
+          </div>
+    </a>
+    
+    
+    
+    <a style='color: #060606' href='/verizon-tips/'>
+          <div class='bento'
+            style='color: #060606; background-color: #DEDEDE;'
+            data-tags='telecom,innovation research,analytics,visualization,native apps,api design,architecture,cloud saas' data-role='Lead Architect'>
+            <div class='icon-area'>
+              <img class='portfolio-image' src="/assets/logos/verizon-tips.png" alt='Real-time QoS Monitoring System' />
+            </div>
+            <span class="bento-arrow" aria-hidden="true">→</span>
+            <div class="bento-labels">
+              <h2 class="bento-customer">Verizon Labs</h2>
+              <p class="bento-description">Real-time QoS Monitoring System</p>
+            </div>
+          </div>
+    </a>
+    
+    
+    
+    <a style='color: #EB4C36' href='/peoplefluent/'>
+          <div class='bento'
+            style='color: #EB4C36; background-color: #FFFFFF;'
+            data-tags='management,native apps,web apps,api design,analytics,architecture,product design,product strategy' data-role='Product Lead'>
+            <div class='icon-area'>
+              <img class='portfolio-image' src="/assets/logos/peoplefluent.png" alt='Mobile Apps for Talent Management' />
+            </div>
+            <span class="bento-arrow" aria-hidden="true">→</span>
+            <div class="bento-labels">
+              <h2 class="bento-customer">Peoplefluent</h2>
+              <p class="bento-description">Mobile Apps for Talent Management</p>
+            </div>
+          </div>
+    </a>
+    
+    
+    
+    <a style='color: #A38D55' href='/og1/'>
+          <div class='bento'
+            style='color: #A38D55; background-color: #F2F2FE;'
+            data-tags='retail,product design,product strategy,blockchain,web apps,cryptocurrency' data-role='Product Lead'>
+            <div class='icon-area'>
+              <img class='portfolio-image' src="/assets/logos/og1.png" alt='Proof of First Use on Blockchain' />
+            </div>
+            <span class="bento-arrow" aria-hidden="true">→</span>
+            <div class="bento-labels">
+              <h2 class="bento-customer">OG1.io</h2>
+              <p class="bento-description">Proof of First Use on Blockchain</p>
+            </div>
+          </div>
+    </a>
+    
+    
+    
+    <a style='color: #52A7DA' href='/cme-chat/'>
+          <div class='bento'
+            style='color: #52A7DA; background-color: #EBEDEE;'
+            data-tags='financial,innovation research,web apps,api design,product design,architecture' data-role='Lead Architect'>
+            <div class='icon-area'>
+              <img class='portfolio-image' src="/assets/logos/cme-chat.png" alt='Interactive Trade Clearing Platform' />
+            </div>
+            <span class="bento-arrow" aria-hidden="true">→</span>
+            <div class="bento-labels">
+              <h2 class="bento-customer">Chicago Mercantile Exchange</h2>
+              <p class="bento-description">Interactive Trade Clearing Platform</p>
+            </div>
+          </div>
+    </a>
+    
+    
+    
+    <a style='color: #22436C' href='/baupost-niws/'>
+          <div class='bento'
+            style='color: #22436C; background-color: #FFFFFF;'
+            data-tags='financial,visualization,community,analytics,product design,web apps' data-role='Product Lead'>
+            <div class='icon-area'>
+              <img class='portfolio-image' src="/assets/logos/baupost-niws.png" alt='New Investment Warning System' />
+            </div>
+            <span class="bento-arrow" aria-hidden="true">→</span>
+            <div class="bento-labels">
+              <h2 class="bento-customer">Baupost Group</h2>
+              <p class="bento-description">New Investment Warning System</p>
+            </div>
+          </div>
+    </a>
+    
+    
+    
+    <a style='color: #2F6492' href='/trackware/'>
+          <div class='bento'
+            style='color: #2F6492; background-color: #F0F6F8;'
+            data-tags='healthcare,innovation research,visualization,analytics,platform,native apps,web apps,automation,cloud saas' data-role='Lead Architect'>
+            <div class='icon-area'>
+              <img class='portfolio-image' src="/assets/logos/symtrend.png" alt='Symptom Tracking Platform & App' />
+            </div>
+            <span class="bento-arrow" aria-hidden="true">→</span>
+            <div class="bento-labels">
+              <h2 class="bento-customer">Symtrend</h2>
+              <p class="bento-description">Symptom Tracking Platform & App</p>
+            </div>
+          </div>
+    </a>
+    
+    
+    
+    <a style='color: #1E2F49' href='/channelfit/'>
+          <div class='bento'
+            style='color: #1E2F49; background-color: #BFCCE2;'
+            data-tags='healthcare,innovation research,visualization,web apps,community,automation,product design,product strategy' data-role='Product Lead'>
+            <div class='icon-area'>
+              <img class='portfolio-image' src="/assets/logos/channelfit.png" alt='Fitness & Nutrition Platform & Apps' />
+            </div>
+            <span class="bento-arrow" aria-hidden="true">→</span>
+            <div class="bento-labels">
+              <h2 class="bento-customer">Channelfit</h2>
+              <p class="bento-description">Fitness & Nutrition Platform & Apps</p>
+            </div>
+          </div>
+    </a>
+    
+    
+    
+    <a style='color: #000000' href='/verizon-dti/'>
+          <div class='bento'
+            style='color: #000000; background-color: #FFFFFF;'
+            data-tags='telecom,api design,product strategy,platform,native apps,cloud saas' data-role='Lead Architect'>
+            <div class='icon-area'>
+              <img class='portfolio-image' src="/assets/logos/verizon-dti.png" alt='Interactive Circuit Diagnostic System' />
+            </div>
+            <span class="bento-arrow" aria-hidden="true">→</span>
+            <div class="bento-labels">
+              <h2 class="bento-customer">Verizon Labs</h2>
+              <p class="bento-description">Interactive Circuit Diagnostic System</p>
+            </div>
+          </div>
+    </a>
+    
+    
+    
+    <a style='color: #5B5BEC' href='/coniferpoint/'>
+          <div class='bento'
+            style='color: #5B5BEC; background-color: #ffffff;'
+            data-tags='healthcare,web apps,api design,architecture,cloud saas,e-commerce' data-role='Product Lead'>
+            <div class='icon-area'>
+              <img class='portfolio-image' src="/assets/logos/coniferpoint.png" alt='UX & Payment Frameworks' />
+            </div>
+            <span class="bento-arrow" aria-hidden="true">→</span>
+            <div class="bento-labels">
+              <h2 class="bento-customer">Conifer Point Computational Medicine</h2>
+              <p class="bento-description">UX & Payment Frameworks</p>
+            </div>
+          </div>
+    </a>
+    
+    
+    
+    <a style='color: #3A8149' href='/fidelity-pm/'>
+          <div class='bento'
+            style='color: #3A8149; background-color: #ffffff;'
+            data-tags='financial,native apps,analytics,visualization,architecture,api design' data-role='Lead Architect'>
+            <div class='icon-area'>
+              <img class='portfolio-image' src="/assets/logos/fidelity-pm.png" alt='Portfolio Management UI Framework' />
+            </div>
+            <span class="bento-arrow" aria-hidden="true">→</span>
+            <div class="bento-labels">
+              <h2 class="bento-customer">Fidelity Investments</h2>
+              <p class="bento-description">Portfolio Management UI Framework</p>
+            </div>
+          </div>
+    </a>
+    
+    
+    </div>
+  </div>
+</div>
+
+<div class="text-lines">
+  <table class="portfolio-table">
+    
+    <tr class="project" data-tags="financial,innovation research,analytics,visualization,architecture,product design,product strategy,web apps,artificial intelligence" data-role="Platform Lead">
+      <td class="portfolio-cell">
+        <a href='/asymco/' class="portfolio-link" style="--project-border: #1a5f7a;">
+          <div class="portfolio-content">
+            <div class="image-column">
+              <img src="/assets/logos/asymco.png" class="portfolio-image">
+            </div>
+            <div class="content-right">
+              <div class="header">
+                <div class="title-group">
+                  <div class="role">Platform Lead</div>
+                  <div class="subtitle-project">Asymco One / Financial Analytics Platform</div>
+                  <div class="body-text">Built Asymco One, a subscription platform for Apple market intelligence combining research, curated news, summaries, podcasts, events, and community. Developed a financial time-series analytics and forecasting system, integrating ingestion, computation, payments, and publishing into a unified platform. Delivered a production system supporting subscription revenue and repeatable analytical workflows. Accelerated development using AI-assisted, spec-driven methods.</div>
+                </div>
+              </div>
+              <div class="tags-cell">
+                
+                <span class="tag-bubble" data-tag="financial">financial</span>
+                
+                <span class="tag-bubble" data-tag="innovation research">innovation research</span>
+                
+                <span class="tag-bubble" data-tag="analytics">analytics</span>
+                
+                <span class="tag-bubble" data-tag="visualization">visualization</span>
+                
+                <span class="tag-bubble" data-tag="architecture">architecture</span>
+                
+                <span class="tag-bubble" data-tag="product design">product design</span>
+                
+                <span class="tag-bubble" data-tag="product strategy">product strategy</span>
+                
+                <span class="tag-bubble" data-tag="web apps">web apps</span>
+                
+                <span class="tag-bubble" data-tag="artificial intelligence">artificial intelligence</span>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </td>
+    </tr>
+    
+    <tr class="project" data-tags="healthcare,visualization,analytics,artificial intelligence" data-role="Platform Lead">
+      <td class="portfolio-cell">
+        <a href='/thehealthofnations/' class="portfolio-link" style="--project-border: #2389A8;">
+          <div class="portfolio-content">
+            <div class="image-column">
+              <img src="/assets/logos/health-of-nations.png" class="portfolio-image">
+            </div>
+            <div class="content-right">
+              <div class="header">
+                <div class="title-group">
+                  <div class="role">Platform Lead</div>
+                  <div class="subtitle-project">TheHealthOfNations.org / Public Health Data Visualization Platform</div>
+                  <div class="body-text">Built TheHealthOfNations.org, a global public health data visualization and analytics platform. Conducted large-scale longitudinal analysis, including a 100-year demographic study across all countries. Applied AI methods for modeling, anomaly detection, and real-time data cleaning across heterogeneous datasets. Presented platform and findings at international venues, including the Global Health Exhibition 2025 and conferences hosted by the Saudi Ministry of Health.</div>
+                </div>
+              </div>
+              <div class="tags-cell">
+                
+                <span class="tag-bubble" data-tag="healthcare">healthcare</span>
+                
+                <span class="tag-bubble" data-tag="visualization">visualization</span>
+                
+                <span class="tag-bubble" data-tag="analytics">analytics</span>
+                
+                <span class="tag-bubble" data-tag="artificial intelligence">artificial intelligence</span>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </td>
+    </tr>
+    
+    <tr class="project" data-tags="financial,innovation research,analytics,blockchain,api design,product design,product strategy,architecture,cloud saas,web apps,cryptocurrency" data-role="Platform Lead">
+      <td class="portfolio-cell">
+        <a href='/ey-blockchain/' class="portfolio-link" style="--project-border: #FBE74D;">
+          <div class="portfolio-content">
+            <div class="image-column">
+              <img src="/assets/logos/ey-blockchain.png" class="portfolio-image">
+            </div>
+            <div class="content-right">
+              <div class="header">
+                <div class="title-group">
+                  <div class="role">Platform Lead</div>
+                  <div class="subtitle-project">Ernst & Young	 / Enterprise API Platform</div>
+                  <div class="body-text">Led international agile team to plan, define & develop EY Global Innovations enterprise blockchain platform based on a federated microservice architecture on top of Azure cloud.</div>
+                </div>
+              </div>
+              <div class="tags-cell">
+                
+                <span class="tag-bubble" data-tag="financial">financial</span>
+                
+                <span class="tag-bubble" data-tag="innovation research">innovation research</span>
+                
+                <span class="tag-bubble" data-tag="analytics">analytics</span>
+                
+                <span class="tag-bubble" data-tag="blockchain">blockchain</span>
+                
+                <span class="tag-bubble" data-tag="api design">api design</span>
+                
+                <span class="tag-bubble" data-tag="product design">product design</span>
+                
+                <span class="tag-bubble" data-tag="product strategy">product strategy</span>
+                
+                <span class="tag-bubble" data-tag="architecture">architecture</span>
+                
+                <span class="tag-bubble" data-tag="cloud saas">cloud saas</span>
+                
+                <span class="tag-bubble" data-tag="web apps">web apps</span>
+                
+                <span class="tag-bubble" data-tag="cryptocurrency">cryptocurrency</span>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </td>
+    </tr>
+    
+    <tr class="project" data-tags="visualization,analytics,cloud saas,native apps,architecture,api design,artificial intelligence" data-role="Product Lead">
+      <td class="portfolio-cell">
+        <a href='/pixxa/' class="portfolio-link" style="--project-border: #7C3AED;">
+          <div class="portfolio-content">
+            <div class="image-column">
+              <img src="/assets/logos/pixxa.png" class="portfolio-image">
+            </div>
+            <div class="content-right">
+              <div class="header">
+                <div class="title-group">
+                  <div class="role">Product Lead</div>
+                  <div class="subtitle-project">Pixxa / Data Cinematography Platform</div>
+                  <div class="body-text">Led conception and development of Pixxa, a data visualization platform and SaaS cloud for interactive exploration of complex datasets. Built core technology for motion-based data visualization (Pixxa Perspective), delivering an end-to-end system spanning ingestion, transformation, and visualization across heterogeneous data models. Defined a scalable, multi-tenant, API-driven architecture used in enterprise applications at Apple, Samsung, IBM, Fidelity, BNY Mellon, and Microsoft. Currently evolving the platform toward AI-driven and spatial computing (VisionOS) workflows; technology was evaluated by Microsoft for acquisition.</div>
+                </div>
+              </div>
+              <div class="tags-cell">
+                
+                <span class="tag-bubble" data-tag="visualization">visualization</span>
+                
+                <span class="tag-bubble" data-tag="analytics">analytics</span>
+                
+                <span class="tag-bubble" data-tag="cloud saas">cloud saas</span>
+                
+                <span class="tag-bubble" data-tag="native apps">native apps</span>
+                
+                <span class="tag-bubble" data-tag="architecture">architecture</span>
+                
+                <span class="tag-bubble" data-tag="api design">api design</span>
+                
+                <span class="tag-bubble" data-tag="artificial intelligence">artificial intelligence</span>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </td>
+    </tr>
+    
+    <tr class="project" data-tags="retail,management,e-commerce,native apps,analytics,web apps,visualization,api design,product design,cloud saas" data-role="Platform Lead">
+      <td class="portfolio-cell">
+        <a href='/redbook-keep/' class="portfolio-link" style="--project-border: #77787B;">
+          <div class="portfolio-content">
+            <div class="image-column">
+              <img src="/assets/logos/redbook-keep.png" class="portfolio-image">
+            </div>
+            <div class="content-right">
+              <div class="header">
+                <div class="title-group">
+                  <div class="role">Platform Lead</div>
+                  <div class="subtitle-project">Red Book Solutions / Retail Management Platform & Apps</div>
+                  <div class="body-text">Led end-to-end design, development, and delivery of store management SaaS app platform on iOS, Android, Web capturing millions of images from 80,000 locations to the AWS cloud, atop a digital transformation workflow processing 1000s of PDFs  month.</div>
+                </div>
+              </div>
+              <div class="tags-cell">
+                
+                <span class="tag-bubble" data-tag="retail">retail</span>
+                
+                <span class="tag-bubble" data-tag="management">management</span>
+                
+                <span class="tag-bubble" data-tag="e-commerce">e-commerce</span>
+                
+                <span class="tag-bubble" data-tag="native apps">native apps</span>
+                
+                <span class="tag-bubble" data-tag="analytics">analytics</span>
+                
+                <span class="tag-bubble" data-tag="web apps">web apps</span>
+                
+                <span class="tag-bubble" data-tag="visualization">visualization</span>
+                
+                <span class="tag-bubble" data-tag="api design">api design</span>
+                
+                <span class="tag-bubble" data-tag="product design">product design</span>
+                
+                <span class="tag-bubble" data-tag="cloud saas">cloud saas</span>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </td>
+    </tr>
+    
+    <tr class="project" data-tags="retail,native apps,product design,product strategy,architecture" data-role="Product Lead">
+      <td class="portfolio-cell">
+        <a href='/appstore/' class="portfolio-link" style="--project-border: #3568E6;">
+          <div class="portfolio-content">
+            <div class="image-column">
+              <img src="/assets/logos/appstore.png" class="portfolio-image">
+            </div>
+            <div class="content-right">
+              <div class="header">
+                <div class="title-group">
+                  <div class="role">Product Lead</div>
+                  <div class="subtitle-project">iOS AppStore 	 / 100+ iOS Apps / 7 Million Downloads</div>
+                  <div class="body-text">Led conception, design, development, and release of more than 100 Apps.</div>
+                </div>
+              </div>
+              <div class="tags-cell">
+                
+                <span class="tag-bubble" data-tag="retail">retail</span>
+                
+                <span class="tag-bubble" data-tag="native apps">native apps</span>
+                
+                <span class="tag-bubble" data-tag="product design">product design</span>
+                
+                <span class="tag-bubble" data-tag="product strategy">product strategy</span>
+                
+                <span class="tag-bubble" data-tag="architecture">architecture</span>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </td>
+    </tr>
+    
+    <tr class="project" data-tags="financial,innovation research,analytics,visualization,storytelling,native apps,api design,product design,cloud saas" data-role="Platform Lead">
+      <td class="portfolio-cell">
+        <a href='/fidelity-readiness/' class="portfolio-link" style="--project-border: #2E7340;">
+          <div class="portfolio-content">
+            <div class="image-column">
+              <img src="/assets/logos/fidelity-readiness.png" class="portfolio-image">
+            </div>
+            <div class="content-right">
+              <div class="header">
+                <div class="title-group">
+                  <div class="role">Platform Lead</div>
+                  <div class="subtitle-project">Fidelity Investments 	 / Retirement Readiness Sales</div>
+                  <div class="body-text">	  Empowered Fidelity's institutional sales team to adapt app for 401k sales to Fortune-100 customers.  </div>
+                </div>
+              </div>
+              <div class="tags-cell">
+                
+                <span class="tag-bubble" data-tag="financial">financial</span>
+                
+                <span class="tag-bubble" data-tag="innovation research">innovation research</span>
+                
+                <span class="tag-bubble" data-tag="analytics">analytics</span>
+                
+                <span class="tag-bubble" data-tag="visualization">visualization</span>
+                
+                <span class="tag-bubble" data-tag="storytelling">storytelling</span>
+                
+                <span class="tag-bubble" data-tag="native apps">native apps</span>
+                
+                <span class="tag-bubble" data-tag="api design">api design</span>
+                
+                <span class="tag-bubble" data-tag="product design">product design</span>
+                
+                <span class="tag-bubble" data-tag="cloud saas">cloud saas</span>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </td>
+    </tr>
+    
+    <tr class="project" data-tags="management,product design,product strategy,innovation research" data-role="Product Lead">
+      <td class="portfolio-cell">
+        <a href='/christensen-institute/' class="portfolio-link" style="--project-border: #233955;">
+          <div class="portfolio-content">
+            <div class="image-column">
+              <img src="/assets/logos/christensen-institute.png" class="portfolio-image">
+            </div>
+            <div class="content-right">
+              <div class="header">
+                <div class="title-group">
+                  <div class="role">Product Lead</div>
+                  <div class="subtitle-project">Clayton Christensen Institute / Disruptive  Innovation Community</div>
+                  <div class="body-text">Worked directly with Clay Christensen (Harvard Business School) to productize his vision for collaborative business innovation, later reformulated into dx.MBA innovation platform.</div>
+                </div>
+              </div>
+              <div class="tags-cell">
+                
+                <span class="tag-bubble" data-tag="management">management</span>
+                
+                <span class="tag-bubble" data-tag="product design">product design</span>
+                
+                <span class="tag-bubble" data-tag="product strategy">product strategy</span>
+                
+                <span class="tag-bubble" data-tag="innovation research">innovation research</span>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </td>
+    </tr>
+    
+    <tr class="project" data-tags="telecom,innovation research,analytics,visualization,native apps,api design,architecture,cloud saas" data-role="Lead Architect">
+      <td class="portfolio-cell">
+        <a href='/verizon-tips/' class="portfolio-link" style="--project-border: #D8383C;">
+          <div class="portfolio-content">
+            <div class="image-column">
+              <img src="/assets/logos/verizon-tips.png" class="portfolio-image">
+            </div>
+            <div class="content-right">
+              <div class="header">
+                <div class="title-group">
+                  <div class="role">Lead Architect</div>
+                  <div class="subtitle-project">Verizon Labs 	 / Real-time QoS Monitoring System</div>
+                  <div class="body-text">Designed and developed real-time system to monitor and visualize network quality of service for the entire Verizon management network. </div>
+                </div>
+              </div>
+              <div class="tags-cell">
+                
+                <span class="tag-bubble" data-tag="telecom">telecom</span>
+                
+                <span class="tag-bubble" data-tag="innovation research">innovation research</span>
+                
+                <span class="tag-bubble" data-tag="analytics">analytics</span>
+                
+                <span class="tag-bubble" data-tag="visualization">visualization</span>
+                
+                <span class="tag-bubble" data-tag="native apps">native apps</span>
+                
+                <span class="tag-bubble" data-tag="api design">api design</span>
+                
+                <span class="tag-bubble" data-tag="architecture">architecture</span>
+                
+                <span class="tag-bubble" data-tag="cloud saas">cloud saas</span>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </td>
+    </tr>
+    
+    <tr class="project" data-tags="management,native apps,web apps,api design,analytics,architecture,product design,product strategy" data-role="Product Lead">
+      <td class="portfolio-cell">
+        <a href='/peoplefluent/' class="portfolio-link" style="--project-border: #EA4F36;">
+          <div class="portfolio-content">
+            <div class="image-column">
+              <img src="/assets/logos/peoplefluent.png" class="portfolio-image">
+            </div>
+            <div class="content-right">
+              <div class="header">
+                <div class="title-group">
+                  <div class="role">Product Lead</div>
+                  <div class="subtitle-project">Peoplefluent 	 / Mobile Apps for Talent Management</div>
+                  <div class="body-text">Built a suite of talent management apps for iPad for augmenting clients HRM SaaS offering.</div>
+                </div>
+              </div>
+              <div class="tags-cell">
+                
+                <span class="tag-bubble" data-tag="management">management</span>
+                
+                <span class="tag-bubble" data-tag="native apps">native apps</span>
+                
+                <span class="tag-bubble" data-tag="web apps">web apps</span>
+                
+                <span class="tag-bubble" data-tag="api design">api design</span>
+                
+                <span class="tag-bubble" data-tag="analytics">analytics</span>
+                
+                <span class="tag-bubble" data-tag="architecture">architecture</span>
+                
+                <span class="tag-bubble" data-tag="product design">product design</span>
+                
+                <span class="tag-bubble" data-tag="product strategy">product strategy</span>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </td>
+    </tr>
+    
+    <tr class="project" data-tags="retail,product design,product strategy,blockchain,web apps,cryptocurrency" data-role="Product Lead">
+      <td class="portfolio-cell">
+        <a href='/og1/' class="portfolio-link" style="--project-border: #A38D55;">
+          <div class="portfolio-content">
+            <div class="image-column">
+              <img src="/assets/logos/og1.png" class="portfolio-image">
+            </div>
+            <div class="content-right">
+              <div class="header">
+                <div class="title-group">
+                  <div class="role">Product Lead</div>
+                  <div class="subtitle-project">OG1.io / Proof of First Use on Blockchain</div>
+                  <div class="body-text">Led development of a Web3 service for minting commemorative First Use certificates. Developed system to generate unique art for First Use certificate based on token characteristics, and implemented protocols for saving certificates on the Ethereum blockchain.</div>
+                </div>
+              </div>
+              <div class="tags-cell">
+                
+                <span class="tag-bubble" data-tag="retail">retail</span>
+                
+                <span class="tag-bubble" data-tag="product design">product design</span>
+                
+                <span class="tag-bubble" data-tag="product strategy">product strategy</span>
+                
+                <span class="tag-bubble" data-tag="blockchain">blockchain</span>
+                
+                <span class="tag-bubble" data-tag="web apps">web apps</span>
+                
+                <span class="tag-bubble" data-tag="cryptocurrency">cryptocurrency</span>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </td>
+    </tr>
+    
+    <tr class="project" data-tags="financial,innovation research,web apps,api design,product design,architecture" data-role="Lead Architect">
+      <td class="portfolio-cell">
+        <a href='/cme-chat/' class="portfolio-link" style="--project-border: #68A5D5;">
+          <div class="portfolio-content">
+            <div class="image-column">
+              <img src="/assets/logos/cme-chat.png" class="portfolio-image">
+            </div>
+            <div class="content-right">
+              <div class="header">
+                <div class="title-group">
+                  <div class="role">Lead Architect</div>
+                  <div class="subtitle-project">Chicago Mercantile Exchange 	 / Interactive Trade Clearing Platform</div>
+                  <div class="body-text">Developed trade clearing component for CME Future and Option Trades on Instant Messages.</div>
+                </div>
+              </div>
+              <div class="tags-cell">
+                
+                <span class="tag-bubble" data-tag="financial">financial</span>
+                
+                <span class="tag-bubble" data-tag="innovation research">innovation research</span>
+                
+                <span class="tag-bubble" data-tag="web apps">web apps</span>
+                
+                <span class="tag-bubble" data-tag="api design">api design</span>
+                
+                <span class="tag-bubble" data-tag="product design">product design</span>
+                
+                <span class="tag-bubble" data-tag="architecture">architecture</span>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </td>
+    </tr>
+    
+    <tr class="project" data-tags="financial,visualization,community,analytics,product design,web apps" data-role="Product Lead">
+      <td class="portfolio-cell">
+        <a href='/baupost-niws/' class="portfolio-link" style="--project-border: #22436C;">
+          <div class="portfolio-content">
+            <div class="image-column">
+              <img src="/assets/logos/baupost-niws.png" class="portfolio-image">
+            </div>
+            <div class="content-right">
+              <div class="header">
+                <div class="title-group">
+                  <div class="role">Product Lead</div>
+                  <div class="subtitle-project">Baupost Group	 / New Investment Warning System</div>
+                  <div class="body-text">Led design & development of a system to track compliance constraints on hedge fund investments.</div>
+                </div>
+              </div>
+              <div class="tags-cell">
+                
+                <span class="tag-bubble" data-tag="financial">financial</span>
+                
+                <span class="tag-bubble" data-tag="visualization">visualization</span>
+                
+                <span class="tag-bubble" data-tag="community">community</span>
+                
+                <span class="tag-bubble" data-tag="analytics">analytics</span>
+                
+                <span class="tag-bubble" data-tag="product design">product design</span>
+                
+                <span class="tag-bubble" data-tag="web apps">web apps</span>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </td>
+    </tr>
+    
+    <tr class="project" data-tags="healthcare,innovation research,visualization,analytics,platform,native apps,web apps,automation,cloud saas" data-role="Lead Architect">
+      <td class="portfolio-cell">
+        <a href='/trackware/' class="portfolio-link" style="--project-border: #C8D8E4;">
+          <div class="portfolio-content">
+            <div class="image-column">
+              <img src="/assets/logos/symtrend.png" class="portfolio-image">
+            </div>
+            <div class="content-right">
+              <div class="header">
+                <div class="title-group">
+                  <div class="role">Lead Architect</div>
+                  <div class="subtitle-project">Symtrend / Symptom Tracking Platform & App</div>
+                  <div class="body-text">Led team to develop pioneering platform for mobile tracking of patient symptoms.</div>
+                </div>
+              </div>
+              <div class="tags-cell">
+                
+                <span class="tag-bubble" data-tag="healthcare">healthcare</span>
+                
+                <span class="tag-bubble" data-tag="innovation research">innovation research</span>
+                
+                <span class="tag-bubble" data-tag="visualization">visualization</span>
+                
+                <span class="tag-bubble" data-tag="analytics">analytics</span>
+                
+                <span class="tag-bubble" data-tag="platform">platform</span>
+                
+                <span class="tag-bubble" data-tag="native apps">native apps</span>
+                
+                <span class="tag-bubble" data-tag="web apps">web apps</span>
+                
+                <span class="tag-bubble" data-tag="automation">automation</span>
+                
+                <span class="tag-bubble" data-tag="cloud saas">cloud saas</span>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </td>
+    </tr>
+    
+    <tr class="project" data-tags="healthcare,innovation research,visualization,web apps,community,automation,product design,product strategy" data-role="Product Lead">
+      <td class="portfolio-cell">
+        <a href='/channelfit/' class="portfolio-link" style="--project-border: #3E6297;">
+          <div class="portfolio-content">
+            <div class="image-column">
+              <img src="/assets/logos/channelfit.png" class="portfolio-image">
+            </div>
+            <div class="content-right">
+              <div class="header">
+                <div class="title-group">
+                  <div class="role">Product Lead</div>
+                  <div class="subtitle-project">Channelfit  	 / Fitness & Nutrition Platform & Apps</div>
+                  <div class="body-text">Led team to design and develop on-line system to create personalized diet and workout plans.</div>
+                </div>
+              </div>
+              <div class="tags-cell">
+                
+                <span class="tag-bubble" data-tag="healthcare">healthcare</span>
+                
+                <span class="tag-bubble" data-tag="innovation research">innovation research</span>
+                
+                <span class="tag-bubble" data-tag="visualization">visualization</span>
+                
+                <span class="tag-bubble" data-tag="web apps">web apps</span>
+                
+                <span class="tag-bubble" data-tag="community">community</span>
+                
+                <span class="tag-bubble" data-tag="automation">automation</span>
+                
+                <span class="tag-bubble" data-tag="product design">product design</span>
+                
+                <span class="tag-bubble" data-tag="product strategy">product strategy</span>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </td>
+    </tr>
+    
+    <tr class="project" data-tags="telecom,api design,product strategy,platform,native apps,cloud saas" data-role="Lead Architect">
+      <td class="portfolio-cell">
+        <a href='/verizon-dti/' class="portfolio-link" style="--project-border: #D8383C;">
+          <div class="portfolio-content">
+            <div class="image-column">
+              <img src="/assets/logos/verizon-dti.png" class="portfolio-image">
+            </div>
+            <div class="content-right">
+              <div class="header">
+                <div class="title-group">
+                  <div class="role">Lead Architect</div>
+                  <div class="subtitle-project">Verizon Labs 	 / Interactive Circuit Diagnostic System</div>
+                  <div class="body-text">Led team to design & develop a unified platform for testing all Verizon Circuits.</div>
+                </div>
+              </div>
+              <div class="tags-cell">
+                
+                <span class="tag-bubble" data-tag="telecom">telecom</span>
+                
+                <span class="tag-bubble" data-tag="api design">api design</span>
+                
+                <span class="tag-bubble" data-tag="product strategy">product strategy</span>
+                
+                <span class="tag-bubble" data-tag="platform">platform</span>
+                
+                <span class="tag-bubble" data-tag="native apps">native apps</span>
+                
+                <span class="tag-bubble" data-tag="cloud saas">cloud saas</span>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </td>
+    </tr>
+    
+    <tr class="project" data-tags="healthcare,web apps,api design,architecture,cloud saas,e-commerce" data-role="Product Lead">
+      <td class="portfolio-cell">
+        <a href='/coniferpoint/' class="portfolio-link" style="--project-border: #72EA4F;">
+          <div class="portfolio-content">
+            <div class="image-column">
+              <img src="/assets/logos/coniferpoint.png" class="portfolio-image">
+            </div>
+            <div class="content-right">
+              <div class="header">
+                <div class="title-group">
+                  <div class="role">Product Lead</div>
+                  <div class="subtitle-project">Conifer Point Computational Medicine	 / UX & Payment Frameworks</div>
+                  <div class="body-text">Created UX and commerce platforms for an early-stage drug discovery company. </div>
+                </div>
+              </div>
+              <div class="tags-cell">
+                
+                <span class="tag-bubble" data-tag="healthcare">healthcare</span>
+                
+                <span class="tag-bubble" data-tag="web apps">web apps</span>
+                
+                <span class="tag-bubble" data-tag="api design">api design</span>
+                
+                <span class="tag-bubble" data-tag="architecture">architecture</span>
+                
+                <span class="tag-bubble" data-tag="cloud saas">cloud saas</span>
+                
+                <span class="tag-bubble" data-tag="e-commerce">e-commerce</span>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </td>
+    </tr>
+    
+    <tr class="project" data-tags="financial,native apps,analytics,visualization,architecture,api design" data-role="Lead Architect">
+      <td class="portfolio-cell">
+        <a href='/fidelity-pm/' class="portfolio-link" style="--project-border: #2E7340;">
+          <div class="portfolio-content">
+            <div class="image-column">
+              <img src="/assets/logos/fidelity-pm.png" class="portfolio-image">
+            </div>
+            <div class="content-right">
+              <div class="header">
+                <div class="title-group">
+                  <div class="role">Lead Architect</div>
+                  <div class="subtitle-project">Fidelity Investments	 / Portfolio Management UI Framework</div>
+                  <div class="body-text">Developed SDK for a component framework to be used by Fidelitys portfolio management developers.</div>
+                </div>
+              </div>
+              <div class="tags-cell">
+                
+                <span class="tag-bubble" data-tag="financial">financial</span>
+                
+                <span class="tag-bubble" data-tag="native apps">native apps</span>
+                
+                <span class="tag-bubble" data-tag="analytics">analytics</span>
+                
+                <span class="tag-bubble" data-tag="visualization">visualization</span>
+                
+                <span class="tag-bubble" data-tag="architecture">architecture</span>
+                
+                <span class="tag-bubble" data-tag="api design">api design</span>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </td>
+    </tr>
+    
+  </table>
+</div>
+
+<div class="format-chart-view">
+  <div class="analytics-grid">
+    <div class="chart-card">
+      <h4>Roles</h4>
+      <div class="chart-area"><canvas id="roles-chart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Industry</h4>
+      <div class="chart-area"><canvas id="industry-chart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Core Skills</h4>
+      <div class="chart-area chart-area--tall"><canvas id="tech-chart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Experience</h4>
+      <div class="chart-area"><canvas id="capability-chart"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const portfolioData = [
+  
+  { name: "asymco", customer: "Asymco One", role: "Platform Lead", tags: ["financial","innovation research","analytics","visualization","architecture","product design","product strategy","web apps","artificial intelligence"], title: "Financial Analytics Platform" },
+  
+  { name: "health-of-nations", customer: "TheHealthOfNations.org", role: "Platform Lead", tags: ["healthcare","visualization","analytics","artificial intelligence"], title: "Public Health Data Visualization Platform" },
+  
+  { name: "ey-blockchain", customer: "Ernst & Young", role: "Platform Lead", tags: ["financial","innovation research","analytics","blockchain","api design","product design","product strategy","architecture","cloud saas","web apps","cryptocurrency"], title: "Enterprise API Platform" },
+  
+  { name: "pixxa", customer: "Pixxa", role: "Product Lead", tags: ["visualization","analytics","cloud saas","native apps","architecture","api design","artificial intelligence"], title: "Data Cinematography Platform" },
+  
+  { name: "redbook-keep", customer: "Red Book Solutions", role: "Platform Lead", tags: ["retail","management","e-commerce","native apps","analytics","web apps","visualization","api design","product design","cloud saas"], title: "Retail Management Platform & Apps" },
+  
+  { name: "appstore", customer: "iOS AppStore", role: "Product Lead", tags: ["retail","native apps","product design","product strategy","architecture"], title: "100+ iOS Apps / 7 Million Downloads" },
+  
+  { name: "fidelity-readiness", customer: "Fidelity Investments", role: "Platform Lead", tags: ["financial","innovation research","analytics","visualization","storytelling","native apps","api design","product design","cloud saas"], title: "Retirement Readiness Sales" },
+  
+  { name: "christensen-institute", customer: "Clayton Christensen Institute", role: "Product Lead", tags: ["management","product design","product strategy","innovation research"], title: "Disruptive  Innovation Community" },
+  
+  { name: "verizon-tips", customer: "Verizon Labs", role: "Lead Architect", tags: ["telecom","innovation research","analytics","visualization","native apps","api design","architecture","cloud saas"], title: "Real-time QoS Monitoring System" },
+  
+  { name: "peoplefluent", customer: "Peoplefluent", role: "Product Lead", tags: ["management","native apps","web apps","api design","analytics","architecture","product design","product strategy"], title: "Mobile Apps for Talent Management" },
+  
+  { name: "og1", customer: "OG1.io", role: "Product Lead", tags: ["retail","product design","product strategy","blockchain","web apps","cryptocurrency"], title: "Proof of First Use on Blockchain" },
+  
+  { name: "cme-chat", customer: "Chicago Mercantile Exchange", role: "Lead Architect", tags: ["financial","innovation research","web apps","api design","product design","architecture"], title: "Interactive Trade Clearing Platform" },
+  
+  { name: "baupost-niws", customer: "Baupost Group", role: "Product Lead", tags: ["financial","visualization","community","analytics","product design","web apps"], title: "New Investment Warning System" },
+  
+  { name: "symtrend", customer: "Symtrend", role: "Lead Architect", tags: ["healthcare","innovation research","visualization","analytics","platform","native apps","web apps","automation","cloud saas"], title: "Symptom Tracking Platform & App" },
+  
+  { name: "channelfit", customer: "Channelfit", role: "Product Lead", tags: ["healthcare","innovation research","visualization","web apps","community","automation","product design","product strategy"], title: "Fitness & Nutrition Platform & Apps" },
+  
+  { name: "verizon-dti", customer: "Verizon Labs", role: "Lead Architect", tags: ["telecom","api design","product strategy","platform","native apps","cloud saas"], title: "Interactive Circuit Diagnostic System" },
+  
+  { name: "coniferpoint", customer: "Conifer Point Computational Medicine", role: "Product Lead", tags: ["healthcare","web apps","api design","architecture","cloud saas","e-commerce"], title: "UX & Payment Frameworks" },
+  
+  { name: "fidelity-pm", customer: "Fidelity Investments", role: "Lead Architect", tags: ["financial","native apps","analytics","visualization","architecture","api design"], title: "Portfolio Management UI Framework" },
+  
+];
+
+var _rolesChart, _industryChart, _techChart, _capabilityChart;
+
+function initCharts() {
+  if (typeof Chart === 'undefined') {
+    if (!window._chartScriptLoading) {
+      window._chartScriptLoading = true;
+      const s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/chart.js@4';
+      s.onload = function() { createCharts(); };
+      document.head.appendChild(s);
+    }
+    return;
+  }
+  createCharts();
+}
+
+function createCharts() {
+  try {
+    var appState = window.appState || {};
+    var data = portfolioData;
+    if (appState.activeTag) {
+      var tagList = appState.activeTag.split(',').map(function(t) { return t.trim().toLowerCase(); }).filter(Boolean);
+      data = portfolioData.filter(function(p) {
+        var ptags = (p.tags || []).map(function(t) { return t.toLowerCase(); });
+        return tagList.some(function(st) { return ptags.indexOf(st) !== -1; });
+      });
+    } else if (appState.activeRole) {
+      data = portfolioData.filter(function(p) { return p.role && p.role.trim() === appState.activeRole.trim(); });
+    }
+
+    const rolePalette = ['#6366f1','#22c55e','#f59e0b','#06b6d4','#a855f7','#f43f5e','#ec4899','#14b8a6'];
+    const industryPalette = ['#0ea5e9','#8b5cf6','#10b981','#f97316','#e11d48','#64748b','#14b8a6','#a855f7'];
+
+    if (!window._chartDefaultsSet) {
+      window._chartDefaultsSet = true;
+      Chart.defaults.color = '#333';
+      Chart.defaults.borderColor = 'rgba(0,0,0,0.08)';
+      Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", sans-serif';
+      Chart.defaults.font.size = 11;
+      var hoverLabelPlugin = {
+        id: 'hoverLabel',
+        beforeInit: function(chart) { chart._hoverIdx = -1; },
+        afterEvent: function(chart, args) {
+          var e = args.event;
+          if (e.type === 'mousemove' || e.type === 'mouseout') {
+            var els = chart.getElementsAtEventForMode(e, 'nearest', { intersect: true });
+            var idx = els.length ? els[0].index : -1;
+            if (chart._hoverIdx !== idx) {
+              chart._hoverIdx = idx;
+              chart.update('active');
+            }
+          }
+        }
+      };
+      Chart.register(hoverLabelPlugin);
+    }
+
+    const ttCfg = {
+      backgroundColor: 'rgba(255,255,255,0.95)',
+      titleColor: '#222',
+      bodyColor: '#333',
+      borderColor: 'rgba(0,0,0,0.1)',
+      titleFont: { size: 13, weight: '600' },
+      bodyFont: { size: 12 },
+      padding: 12,
+      cornerRadius: 8,
+      displayColors: true,
+      boxPadding: 4
+    };
+
+    function gotoList(filterType, value) {
+      var url = '/?fmt=list';
+      if (filterType === 'role') url += '&role=' + encodeURIComponent(value);
+      else if (filterType === 'tag') url += '&tag=' + encodeURIComponent(value);
+      window.location.href = url;
+    }
+
+    // Industry → tag for links (Retail & Consumer uses multi-tag)
+    var indToTag = { 'Financial Services': 'financial', 'Healthcare': 'healthcare', 'Innovation': 'management,innovation research', 'Telecom': 'telecom', 'Retail & Consumer': 'retail,consumer', 'Government': 'government' };
+    var capToTag = { 'Product': 'product strategy', 'Native Apps': 'native apps', 'Web': 'web apps', 'Data & Analytics': 'analytics', 'Cloud & APIs': 'cloud saas', 'Architecture': 'architecture' };
+
+    // Roles (order: Product Lead → Platform Lead → Lead Architect; others after)
+    var roleOrder = ['Product Lead', 'Platform Lead', 'Lead Architect'];
+    var roleCounts = {};
+    data.forEach(function(p) { roleCounts[p.role] = (roleCounts[p.role] || 0) + 1; });
+    var roleLabels = Object.keys(roleCounts).sort(function(a, b) {
+      var ia = roleOrder.indexOf(a); var ib = roleOrder.indexOf(b);
+      if (ia !== -1 && ib !== -1) return ia - ib;
+      if (ia !== -1) return -1;
+      if (ib !== -1) return 1;
+      return roleCounts[b] - roleCounts[a];
+    });
+    var roleValues = roleLabels.map(function(r) { return roleCounts[r]; });
+
+    // Industries (Retail + Consumer combined, Innovation)
+    var industryMap = {
+      'Financial Services': ['financial'],
+      'Healthcare': ['healthcare'],
+      'Innovation': ['management', 'innovation research'],
+      'Telecom': ['telecom'],
+      'Retail & Consumer': ['retail', 'consumer'],
+      'Government': ['government']
+    };
+    var industryColorMap = {
+      'Financial Services': industryPalette[0], 'Healthcare': industryPalette[1], 'Innovation': industryPalette[2],
+      'Telecom': industryPalette[3], 'Retail & Consumer': industryPalette[4], 'Government': industryPalette[5]
+    };
+    function industryColor(lbl) { return (industryColorMap[lbl] || industryPalette[0]) + '99'; }
+    var industryCounts = {};
+    Object.keys(industryMap).forEach(function(k) { industryCounts[k] = 0; });
+    data.forEach(function(p) {
+      var tags = p.tags.map(function(t) { return t.toLowerCase(); });
+      Object.keys(industryMap).forEach(function(ind) {
+        if (industryMap[ind].some(function(kw) { return tags.indexOf(kw) !== -1; })) industryCounts[ind]++;
+      });
+    });
+    var indLabels = Object.keys(industryCounts).filter(function(k) { return industryCounts[k] > 0; }).sort(function(a, b) { return industryCounts[b] - industryCounts[a]; });
+    var indValues = indLabels.map(function(k) { return industryCounts[k]; });
+    // Reorder so Innovation is last in the list
+    var others = indLabels.filter(function(l) { return l !== 'Innovation'; });
+    var innovationIdx = indLabels.indexOf('Innovation');
+    if (innovationIdx !== -1) {
+      indLabels = others.concat(['Innovation']);
+    }
+    indValues = indLabels.map(function(k) { return industryCounts[k]; });
+
+    // Core Skills: horizontal stacked bars by role (platform merged into architecture)
+    var industryTags = ['financial','healthcare','telecom','retail','consumer','government','management','innovation research'];
+    var excludedTechTags = ['blockchain','cryptocurrency','e-commerce','community','automation','storytelling'];
+    var techCounts = {};
+    data.forEach(function(p) {
+      p.tags.forEach(function(t) {
+        var tl = t.toLowerCase();
+        if (industryTags.indexOf(tl) === -1 && excludedTechTags.indexOf(tl) === -1) {
+          var key = (tl === 'platform') ? 'architecture' : tl;
+          techCounts[key] = (techCounts[key] || 0) + 1;
+        }
+      });
+    });
+    var techOrder = ['product design', 'architecture', 'native apps'];
+    var techLabels = Object.keys(techCounts).sort(function(a, b) {
+      var ia = techOrder.indexOf(a); var ib = techOrder.indexOf(b);
+      if (ia !== -1 && ib !== -1) return ia - ib;
+      if (ia !== -1) return -1;
+      if (ib !== -1) return 1;
+      return techCounts[b] - techCounts[a];
+    });
+    var roleOrder = roleLabels.slice();
+    var techStackData = roleOrder.map(function(role, roleIdx) {
+      return {
+        label: role,
+        data: techLabels.map(function(tag) {
+          var c = 0;
+          var tagsToMatch = (tag === 'architecture') ? ['architecture', 'platform'] : [tag];
+          data.forEach(function(p) {
+            if (p.role !== role) return;
+            var ptags = p.tags.map(function(t) { return t.toLowerCase(); });
+            if (tagsToMatch.some(function(t) { return ptags.indexOf(t) !== -1; })) c++;
+          });
+          return c;
+        }),
+        backgroundColor: rolePalette[roleIdx % rolePalette.length],
+        borderWidth: 0,
+        techLabels: techLabels,
+        role: role
+      };
+    });
+    // Normalize to 100% stacked bars: each tech row sums to 100
+    techLabels.forEach(function(_, techIdx) {
+      var total = techStackData.reduce(function(s, ds) { return s + (ds.data[techIdx] || 0); }, 0);
+      if (total > 0) {
+        techStackData.forEach(function(ds) {
+          ds.data[techIdx] = Math.round((ds.data[techIdx] || 0) / total * 100);
+        });
+      }
+    });
+    var baseTechLabels = techLabels.slice();
+    var baseTechStackData = techStackData.map(function(d) { return Object.assign({}, d, { data: d.data.slice() }); });
+
+    // Capability radar
+    var capGroups = {
+      'Product': ['product strategy', 'product design'],
+      'Native Apps': ['native apps'],
+      'Web': ['web apps'],
+      'Cloud & APIs': ['cloud saas', 'api design'],
+      'Data & Analytics': ['analytics', 'visualization', 'artificial intelligence'],
+      'Architecture': ['architecture', 'platform']
+    };
+    var capLabels = Object.keys(capGroups);
+    var capValues = capLabels.map(function(cap) {
+      var kws = capGroups[cap];
+      var c = 0;
+      data.forEach(function(p) {
+        var ptags = p.tags.map(function(t) { return t.toLowerCase(); });
+        if (kws.some(function(kw) { return ptags.indexOf(kw) !== -1; })) c++;
+      });
+      return c;
+    });
+
+    // Cross-chart highlight state
+    var chartHighlight = null;
+
+    function dimColor(c, opacity) {
+      if (!c) return c;
+      var hex = c.replace('#','').slice(0, 6);
+      return '#' + hex + Math.round(opacity * 255).toString(16).padStart(2,'0');
+    }
+    function applyChartHighlight(h) {
+      chartHighlight = h;
+      var dim = 0.25;
+      var rl = _rolesChart ? _rolesChart.data.labels : [];
+      var il = _industryChart ? _industryChart.data.labels : [];
+      var labelsToShow, datasetsToShow;
+      if (_techChart && h && h.type === 'role') {
+        var roleDs = baseTechStackData.find(function(d) { return (d.role || d.label) === h.value; });
+        if (roleDs) {
+          var order = baseTechLabels.map(function(_, i) { return i; }).sort(function(a, b) {
+            return (roleDs.data[b] || 0) - (roleDs.data[a] || 0);
+          });
+          labelsToShow = order.map(function(i) { return baseTechLabels[i]; });
+          datasetsToShow = baseTechStackData.map(function(d) {
+            return Object.assign({}, d, { data: order.map(function(i) { return d.data[i]; }) });
+          });
+        } else {
+          labelsToShow = baseTechLabels; datasetsToShow = baseTechStackData;
+        }
+      } else {
+        labelsToShow = baseTechLabels; datasetsToShow = baseTechStackData;
+      }
+      var tl = datasetsToShow;
+      var cl = _capabilityChart ? _capabilityChart.data.labels : [];
+
+      // Roles chart
+      var roleColors = rl.map(function(lbl, i) {
+        if (!h) return rolePalette[i % rolePalette.length];
+        if (h.type === 'role') return h.value === lbl ? rolePalette[i % rolePalette.length] : dimColor(rolePalette[i % rolePalette.length], dim);
+        if (h.type === 'industry' || h.type === 'tag' || h.type === 'capability') return dimColor(rolePalette[i % rolePalette.length], dim);
+        return rolePalette[i % rolePalette.length];
+      });
+      if (_rolesChart) { _rolesChart.data.datasets[0].backgroundColor = roleColors; _rolesChart.update('none'); }
+
+      // Industry chart - when dimmed, use faded opacity (stable colors by label)
+      var fadeOpacity = 0.45;
+      var indColors = il.map(function(lbl) {
+        var base = industryColorMap[lbl] || industryPalette[0];
+        var full = base + '99';
+        if (!h) return full;
+        if (h.type === 'industry') return h.value === lbl ? full : dimColor(base, fadeOpacity);
+        if (h.type === 'role' || h.type === 'tag' || h.type === 'capability') return dimColor(base, fadeOpacity);
+        return full;
+      });
+      if (_industryChart) { _industryChart.data.datasets[0].backgroundColor = indColors; _industryChart.update('none'); }
+
+      // Core Skills (tech) chart
+      tl.forEach(function(ds, roleIdx) {
+        var base = rolePalette[roleIdx % rolePalette.length];
+        var roleName = ds.label || ds.role;
+        ds.backgroundColor = labelsToShow.map(function(tag, techIdx) {
+          if (!h) return base;
+          if (h.type === 'role') return h.value === roleName ? base : dimColor(base, dim);
+          if (h.type === 'tag') return (h.value || '').toLowerCase() === (tag || '').toLowerCase() ? base : dimColor(base, dim);
+          if (h.type === 'capability') {
+            var capTag = capToTag[h.value]; if (!capTag) return dimColor(base, dim);
+            return capTag.toLowerCase() === (tag || '').toLowerCase() ? base : dimColor(base, dim);
+          }
+          if (h.type === 'industry') return dimColor(base, dim);
+          return base;
+        });
+      });
+      if (_techChart) {
+        _techChart.data.labels = labelsToShow;
+        _techChart.data.datasets = tl;
+        _techChart.update('none');
+      }
+
+      // Capability radar
+      var capPointBg = cl.map(function(lbl, i) {
+        if (!h) return rolePalette[4];
+        if (h.type === 'capability') return h.value === lbl ? rolePalette[4] : dimColor(rolePalette[4], dim);
+        if (h.type === 'tag') { var cap = Object.keys(capToTag).find(function(k) { return capToTag[k].toLowerCase() === (h.value || '').toLowerCase(); }); return cap && cap === lbl ? rolePalette[4] : dimColor(rolePalette[4], dim); }
+        return dimColor(rolePalette[4], dim);
+      });
+      if (_capabilityChart) { _capabilityChart.data.datasets[0].pointBackgroundColor = capPointBg; _capabilityChart.data.datasets[0].pointBorderColor = '#fff'; _capabilityChart.update('none'); }
+    }
+
+    // Update path: charts exist, just refresh data
+    if (_rolesChart) {
+      _rolesChart.data.labels = roleLabels;
+      _rolesChart.data.datasets[0].data = roleValues;
+      _rolesChart.data.datasets[0].backgroundColor = rolePalette.slice(0, roleLabels.length);
+      _rolesChart.update('none');
+
+      _industryChart.data.labels = indLabels;
+      _industryChart.data.datasets[0].data = indValues;
+      _industryChart.data.datasets[0].backgroundColor = indLabels.map(industryColor);
+      _industryChart.update('none');
+
+      _techChart.data.labels = baseTechLabels;
+      _techChart.data.datasets = baseTechStackData;
+      _techChart.update('none');
+
+      _capabilityChart.data.datasets[0].data = capValues;
+      _capabilityChart.update('none');
+
+      applyChartHighlight(null);
+      return;
+    }
+
+    function chartOnClick(evt, els, handler) {
+      if (els.length) {
+        var prev = chartHighlight ? chartHighlight.type + ':' + chartHighlight.value : '';
+        handler(els[0]);
+        var next = chartHighlight ? chartHighlight.type + ':' + chartHighlight.value : '';
+        if (prev && prev === next) {
+          var v = chartHighlight.value;
+          if (chartHighlight.type === 'role') gotoList('role', v);
+          else if (chartHighlight.type === 'industry' && indToTag[v]) gotoList('tag', indToTag[v]);
+          else gotoList('tag', v);
+        }
+      } else {
+        applyChartHighlight(null);
+      }
+    }
+
+    // --- Charts ---
+
+    _rolesChart = new Chart(document.getElementById('roles-chart'), {
+      type: 'doughnut',
+      data: {
+        labels: roleLabels,
+        datasets: [{ data: roleValues, backgroundColor: rolePalette.slice(0, roleLabels.length), borderWidth: 2, borderColor: '#fff', borderAlign: 'inner', hoverOffset: 12, hoverBorderWidth: 2 }]
+      },
+      options: {
+        cutout: '55%',
+        spacing: 2,
+        responsive: true,
+        maintainAspectRatio: false,
+        onClick: function(evt, els) {
+          chartOnClick(evt, els, function(el) {
+            var v = _rolesChart.data.labels[el.index];
+            if (v) applyChartHighlight({ type: 'role', value: v });
+          });
+        },
+        plugins: {
+          legend: {
+            position: 'bottom',
+            align: 'center',
+            labels: { usePointStyle: true, pointStyle: 'circle', font: { size: 11 }, padding: 14, boxWidth: 8, color: '#333' },
+            onClick: function(e, legendItem, legend) {
+            var v = _rolesChart.data.labels[legendItem.index];
+            if (v !== undefined) { applyChartHighlight({ type: 'role', value: v }); }
+          } },
+          tooltip: ttCfg
+        }
+      }
+    });
+
+    _industryChart = new Chart(document.getElementById('industry-chart'), {
+      type: 'polarArea',
+      data: {
+        labels: indLabels,
+        datasets: [{ data: indValues, backgroundColor: indLabels.map(industryColor), borderWidth: 0, hoverBorderWidth: 2 }]
+      },
+      options: {
+        startAngle: 90,
+        responsive: true,
+        maintainAspectRatio: false,
+        onClick: function(evt, els) {
+          chartOnClick(evt, els, function(el) {
+            var v = _industryChart.data.labels[el.index];
+            if (v) applyChartHighlight({ type: 'industry', value: v });
+          });
+        },
+        scales: { r: { grid: { color: 'rgba(0,0,0,0.06)' }, ticks: { display: false }, beginAtZero: true } },
+        plugins: {
+          legend: {
+            position: 'bottom',
+            align: 'center',
+            labels: { usePointStyle: true, pointStyle: 'circle', font: { size: 10 }, padding: 10, boxWidth: 8, color: '#333' },
+            onClick: function(e, legendItem, legend) {
+            var v = _industryChart.data.labels[legendItem.index];
+            if (v) applyChartHighlight({ type: 'industry', value: v });
+          } },
+          tooltip: ttCfg
+        }
+      }
+    });
+
+    _techChart = new Chart(document.getElementById('tech-chart'), {
+      type: 'bar',
+      data: {
+        labels: baseTechLabels,
+        datasets: baseTechStackData
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: { stacked: true, min: 0, max: 100, grid: { color: 'rgba(0,0,0,0.06)' }, ticks: { display: false } },
+          y: { stacked: true, grid: { display: false }, ticks: { color: '#333' } }
+        },
+        onClick: function(evt, els) {
+          chartOnClick(evt, els, function(el) {
+            var tag = _techChart.data.labels[el.index];
+            if (tag) applyChartHighlight({ type: 'tag', value: tag });
+          });
+        },
+        plugins: {
+          legend: {
+            position: 'bottom',
+            align: 'center',
+            labels: { usePointStyle: true, pointStyle: 'rect', font: { size: 11 }, padding: 12, boxWidth: 10, color: '#333' },
+            onClick: function(e, legendItem, legend) {
+            var ds = _techChart.data.datasets[legendItem.datasetIndex];
+            var v = ds ? (ds.role || ds.label) : null;
+            if (v) applyChartHighlight({ type: 'role', value: v });
+          } },
+          tooltip: Object.assign({}, ttCfg, { callbacks: { label: function(ctx) { var ds = ctx.chart.data.datasets[ctx.datasetIndex]; var role = ds.role || ds.label || ''; var val = ctx.raw; return role + ': ' + val + '%'; } } })
+        }
+      }
+    });
+
+    _capabilityChart = new Chart(document.getElementById('capability-chart'), {
+      type: 'radar',
+      data: {
+        labels: capLabels,
+        datasets: [{
+          data: capValues,
+          backgroundColor: rolePalette[4] + '44',
+          borderColor: rolePalette[4],
+          borderWidth: 2,
+          pointBackgroundColor: rolePalette[4],
+          pointBorderColor: '#fff',
+          pointBorderWidth: 2,
+          pointRadius: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        onClick: function(evt, els) {
+          chartOnClick(evt, els, function(el) {
+            var v = _capabilityChart.data.labels[el.index];
+            if (v) applyChartHighlight({ type: 'capability', value: v });
+          });
+        },
+        scales: { r: { grid: { color: 'rgba(0,0,0,0.06)' }, angleLines: { color: 'rgba(0,0,0,0.06)' }, ticks: { display: false }, beginAtZero: true } },
+        plugins: { legend: { display: false }, tooltip: ttCfg }
+      }
+    });
+
+  } catch (e) {
+    console.error('Chart initialization failed:', e);
+  }
+}
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let appState = {
+        view: 'list',
+        activeTag: null,
+        activeRole: null,
+        activeFilter: null
+    };
+
+    window.appState = appState;
+
+    function setState(newState) {
+        appState = { ...appState, ...newState };
+        window.appState = appState;
+        render();
+    }
+
+    function getState() {
+        return appState;
+    }
+
+    function updateURL() {
+        const url = new URL(window.location);
+        url.searchParams.set('fmt', appState.view);
+        if (appState.activeTag) {
+            url.searchParams.set('tag', appState.activeTag);
+        } else {
+            url.searchParams.delete('tag');
+        }
+        if (appState.activeRole) {
+            url.searchParams.set('role', appState.activeRole);
+        } else {
+            url.searchParams.delete('role');
+        }
+        window.history.pushState(appState, '', url);
+    }
+
+    function parseURL() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const fmtParam = urlParams.get('fmt');
+        var tagParam = urlParams.get('tag');
+        const roleParam = urlParams.get('role');
+        if (tagParam) {
+            tagParam = decodeURIComponent(tagParam);
+            if (tagParam === 'retail' || tagParam === 'consumer') tagParam = 'retail,consumer';
+            if (tagParam === 'innovation') tagParam = 'management,innovation research';
+            if (tagParam === 'cloud services' || tagParam === 'saas platform') tagParam = 'cloud saas';
+        }
+
+        var view = fmtParam || 'list';
+        if (view === 'analytics' || view === 'graph') view = 'chart';
+        return {
+            view: view,
+            activeTag: tagParam || null,
+            activeRole: roleParam ? decodeURIComponent(roleParam) : null
+        };
+    }
+
+    function syncKeywordSubtitle() {
+        const el = document.getElementById('keyword-subtitle');
+        if (!el) return;
+        if (appState.activeTag) {
+            var found = null;
+            document.querySelectorAll('.filter-tag').forEach(function (t) {
+                if (t.getAttribute('data-tag') === appState.activeTag) found = t;
+            });
+            if (found) {
+                el.textContent = found.textContent.trim();
+            } else {
+                el.textContent = appState.activeTag.split(',').map(function (part) {
+                    return part.trim().split(/\s+/).map(function (w) {
+                        return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+                    }).join(' ');
+                }).join(', ');
+            }
+        } else if (appState.activeRole) {
+            el.textContent = appState.activeRole;
+        } else {
+            el.textContent = '';
+        }
+    }
+
+    function render() {
+        const textLines = document.querySelector('.text-lines');
+        const iconLines = document.querySelector('.icon-lines');
+        const chartView = document.querySelector('.format-chart-view');
+        const bentoIcon = document.getElementById('bento-icon');
+        const listIcon = document.getElementById('list-icon');
+        const chartIcon = document.getElementById('chart-icon');
+        const filterGroups = document.querySelectorAll('.filter-group');
+
+        textLines.style.display = 'none';
+        iconLines.style.display = 'none';
+        chartView.style.display = 'none';
+        bentoIcon.classList.remove('active');
+        listIcon.classList.remove('active');
+        chartIcon.classList.remove('active');
+        filterGroups.forEach(function(g) { g.style.display = ''; });
+
+        if (appState.view === 'chart') {
+            chartView.style.display = 'block';
+            chartIcon.classList.add('active');
+            initCharts();
+        } else if (appState.view === 'list') {
+            textLines.style.display = 'block';
+            listIcon.classList.add('active');
+        } else {
+            iconLines.style.display = 'block';
+            bentoIcon.classList.add('active');
+        }
+
+        if (appState.activeRole) {
+            filterByRole(appState.activeRole);
+            highlightActiveFilterRole(appState.activeRole);
+        } else if (appState.activeTag) {
+            filterByTag(appState.activeTag);
+            highlightActiveFilterTag(appState.activeTag);
+        } else {
+            clearFilter();
+        }
+
+        if (appState.view === 'chart') initCharts();
+
+        syncKeywordSubtitle();
+        updateURL();
+    }
+
+    const urlState = parseURL();
+    appState = { ...appState, ...urlState };
+    render();
+
+    document.getElementById('bento-icon').addEventListener('click', function(e) {
+        e.preventDefault();
+        setState({ view: 'bento' });
+    });
+
+    document.getElementById('list-icon').addEventListener('click', function(e) {
+        e.preventDefault();
+        setState({ view: 'list' });
+    });
+
+    document.getElementById('chart-icon').addEventListener('click', function(e) {
+        e.preventDefault();
+        setState({ view: 'chart' });
+    });
+
+    window.addEventListener('popstate', function(event) {
+        const urlState = parseURL();
+        setState(urlState);
+    });
+
+    makeTagsClickable();
+    initializeFilterTags();
+    initializeFilterToggles();
+
+    document.addEventListener('click', function(e) {
+        const filterContainer = document.querySelector('.filter-container');
+        const headerRow = document.querySelector('.header-row');
+        const clickEl = e.target instanceof Element ? e.target : e.target.parentElement;
+        const isClickInFilter = filterContainer && filterContainer.contains(e.target);
+        const isClickInHeader = headerRow && headerRow.contains(e.target);
+        const isClickInViewControls = e.target.closest('.view-controls');
+        const isClickInByline = clickEl && clickEl.closest('.keyword-subtitle');
+        const isClickInNameRow = clickEl && clickEl.closest('.main-header-name');
+
+        if (!isClickInFilter && !isClickInHeader && !isClickInViewControls && !isClickInByline && !isClickInNameRow) {
+            const activeTags = document.querySelectorAll('.filter-tag.active');
+            if (activeTags.length > 0 || appState.activeRole) {
+                setState({ activeTag: null, activeRole: null });
+                activeTags.forEach(tag => {
+                    tag.classList.remove('active');
+                });
+            }
+        }
+    });
+
+    function initializeFilterToggles() {
+        document.querySelectorAll('.filter-disclosure-toggle').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var container = this.closest('.filter-container');
+                var collapsed = container.getAttribute('data-collapsed') === 'true';
+                container.setAttribute('data-collapsed', !collapsed);
+                this.setAttribute('aria-expanded', !collapsed);
+            });
+        });
+    }
+
+    function initializeFilterTags() {
+        const filterTags = document.querySelectorAll('.filter-tag');
+
+        filterTags.forEach(tag => {
+            tag.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const tagText = this.getAttribute('data-tag');
+                const category = this.getAttribute('data-category');
+
+                if (this.classList.contains('active')) {
+                    this.classList.remove('active');
+                    setState({ activeTag: null, activeRole: null });
+                } else {
+                    clearActiveTagsInCategory(category);
+                    this.classList.add('active');
+                    setState({ activeTag: tagText, activeRole: null });
+                }
+            });
+        });
+    }
+
+    function clearActiveTagsInCategory(category) {
+        const activeTags = document.querySelectorAll(`.filter-tag[data-category="${category}"].active`);
+        activeTags.forEach(tag => {
+            tag.classList.remove('active');
+        });
+    }
+
+    function highlightActiveFilterTag(tagText) {
+        document.querySelectorAll('.filter-tag').forEach(tag => {
+            tag.classList.remove('active');
+        });
+
+        const filterTag = document.querySelector(`.filter-tag[data-tag="${tagText}"]`);
+        if (filterTag) {
+            filterTag.classList.add('active');
+        }
+    }
+
+    function makeTagsClickable() {
+        document.querySelectorAll('.tag-bubble').forEach(tag => { tag.style.cursor = 'pointer'; });
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.tag-bubble')) {
+                e.preventDefault();
+                e.stopPropagation();
+                var tagText = e.target.closest('.tag-bubble').textContent.trim().toLowerCase();
+                if (tagText === 'retail' || tagText === 'consumer') tagText = 'retail,consumer';
+                if (tagText === 'cloud services' || tagText === 'saas platform') tagText = 'cloud saas';
+                setState({ activeTag: tagText, activeRole: null });
+            }
+        });
+
+        const portfolioTags = document.querySelectorAll('.portfolio-item .tag');
+        portfolioTags.forEach(tag => {
+            tag.style.cursor = 'pointer';
+            tag.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const tagText = this.textContent.trim();
+                const url = new URL('/', window.location.origin);
+                url.searchParams.set('tag', tagText);
+                const currentUrl = new URL(window.location);
+                const currentFmt = currentUrl.searchParams.get('fmt');
+                if (currentFmt) {
+                    url.searchParams.set('fmt', currentFmt);
+                }
+                window.location.href = url.toString();
+            });
+        });
+    }
+});
+
+function filterByRole(role) {
+    const projects = document.querySelectorAll('.project, .bento');
+    const isListView = window.appState && window.appState.view === 'list';
+    const isBentoView = window.appState && window.appState.view === 'bento';
+
+    projects.forEach(project => {
+        const projRole = project.getAttribute('data-role');
+        var show = projRole && projRole.trim() === role.trim();
+        project.style.display = show ? '' : 'none';
+        if (show) { project.style.opacity = '1'; project.style.pointerEvents = ''; }
+        var parent = project.closest('a');
+        if (parent && project.classList.contains('bento')) parent.style.display = show ? '' : 'none';
+    });
+
+    if (isListView) {
+        const portfolioTable = document.querySelector('.portfolio-table');
+        const textLinesContainer = document.querySelector('.text-lines');
+        const existingFilteredContainer = document.querySelector('.filtered-projects-container');
+        if (existingFilteredContainer) existingFilteredContainer.remove();
+        const filteredContainer = document.createElement('div');
+        filteredContainer.className = 'filtered-projects-container';
+        filteredContainer.style.cssText = 'display:flex;flex-direction:column;gap:20px;justify-content:flex-start;align-items:stretch;width:100%;max-width:100%;min-width:100%;';
+        projects.forEach(project => {
+            if (project.style.display !== 'none') {
+                var cell = project.querySelector('.portfolio-cell');
+                if (cell) {
+                    var cloned = cell.cloneNode(true);
+                    cloned.style.cssText = 'width:100%;min-width:100%;flex:1 1 100%;padding:8px 15px;margin:0;display:block;box-sizing:border-box;';
+                    filteredContainer.appendChild(cloned);
+                }
+            }
+        });
+        if (portfolioTable) portfolioTable.style.display = 'none';
+        textLinesContainer.appendChild(filteredContainer);
+    }
+}
+
+function highlightActiveFilterRole(role) {
+    document.querySelectorAll('.filter-tag.active').forEach(t => t.classList.remove('active'));
+}
+
+function filterByTag(selectedTag) {
+    const projects = document.querySelectorAll('.project, .bento');
+    const isListView = window.appState && window.appState.view === 'list';
+    const isBentoView = window.appState && window.appState.view === 'bento';
+    var selectedTags = selectedTag.split(',').map(function(t) { return t.trim().toLowerCase(); }).filter(Boolean);
+
+    projects.forEach(project => {
+        const tags = project.getAttribute('data-tags');
+        var show = false;
+        if (tags) {
+            const tagArray = tags.split(',').map(tag => tag.trim().toLowerCase());
+            show = selectedTags.some(function(st) { return tagArray.includes(st); });
+        }
+        project.style.display = show ? '' : 'none';
+        if (show) { project.style.opacity = '1'; project.style.pointerEvents = ''; }
+        var parent = project.closest('a');
+        if (parent && project.classList.contains('bento')) parent.style.display = show ? '' : 'none';
+    });
+
+    if (isListView) {
+        const portfolioTable = document.querySelector('.portfolio-table');
+        const textLinesContainer = document.querySelector('.text-lines');
+
+        const existingFilteredContainer = document.querySelector('.filtered-projects-container');
+        if (existingFilteredContainer) {
+            existingFilteredContainer.remove();
+        }
+
+        const filteredContainer = document.createElement('div');
+        filteredContainer.className = 'filtered-projects-container';
+        filteredContainer.style.cssText = `
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: flex-start;
+            align-items: stretch;
+            width: 100%;
+            max-width: 100%;
+            min-width: 100%;
+        `;
+
+        projects.forEach(project => {
+            if (project.style.display !== 'none') {
+                const cell = project.querySelector('.portfolio-cell');
+                if (cell) {
+                    const clonedCell = cell.cloneNode(true);
+                    clonedCell.style.cssText = `
+                        width: 100%;
+                        min-width: 100%;
+                        flex: 1 1 100%;
+                        padding: 8px 15px;
+                        margin: 0;
+                        display: block;
+                        box-sizing: border-box;
+                    `;
+                    filteredContainer.appendChild(clonedCell);
+                }
+            }
+        });
+
+        if (portfolioTable) {
+            portfolioTable.style.display = 'none';
+        }
+        textLinesContainer.appendChild(filteredContainer);
+
+    } else if (isBentoView) {
+        const bentoBox = document.querySelector('.bento-box');
+        if (bentoBox) {
+            bentoBox.style.display = '';
+            bentoBox.style.gridTemplateColumns = '';
+            bentoBox.style.gap = '';
+            bentoBox.style.justifyContent = '';
+        }
+    }
+}
+
+function clearFilter() {
+    const projects = document.querySelectorAll('.project, .bento');
+    projects.forEach(project => {
+        project.style.display = '';
+        project.style.width = '';
+        project.style.margin = '';
+        project.style.opacity = '1';
+        project.style.pointerEvents = '';
+        var parent = project.closest('a');
+        if (parent && project.classList.contains('bento')) parent.style.display = '';
+    });
+
+    const portfolioTable = document.querySelector('.portfolio-table');
+    const bentoBox = document.querySelector('.bento-box');
+
+    const filteredContainer = document.querySelector('.filtered-projects-container');
+    if (filteredContainer) {
+        filteredContainer.remove();
+    }
+
+    if (portfolioTable) {
+        portfolioTable.style.display = '';
+    }
+
+    if (bentoBox) {
+        bentoBox.style.display = '';
+        bentoBox.style.gridTemplateColumns = '';
+        bentoBox.style.gap = '';
+        bentoBox.style.justifyContent = '';
+    }
+
+    document.querySelectorAll('.filter-tag.active').forEach(tag => {
+        tag.classList.remove('active');
+    });
+}
+
+(function initCarousel() {
+  var carousel = document.querySelector('.showcase-carousel');
+  if (!carousel) return;
+  var modal = carousel.querySelector('.carousel-modal');
+  var modalDialog = carousel.querySelector('.carousel-modal-dialog');
+  var bentoOpenButtons = carousel.querySelectorAll('.showcase-bento-tile-open');
+  var track = carousel.querySelector('.carousel-track');
+  var slides = carousel.querySelectorAll('.showcase-slide');
+  var dotsContainer = carousel.querySelector('.carousel-dots');
+  var total = slides.length;
+  var current = 0;
+  var previousFocus = null;
+
+  function goTo(n) {
+    current = (n + total) % total;
+    track.style.transform = 'translateX(-' + current * 100 + '%)';
+    slides.forEach(function(slide, i) {
+      slide.classList.toggle('active', i === current);
+    });
+    dotsContainer.querySelectorAll('.carousel-dot').forEach(function(d, i) {
+      d.classList.toggle('active', i === current);
+      d.setAttribute('aria-pressed', i === current ? 'true' : 'false');
+    });
+  }
+
+  function openModal(i) {
+    goTo(i);
+    previousFocus = document.activeElement;
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    var firstNav = carousel.querySelector('.carousel-prev');
+    if (firstNav && typeof firstNav.focus === 'function') firstNav.focus();
+  }
+
+  function closeModal() {
+    modal.hidden = true;
+    document.body.style.overflow = '';
+    if (previousFocus && typeof previousFocus.focus === 'function') {
+      previousFocus.focus();
+    }
+    previousFocus = null;
+  }
+
+  slides.forEach(function(slide, idx) {
+    slide.classList.toggle('active', idx === 0);
+  });
+
+  bentoOpenButtons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var tile = btn.closest('.showcase-bento-tile');
+      if (!tile) return;
+      var idx = parseInt(tile.getAttribute('data-slide-index'), 10);
+      if (!isNaN(idx)) openModal(idx);
+    });
+  });
+
+  if (modal) {
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeModal();
+    });
+  }
+  if (modalDialog) {
+    modalDialog.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal && !modal.hidden) {
+      closeModal();
+    }
+  });
+
+  carousel.querySelector('.carousel-prev').addEventListener('click', function() {
+    goTo(current - 1);
+  });
+  carousel.querySelector('.carousel-next').addEventListener('click', function() {
+    goTo(current + 1);
+  });
+
+  slides.forEach(function(_, i) {
+    var dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    dot.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+    dot.textContent = '\u2022';
+    dot.addEventListener('click', function() {
+      goTo(i);
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+  carousel.querySelectorAll('.carousel-desc-text').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      if (window.innerWidth <= 800 && !e.target.closest('a')) {
+        e.preventDefault();
+        el.classList.toggle('carousel-desc-expanded');
+      }
+    });
+  });
+})();
+
+(function initCopyPageUrl() {
+  var btn = document.getElementById('copy-url-trigger');
+  if (!btn) return;
+  btn.addEventListener('click', function() {
+    var url = window.location.href;
+    function done() {
+      var prev = btn.getAttribute('aria-label');
+      btn.setAttribute('aria-label', 'Copied');
+      setTimeout(function() {
+        btn.setAttribute('aria-label', prev || 'Copy page URL');
+      }, 2000);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(done).catch(function() {
+        fallbackCopy(url, done);
+      });
+    } else {
+      fallbackCopy(url, done);
+    }
+  });
+  function fallbackCopy(text, cb) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+    } catch (e) {}
+    document.body.removeChild(ta);
+    if (cb) cb();
+  }
+})();
+
+var fullscreenBtn = document.getElementById('fullscreen-play');
+if (fullscreenBtn) fullscreenBtn.addEventListener('click', function() {
+    var video = document.getElementById('showcase-video');
+    if (!video) return;
+    if (video.requestFullscreen) {
+      video.requestFullscreen();
+    } else if (video.mozRequestFullScreen) {
+      video.mozRequestFullScreen();
+    } else if (video.webkitRequestFullscreen) {
+      video.webkitRequestFullscreen();
+    } else if (video.msRequestFullscreen) {
+      video.msRequestFullscreen();
+    }
+  });
+</script>
+
+
+
+  </div>
+
+  <div id="about-popover" class="about-popover" role="dialog" aria-modal="true" aria-label="About Farshad Nayeri" hidden>
+    <div class="about-popover-backdrop"></div>
+    <div class="about-popover-panel">
+      <button type="button" class="about-popover-close" aria-label="Close">&times;</button>
+      <div class="about-popover-body"><div class="about">
+  <article>
+    <img class='photo' src='/assets/about/farshad-nayeri.png' alt="Farshad Nayeri">
+    <p class='medium'>
+      <b>Farshad Nayeri</b>
+      <br/><b>Email:</b> <a href="mailto:farshad@igencorp.com">farshad@igencorp.com</a>
+      <br/><b>Phone:</b> <a href="tel:+16178233876">+1.617.823.3876</a>
+      <br/><a href="/docs/resume/Farshad-Nayeri-Resume.pdf" target="_blank"><b>Resumé</b></a> |
+      <a href="https://www.linkedin.com/in/farshadnayeri/" target="_blank"><b>LinkedIn</b></a>
+    </p>
+    <br clear='all'/>
+    <p><b>Proven Product Leader</b></p>
+<ul class='star-list'>
+  <li>Brings deep experience in technology and product innovation.</li>
+  <li>Transforms business, technical, and strategic constraints into scalable, high-impact solutions.</li>
+  <li>Delivers tangible results across the entire product lifecycle.</li>
+  <li>Thrives in dynamic, hands-on, high-stakes environments.</li>
+</ul>
+
+  </article>
+</div>
+</div>
+    </div>
+  </div>
+
+  <div class="wrapper-footer">
+    <div class="container">
+      <footer class="footer">
+        <p>@2026 Farshad Nayeri. All Rights Reserved.</p>
+      </footer>
+    </div>
+  </div>
+
+  
+
+  <script>
+(function initAboutPopover() {
+  var popover = document.getElementById('about-popover');
+  if (!popover) return;
+  var triggers = document.querySelectorAll('.about-popover-trigger');
+  var lastTrigger = null;
+  function open(e) {
+    lastTrigger = e && e.currentTarget;
+    popover.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+    popover.querySelector('.about-popover-close').focus();
+  }
+  function close() {
+    popover.setAttribute('hidden', '');
+    document.body.style.overflow = '';
+    if (lastTrigger && lastTrigger.focus) lastTrigger.focus();
+  }
+  triggers.forEach(function(t) { t.addEventListener('click', function(e) { e.preventDefault(); open(e); }); });
+  popover.querySelector('.about-popover-backdrop').addEventListener('click', close);
+  popover.querySelector('.about-popover-close').addEventListener('click', close);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && !popover.hasAttribute('hidden')) close();
+  });
+})();
+  </script>
+</body>
+
+</html>

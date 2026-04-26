@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { getProjects } from "@/lib/portfolio";
 import showcase from "@/content/showcase.json";
 import about from "@/content/about.json";
@@ -23,7 +24,9 @@ export default function Home() {
         <header>
           <h1 className="text-2xl font-semibold mt-4">Farshad Nayeri</h1>
         </header>
-        <FilterableProjects projects={projects} />
+        <Suspense fallback={null}>
+          <FilterableProjects projects={projects} />
+        </Suspense>
       </section>
     </>
   );

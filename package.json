@@ -12,6 +12,7 @@
     "deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static"
   },
   "dependencies": {
+    "chart.js": "^4.5.1",
     "next": "15.1.6",
     "papaparse": "5.4.1",
     "react": "19.0.0",
