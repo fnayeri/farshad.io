@@ -1,0 +1,59 @@
+---
+import Base from "../layouts/Base.astro";
+import { profile } from "../lib/content.ts";
+---
+
+<Base title="Contact — Farshad Nayeri" description={profile.availability} active="contact">
+  <section class="container">
+    <header class="head">
+      <p class="label">Contact</p>
+      <h1>Get in touch</h1>
+    </header>
+    <div class="cards">
+      <article class="card">
+        <p class="card-label label">Currently available for</p>
+        <p class="big">{profile.availability}</p>
+      </article>
+      <article class="card">
+        <p class="card-label label">Email</p>
+        <p class="big-link"><a href={`mailto:${profile.email}`}>{profile.email}</a></p>
+        <p class="quiet">Replies within 24 hours, Boston business days.</p>
+      </article>
+      <article class="card">
+        <p class="card-label label">Location</p>
+        <p class="big">{profile.location}</p>
+        <p class="quiet">In-person around Boston/Cambridge welcome.</p>
+      </article>
+      <article class="card">
+        <p class="card-label label">LinkedIn</p>
+        <p class="big-link"><a href={profile.linkedin} target="_blank" rel="noopener noreferrer">linkedin.com/in/farshadnayeri</a></p>
+      </article>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .head { padding: clamp(40px, 6vw, 96px) 0 16px; max-width: 60ch; }
+  h1 { font-size: var(--step-5); margin: 8px 0 14px; }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 2px solid var(--ink);
+    margin: 32px 0 64px;
+  }
+  .card {
+    padding: 28px 28px 28px 0;
+    border-bottom: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+  }
+  .card:nth-child(2n) { padding-right: 0; padding-left: 28px; border-right: 0; }
+  .card-label { display: block; margin-bottom: 12px; }
+  .big { font-size: var(--step-1); line-height: 1.4; color: var(--ink); margin: 0 0 8px; font-weight: 500; }
+  .big-link { font-size: var(--step-2); line-height: 1.15; margin: 0 0 8px; font-weight: 600; }
+  .quiet { font-size: 13px; color: var(--ink-quiet); margin: 0; }
+  @media (max-width: 700px) {
+    .cards { grid-template-columns: 1fr; }
+    .card, .card:nth-child(2n) { padding: 28px 0; border-right: 0; }
+  }
+</style>

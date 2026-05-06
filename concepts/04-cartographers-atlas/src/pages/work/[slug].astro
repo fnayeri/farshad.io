@@ -1,0 +1,121 @@
+---
+import Base from "../../layouts/Base.astro";
+import { projects, getProjectModule, personas as allPersonas } from "../../lib/content.ts";
+
+export function getStaticPaths() {
+  return projects.map((p) => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+const mod = getProjectModule(slug!);
+if (!mod) throw new Error("Project not found: " + slug);
+const { frontmatter, Content } = mod;
+const personaLabels = frontmatter.personas
+  .map((id) => allPersonas.find((p) => p.id === id)?.label)
+  .filter(Boolean);
+---
+
+<Base title={`${frontmatter.title} — A Cartographer's Edition`} description={frontmatter.outcome} active="work">
+  <article class="container">
+    <header class="head">
+      <p class="series"><span class="banner">Specimen</span> · {frontmatter.dates}</p>
+      <h1>{frontmatter.title}</h1>
+      <p class="outcome"><em>{frontmatter.outcome}</em></p>
+    </header>
+
+    <div class="atlas-grid">
+      <div class="body prose">
+        <Content />
+        <hr class="rule-flourish" />
+        <p class="back"><a href="/work/">↩ back to the cabinet</a></p>
+      </div>
+      <aside class="marg">
+        <span class="banner mini">Particulars</span>
+        <div class="marg-note"><span class="marg-num">¶ Client</span><strong>{frontmatter.client}</strong></div>
+        <div class="marg-note"><span class="marg-num">¶ Role</span>{frontmatter.role}</div>
+        <div class="marg-note"><span class="marg-num">¶ Dates</span>{frontmatter.dates}</div>
+        {frontmatter.location && <div class="marg-note"><span class="marg-num">¶ Locale</span>{frontmatter.location}</div>}
+        {frontmatter.collaborators.length > 0 && (
+          <div class="marg-note"><span class="marg-num">¶ Hands</span>{frontmatter.collaborators.join(", ")}</div>
+        )}
+        {personaLabels.length > 0 && (
+          <div class="marg-note"><span class="marg-num">¶ Bearings</span><em>{personaLabels.join(" · ")}</em></div>
+        )}
+      </aside>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .head {
+    padding: clamp(40px, 6vw, 96px) 0 28px;
+    max-width: 60ch;
+    border-bottom: 1px solid var(--ink);
+  }
+  .series {
+    font-family: var(--press-sc);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin: 0 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  h1 { font-size: var(--step-4); margin: 0 0 14px; }
+  .outcome {
+    font-family: var(--press);
+    font-style: italic;
+    font-size: var(--step-1);
+    line-height: 1.4;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .atlas-grid { padding: 36px 0 56px; }
+  .prose :global(h2) {
+    font-family: var(--press-sc);
+    font-size: 18px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-top: 32px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 8px;
+  }
+  .prose :global(h2:first-of-type) { margin-top: 0; }
+  .prose :global(p) { font-size: var(--step-0); line-height: 1.7; }
+  .prose :global(blockquote) {
+    margin: 1.5em 0;
+    padding: 14px 20px;
+    border-left: 3px solid var(--rust);
+    background: rgba(177, 74, 55, 0.06);
+    font-style: italic;
+    font-size: var(--step-1);
+    color: var(--ink);
+  }
+  .prose :global(ul) { padding-left: 1.4em; }
+  .marg { padding-top: 0; }
+  .marg .banner.mini {
+    font-size: 11px;
+    padding: 3px 10px 4px;
+    margin-bottom: 14px;
+    display: inline-block;
+  }
+  .marg .marg-num {
+    color: var(--rust);
+    font-family: var(--mono);
+    font-size: 11px;
+    margin-right: 4px;
+    display: inline-block;
+    min-width: 80px;
+  }
+  .marg strong { color: var(--ink); }
+  .back a {
+    font-family: var(--press-sc);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+</style>

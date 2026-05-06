@@ -1,0 +1,202 @@
+---
+import { projects, personas } from "../lib/content.ts";
+import { CATEGORY_COLORS, parseStartYear, parseEndYear } from "../lib/categories.ts";
+
+// Build a row per persona, with bars representing projects sorted on a year axis.
+const minYear = 1990;
+const maxYear = new Date().getFullYear();
+const span = maxYear - minYear;
+const ticks = [1990, 1995, 2000, 2005, 2010, 2015, 2020, 2025, maxYear].filter(y => y <= maxYear);
+
+type Bar = {
+  slug: string;
+  title: string;
+  client: string;
+  start: number;
+  end: number;
+  startPct: number;
+  widthPct: number;
+};
+
+const rowsData = personas.map((p) => {
+  const bars: Bar[] = projects
+    .filter((proj) => proj.personas.includes(p.id))
+    .map((proj) => {
+      const start = parseStartYear(proj.dates) ?? minYear;
+      const end = parseEndYear(proj.dates) ?? start;
+      const startPct = ((Math.max(start, minYear) - minYear) / span) * 100;
+      const endPct = ((Math.min(end, maxYear) - minYear) / span) * 100;
+      const widthPct = Math.max(endPct - startPct, 1.6);
+      return { slug: proj.slug, title: proj.title, client: proj.client, start, end, startPct, widthPct };
+    })
+    .sort((a, b) => a.start - b.start);
+  return { persona: p, bars };
+});
+---
+
+<section class="spectrum" aria-label="Career spectrum, 1990 to present">
+  <header class="spectrum-head">
+    <p class="label">Spectrum</p>
+    <h2 class="spectrum-title">Thirty-five years, five categories.</h2>
+    <p class="spectrum-sub">Each bar is a project, plotted on a calendar axis and coloured by category. Hover for details, click to read.</p>
+  </header>
+
+  <div class="spectrum-canvas">
+    <div class="axis">
+      {ticks.map((y) => (
+        <div class="tick" style={`left:${((y - minYear) / span) * 100}%`}>
+          <span class="tnum">{y}</span>
+        </div>
+      ))}
+    </div>
+
+    {rowsData.map(({ persona, bars }) => {
+      const c = CATEGORY_COLORS[persona.id];
+      return (
+        <div class="row" style={`--c: ${c.hex}`}>
+          <div class="row-label">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="row-name">{c.name}</span>
+            <span class="row-count tnum">{bars.length}</span>
+          </div>
+          <div class="row-track">
+            {bars.map((b) => (
+              <a
+                href={`/work/${b.slug}/`}
+                class="bar"
+                style={`left:${b.startPct}%; width:${b.widthPct}%`}
+                title={`${b.title} — ${b.client} (${b.start}${b.end !== b.start ? `–${b.end}` : ""})`}
+              >
+                <span class="bar-label">{b.client}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      );
+    })}
+
+    <div class="grid-lines" aria-hidden="true">
+      {ticks.map((y) => (
+        <div class="grid-line" style={`left:${((y - minYear) / span) * 100}%`}></div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .spectrum {
+    padding: 24px 0 56px;
+  }
+  .spectrum-head {
+    margin-bottom: 24px;
+    max-width: 60ch;
+  }
+  .spectrum-title {
+    font-size: var(--step-3);
+    margin: 6px 0 10px;
+  }
+  .spectrum-sub {
+    color: var(--ink-soft);
+    font-size: var(--step-0);
+    margin: 0;
+  }
+  .spectrum-canvas {
+    position: relative;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 16px 0 8px;
+  }
+  .axis {
+    position: relative;
+    height: 22px;
+    margin-left: 140px;
+    margin-right: 8px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .tick {
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+  }
+  .tick .tnum {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-quiet);
+    letter-spacing: 0.04em;
+  }
+  .grid-lines {
+    position: absolute;
+    inset: 38px 8px 8px 140px;
+    pointer-events: none;
+  }
+  .grid-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--hairline);
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr);
+    align-items: center;
+    gap: 8px;
+    padding: 10px 8px 10px 0;
+    border-top: 1px dashed var(--hairline);
+  }
+  .row:first-of-type { border-top: 0; }
+  .row-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .row .dot { background: var(--c); }
+  .row-count {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-quiet);
+    margin-left: auto;
+    margin-right: 14px;
+  }
+  .row-track {
+    position: relative;
+    height: 26px;
+  }
+  .bar {
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    background: var(--c);
+    border-radius: 3px;
+    text-decoration: none;
+    color: white;
+    font-size: 11px;
+    font-weight: 500;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    transition: filter var(--t-quick), transform var(--t-quick);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+  }
+  .bar:hover, .bar:focus-visible {
+    filter: brightness(0.92);
+    transform: translateY(-1px);
+    z-index: 2;
+    outline: none;
+  }
+  .bar-label {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  @media (max-width: 760px) {
+    .axis { margin-left: 100px; }
+    .grid-lines { left: 100px; }
+    .row { grid-template-columns: 100px minmax(0, 1fr); }
+    .row-label { font-size: 12px; }
+  }
+</style>

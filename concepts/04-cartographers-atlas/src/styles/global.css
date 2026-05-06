@@ -1,0 +1,264 @@
+@import "@fontsource/im-fell-english/400.css";
+@import "@fontsource/im-fell-english/400-italic.css";
+@import "@fontsource/im-fell-english-sc/400.css";
+@import "@fontsource/caveat/400.css";
+@import "@fontsource/caveat/500.css";
+@import "@fontsource/caveat/600.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "./tokens.css";
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern", "liga";
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 20% -10%, rgba(177, 74, 55, 0.06), transparent 60%),
+    radial-gradient(ellipse at 110% 110%, rgba(63, 108, 100, 0.06), transparent 60%),
+    var(--parchment);
+  color: var(--ink);
+  font-family: var(--press);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  background-attachment: fixed;
+}
+
+/* Subtle paper grain via CSS noise */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(rgba(34, 26, 16, 0.045) 1px, transparent 1px),
+    radial-gradient(rgba(34, 26, 16, 0.025) 1px, transparent 1px);
+  background-size: 5px 5px, 11px 11px;
+  background-position: 0 0, 2px 3px;
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+main, header, footer { position: relative; z-index: 1; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--press);
+  margin: 0 0 0.4em;
+  letter-spacing: -0.005em;
+  line-height: 1.1;
+  font-weight: 400;
+}
+
+h1 { font-size: var(--step-4); line-height: 1.0; }
+h2 { font-size: var(--step-2); }
+h3 { font-size: var(--step-1); }
+
+p { margin: 0 0 1em; }
+
+a {
+  color: var(--rust);
+  text-decoration: none;
+  background-image: linear-gradient(transparent 92%, var(--rust) 92%, var(--rust) 96%, transparent 96%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  padding: 0 1px;
+  transition: color var(--t-quick), background-color var(--t-quick);
+}
+
+a:hover {
+  color: var(--ink);
+  background-image: linear-gradient(transparent 92%, var(--ink) 92%, var(--ink) 96%, transparent 96%);
+}
+
+a:focus-visible {
+  outline: 2px dashed var(--rust);
+  outline-offset: 3px;
+}
+
+::selection { background: var(--rust); color: var(--parchment); }
+
+img { max-width: 100%; height: auto; display: block; }
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.smallcaps {
+  font-family: var(--press-sc);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-quiet);
+}
+
+.hand {
+  font-family: var(--hand);
+  font-size: clamp(1.2rem, 1.6vw, 1.45rem);
+  line-height: 1.25;
+  color: var(--rust);
+}
+
+.numeral {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-quiet);
+  letter-spacing: 0.04em;
+}
+
+/* Decorative rules */
+.rule-double {
+  border: 0;
+  border-top: 1px solid var(--ink);
+  position: relative;
+  margin: 24px 0;
+  height: 4px;
+}
+.rule-double::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 4px;
+  border-top: 1px solid var(--ink);
+}
+
+.rule-flourish {
+  border: 0;
+  height: 24px;
+  margin: 28px 0;
+  background:
+    linear-gradient(to right, transparent 0, transparent calc(50% - 80px), var(--ink) calc(50% - 80px), var(--ink) calc(50% - 79px), transparent calc(50% - 79px), transparent calc(50% - 14px), transparent calc(50% - 14px)),
+    radial-gradient(circle at 50% 12px, var(--ink) 1.5px, transparent 2px),
+    linear-gradient(to right, transparent calc(50% + 14px), transparent calc(50% + 79px), var(--ink) calc(50% + 79px), var(--ink) calc(50% + 80px), transparent calc(50% + 80px));
+  background-repeat: no-repeat;
+}
+
+/* Specimen "card" — vintage chromolithograph card style */
+.specimen {
+  background: var(--parchment-2);
+  border: 1px solid var(--ink);
+  position: relative;
+  padding: 18px 20px;
+  box-shadow: 4px 4px 0 var(--parchment-3);
+}
+
+.specimen::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px dashed rgba(34, 26, 16, 0.35);
+  pointer-events: none;
+}
+
+.banner {
+  display: inline-block;
+  background: var(--rust);
+  color: var(--parchment);
+  padding: 4px 14px 5px;
+  font-family: var(--press-sc);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  position: relative;
+}
+.banner::before, .banner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  background: var(--rust);
+  clip-path: polygon(100% 0, 0 50%, 100% 100%);
+}
+.banner::before { left: -8px; }
+.banner::after { right: -8px; clip-path: polygon(0 0, 100% 50%, 0 100%); }
+
+/* Skip link */
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--parchment);
+  padding: 8px 12px;
+  z-index: 100;
+}
+.skip:focus { left: 12px; top: 12px; }
+
+/* Pen-stroke draw animation utility */
+.pen-draw path,
+.pen-draw line,
+.pen-draw circle,
+.pen-draw polyline {
+  stroke-dasharray: var(--len, 2400);
+  stroke-dashoffset: var(--len, 2400);
+  animation: penDraw var(--t-draw) cubic-bezier(0.45, 0.05, 0.3, 1) forwards;
+}
+.pen-draw [data-delay] { animation-delay: calc(var(--d, 0) * 1ms); }
+@keyframes penDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Tufte-ish two-column for cribsheet pages */
+.atlas-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(200px, 24vw, 280px);
+  gap: clamp(28px, 4vw, 64px);
+}
+.atlas-grid > .body { max-width: var(--measure); }
+.atlas-grid > .marg {
+  font-family: var(--hand);
+  font-size: 18px;
+  line-height: 1.35;
+  color: var(--ink-soft);
+  padding-top: 4px;
+}
+.atlas-grid > .marg .marg-note {
+  margin-bottom: 22px;
+  position: relative;
+  padding-left: 18px;
+}
+.atlas-grid > .marg .marg-note::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 12px;
+  height: 1px;
+  background: var(--rust);
+}
+@media (max-width: 900px) {
+  .atlas-grid { grid-template-columns: 1fr; }
+}
+
+/* Print */
+@media print {
+  @page { size: A4; margin: 18mm 16mm; }
+  body { background: white; color: black; }
+  body::before { display: none; }
+  a { color: black; background: none; }
+  .no-print { display: none !important; }
+  .atlas-grid { grid-template-columns: 1fr; }
+  h1 { font-size: 28pt; }
+  h2 { font-size: 16pt; }
+  p, li { font-size: 11pt; line-height: 1.55; }
+}

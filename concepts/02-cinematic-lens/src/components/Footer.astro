@@ -1,0 +1,65 @@
+---
+import { profile } from "../lib/content.ts";
+const { surface = "film" } = Astro.props as { surface?: "film" | "paper" };
+const year = new Date().getFullYear();
+---
+
+<footer class={`foot foot--${surface} no-print`}>
+  <div class="container foot-row">
+    <div>
+      <div class="label">Studio</div>
+      <p>Farshad Nayeri · {profile.location}</p>
+    </div>
+    <div>
+      <div class="label">Direct</div>
+      <p><a href={`mailto:${profile.email}`}>{profile.email}</a></p>
+      <p><a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+    </div>
+    <div>
+      <div class="label">Colophon</div>
+      <p class="colophon">Set in Inter, displayed widely. Pull quotes in Source Serif 4. Built with Astro &amp; MDX.</p>
+    </div>
+  </div>
+  <div class="container fineprint">
+    <span>© {year} Farshad Nayeri</span>
+    <span>·</span>
+    <span>Cinematic Lens, edition I</span>
+  </div>
+</footer>
+
+<style>
+  .foot {
+    margin-top: 96px;
+    padding: 48px 0 24px;
+  }
+  .foot--film {
+    border-top: 1px solid var(--rule-dark);
+    background: var(--film);
+    color: var(--paper);
+  }
+  .foot--paper {
+    border-top: 1px solid var(--rule-light);
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .foot-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .foot p { margin: 0 0 4px; font-size: 13px; line-height: 1.55; }
+  .colophon { opacity: 0.7; }
+  .fineprint {
+    margin-top: 32px;
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    opacity: 0.6;
+  }
+  .foot--film .label { color: var(--halo); }
+  .foot--paper .label { color: var(--ink-quiet); }
+  @media (max-width: 700px) {
+    .foot-row { grid-template-columns: 1fr; gap: 20px; }
+  }
+</style>

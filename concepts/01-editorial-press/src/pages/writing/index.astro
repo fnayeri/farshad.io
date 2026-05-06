@@ -1,0 +1,103 @@
+---
+import Base from "../../layouts/Base.astro";
+import { writing } from "../../lib/content.ts";
+---
+
+<Base title="Writing — Farshad Nayeri" description="Essays from the imprint." active="writing">
+  <section class="container">
+    <header class="page-head">
+      <p class="kicker">Essays · Volume I</p>
+      <h1>Writing</h1>
+      <p class="standfirst">Notes from the lineage. Loaded slowly. Read once.</p>
+    </header>
+    <ol class="essay-list">
+      {writing.map((w) => (
+        <li>
+          <a href={`/writing/${w.slug}/`}>
+            <span class="essay-date">{w.date}</span>
+            <span class="essay-rule" aria-hidden="true"></span>
+            <span class="essay-body">
+              <strong>{w.title}</strong>
+              <span class="essay-desc">{w.description}</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </section>
+</Base>
+
+<style>
+  .page-head {
+    padding: clamp(40px, 6vw, 96px) 0 24px;
+  }
+  .kicker {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin: 0 0 14px;
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+    line-height: 0.92;
+    margin: 0 0 14px;
+  }
+  .standfirst {
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: var(--step-2);
+    color: var(--ink-soft);
+    margin: 0 0 28px;
+  }
+  .essay-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .essay-list li {
+    border-top: 1px solid var(--rule);
+  }
+  .essay-list li:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+  .essay-list a {
+    display: grid;
+    grid-template-columns: 110px 14px minmax(0, 1fr);
+    gap: 18px;
+    align-items: baseline;
+    padding: 24px 0;
+    border: 0;
+  }
+  .essay-list a:hover strong {
+    color: var(--accent);
+  }
+  .essay-date {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+  }
+  .essay-rule {
+    height: 1px;
+    background: var(--ink-quiet);
+  }
+  .essay-body strong {
+    display: block;
+    font-family: var(--serif-display);
+    font-size: var(--step-2);
+    line-height: 1.15;
+    font-weight: 700;
+    margin-bottom: 4px;
+    transition: color var(--t-quick);
+  }
+  .essay-desc {
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-quiet);
+    line-height: 1.5;
+  }
+</style>

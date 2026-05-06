@@ -1,0 +1,46 @@
+/* Cinematic Lens — design tokens */
+:root {
+  /* Color */
+  --film: #0b0d10;
+  --film-2: #15181d;
+  --paper: #fafaf7;
+  --paper-2: #f1efe8;
+  --ink: #15161a;
+  --ink-soft: #2c2d33;
+  --ink-quiet: #5a5b62;
+  --halo: #c5c8cc;
+  --rule-dark: rgba(255, 255, 255, 0.12);
+  --rule-light: rgba(21, 22, 26, 0.12);
+  --lens-blue: #1f3b5b;
+  --lens-blue-soft: #2c5687;
+  --highlight: #e8b547;
+
+  /* Typography */
+  --display: "Inter", "Neue Haas Grotesk Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --body: "Inter", "Neue Haas Grotesk Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --serif: "Source Serif 4", "Tiempos Text", Georgia, serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Scale */
+  --step-0: clamp(1rem, 0.96rem + 0.22vw, 1.0625rem);
+  --step-1: clamp(1.15rem, 1.1rem + 0.25vw, 1.3rem);
+  --step-2: clamp(1.5rem, 1.4rem + 0.5vw, 1.85rem);
+  --step-3: clamp(2.1rem, 1.85rem + 1.2vw, 3rem);
+  --step-4: clamp(3rem, 2.4rem + 3vw, 5.5rem);
+  --step-5: clamp(4.5rem, 3.4rem + 5.5vw, 11rem);
+
+  /* Layout */
+  --gutter: clamp(20px, 4vw, 64px);
+  --measure: 64ch;
+
+  /* Motion */
+  --t-quick: 200ms cubic-bezier(0.2, 0, 0.2, 1);
+  --t-rack: 350ms cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

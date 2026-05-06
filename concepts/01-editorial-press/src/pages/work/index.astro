@@ -1,0 +1,119 @@
+---
+import Base from "../../layouts/Base.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { projects, personas } from "../../lib/content.ts";
+---
+
+<Base title="Work — Farshad Nayeri" description="The archive: projects from 1992 to today." active="work">
+  <section class="container archive-hero">
+    <p class="kicker">The Archive</p>
+    <h1>Selected Work</h1>
+    <p class="standfirst">
+      Thirty years of building. Sorted by alpha. Filtered by lens.
+    </p>
+    <nav class="filter-bar" aria-label="Filter by persona">
+      <a href="#all" class="filter-chip is-active">All</a>
+      {personas.map((p) => (
+        <a href={`#${p.id}`} class="filter-chip">{p.label}</a>
+      ))}
+    </nav>
+  </section>
+
+  <section class="container archive">
+    <div class="archive-list">
+      {projects.map((p) => (
+        <div class="archive-item" data-personas={p.personas.join(",")}>
+          <ProjectCard project={p} />
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      var chips = document.querySelectorAll(".filter-chip");
+      var items = document.querySelectorAll(".archive-item");
+      function filter(target) {
+        chips.forEach(function (c) {
+          c.classList.toggle("is-active", c.getAttribute("href") === "#" + target);
+        });
+        items.forEach(function (item) {
+          var ps = (item.getAttribute("data-personas") || "").split(",");
+          item.style.display = target === "all" || ps.indexOf(target) !== -1 ? "" : "none";
+        });
+      }
+      chips.forEach(function (c) {
+        c.addEventListener("click", function (e) {
+          e.preventDefault();
+          var t = (c.getAttribute("href") || "#all").slice(1);
+          history.replaceState(null, "", "#" + t);
+          filter(t);
+        });
+      });
+      var initial = location.hash ? location.hash.slice(1) : "all";
+      filter(initial);
+    })();
+  </script>
+</Base>
+
+<style>
+  .archive-hero {
+    padding: clamp(40px, 6vw, 96px) 0 24px;
+  }
+  .kicker {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin: 0 0 14px;
+  }
+  .archive-hero h1 {
+    font-size: var(--step-5);
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    margin: 0 0 14px;
+  }
+  .standfirst {
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: var(--step-2);
+    line-height: 1.25;
+    color: var(--ink-soft);
+    max-width: 36ch;
+    margin: 0 0 28px;
+  }
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 14px 0;
+    margin-top: 28px;
+  }
+  .filter-chip {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border: 0;
+    padding: 4px 10px;
+    border-radius: 999px;
+    transition: background var(--t-quick), color var(--t-quick);
+  }
+  .filter-chip:hover {
+    background: rgba(21, 22, 26, 0.05);
+    color: var(--ink);
+  }
+  .filter-chip.is-active {
+    background: var(--ink);
+    color: var(--paper);
+    border: 0;
+  }
+  .archive {
+    padding-bottom: 48px;
+  }
+</style>

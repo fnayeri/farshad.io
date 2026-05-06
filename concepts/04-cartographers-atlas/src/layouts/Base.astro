@@ -1,0 +1,46 @@
+---
+import "../styles/global.css";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+const {
+  title,
+  description = "Farshad Nayeri — an atlas of one operator.",
+  active = "",
+} = Astro.props as {
+  title: string;
+  description?: string;
+  active?: string;
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href={Astro.url.href} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a href="#main" class="skip">Skip to content</a>
+    <Nav active={active} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <script is:inline>
+      (function () {
+        try {
+          var p = window.location.pathname;
+          var m = p.match(/^\/for\/([a-z\-]+)\/?$/);
+          if (m && m[1]) localStorage.setItem("fn:persona", m[1]);
+        } catch (e) {}
+      })();
+    </script>
+  </body>
+</html>

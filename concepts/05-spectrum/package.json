@@ -1,0 +1,19 @@
+{
+  "name": "concept-05-spectrum",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev --port 4325",
+    "start": "astro dev --port 4325",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^3.1.9",
+    "@fontsource/inter": "^5.1.0",
+    "@fontsource/jetbrains-mono": "^5.1.1",
+    "astro": "^4.16.18"
+  }
+}

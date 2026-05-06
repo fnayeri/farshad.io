@@ -1,0 +1,191 @@
+---
+import Base from "../layouts/Base.astro";
+import AtlasFrontispiece from "../components/AtlasFrontispiece.astro";
+import CompassSwitcher from "../components/CompassSwitcher.astro";
+import SpecimenCard from "../components/SpecimenCard.astro";
+import { defaultPersona, projectsForPersona, testimonials, clients, personas } from "../lib/content.ts";
+
+const persona = defaultPersona();
+const featured = projectsForPersona(persona.id).slice(0, 4);
+const heroQuotes = testimonials.filter((t) => t.personas.includes(persona.id) || t.id === "gassee").slice(0, 3);
+---
+
+<Base title="Farshad Nayeri — A Cartographer's Edition" description={persona.pitch_line} active="home">
+  <AtlasFrontispiece />
+
+  <section class="container">
+    <CompassSwitcher active={persona.id} />
+
+    <section class="preface">
+      <header class="chap-head">
+        <span class="banner">Plate II</span>
+        <h2>Preface — Now Reading As <em>{persona.label}</em></h2>
+      </header>
+      <div class="atlas-grid">
+        <div class="body">
+          <p class="lede">{persona.pitch_line}</p>
+          <p>{persona.what_he_uniquely_does}</p>
+          <p>{persona.shape_of_the_gap}</p>
+          <p class="closing"><em>{persona.closing_pitch}</em></p>
+          <p>
+            <a href={`/for/${persona.id}/`} class="btn">↗ open the full plate for {persona.label}</a>
+          </p>
+        </div>
+        <aside class="marg">
+          <div class="marg-note">
+            Five bearings, one operator. Each persona is a region of the same atlas — visit them in any order.
+          </div>
+          <div class="marg-note">
+            The default chapter mode is <em>Product Builder</em>. Choose a different bearing on the compass above.
+          </div>
+          <div class="marg-note">
+            Selected scenes from the territory begin below.
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="chap">
+      <header class="chap-head">
+        <span class="banner">Plate III</span>
+        <h2>Selected Specimens</h2>
+        <a href="/work/" class="hand more">→ all specimens in the cabinet</a>
+      </header>
+      <div class="specimens-grid">
+        {featured.map((p, i) => <SpecimenCard project={p} idx={i + 1} />)}
+      </div>
+    </section>
+
+    <section class="chap">
+      <header class="chap-head">
+        <span class="banner">Plate IV</span>
+        <h2>Annotations from Visitors</h2>
+        <span class="hand more">— pulled from the Airshow tour notebook —</span>
+      </header>
+      <div class="quotes">
+        {heroQuotes.map((t) => (
+          <figure class="quote">
+            <blockquote>
+              <span class="qmark" aria-hidden="true">“</span>
+              {t.quote}
+              <span class="qmark" aria-hidden="true">”</span>
+            </blockquote>
+            <figcaption>
+              <span class="qname">{t.name}</span>
+              <span class="qtitle">{t.title}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+
+    <section class="chap">
+      <header class="chap-head">
+        <span class="banner">Plate V</span>
+        <h2>Patrons of the Atlas</h2>
+      </header>
+      <p class="client-line">
+        {clients.map((c, i) => <><span>{c}</span>{i < clients.length - 1 ? <span class="dot"> · </span> : null}</>)}
+      </p>
+      <p class="hand client-aside">— in the order they wrote the cheque, more or less —</p>
+    </section>
+  </section>
+</Base>
+
+<style>
+  .preface, .chap { padding: clamp(36px, 5vw, 72px) 0; border-top: 1px solid var(--ink); }
+  .chap-head {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 14px 22px;
+    margin-bottom: 20px;
+  }
+  .chap-head h2 { margin: 0; font-size: var(--step-3); flex: 1 1 auto; }
+  .chap-head .more { color: var(--rust); font-size: 20px; }
+  .lede {
+    font-size: var(--step-2);
+    line-height: 1.35;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 18px;
+  }
+  .closing {
+    font-size: var(--step-1);
+    color: var(--ink);
+    border-top: 1px solid var(--rust);
+    padding-top: 16px;
+    margin-top: 24px;
+  }
+  .btn {
+    display: inline-block;
+    background: none;
+    color: var(--rust);
+    border: 1px solid var(--rust);
+    padding: 8px 14px;
+    font-family: var(--press-sc);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .btn:hover {
+    background: var(--rust);
+    color: var(--parchment);
+  }
+  .specimens-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+    padding-top: 20px;
+  }
+  .quotes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+  }
+  .quote {
+    margin: 0;
+    background: var(--parchment-2);
+    border: 1px solid var(--ink);
+    padding: 22px 22px 18px;
+    box-shadow: 4px 4px 0 var(--parchment-3);
+    position: relative;
+  }
+  .quote blockquote {
+    margin: 0 0 14px;
+    border: 0;
+    padding: 0;
+    font-family: var(--press);
+    font-style: italic;
+    font-size: var(--step-1);
+    line-height: 1.35;
+    color: var(--ink);
+  }
+  .qmark { color: var(--rust); font-size: 1.4em; margin: 0 0.05em; }
+  .qname {
+    display: block;
+    font-family: var(--press-sc);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    margin-top: 8px;
+  }
+  .qtitle {
+    display: block;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-quiet);
+    margin-top: 2px;
+  }
+  .client-line {
+    font-family: var(--press);
+    font-size: var(--step-2);
+    line-height: 1.4;
+    color: var(--ink);
+    border-top: 1px solid var(--rule);
+    padding-top: 18px;
+    margin: 0 0 8px;
+  }
+  .client-line .dot { color: var(--rust); margin: 0 6px; }
+  .client-aside { color: var(--rust); font-size: 20px; margin: 0; }
+</style>

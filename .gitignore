@@ -24,3 +24,8 @@ out/
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts.bak
+
+# Astro concepts
+concepts/*/.astro/
+concepts/*/dist/
+concepts/*/node_modules/

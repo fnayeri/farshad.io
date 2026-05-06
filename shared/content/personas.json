@@ -1,0 +1,144 @@
+{
+  "personas": [
+    {
+      "id": "product-builder",
+      "label": "Product Builder",
+      "default": true,
+      "pitch_line": "I take vague ideas — about products, organizations, even whole categories — and turn them into things that actually run.",
+      "credibility_anchors": [
+        "Pixxa Perspective: motion-driven data visualization used in keynotes at Apple, Samsung, IBM, Fidelity, BNY Mellon, and Microsoft.",
+        "iOS App Store: led conception, design, and release of 100+ apps; multiple 'Top Apps' placements.",
+        "Verizon Labs: real-time QoS monitoring across the entire Verizon footprint.",
+        "Critical Mass Inc. (1995): commercial Modula-3, the Reactor / CM3-IDE — a web-based IDE delivered as an HTTP server with hyperlinked, syntax-highlighted code, in 1996."
+      ],
+      "shape_of_the_gap": "Most product leaders ship one of: the artifact, the architecture, or the strategy. Few ship all three from the same head. Product Builders who can move from a vague founder pitch to a multi-tenant production system without a translation layer are rare.",
+      "what_he_uniquely_does": "Sits with the ambiguity until the product takes shape, then builds it himself with a small team. Reads the customer, writes the spec, sets the type, picks the stack, ships the binary, watches the metrics. No handoff, no telephone game.",
+      "angles_to_play": [
+        "Zero-to-one: a vague mandate from a founder or board, no team, no spec.",
+        "One-to-product: a working prototype that needs to become a real product before the window closes.",
+        "Stuck-at-three: a product that shipped but has lost its center; needs a builder who can sit with the contradictions.",
+        "Cross-discipline glue: data, design, and platform that have stopped speaking to each other."
+      ],
+      "head_off_early": "Not a fractional CTO who collects logos. Not a designer who codes a little. Builds end-to-end, takes responsibility end-to-end, and is comfortable being the one named when things ship or break.",
+      "closing_pitch": "If the thing you want to build is the kind of thing nobody can quite describe yet, that is the work I am best at.",
+      "featured_project_slugs": [
+        "pixxa-perspective",
+        "critical-mass",
+        "iphone-clock-app",
+        "verizon-dti"
+      ]
+    },
+    {
+      "id": "data-storyteller",
+      "label": "Data Storyteller",
+      "default": false,
+      "pitch_line": "Motion brings emotion. I direct numbers the way a cinematographer directs a scene.",
+      "credibility_anchors": [
+        "Coined 'Data Cinematography'. Co-creator with Horace Dediu of the Airshow tour: Boston, Tokyo, Vancouver, London, San Francisco, Helsinki, Seattle, Melbourne (2013–2016).",
+        "Pixxa Perspective: the iPad app that turned static decks into directed scenes for keynotes at Apple, Samsung, IBM, Fidelity, BNY Mellon, and Microsoft.",
+        "Invited speaker at HarvardXR 2025 on data cinematography in immersive contexts.",
+        "Asymco co-author. The Health of Nations: a 100-year demographic study presented at the Global Health Exhibition 2025 and the Saudi Ministry of Health."
+      ],
+      "shape_of_the_gap": "Most 'data storytelling' is a deck with a chart in it. The frame, the cut, the pace, the hand on the focus ring — these are not accidents. There is a craft here. Almost no one practices it.",
+      "what_he_uniquely_does": "Treats every visualization as a scene. Picks the lens, sets the exposure, decides what enters and leaves frame, scores the cut. Builds the platform that makes the scene rerunnable for a sales team, an analyst, a board.",
+      "angles_to_play": [
+        "Keynote-grade visualization for a single high-stakes meeting.",
+        "Repeatable workflow: a small team that needs to turn analysis into directed scenes weekly.",
+        "Market-narrative work: the kind of analytic writing Asymco did for Apple, applied to a different industry.",
+        "Live-on-stage data: long-form, multi-act, presented at scale (Airshow, HarvardXR, Global Health Exhibition)."
+      ],
+      "head_off_early": "Not a dashboard designer. Not a Tableau consultant. The output is a directed sequence — sometimes a deck, sometimes an app, sometimes a 90-minute stage piece — and the craft is cinematographic, not decorative.",
+      "closing_pitch": "If your data deserves a director, this is what that looks like.",
+      "featured_project_slugs": [
+        "pixxa-perspective",
+        "airshow",
+        "asymco",
+        "health-of-nations"
+      ]
+    },
+    {
+      "id": "strategist",
+      "label": "Strategist / Advisor",
+      "default": false,
+      "pitch_line": "Christensen-trained, builder-grounded. I do strategy the way a senior operator does strategy — close to the artifact.",
+      "credibility_anchors": [
+        "Worked directly with Clayton Christensen and Dave Sundahl on the productization of Disruptive Innovation theory.",
+        "Connected to the Christensen Institute and the Disruptive MBA / Product Science Lab (dx.mba).",
+        "Strategy and platform work at EY (enterprise blockchain platform), Fidelity (retirement readiness), Baupost (compliance), CME (trade clearing).",
+        "Taught Modula-3 systems thinking and disruptive innovation in adjacent registers; both have shaped how he reads markets."
+      ],
+      "shape_of_the_gap": "Most strategy decks die because the people who wrote them have never built anything. Most builders get stuck because they have never been forced to think about whom the work is for. The bridge is rare.",
+      "what_he_uniquely_does": "Reads a market, names the disruption vector, sketches the business model, and tells you which artifact would make it real — usually one you can build with a small team in a single fiscal year. Then sits with the team while they build it.",
+      "angles_to_play": [
+        "Platform strategy: making a federated technical platform usable by a federated business.",
+        "Product-line strategy: when an enterprise has too many SKUs and needs a Christensen-flavored re-cut.",
+        "Founder advisory: pre-seed to Series A, when the model is half-formed.",
+        "Innovation systems: standing up a disruption-theory practice inside a large organization."
+      ],
+      "head_off_early": "Not a McKinsey deck-writer. Not a board member you wheel in for credibility. Works the problem alongside you, signs his name to the artifact, leaves you with something running.",
+      "closing_pitch": "If you want strategy that survives contact with a real team and a real ship date, this is what that looks like.",
+      "featured_project_slugs": [
+        "ey-blockchain",
+        "baupost-niws",
+        "fidelity-readiness",
+        "christensen-institute"
+      ]
+    },
+    {
+      "id": "founder",
+      "label": "Founder",
+      "default": false,
+      "pitch_line": "Three companies, thirty years. I know what it costs to start something and keep it running.",
+      "credibility_anchors": [
+        "Critical Mass Inc. (Cambridge, 1995): commercial Modula-3, the Reactor / CM3-IDE in 1996, the Critical Mass JVM written entirely in Modula-3 and class-compatible with Sun's JavaVM. Hired Bill Kalsow from DEC SRC. Edited Threads: A Modula-3 Systems Journal, Issues 1–3 (1995–1997). Open-sourced the codebase in 2001.",
+        "iGEN Corporation (1998–present): consulting and platform work spanning telecom, finance, healthcare, and pharma. Independent operator since 1998.",
+        "Pixxa LLC: the Perspective iPad app. Technology evaluated by Microsoft for acquisition.",
+        "Knows the unsexy parts: payroll, recruiting senior people who will not be flattered by your startup, deciding whether to take the round."
+      ],
+      "shape_of_the_gap": "Most founders who build serious technical companies do not survive their second decade as builders. Most founders who survive their second decade have stopped building. He has done both, several times.",
+      "what_he_uniquely_does": "Starts companies around technical bets that take years to pay off, and keeps building the thing while running it. Has been the only employee, has been the founder hiring DEC SRC alumni, has been the consultant brought in to tell another founder's truth.",
+      "angles_to_play": [
+        "Technical co-founder for a non-technical founder with a serious idea.",
+        "Founding-team-of-one for a corporate venture that needs to behave like a startup.",
+        "Senior advisory for a founder navigating a hard pivot or a hard hire.",
+        "Reverse: helping a 200-person company remember what it was like to be 4."
+      ],
+      "head_off_early": "Not a serial flipper. The companies he has run, he has run for a long time. The work is patient, and the patience is the point.",
+      "closing_pitch": "If you are starting something that needs to outlast the news cycle, you want someone who has done that.",
+      "featured_project_slugs": [
+        "critical-mass",
+        "pixxa-perspective",
+        "igen",
+        "asymco"
+      ]
+    },
+    {
+      "id": "dev-tools",
+      "label": "Developer Tools / Language Designer",
+      "default": false,
+      "pitch_line": "Programming-language and developer-tools researcher. I build tools that change what builders can think about.",
+      "credibility_anchors": [
+        "GTE Labs: Distributed Object Manager (ECOOP 1994). Foundational distributed-systems work in the Modula-3 lineage.",
+        "Critical Mass Inc.: the Reactor / CM3-IDE — a web-based IDE delivered as a custom HTTP server with hyperlinked, syntax-highlighted code views, in 1996. The Critical Mass JVM, written entirely in Modula-3, class-compatible with Sun's JavaVM. Hired Bill Kalsow (DEC SRC Modula-3 lead).",
+        "Edited Threads: A Modula-3 Systems Journal, Issues 1–3 (1995–1997).",
+        "DEC SRC Modula-3 lineage as a working tradition: SRC/Modula-3-quality engineering norms applied to product work since."
+      ],
+      "shape_of_the_gap": "Real PL and dev-tools work today happens in three or four labs and a few startup compilers teams. The lineage that produced Modula-3, Cedar, Smalltalk, and the early web is thin. He carries some of it.",
+      "what_he_uniquely_does": "Designs the developer surface area as carefully as the product surface area. Treats syntax, error messages, build pipelines, and editor affordances as first-class design objects. Builds the IDE that fits the language, not the other way round.",
+      "angles_to_play": [
+        "Internal platform tooling: the IDE / build / debug / observability surface that a 20-person team will live in for a decade.",
+        "DSL design: when a domain has earned its own small language and the team has not yet realized it.",
+        "Compiler and runtime work in modern systems languages.",
+        "Mentorship: teaching senior engineers to think at the level the lineage demands."
+      ],
+      "head_off_early": "Not a 'staff engineer for hire'. The work is research-grade engineering: long horizons, deep substrate, and a written record. The output is rarely flashy on day one.",
+      "closing_pitch": "If you have a team that should be a lab, this is the work.",
+      "featured_project_slugs": [
+        "critical-mass",
+        "gte-labs-dom",
+        "verizon-dti",
+        "pixxa-perspective"
+      ]
+    }
+  ]
+}

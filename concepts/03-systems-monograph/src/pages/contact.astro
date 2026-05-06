@@ -1,0 +1,63 @@
+---
+import Base from "../layouts/Base.astro";
+import { profile } from "../lib/content.ts";
+---
+
+<Base title="Contact — Farshad Nayeri" description={profile.availability} active="contact">
+  <section class="container">
+    <header class="head">
+      <p class="numeral">§ Contact</p>
+      <h1>Correspondence</h1>
+    </header>
+    <article class="tufte">
+      <div class="body">
+        <p class="availability"><em>{profile.availability}</em></p>
+        <ul class="contact-list">
+          <li><span class="smallcaps">Email</span><a href={`mailto:${profile.email}`}>{profile.email}</a></li>
+          <li><span class="smallcaps">Location</span><span>{profile.location}</span></li>
+          <li><span class="smallcaps">LinkedIn</span><a href={profile.linkedin} target="_blank" rel="noopener noreferrer">linkedin.com/in/farshadnayeri</a></li>
+        </ul>
+        <p class="closing">
+          <em>The volume is in progress. If you have read this far, write.</em>
+        </p>
+      </div>
+      <aside class="marginalia">
+        <aside class="note">
+          <span class="note-num">¶ Reply window</span>
+          Within 24 hours, Boston business days.
+        </aside>
+        <aside class="note">
+          <span class="note-num">¶ In person</span>
+          Around Boston/Cambridge welcome.
+        </aside>
+        <aside class="note">
+          <span class="note-num">¶ Remote</span>
+          Engagements anywhere serious.
+        </aside>
+      </aside>
+    </article>
+  </section>
+</Base>
+
+<style>
+  .head { padding: clamp(40px, 6vw, 96px) 0 24px; max-width: 60ch; }
+  .numeral { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--lab); margin: 0 0 14px; }
+  h1 { font-size: var(--step-5); margin: 0 0 14px; }
+  .availability { font-size: var(--step-2); line-height: 1.3; color: var(--ink); margin: 0 0 28px; }
+  .contact-list { list-style: none; margin: 0; padding: 0; }
+  .contact-list li {
+    display: grid;
+    grid-template-columns: 130px minmax(0, 1fr);
+    gap: 18px;
+    border-top: 1px solid var(--rule);
+    padding: 14px 0;
+    align-items: baseline;
+  }
+  .contact-list li:last-child { border-bottom: 1px solid var(--rule); }
+  .closing {
+    margin-top: 32px;
+    font-size: var(--step-2);
+    color: var(--ink);
+    text-align: center;
+  }
+</style>

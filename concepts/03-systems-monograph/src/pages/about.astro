@@ -1,0 +1,103 @@
+---
+import Base from "../layouts/Base.astro";
+import { profile, testimonials, clients } from "../lib/content.ts";
+---
+
+<Base title="Bio — Farshad Nayeri" description="The long bio, with sidenotes." active="about">
+  <section class="container">
+    <header class="head">
+      <p class="numeral">§ Bio</p>
+      <h1>Farshad Nayeri</h1>
+      <p class="standfirst"><em>{profile.throughline}</em></p>
+    </header>
+
+    <article class="tufte">
+      <div class="body prose">
+        <h2>The four careers, woven</h2>
+        <p>
+          <strong>Programming-language and developer-tools researcher.</strong>
+          GTE Labs (Distributed Object Manager, ECOOP 1994). The DEC SRC Modula-3 lineage. Verizon Labs.
+        </p>
+        <p>
+          <strong>Founder.</strong>
+          Critical Mass, Inc. (Cambridge, 1995): commercial Modula-3, the Reactor / CM3-IDE in 1996, and the Critical Mass JVM written entirely in Modula-3, class-compatible with Sun's JavaVM. Hired Bill Kalsow from DEC SRC. Edited <em>Threads: A Modula-3 Systems Journal</em> (Issues 1–3, 1995–1997). Open-sourced the codebase in 2001. iGEN Corporation (1998–present). Pixxa LLC and the Perspective iPad app.
+        </p>
+        <p>
+          <strong>Data Cinematographer.</strong>
+          Co-creator with Horace Dediu of the Airshow tour (2013–2016, eight cities). Co-author on Asymco. Invited speaker at HarvardXR 2025; presenter at the Global Health Exhibition 2025.
+        </p>
+        <p>
+          <strong>Christensen-trained strategist.</strong>
+          Worked directly with Clayton Christensen and Dave Sundahl. Connected to the Christensen Institute and the dx.MBA / Product Science Lab. Strategy work at EY, Fidelity, Baupost, CME.
+        </p>
+
+        <h2>Press, in Full</h2>
+        <ul class="quote-list">
+          {testimonials.map((t) => (
+            <li>
+              <em>“{t.quote}”</em>
+              <br />— <strong>{t.name}</strong>, {t.title}.
+            </li>
+          ))}
+        </ul>
+
+        <h2>Clients</h2>
+        <p class="clients">
+          {clients.map((c, i) => <><span>{c}</span>{i < clients.length - 1 ? <span class="dot"> · </span> : null}</>)}
+        </p>
+      </div>
+      <aside class="marginalia">
+        <aside class="note">
+          <span class="note-num">¶ Location</span>
+          {profile.location}
+        </aside>
+        <aside class="note">
+          <span class="note-num">¶ Email</span>
+          <a href={`mailto:${profile.email}`}>{profile.email}</a>
+        </aside>
+        <aside class="note">
+          <span class="note-num">¶ LinkedIn</span>
+          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">linkedin.com/in/farshadnayeri</a>
+        </aside>
+        <aside class="note">
+          <span class="note-num">¶ Critical Mass, 1995</span>
+          Modula-3 commercial vendor; Reactor IDE in 1996; JVM in Modula-3; <em>Threads</em> journal Issues 1–3.
+        </aside>
+        <aside class="note">
+          <span class="note-num">¶ Airshow tour</span>
+          Boston · Tokyo · Vancouver · London · San Francisco · Helsinki · Seattle · Melbourne (with Horace Dediu).
+        </aside>
+        <aside class="note">
+          <span class="note-num">¶ ECOOP 1994</span>
+          Distributed Object Manager, GTE Labs.
+        </aside>
+      </aside>
+    </article>
+  </section>
+</Base>
+
+<style>
+  .head { padding: clamp(40px, 6vw, 96px) 0 24px; max-width: 60ch; }
+  .numeral { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--lab); margin: 0 0 14px; }
+  h1 { font-size: var(--step-5); margin: 0 0 14px; }
+  .standfirst { font-size: var(--step-1); color: var(--ink-soft); margin: 0 0 28px; }
+  .body h2 { font-size: var(--step-2); margin-top: 32px; margin-bottom: 12px; }
+  .body h2:first-of-type { margin-top: 0; }
+  .quote-list { list-style: none; margin: 0; padding: 0; }
+  .quote-list li {
+    border-top: 1px solid var(--rule);
+    padding: 16px 0;
+    font-size: var(--step-1);
+    line-height: 1.45;
+  }
+  .clients {
+    font-size: var(--step-2);
+    line-height: 1.4;
+    color: var(--ink);
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .clients .dot { color: var(--lab); margin: 0 6px; }
+</style>

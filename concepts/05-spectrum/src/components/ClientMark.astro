@@ -1,0 +1,101 @@
+---
+// Single-color SVG monograms / wordmarks for the high-profile clients.
+// Trademarks belong to their owners; these are simplified marks rendered
+// in monochrome currentColor for editorial use only.
+const { name, height = 28 } = Astro.props as { name: string; height?: number };
+const key = name.trim().toLowerCase();
+---
+
+<span class="mark" style={`height:${height}px`} aria-label={name}>
+  {key === "apple" && (
+    <svg viewBox="0 0 24 24" width={height} height={height} fill="currentColor" aria-hidden="true">
+      <path d="M16.46 12.86c-.02-2.31 1.89-3.42 1.97-3.48-1.07-1.57-2.74-1.79-3.34-1.81-1.42-.14-2.78.84-3.5.84-.73 0-1.84-.82-3.03-.8-1.56.02-3 .91-3.81 2.31-1.62 2.81-.41 6.96 1.17 9.24.77 1.11 1.69 2.36 2.89 2.32 1.16-.05 1.6-.75 3-.75s1.79.75 3.02.72c1.25-.02 2.04-1.13 2.81-2.25.88-1.29 1.25-2.54 1.27-2.6-.03-.01-2.43-.93-2.45-3.74Zm-2.31-6.86c.64-.78 1.07-1.86.95-2.94-.92.04-2.04.61-2.7 1.39-.59.69-1.11 1.79-.97 2.85 1.03.08 2.08-.52 2.72-1.3Z"/>
+    </svg>
+  )}
+
+  {key === "ibm" && (
+    <svg viewBox="0 0 64 24" width={height * 64 / 24} height={height} fill="currentColor" aria-hidden="true">
+      {Array.from({ length: 12 }).map((_, i) => (
+        <rect x={i * 5.2} y="0" width="3.4" height="3" />
+      ))}
+      {Array.from({ length: 12 }).map((_, i) => (
+        <rect x={i * 5.2} y="6" width="3.4" height="3" />
+      ))}
+      {Array.from({ length: 12 }).map((_, i) => (
+        <rect x={i * 5.2} y="12" width="3.4" height="3" />
+      ))}
+      {Array.from({ length: 12 }).map((_, i) => (
+        <rect x={i * 5.2} y="18" width="3.4" height="3" />
+      ))}
+    </svg>
+  )}
+
+  {key === "microsoft" && (
+    <svg viewBox="0 0 24 24" width={height} height={height} aria-hidden="true">
+      <rect x="2" y="2" width="9" height="9" fill="currentColor" />
+      <rect x="13" y="2" width="9" height="9" fill="currentColor" opacity="0.85" />
+      <rect x="2" y="13" width="9" height="9" fill="currentColor" opacity="0.7" />
+      <rect x="13" y="13" width="9" height="9" fill="currentColor" opacity="0.55" />
+    </svg>
+  )}
+
+  {key === "samsung" && (
+    <svg viewBox="0 0 80 24" width={height * 80 / 24} height={height} fill="currentColor" aria-hidden="true">
+      <text x="0" y="18" font-family="Inter, sans-serif" font-size="18" font-weight="700" letter-spacing="-0.04em">SAMSUNG</text>
+    </svg>
+  )}
+
+  {key === "fidelity" && (
+    <svg viewBox="0 0 80 24" width={height * 80 / 24} height={height} fill="currentColor" aria-hidden="true">
+      <circle cx="11" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" />
+      <path d="M7 12 H 15 M 11 8 V 16" stroke="currentColor" stroke-width="2" />
+      <text x="26" y="17" font-family="Inter, sans-serif" font-size="14" font-weight="600" letter-spacing="-0.02em">Fidelity</text>
+    </svg>
+  )}
+
+  {key === "bny mellon" && (
+    <svg viewBox="0 0 88 24" width={height * 88 / 24} height={height} fill="currentColor" aria-hidden="true">
+      <text x="0" y="17" font-family="Inter, sans-serif" font-size="14" font-weight="700" letter-spacing="0.04em">BNY MELLON</text>
+    </svg>
+  )}
+
+  {key === "verizon" && (
+    <svg viewBox="0 0 96 24" width={height * 96 / 24} height={height} fill="currentColor" aria-hidden="true">
+      <text x="0" y="17" font-family="Inter, sans-serif" font-size="14" font-weight="700" letter-spacing="-0.01em">verizon</text>
+      <path d="M58 4 L 70 19 L 82 4 L 78 4 L 70 14 L 62 4 Z" fill="currentColor" />
+    </svg>
+  )}
+
+  {key === "ey" && (
+    <svg viewBox="0 0 32 24" width={height * 32 / 24} height={height} fill="currentColor" aria-hidden="true">
+      <text x="0" y="20" font-family="Inter, sans-serif" font-size="22" font-weight="900" letter-spacing="-0.04em" font-style="italic">EY</text>
+    </svg>
+  )}
+
+  {key === "baupost" && (
+    <svg viewBox="0 0 76 24" width={height * 76 / 24} height={height} fill="currentColor" aria-hidden="true">
+      <text x="0" y="17" font-family="Inter, sans-serif" font-size="14" font-weight="600" letter-spacing="0.02em">Baupost</text>
+    </svg>
+  )}
+
+  {key === "cme" && (
+    <svg viewBox="0 0 32 24" width={height * 32 / 24} height={height} fill="currentColor" aria-hidden="true">
+      <text x="0" y="18" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="0.04em">CME</text>
+    </svg>
+  )}
+
+  {key === "pfizer" && (
+    <svg viewBox="0 0 60 24" width={height * 60 / 24} height={height} fill="currentColor" aria-hidden="true">
+      <ellipse cx="30" cy="12" rx="26" ry="9" fill="none" stroke="currentColor" stroke-width="1.4" />
+      <text x="14" y="16" font-family="Inter, sans-serif" font-size="11" font-weight="700" letter-spacing="0.02em">Pfizer</text>
+    </svg>
+  )}
+</span>
+
+<style>
+  .mark {
+    display: inline-flex;
+    align-items: center;
+    color: currentColor;
+  }
+</style>

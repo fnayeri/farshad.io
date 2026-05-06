@@ -1,0 +1,133 @@
+---
+import Base from "../layouts/Base.astro";
+import { profile } from "../lib/content.ts";
+---
+
+<Base title="Contact — Farshad Nayeri" description={profile.availability} active="contact">
+  <section class="container">
+    <header class="page-head">
+      <p class="kicker">Correspondence · Volume I</p>
+      <h1>Contact</h1>
+    </header>
+
+    <div class="contact-grid">
+      <article class="contact-card">
+        <div class="card-label">Currently available for</div>
+        <p class="availability">{profile.availability}</p>
+      </article>
+
+      <article class="contact-card">
+        <div class="card-label">Email</div>
+        <p class="big-link">
+          <a href={`mailto:${profile.email}`}>{profile.email}</a>
+        </p>
+        <p class="caption">Best place to reach me. Replies within 24 hours, Boston business days.</p>
+      </article>
+
+      <article class="contact-card">
+        <div class="card-label">Location</div>
+        <p class="big-link">{profile.location}</p>
+        <p class="caption">In-person meetings welcome around Boston/Cambridge. Remote engagements anywhere serious.</p>
+      </article>
+
+      <article class="contact-card">
+        <div class="card-label">LinkedIn</div>
+        <p class="big-link">
+          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">linkedin.com/in/farshadnayeri</a>
+        </p>
+      </article>
+    </div>
+
+    <hr class="rule-bold" />
+
+    <p class="closing">
+      The site is set in one volume. If you have read this far, write.
+    </p>
+  </section>
+</Base>
+
+<style>
+  .page-head {
+    padding: clamp(40px, 6vw, 96px) 0 24px;
+  }
+  .kicker {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin: 0 0 14px;
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+    line-height: 0.92;
+    margin: 0;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 2px solid var(--ink);
+    margin-top: 32px;
+  }
+  .contact-card {
+    padding: 28px 28px 28px 0;
+    border-bottom: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+  }
+  .contact-card:nth-child(2n) {
+    padding-right: 0;
+    padding-left: 28px;
+    border-right: 0;
+  }
+  .card-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .availability {
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: var(--step-1);
+    line-height: 1.4;
+    color: var(--ink);
+  }
+  .big-link {
+    font-family: var(--serif-display);
+    font-size: var(--step-2);
+    line-height: 1.15;
+    font-weight: 700;
+    margin: 0 0 10px;
+  }
+  .big-link a {
+    border-bottom: 2px solid var(--ink);
+  }
+  .caption {
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-quiet);
+    margin: 0;
+  }
+  .closing {
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: var(--step-2);
+    line-height: 1.25;
+    color: var(--ink);
+    text-align: center;
+    margin: 48px 0;
+  }
+  @media (max-width: 700px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-card,
+    .contact-card:nth-child(2n) {
+      padding: 28px 0;
+      border-right: 0;
+    }
+  }
+</style>

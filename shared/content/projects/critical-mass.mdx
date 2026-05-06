@@ -1,0 +1,40 @@
+---
+title: "Critical Mass Inc."
+slug: "critical-mass"
+client: "Critical Mass Inc. (founder)"
+role: "Founder & Engineer"
+dates: "1995–2001"
+location: "Cambridge, Massachusetts"
+personas: ["founder", "dev-tools", "product-builder"]
+outcome: "Commercial Modula-3, the Reactor / CM3-IDE — a web-delivered IDE in 1996 — and the Critical Mass JVM. Open-sourced in 2001."
+collaborators: ["Bill Kalsow (DEC SRC)"]
+hero_image: null
+---
+
+Critical Mass Inc. was founded in Cambridge in 1995 to commercialize Modula-3 — the systems language whose lineage runs through DEC SRC and the early web — and to build the developer tools that the language deserved. The company shipped three things that should not have been possible at the time.
+
+## Reactor / CM3-IDE (1996)
+
+A web-delivered integrated development environment, served from a custom HTTP server we wrote, presenting hyperlinked, syntax-highlighted source code to the browser. In 1996, before the modern web had agreed on a stylesheet language. Code views were navigable by symbol; build state was visible in the same surface as the source; the IDE was a website you could send a colleague.
+
+The implementation was Modula-3 throughout, including the HTTP server and the analysis pipeline that produced the cross-references.
+
+## The Critical Mass JVM
+
+A Java Virtual Machine written entirely in Modula-3, class-compatible with Sun's JavaVM. The motivation was not philosophical: it was that Modula-3's threading and garbage-collection story was better, and we wanted to run Java workloads on top of it.
+
+## *Threads: A Modula-3 Systems Journal*
+
+Edited and shipped Issues 1–3, 1995–1997. A small printed journal for the Modula-3 community, in the spirit of the Smalltalk newsletters of the era.
+
+## What it took
+
+Hiring **Bill Kalsow** from DEC SRC was the inflection point. SRC's engineering norms — the discipline of leaving a written record, the seriousness about runtime behavior, the willingness to rewrite a compiler's internal data structures because the names were wrong — became the company's norms.
+
+The codebase was open-sourced in 2001 and remains in use in the Modula-3 community.
+
+## Why it matters now
+
+The Reactor IDE was, in retrospect, the first serious web-delivered programming environment. Its frontmatter was hand-typed HTML in a browser that did not yet have JavaScript engines worth using. The work that VS Code's web variant does today — present source through a browser, treat the editor as a server-rendered surface — has its earliest commercial precedent here.
+
+The lineage of careful systems work the company practiced — Modula-3, SRC norms, the printed journal — continues to inform how I build product platforms today.

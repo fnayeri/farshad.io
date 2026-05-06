@@ -1,0 +1,72 @@
+---
+import { personas } from "../lib/content.ts";
+const { active } = Astro.props as { active: string };
+---
+
+<nav class="switcher" aria-label="Read as persona">
+  <span class="switcher-label">Read as</span>
+  <ul>
+    {personas.map((p) => (
+      <li>
+        <a
+          href={`/for/${p.id}/`}
+          class={p.id === active ? "is-active" : ""}
+          aria-current={p.id === active ? "true" : undefined}
+        >
+          {p.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .switcher {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 18px 24px;
+    padding: 18px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin: clamp(28px, 4vw, 56px) 0;
+  }
+  .switcher-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    flex-shrink: 0;
+  }
+  .switcher ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 22px;
+    align-items: baseline;
+  }
+  .switcher a {
+    display: inline-block;
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: var(--step-1);
+    font-weight: 400;
+    color: var(--ink-soft);
+    border: 0;
+    padding-bottom: 2px;
+    transition: color var(--t-quick), border-color var(--t-quick);
+  }
+  .switcher a:hover {
+    color: var(--accent);
+  }
+  .switcher a.is-active {
+    color: var(--accent);
+    font-weight: 700;
+    font-style: italic;
+    border-bottom: 2px solid var(--accent);
+  }
+</style>

@@ -1,0 +1,34 @@
+/* Systems Monograph — design tokens */
+:root {
+  --paper: #f4efe6;
+  --paper-2: #ebe5d6;
+  --ink: #1a1814;
+  --ink-soft: #36312a;
+  --ink-quiet: #6e655a;
+  --rule: #c8bfae;
+  --hairline: rgba(26, 24, 20, 0.14);
+  --tint: #eae3d4;
+  --lab: #3d5a40;
+  --lab-soft: #5d7d61;
+
+  --serif: "Tiempos Text", "Source Serif 4", "Iowan Old Style", Georgia, serif;
+  --display: "Tiempos Text", "Source Serif 4", "Iowan Old Style", Georgia, serif;
+  --mono: "JetBrains Mono", "GT America Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --step--1: clamp(0.78rem, 0.74rem + 0.18vw, 0.86rem);
+  --step-0: clamp(1.0625rem, 1.02rem + 0.22vw, 1.1875rem);
+  --step-1: clamp(1.25rem, 1.18rem + 0.34vw, 1.45rem);
+  --step-2: clamp(1.55rem, 1.42rem + 0.6vw, 1.95rem);
+  --step-3: clamp(2rem, 1.75rem + 1.2vw, 2.85rem);
+  --step-4: clamp(2.6rem, 2.1rem + 2.2vw, 4rem);
+  --step-5: clamp(3.6rem, 2.8rem + 4vw, 6rem);
+
+  --gutter: clamp(20px, 4vw, 56px);
+  --measure: 60ch;
+
+  --t-quick: 100ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}

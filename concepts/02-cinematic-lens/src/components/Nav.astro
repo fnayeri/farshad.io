@@ -1,0 +1,104 @@
+---
+const { active = "", surface = "film" } = Astro.props as { active?: string; surface?: "film" | "paper" };
+const items = [
+  { href: "/", label: "Home", id: "home" },
+  { href: "/work/", label: "Work", id: "work" },
+  { href: "/writing/", label: "Writing", id: "writing" },
+  { href: "/talks/", label: "Talks", id: "talks" },
+  { href: "/about/", label: "About", id: "about" },
+  { href: "/contact/", label: "Contact", id: "contact" },
+];
+---
+
+<header class={`nav nav--${surface} no-print`}>
+  <div class="container nav-row">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 28 28">
+          <circle cx="14" cy="14" r="13" fill="none" stroke="currentColor" stroke-width="1" />
+          <circle cx="14" cy="14" r="6" fill="none" stroke="currentColor" stroke-width="1" />
+          <circle cx="14" cy="14" r="1.5" fill="currentColor" />
+        </svg>
+      </span>
+      <span class="brand-name">Farshad Nayeri</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul>
+        {items.map((i) => (
+          <li>
+            <a href={i.href} aria-current={active === i.id ? "page" : undefined}>{i.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .nav--film {
+    background: rgba(11, 13, 16, 0.88);
+    border-bottom: 1px solid var(--rule-dark);
+    color: var(--paper);
+  }
+  .nav--paper {
+    background: rgba(250, 250, 247, 0.92);
+    border-bottom: 1px solid var(--rule-light);
+    color: var(--ink);
+  }
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+    gap: 32px;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    border: 0;
+    color: inherit;
+  }
+  .brand-mark {
+    display: inline-flex;
+    color: var(--highlight);
+  }
+  .brand-name {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+  }
+  .nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 22px;
+  }
+  .nav a {
+    border: 0;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: inherit;
+    opacity: 0.7;
+    transition: opacity var(--t-quick), color var(--t-quick);
+  }
+  .nav a:hover { opacity: 1; color: var(--highlight); }
+  .nav a[aria-current="page"] {
+    opacity: 1;
+    color: var(--highlight);
+  }
+  @media (max-width: 700px) {
+    .nav-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .nav ul { flex-wrap: wrap; gap: 14px; }
+  }
+</style>

@@ -1,0 +1,94 @@
+---
+import { personas } from "../lib/content.ts";
+import { CATEGORY_COLORS } from "../lib/categories.ts";
+import CategoryIcon from "./CategoryIcon.astro";
+const { active, mode = "filter" } = Astro.props as { active?: string; mode?: "filter" | "static" };
+---
+
+<nav class={`legend legend--${mode}`} aria-label="Category legend">
+  <span class="legend-label">Categories</span>
+  <ul>
+    {personas.map((p) => {
+      const c = CATEGORY_COLORS[p.id];
+      const isActive = active === p.id;
+      return (
+        <li>
+          <a
+            href={mode === "filter" ? `/for/${p.id}/` : `#${p.id}`}
+            class={isActive ? "is-active" : ""}
+            aria-current={isActive ? "true" : undefined}
+            data-cat={p.id}
+            style={`--c: ${c.hex}`}
+          >
+            <span class="ico" aria-hidden="true"><CategoryIcon id={p.id} size={16} stroke={1.6} /></span>
+            <span class="lname">{c.name}</span>
+            <span class="lfull">{p.label}</span>
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+</nav>
+
+<style>
+  .legend {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px 18px;
+    padding: 14px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin: 32px 0;
+  }
+  .legend-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin-right: 6px;
+  }
+  .legend ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+  }
+  .legend a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--ink-soft);
+    border: 1px solid transparent;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background var(--t-quick), color var(--t-quick), border-color var(--t-quick);
+  }
+  .legend a:hover {
+    background: var(--bg-3);
+    color: var(--ink);
+  }
+  .legend a.is-active {
+    background: var(--c);
+    color: white;
+    border-color: var(--c);
+  }
+  .legend a .ico {
+    color: var(--c);
+    display: inline-flex;
+    align-items: center;
+  }
+  .legend a.is-active .ico { color: white; }
+  .lname { display: none; }
+  .lfull { display: inline; }
+  @media (max-width: 760px) {
+    .lfull { display: none; }
+    .lname { display: inline; }
+  }
+</style>

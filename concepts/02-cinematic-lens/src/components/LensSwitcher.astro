@@ -1,0 +1,113 @@
+---
+import { personas } from "../lib/content.ts";
+const { active, surface = "film" } = Astro.props as { active: string; surface?: "film" | "paper" };
+---
+
+<nav class={`lenses lenses--${surface}`} aria-label="Persona lens">
+  <span class="lenses-label">Lens</span>
+  <ol class="lenses-track">
+    {personas.map((p, i) => (
+      <li>
+        <a
+          href={`/for/${p.id}/`}
+          class={p.id === active ? "lens is-active" : "lens"}
+          aria-current={p.id === active ? "true" : undefined}
+          title={p.pitch_line}
+        >
+          <span class="lens-marker" aria-hidden="true">
+            <svg width="36" height="36" viewBox="0 0 36 36">
+              <circle cx="18" cy="18" r="15" fill="none" stroke="currentColor" stroke-width="1.25" />
+              <circle cx="18" cy="18" r="6" fill="none" stroke="currentColor" stroke-width="1" />
+            </svg>
+          </span>
+          <span class="lens-num">f/{i + 1}</span>
+          <span class="lens-label">{p.label}</span>
+        </a>
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<style>
+  .lenses {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 0;
+    border-top: 1px solid var(--rule-dark);
+    border-bottom: 1px solid var(--rule-dark);
+    margin: clamp(28px, 4vw, 56px) 0;
+  }
+  .lenses--paper {
+    border-top-color: var(--rule-light);
+    border-bottom-color: var(--rule-light);
+  }
+  .lenses-label {
+    font-family: var(--display);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--halo);
+    flex-shrink: 0;
+  }
+  .lenses--paper .lenses-label { color: var(--ink-quiet); }
+  .lenses-track {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    flex: 1;
+  }
+  .lens {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 6px;
+    border: 0;
+    color: inherit;
+    text-align: center;
+    opacity: 0.55;
+    transition: opacity var(--t-quick), transform var(--t-rack);
+  }
+  .lens-marker {
+    color: var(--lens-blue-soft);
+    transition: color var(--t-quick), transform var(--t-rack);
+  }
+  .lens:hover {
+    opacity: 0.95;
+    color: var(--paper);
+  }
+  .lens.is-active {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+  .lens.is-active .lens-marker {
+    color: var(--highlight);
+    transform: scale(1.18);
+    filter: drop-shadow(0 0 8px rgba(232, 181, 71, 0.35));
+  }
+  .lens.is-active .lens-label {
+    color: var(--highlight);
+  }
+  .lens-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    opacity: 0.7;
+  }
+  .lens-label {
+    font-family: var(--display);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+  }
+  @media (max-width: 760px) {
+    .lenses { flex-direction: column; align-items: stretch; gap: 14px; }
+    .lenses-track { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

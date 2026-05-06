@@ -1,0 +1,101 @@
+---
+import { projects, clients } from "../lib/content.ts";
+import { CATEGORY_COLORS } from "../lib/categories.ts";
+import ClientMark from "./ClientMark.astro";
+
+const HAS_MARK = new Set([
+  "apple", "ibm", "microsoft", "samsung", "fidelity", "bny mellon",
+  "verizon", "ey", "baupost", "cme", "pfizer",
+]);
+
+const clientPersonas: Record<string, Set<string>> = {};
+projects.forEach((p) => {
+  const key = p.client.replace(/\s*\(founder\)$/i, "").trim();
+  if (!clientPersonas[key]) clientPersonas[key] = new Set();
+  p.personas.forEach((pid) => clientPersonas[key].add(pid));
+});
+
+const featured = clients.map((name) => {
+  const cats = clientPersonas[name] ? [...clientPersonas[name]] : [];
+  return { name, cats, hasMark: HAS_MARK.has(name.toLowerCase()) };
+});
+---
+
+<section class="wall" aria-label="Client wall">
+  <header class="wall-head">
+    <p class="label">Selected Clients</p>
+    <h2 class="wall-title">Where the work has lived.</h2>
+    <p class="wall-sub">Each name carries the colour of every category the work touched there.</p>
+  </header>
+
+  <ul class="wall-grid">
+    {featured.map((c) => (
+      <li class={`tile ${c.cats.length === 0 ? "tile-quiet" : ""}`}>
+        <div class="tile-mark">
+          {c.hasMark ? <ClientMark name={c.name} height={28} /> : <span class="tile-name">{c.name}</span>}
+        </div>
+        {c.cats.length > 0 && (
+          <div class="tile-stripe" aria-hidden="true">
+            {c.cats.map((cat) => (
+              <span style={`background:${CATEGORY_COLORS[cat]?.hex || "#999"}`}></span>
+            ))}
+          </div>
+        )}
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .wall { padding: 56px 0; border-top: 1px solid var(--rule); }
+  .wall-head { margin-bottom: 24px; max-width: 60ch; }
+  .wall-title { font-size: var(--step-3); margin: 6px 0 10px; }
+  .wall-sub { color: var(--ink-soft); font-size: var(--step-0); margin: 0; }
+  .wall-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+  }
+  .tile {
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 22px 18px 14px;
+    background: var(--bg-2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 110px;
+    transition: background var(--t-quick);
+    color: var(--ink);
+  }
+  .tile:hover { background: var(--bg-3); }
+  .tile-quiet { background: transparent; }
+  .tile-mark {
+    display: flex;
+    align-items: center;
+    min-height: 36px;
+  }
+  .tile-name {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.05;
+  }
+  .tile-stripe {
+    margin-top: 18px;
+    height: 6px;
+    display: flex;
+    border-radius: 1px;
+    overflow: hidden;
+  }
+  .tile-stripe span {
+    flex: 1;
+    height: 100%;
+  }
+</style>

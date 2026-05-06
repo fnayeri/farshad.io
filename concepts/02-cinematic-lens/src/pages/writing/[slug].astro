@@ -1,0 +1,60 @@
+---
+import Base from "../../layouts/Base.astro";
+import { writing, getWritingModule } from "../../lib/content.ts";
+
+export function getStaticPaths() {
+  return writing.map((w) => ({ params: { slug: w.slug } }));
+}
+
+const { slug } = Astro.params;
+const mod = getWritingModule(slug!);
+if (!mod) throw new Error("Essay not found: " + slug);
+const { frontmatter, Content } = mod;
+---
+
+<Base title={`${frontmatter.title} — Farshad Nayeri`} description={frontmatter.description} active="writing" surface="paper">
+  <article class="container">
+    <header class="head">
+      <p class="kicker">Essay · {frontmatter.date}</p>
+      <h1>{frontmatter.title}</h1>
+      <p class="standfirst">{frontmatter.description}</p>
+    </header>
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</Base>
+
+<style>
+  .head { padding: clamp(40px, 6vw, 96px) 0 24px; max-width: 40em; }
+  .kicker {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--lens-blue);
+    margin: 0 0 14px;
+    letter-spacing: 0.06em;
+  }
+  h1 {
+    font-size: var(--step-4);
+    line-height: 0.95;
+    margin: 0 0 16px;
+    font-weight: 300;
+    letter-spacing: -0.03em;
+  }
+  .standfirst {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: var(--step-2);
+    color: var(--ink-soft);
+    margin: 0 0 20px;
+  }
+  .prose {
+    max-width: 40em;
+    padding-bottom: 56px;
+  }
+  .prose :global(p) {
+    font-size: var(--step-0);
+    line-height: 1.75;
+    margin-bottom: 1em;
+  }
+</style>

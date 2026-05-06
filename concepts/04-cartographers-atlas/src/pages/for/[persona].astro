@@ -1,0 +1,190 @@
+---
+import Base from "../../layouts/Base.astro";
+import CompassSwitcher from "../../components/CompassSwitcher.astro";
+import SpecimenCard from "../../components/SpecimenCard.astro";
+import {
+  personas,
+  testimonials,
+  projects,
+  getPersona,
+  type Persona,
+} from "../../lib/content.ts";
+
+export function getStaticPaths() {
+  return personas.map((p) => ({ params: { persona: p.id } }));
+}
+
+const { persona: personaId } = Astro.params;
+const persona = getPersona(personaId!) as Persona;
+const idx = personas.findIndex((p) => p.id === persona.id);
+const dirs = ["N", "NE", "E", "SE", "SW"];
+const featured = persona.featured_project_slugs
+  .map((slug) => projects.find((p) => p.slug === slug))
+  .filter(Boolean) as typeof projects;
+const personaQuotes = testimonials.filter((t) => t.personas.includes(persona.id));
+---
+
+<Base title={`${persona.label} — A Cartographer's Edition`} description={persona.pitch_line} active="home">
+  <section class="container">
+    <header class="plate-head">
+      <p class="series"><span class="banner">Plate {String(idx + 2).padStart(2, "0")}</span> · Bearing {dirs[idx]}</p>
+      <h1>{persona.label}</h1>
+      <p class="lede"><em>{persona.pitch_line}</em></p>
+      <div class="actions">
+        <a class="btn" href="/work/">→ specimens</a>
+        <button type="button" class="btn btn-ghost" onclick="window.print();">↧ print one-pager</button>
+      </div>
+    </header>
+
+    <CompassSwitcher active={persona.id} />
+
+    <article class="atlas-grid plate">
+      <div class="body">
+        <h2>The shape of the gap</h2>
+        <p>{persona.shape_of_the_gap}</p>
+
+        <h2>What he uniquely does</h2>
+        <p>{persona.what_he_uniquely_does}</p>
+
+        <h2>Angles to play</h2>
+        <ol class="angles">
+          {persona.angles_to_play.map((a) => <li>{a}</li>)}
+        </ol>
+
+        <h2>Heading off the wrong reads</h2>
+        <p>{persona.head_off_early}</p>
+
+        <hr class="rule-flourish" />
+
+        <p class="closing"><em>{persona.closing_pitch}</em></p>
+      </div>
+      <aside class="marg">
+        <div class="marg-section">
+          <span class="banner mini">Credibility</span>
+          {persona.credibility_anchors.map((a, i) => (
+            <div class="marg-note">
+              <span class="marg-num">¶ {String(i + 1).padStart(2, "0")}</span>
+              {a}
+            </div>
+          ))}
+        </div>
+        {personaQuotes.length > 0 && (
+          <div class="marg-section">
+            <span class="banner mini">Annotations</span>
+            {personaQuotes.map((t) => (
+              <div class="marg-note">
+                <em>“{t.quote}”</em>
+                <br />— <strong>{t.name}</strong>, {t.title}
+              </div>
+            ))}
+          </div>
+        )}
+      </aside>
+    </article>
+
+    <section class="chap">
+      <header class="chap-head">
+        <span class="banner">Plate {String(idx + 7).padStart(2, "0")}</span>
+        <h2>Selected Specimens — {persona.label}</h2>
+        <a href="/work/" class="hand more">→ all specimens</a>
+      </header>
+      <div class="specimens-grid">
+        {featured.map((p, i) => <SpecimenCard project={p} idx={i + 1} />)}
+      </div>
+    </section>
+  </section>
+</Base>
+
+<style>
+  .plate-head {
+    padding: clamp(40px, 6vw, 96px) 0 24px;
+    max-width: 60ch;
+  }
+  .series {
+    font-family: var(--press-sc);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin: 0 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .plate-head h1 { font-size: var(--step-5); margin: 0 0 14px; }
+  .lede {
+    font-size: var(--step-2);
+    line-height: 1.35;
+    color: var(--ink-soft);
+    margin: 0 0 22px;
+    font-style: italic;
+  }
+  .actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    background: none;
+    color: var(--rust);
+    border: 1px solid var(--rust);
+    padding: 8px 14px;
+    font-family: var(--press-sc);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .btn:hover { background: var(--rust); color: var(--parchment); }
+  .btn-ghost { color: var(--ink); border-color: var(--ink); }
+  .btn-ghost:hover { background: var(--ink); color: var(--parchment); }
+  .plate { padding: 24px 0; }
+  .body h2 {
+    font-family: var(--press-sc);
+    font-size: 18px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-top: 36px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 8px;
+  }
+  .body h2:first-of-type { margin-top: 0; }
+  .body p { font-size: var(--step-0); line-height: 1.7; }
+  .angles { padding-left: 1.4em; }
+  .angles li { line-height: 1.6; margin-bottom: 8px; }
+  .closing {
+    font-family: var(--press);
+    font-style: italic;
+    font-size: var(--step-2);
+    line-height: 1.3;
+    text-align: center;
+    color: var(--ink);
+  }
+  .marg { padding-top: 0; }
+  .marg-section { margin-bottom: 32px; }
+  .marg-section .banner.mini {
+    font-size: 11px;
+    padding: 3px 10px 4px;
+    margin-bottom: 14px;
+  }
+  .marg .marg-num {
+    color: var(--rust);
+    font-family: var(--mono);
+    font-size: 11px;
+    margin-right: 4px;
+  }
+  .chap { padding: clamp(36px, 5vw, 72px) 0; border-top: 1px solid var(--ink); }
+  .chap-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px 22px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .chap-head h2 { margin: 0; font-size: var(--step-3); flex: 1 1 auto; }
+  .chap-head .more { color: var(--rust); font-size: 20px; }
+  .specimens-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+    padding-top: 20px;
+  }
+</style>

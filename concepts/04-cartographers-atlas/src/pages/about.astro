@@ -1,0 +1,97 @@
+---
+import Base from "../layouts/Base.astro";
+import { profile, testimonials, clients } from "../lib/content.ts";
+---
+
+<Base title="Colophon — A Cartographer's Edition" description="The long bio, with marginal annotations." active="about">
+  <section class="container">
+    <header class="head">
+      <p class="series"><span class="banner">Colophon</span> · The long bio</p>
+      <h1>Farshad Nayeri</h1>
+      <p class="lede"><em>{profile.throughline}</em></p>
+    </header>
+
+    <article class="atlas-grid">
+      <div class="body prose">
+        <h2>Four careers, one operator</h2>
+        <p><strong>Programming-language and developer-tools researcher.</strong> GTE Labs (Distributed Object Manager, ECOOP 1994). The DEC SRC Modula-3 lineage. Verizon Labs.</p>
+        <p><strong>Founder.</strong> Critical Mass, Inc. (Cambridge, 1995): commercial Modula-3, the Reactor / CM3-IDE in 1996, the Critical Mass JVM written entirely in Modula-3 and class-compatible with Sun's JavaVM. Hired Bill Kalsow from DEC SRC. Edited <em>Threads: A Modula-3 Systems Journal</em> (1995–1997). Open-sourced in 2001. iGEN Corporation (1998–present). Pixxa LLC and the Perspective iPad app.</p>
+        <p><strong>Data Cinematographer.</strong> Co-creator with Horace Dediu of the Airshow tour: Boston, Tokyo, Vancouver, London, San Francisco, Helsinki, Seattle, Melbourne (2013–2016). Co-author on Asymco. Invited speaker at HarvardXR 2025; presenter at the Global Health Exhibition 2025 and the Saudi Ministry of Health 2026.</p>
+        <p><strong>Christensen-trained strategist.</strong> Worked directly with Clayton Christensen and Dave Sundahl. Connected to the Christensen Institute and the dx.MBA / Product Science Lab. Strategy work at EY, Fidelity, Baupost, CME.</p>
+
+        <h2>Annotations from visitors</h2>
+        <ul class="press-list">
+          {testimonials.map((t) => (
+            <li>
+              <em>“{t.quote}”</em>
+              <br />— <strong>{t.name}</strong>, {t.title}.
+            </li>
+          ))}
+        </ul>
+
+        <h2>Patrons</h2>
+        <p class="client-line">
+          {clients.map((c, i) => <><span>{c}</span>{i < clients.length - 1 ? <span class="dot"> · </span> : null}</>)}
+        </p>
+      </div>
+      <aside class="marg">
+        <span class="banner mini">Engraver's Mark</span>
+        <div class="marg-note"><span class="marg-num">¶ Locale</span>{profile.location}</div>
+        <div class="marg-note"><span class="marg-num">¶ Email</span><a href={`mailto:${profile.email}`}>{profile.email}</a></div>
+        <div class="marg-note"><span class="marg-num">¶ LinkedIn</span><a href={profile.linkedin} target="_blank" rel="noopener noreferrer">linkedin.com/in/farshadnayeri</a></div>
+        <div class="marg-note"><span class="marg-num">¶ Critical Mass, 1995</span>Modula-3 commercial vendor; Reactor IDE in 1996; JVM in Modula-3.</div>
+        <div class="marg-note"><span class="marg-num">¶ Airshow tour</span>Boston · Tokyo · Vancouver · London · San Francisco · Helsinki · Seattle · Melbourne.</div>
+      </aside>
+    </article>
+  </section>
+</Base>
+
+<style>
+  .head { padding: clamp(40px, 6vw, 96px) 0 28px; max-width: 60ch; border-bottom: 1px solid var(--ink); }
+  .series {
+    font-family: var(--press-sc);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin: 0 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  h1 { font-size: var(--step-5); margin: 0 0 14px; }
+  .lede { font-size: var(--step-2); color: var(--ink-soft); margin: 0 0 28px; font-style: italic; }
+  .atlas-grid { padding: 32px 0; }
+  .prose h2 {
+    font-family: var(--press-sc);
+    font-size: 18px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-top: 36px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 8px;
+  }
+  .prose h2:first-of-type { margin-top: 0; }
+  .prose p { font-size: var(--step-0); line-height: 1.7; }
+  .press-list { list-style: none; margin: 0; padding: 0; }
+  .press-list li {
+    border-top: 1px solid var(--rule);
+    padding: 16px 0;
+    font-size: var(--step-1);
+    line-height: 1.45;
+  }
+  .client-line {
+    font-family: var(--press);
+    font-size: var(--step-2);
+    line-height: 1.4;
+    color: var(--ink);
+    border-top: 1px solid var(--rule);
+    padding-top: 18px;
+  }
+  .client-line .dot { color: var(--rust); margin: 0 6px; }
+  .marg { padding-top: 0; }
+  .marg .banner.mini { font-size: 11px; padding: 3px 10px 4px; margin-bottom: 14px; display: inline-block; }
+  .marg .marg-num { color: var(--rust); font-family: var(--mono); font-size: 11px; margin-right: 4px; display: inline-block; min-width: 110px; }
+</style>

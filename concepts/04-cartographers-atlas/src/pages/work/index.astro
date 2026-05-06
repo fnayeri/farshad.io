@@ -1,0 +1,102 @@
+---
+import Base from "../../layouts/Base.astro";
+import SpecimenCard from "../../components/SpecimenCard.astro";
+import { projects, personas } from "../../lib/content.ts";
+---
+
+<Base title="Specimens — A Cartographer's Edition" description="The cabinet of specimens." active="work">
+  <section class="container">
+    <header class="head">
+      <p class="series"><span class="banner">Cabinet</span> · An index</p>
+      <h1>Specimens</h1>
+      <p class="lede"><em>Each plate is a project. Each project, a specimen of how the work is made.</em></p>
+    </header>
+
+    <nav class="filter" aria-label="Filter">
+      <span class="smallcaps">Filter by bearing —</span>
+      <a href="#all" class="chip is-active">All</a>
+      {personas.map((p) => (
+        <a href={`#${p.id}`} class="chip">{p.label}</a>
+      ))}
+    </nav>
+
+    <div class="grid">
+      {projects.map((p, i) => (
+        <div class="grid-item" data-personas={p.personas.join(",")}>
+          <SpecimenCard project={p} idx={i + 1} />
+        </div>
+      ))}
+    </div>
+
+    <script is:inline>
+      (function () {
+        var chips = document.querySelectorAll(".chip");
+        var items = document.querySelectorAll(".grid-item");
+        function filter(t) {
+          chips.forEach(function (c) {
+            c.classList.toggle("is-active", c.getAttribute("href") === "#" + t);
+          });
+          items.forEach(function (it) {
+            var ps = (it.getAttribute("data-personas") || "").split(",");
+            it.style.display = t === "all" || ps.indexOf(t) !== -1 ? "" : "none";
+          });
+        }
+        chips.forEach(function (c) {
+          c.addEventListener("click", function (e) {
+            e.preventDefault();
+            var t = (c.getAttribute("href") || "#all").slice(1);
+            history.replaceState(null, "", "#" + t);
+            filter(t);
+          });
+        });
+        filter(location.hash ? location.hash.slice(1) : "all");
+      })();
+    </script>
+  </section>
+</Base>
+
+<style>
+  .head { padding: clamp(40px, 6vw, 96px) 0 24px; max-width: 60ch; }
+  .series {
+    font-family: var(--press-sc);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin: 0 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  h1 { font-size: var(--step-5); margin: 0 0 14px; }
+  .lede { font-size: var(--step-1); color: var(--ink-soft); }
+  .filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    align-items: baseline;
+    margin: 28px 0;
+    padding: 14px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .filter .smallcaps { color: var(--rust); margin-right: 6px; }
+  .chip {
+    font-family: var(--press-sc);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--ink);
+    padding: 4px 12px;
+    color: var(--ink);
+    background: none;
+  }
+  .chip:hover { background: var(--ink); color: var(--parchment); }
+  .chip.is-active { background: var(--rust); color: var(--parchment); border-color: var(--rust); }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+    padding: 24px 0 56px;
+  }
+</style>

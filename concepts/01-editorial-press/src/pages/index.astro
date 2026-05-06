@@ -1,0 +1,213 @@
+---
+import Base from "../layouts/Base.astro";
+import HeroEditorial from "../components/HeroEditorial.astro";
+import PersonaSwitcher from "../components/PersonaSwitcher.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { defaultPersona, projectsForPersona, testimonials, clients } from "../lib/content.ts";
+
+const persona = defaultPersona();
+const featured = projectsForPersona(persona.id).slice(0, 4);
+const heroTestimonials = testimonials.filter((t) => t.personas.includes(persona.id) || t.id === "gassee").slice(0, 3);
+---
+
+<Base
+  title="Farshad Nayeri — An Imprint of One"
+  description={persona.pitch_line}
+  active="home"
+>
+  <HeroEditorial />
+
+  <PersonaSwitcher active={persona.id} />
+
+  <section class="container intro">
+    <div class="editorial">
+      <aside class="rail">
+        <div class="rail-section">
+          <div class="rail-label">Reading as</div>
+          <div class="rail-value">{persona.label}</div>
+        </div>
+        <div class="rail-section">
+          <div class="rail-label">Volume</div>
+          <div class="rail-value">I, First Edition</div>
+        </div>
+        <div class="rail-section">
+          <div class="rail-label">Filed under</div>
+          <div class="rail-value">Builder · Strategist · Cinematographer</div>
+        </div>
+        <div class="rail-section">
+          <div class="rail-label">Available for</div>
+          <div class="rail-value">Senior product, platform, and strategy engagements.</div>
+        </div>
+      </aside>
+      <div class="body">
+        <p>{persona.pitch_line}</p>
+        <p>
+          {persona.what_he_uniquely_does}
+        </p>
+        <p>
+          {persona.shape_of_the_gap}
+        </p>
+        <hr class="rule-thin" />
+        <p class="closing">{persona.closing_pitch}</p>
+        <p>
+          <a class="button" href={`/for/${persona.id}/`}>Read the full cribsheet →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container featured">
+    <div class="section-head">
+      <h2>Selected Work</h2>
+      <a href="/work/" class="section-link">All work →</a>
+    </div>
+    <div class="cards">
+      {featured.map((p) => <ProjectCard project={p} />)}
+    </div>
+  </section>
+
+  <section class="container press">
+    <div class="section-head">
+      <h2>Press</h2>
+      <span class="section-link-quiet">From the Airshow tour and after.</span>
+    </div>
+    <div class="quotes">
+      {heroTestimonials.map((t) => (
+        <figure class="quote">
+          <blockquote>{t.quote}</blockquote>
+          <figcaption>
+            <span class="quote-name">{t.name}</span>
+            <span class="quote-title">{t.title}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <section class="container clients">
+    <div class="label">Clients</div>
+    <ul class="client-wall">
+      {clients.map((c) => <li>{c}</li>)}
+    </ul>
+  </section>
+</Base>
+
+<style>
+  .closing {
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: var(--step-1);
+    color: var(--ink);
+  }
+  .button {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    border: 0;
+    border-bottom: 2px solid var(--ink);
+    padding: 4px 0;
+    color: var(--ink);
+  }
+  .button:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    border-top: 2px solid var(--ink);
+    padding-top: 18px;
+    margin: clamp(48px, 6vw, 80px) 0 24px;
+  }
+  .section-head h2 {
+    margin: 0;
+  }
+  .section-link {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    border: 0;
+  }
+  .section-link-quiet {
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-quiet);
+  }
+  .quotes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 32px;
+    margin-top: 12px;
+  }
+  .quote {
+    margin: 0;
+    padding: 24px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .quote blockquote {
+    margin: 0 0 16px;
+    padding: 0;
+    border-left: 0;
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: var(--step-2);
+    line-height: 1.2;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .quote blockquote::before { content: "“"; color: var(--accent); margin-right: 0.05em; }
+  .quote blockquote::after { content: "”"; color: var(--accent); margin-left: 0.02em; }
+  .quote-name {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-right: 12px;
+  }
+  .quote-title {
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-quiet);
+  }
+  .clients {
+    margin-top: 48px;
+    border-top: 1px solid var(--rule);
+    padding-top: 24px;
+  }
+  .clients .label {
+    margin-bottom: 12px;
+  }
+  .client-wall {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 18px;
+    font-family: var(--serif-display);
+    font-size: var(--step-2);
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .client-wall li {
+    color: var(--ink);
+  }
+  .client-wall li::after {
+    content: " ·";
+    color: var(--accent);
+    margin-left: 6px;
+  }
+  .client-wall li:last-child::after { content: ""; }
+</style>

@@ -1,0 +1,102 @@
+---
+import Base from "../layouts/Base.astro";
+import { talks } from "../lib/content.ts";
+const featured = talks.filter((t) => t.featured);
+const rest = talks.filter((t) => !t.featured);
+---
+
+<Base title="Engagements — A Cartographer's Edition" description="Stage work and engagements." active="talks">
+  <section class="container">
+    <header class="head">
+      <p class="series"><span class="banner">Engagements</span> · On stage</p>
+      <h1>Engagements</h1>
+      <p class="lede"><em>Where the atlas was unfolded in public — featured first, the long index follows.</em></p>
+    </header>
+
+    <div class="featured">
+      {featured.map((t, i) => (
+        <article class="t-feat specimen">
+          <span class="banner mini">Featured · {String(i + 1).padStart(2, "0")}</span>
+          <span class="t-date">{t.date}</span>
+          <h2>{t.title}</h2>
+          <p class="t-venue"><em>{t.venue}</em></p>
+          <p class="t-desc">{t.description}</p>
+          {t.url && <p><a href={t.url} target="_blank" rel="noopener noreferrer" class="hand">→ visit</a></p>}
+        </article>
+      ))}
+    </div>
+
+    <h3 class="other-h">Other engagements</h3>
+    <ol class="other">
+      {rest.map((t) => (
+        <li>
+          <span class="o-date">{t.date}</span>
+          <div class="o-body">
+            <strong>{t.title}</strong>
+            <span class="o-venue"><em>{t.venue}</em></span>
+            <p>{t.description}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+</Base>
+
+<style>
+  .head { padding: clamp(40px, 6vw, 96px) 0 28px; max-width: 60ch; border-bottom: 1px solid var(--ink); }
+  .series {
+    font-family: var(--press-sc);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin: 0 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  h1 { font-size: var(--step-5); margin: 0 0 14px; }
+  .lede { font-size: var(--step-1); color: var(--ink-soft); }
+  .featured {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+    padding: 32px 0;
+  }
+  .t-feat { padding: 28px 22px 22px; }
+  .t-feat .banner.mini { font-size: 11px; padding: 3px 10px 4px; }
+  .t-date {
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-quiet);
+    margin: 14px 0 6px;
+  }
+  .t-feat h2 { font-size: var(--step-2); margin: 0 0 6px; }
+  .t-venue { font-style: italic; color: var(--ink-soft); margin: 0 0 12px; font-size: 15px; }
+  .t-desc { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 12px; }
+  .other-h {
+    margin: 56px 0 16px;
+    border-top: 1px solid var(--ink);
+    padding-top: 24px;
+    font-family: var(--press-sc);
+    font-size: 16px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rust);
+  }
+  .other { list-style: none; margin: 0; padding: 0; }
+  .other li {
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr);
+    gap: 24px;
+    border-top: 1px solid var(--rule);
+    padding: 18px 0;
+    align-items: baseline;
+  }
+  .other li:last-child { border-bottom: 1px solid var(--rule); }
+  .o-date { font-family: var(--mono); font-size: 12px; color: var(--ink-quiet); }
+  .o-body strong { display: block; font-size: var(--step-1); margin-bottom: 2px; font-weight: 400; }
+  .o-venue { display: block; color: var(--ink-soft); font-size: 14px; margin-bottom: 6px; }
+  .o-body p { font-size: 14px; color: var(--ink-soft); margin: 0; }
+</style>

@@ -1,0 +1,62 @@
+---
+import { profile } from "../lib/content.ts";
+const year = new Date().getFullYear();
+---
+
+<footer class="foot no-print">
+  <div class="container">
+    <div class="row">
+      <div>
+        <div class="smallcaps">Imprint</div>
+        <p>Farshad Nayeri · {profile.location}</p>
+      </div>
+      <div>
+        <div class="smallcaps">Direct</div>
+        <p><a href={`mailto:${profile.email}`}>{profile.email}</a></p>
+        <p><a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+      </div>
+      <div>
+        <div class="smallcaps">Colophon</div>
+        <p>
+          Set in Source Serif 4. Sidenotes set in Source Serif 4 italic. Chrome in JetBrains Mono. Compiled by Astro.
+        </p>
+      </div>
+    </div>
+    <div class="fineprint">
+      <span>© {year} Farshad Nayeri</span>
+      <span>·</span>
+      <span>A Monograph in Progress, vol. I</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .foot {
+    border-top: 2px solid var(--ink);
+    background: var(--paper);
+    margin-top: 96px;
+    padding: 56px 0 24px;
+    color: var(--ink);
+  }
+  .row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .row p { margin: 4px 0; font-size: 14px; line-height: 1.55; }
+  .row .smallcaps { margin-bottom: 8px; }
+  .fineprint {
+    margin-top: 14px;
+    display: flex;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--ink-quiet);
+  }
+  @media (max-width: 700px) {
+    .row { grid-template-columns: 1fr; gap: 18px; }
+  }
+</style>

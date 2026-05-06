@@ -1,0 +1,41 @@
+/* Cartographer's Atlas — design tokens */
+:root {
+  /* Color — parchment + iron-gall ink */
+  --parchment: #f0e7d2;
+  --parchment-2: #e7dbbd;
+  --parchment-3: #ddd0a8;
+  --ink: #221a10;
+  --ink-soft: #3d3325;
+  --ink-quiet: #6e624c;
+  --rule: #b9a982;
+  --hairline: rgba(34, 26, 16, 0.18);
+  --tint: rgba(34, 26, 16, 0.06);
+  --rust: #b14a37;
+  --rust-soft: #d2755e;
+  --teal: #3f6c64;
+
+  /* Type — vintage letterpress + handwritten */
+  --press: "IM Fell English", "IM FELL English Pro", Georgia, "Times New Roman", serif;
+  --press-sc: "IM Fell English SC", "IM Fell English", Georgia, serif;
+  --hand: "Caveat", "Marker Felt", "Bradley Hand", cursive;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Scale */
+  --step--1: clamp(0.85rem, 0.81rem + 0.18vw, 0.95rem);
+  --step-0: clamp(1.0625rem, 1.02rem + 0.22vw, 1.1875rem);
+  --step-1: clamp(1.25rem, 1.18rem + 0.34vw, 1.45rem);
+  --step-2: clamp(1.6rem, 1.45rem + 0.7vw, 2.05rem);
+  --step-3: clamp(2.2rem, 1.9rem + 1.4vw, 3.1rem);
+  --step-4: clamp(2.8rem, 2.2rem + 2.4vw, 4.4rem);
+  --step-5: clamp(3.6rem, 2.6rem + 4.4vw, 6.5rem);
+
+  --gutter: clamp(20px, 4vw, 56px);
+  --measure: 60ch;
+
+  --t-quick: 160ms ease;
+  --t-draw: 1400ms cubic-bezier(0.45, 0.05, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

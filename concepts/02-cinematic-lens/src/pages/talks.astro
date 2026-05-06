@@ -1,0 +1,96 @@
+---
+import Base from "../layouts/Base.astro";
+import { talks } from "../lib/content.ts";
+const featured = talks.filter((t) => t.featured);
+const rest = talks.filter((t) => !t.featured);
+---
+
+<Base title="Talks — Farshad Nayeri" description="Stage work." active="talks">
+  <section class="container">
+    <header class="head">
+      <p class="kicker">On Stage</p>
+      <h1>Talks</h1>
+      <p class="standfirst">From ECOOP 1994 to HarvardXR 2025.</p>
+    </header>
+
+    <div class="featured">
+      {featured.map((t) => (
+        <article class="t-feat">
+          <div class="t-frame letterbox-bars">
+            <span class="t-date">{t.date}</span>
+            <h2>{t.title}</h2>
+            <p class="t-venue">{t.venue}</p>
+          </div>
+          <p class="t-desc">{t.description}</p>
+          {t.url && <p><a href={t.url} target="_blank" rel="noopener noreferrer" class="t-link">Visit →</a></p>}
+        </article>
+      ))}
+    </div>
+
+    <h3 class="other-h">Other</h3>
+    <ol class="others">
+      {rest.map((t) => (
+        <li>
+          <span class="o-date">{t.date}</span>
+          <span class="o-body">
+            <strong>{t.title}</strong>
+            <span class="o-venue">{t.venue}</span>
+            <span class="o-desc">{t.description}</span>
+          </span>
+        </li>
+      ))}
+    </ol>
+  </section>
+</Base>
+
+<style>
+  .head { padding: clamp(40px, 6vw, 96px) 0 24px; }
+  .kicker { font-family: var(--display); font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--highlight); margin: 0 0 14px; }
+  h1 { font-size: var(--step-5); line-height: 0.92; margin: 0 0 14px; font-weight: 200; letter-spacing: -0.04em; }
+  .standfirst { font-family: var(--serif); font-style: italic; font-size: var(--step-2); color: var(--halo); margin: 0 0 24px; }
+  .featured {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+    border-top: 1px solid var(--rule-dark);
+    padding-top: 24px;
+  }
+  .t-feat { padding-bottom: 18px; }
+  .t-frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(135deg, var(--film-2), var(--lens-blue) 80%);
+    border: 1px solid var(--rule-dark);
+    padding: 18px 22px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .t-date { font-family: var(--mono); font-size: 12px; color: var(--highlight); letter-spacing: 0.08em; margin-bottom: 8px; }
+  .t-frame h2 { font-size: var(--step-2); font-weight: 500; margin: 0 0 6px; color: var(--paper); letter-spacing: -0.02em; }
+  .t-venue { font-family: var(--serif); font-style: italic; color: var(--halo); font-size: 14px; margin: 0; }
+  .t-desc { font-size: 14px; line-height: 1.6; color: var(--halo); margin: 0 0 12px; }
+  .t-link { font-family: var(--mono); font-size: 12px; color: var(--highlight); border-bottom: 1px solid var(--highlight); }
+  .other-h {
+    margin: 56px 0 18px;
+    border-top: 1px solid var(--rule-dark);
+    padding-top: 18px;
+    font-size: var(--step-2);
+    font-weight: 500;
+  }
+  .others { list-style: none; margin: 0; padding: 0; }
+  .others li {
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr);
+    gap: 24px;
+    border-top: 1px solid var(--rule-dark);
+    padding: 18px 0;
+    align-items: baseline;
+  }
+  .others li:last-child { border-bottom: 1px solid var(--rule-dark); }
+  .o-date { font-family: var(--mono); font-size: 12px; color: var(--highlight); letter-spacing: 0.06em; }
+  .o-body strong { display: block; font-family: var(--display); font-size: var(--step-1); font-weight: 500; margin-bottom: 2px; color: var(--paper); }
+  .o-venue { display: block; font-family: var(--serif); font-style: italic; color: var(--halo); font-size: 14px; margin-bottom: 6px; }
+  .o-desc { color: var(--halo); font-size: 14px; }
+</style>

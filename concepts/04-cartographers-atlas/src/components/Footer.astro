@@ -1,0 +1,69 @@
+---
+import { profile } from "../lib/content.ts";
+const year = new Date().getFullYear();
+---
+
+<footer class="foot no-print">
+  <hr class="rule-flourish" />
+  <div class="container">
+    <div class="row">
+      <div>
+        <div class="smallcaps">Engraver's Mark</div>
+        <p>Farshad Nayeri · {profile.location}</p>
+      </div>
+      <div>
+        <div class="smallcaps">Direct Correspondence</div>
+        <p><a href={`mailto:${profile.email}`}>{profile.email}</a></p>
+        <p><a href={profile.linkedin} target="_blank" rel="noopener noreferrer">linkedin.com/in/farshadnayeri</a></p>
+      </div>
+      <div>
+        <div class="smallcaps">Colophon</div>
+        <p>Set in IM Fell English. Marginalia in Caveat. Composed with Astro &amp; MDX.</p>
+      </div>
+    </div>
+    <div class="fineprint">
+      <span>© {year} Farshad Nayeri</span>
+      <span>·</span>
+      <span class="hand">An Atlas of One Operator</span>
+      <span>·</span>
+      <span>Volume I, First Plates</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .foot {
+    margin-top: 96px;
+    padding: 0 0 28px;
+  }
+  .rule-flourish { margin-top: 56px; }
+  .row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    padding: 0 0 24px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .row p { margin: 6px 0; font-size: 14px; line-height: 1.55; }
+  .row .smallcaps { display: block; margin-bottom: 6px; color: var(--rust); }
+  .fineprint {
+    margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-family: var(--press-sc);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--ink-quiet);
+    align-items: baseline;
+  }
+  .fineprint .hand {
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 18px;
+    color: var(--rust);
+  }
+  @media (max-width: 700px) {
+    .row { grid-template-columns: 1fr; gap: 18px; }
+  }
+</style>

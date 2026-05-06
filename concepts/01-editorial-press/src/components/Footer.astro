@@ -1,0 +1,78 @@
+---
+import { profile } from "../lib/content.ts";
+const year = new Date().getFullYear();
+---
+
+<footer class="site-foot no-print">
+  <div class="container foot-row">
+    <div class="foot-block">
+      <div class="label">Imprint</div>
+      <p>Farshad Nayeri · {profile.location}</p>
+    </div>
+    <div class="foot-block">
+      <div class="label">Correspondence</div>
+      <p>
+        <a href={`mailto:${profile.email}`}>{profile.email}</a>
+      </p>
+      <p>
+        <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </p>
+    </div>
+    <div class="foot-block">
+      <div class="label">Colophon</div>
+      <p>
+        Set in Source Serif 4. Body in Inter. Mono in JetBrains Mono. Built with Astro + MDX.
+      </p>
+    </div>
+  </div>
+  <div class="container fine-print">
+    <span>© {year} Farshad Nayeri</span>
+    <span class="fine-rule" aria-hidden="true"></span>
+    <span>An Imprint of One</span>
+  </div>
+</footer>
+
+<style>
+  .site-foot {
+    border-top: 2px solid var(--ink);
+    background: var(--paper);
+    padding: 56px 0 32px;
+    margin-top: 96px;
+  }
+  .foot-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    padding-bottom: 32px;
+  }
+  .foot-block .label {
+    margin-bottom: 8px;
+  }
+  .foot-block p {
+    margin: 0 0 4px;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .fine-print {
+    border-top: 1px solid var(--rule);
+    padding-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--ink-quiet);
+    letter-spacing: 0.04em;
+  }
+  .fine-rule {
+    width: 12px;
+    height: 1px;
+    background: var(--ink-quiet);
+  }
+  @media (max-width: 700px) {
+    .foot-row {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+</style>

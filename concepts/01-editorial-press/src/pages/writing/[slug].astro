@@ -1,0 +1,81 @@
+---
+import Base from "../../layouts/Base.astro";
+import { writing, getWritingModule } from "../../lib/content.ts";
+
+export function getStaticPaths() {
+  return writing.map((w) => ({ params: { slug: w.slug } }));
+}
+
+const { slug } = Astro.params;
+const mod = getWritingModule(slug!);
+if (!mod) throw new Error("Essay not found: " + slug);
+const { frontmatter, Content } = mod;
+---
+
+<Base
+  title={`${frontmatter.title} — Farshad Nayeri`}
+  description={frontmatter.description}
+  active="writing"
+>
+  <article class="container">
+    <div class="editorial">
+      <aside class="rail">
+        <div class="rail-section">
+          <div class="rail-label">Date</div>
+          <div class="rail-value">{frontmatter.date}</div>
+        </div>
+        <div class="rail-section">
+          <div class="rail-label">Filed under</div>
+          <div class="rail-value">{frontmatter.personas.join(" · ")}</div>
+        </div>
+      </aside>
+      <div class="body">
+        <p class="kicker">Essay</p>
+        <h1>{frontmatter.title}</h1>
+        <p class="standfirst">{frontmatter.description}</p>
+        <hr class="rule-bold" />
+        <div class="prose">
+          <Content />
+        </div>
+      </div>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .body .kicker {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin: 0 0 12px;
+  }
+  .body h1 {
+    font-size: var(--step-4);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    margin: 0 0 18px;
+  }
+  .standfirst {
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: var(--step-2);
+    color: var(--ink-soft);
+    margin: 0 0 24px;
+  }
+  .prose :global(p) {
+    font-size: var(--step-0);
+    line-height: 1.75;
+    margin-bottom: 1em;
+  }
+  .prose :global(p):first-of-type::first-letter {
+    font-size: 4em;
+    float: left;
+    line-height: 0.85;
+    font-weight: 900;
+    margin-right: 0.08em;
+    margin-top: 0.05em;
+    color: var(--accent);
+  }
+</style>

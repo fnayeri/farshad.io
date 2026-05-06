@@ -1,0 +1,44 @@
+---
+import { profile } from "../lib/content.ts";
+const year = new Date().getFullYear();
+---
+
+<footer class="foot no-print">
+  <div class="container row">
+    <div>
+      <div class="label">Studio</div>
+      <p>Farshad Nayeri · {profile.location}</p>
+    </div>
+    <div>
+      <div class="label">Direct</div>
+      <p><a href={`mailto:${profile.email}`}>{profile.email}</a></p>
+      <p><a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+    </div>
+    <div>
+      <div class="label">Set in</div>
+      <p>Inter &amp; JetBrains Mono. Built with Astro.</p>
+    </div>
+    <div class="copy">
+      <p>© {year} Farshad Nayeri</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .foot {
+    border-top: 1px solid var(--rule);
+    background: var(--bg);
+    margin-top: 96px;
+    padding: 48px 0 24px;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+  .row .label { display: block; margin-bottom: 6px; }
+  .row p { margin: 4px 0; font-size: 13px; line-height: 1.55; color: var(--ink-soft); }
+  .copy p { color: var(--ink-quiet); font-family: var(--mono); font-size: 11px; }
+  @media (max-width: 760px) { .row { grid-template-columns: repeat(2, 1fr); gap: 18px; } }
+  @media (max-width: 460px) { .row { grid-template-columns: 1fr; } }
+</style>

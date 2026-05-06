@@ -9,7 +9,19 @@
     "lint": "next lint",
     "pages:build": "npx @cloudflare/next-on-pages",
     "preview": "npm run pages:build && wrangler pages dev .vercel/output/static",
-    "deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static"
+    "deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static",
+    "dev:a": "npm --prefix concepts/01-editorial-press run dev",
+    "dev:b": "npm --prefix concepts/02-cinematic-lens run dev",
+    "dev:c": "npm --prefix concepts/03-systems-monograph run dev",
+    "dev:d": "npm --prefix concepts/04-cartographers-atlas run dev",
+    "dev:e": "npm --prefix concepts/05-spectrum run dev",
+    "build:a": "npm --prefix concepts/01-editorial-press run build",
+    "build:b": "npm --prefix concepts/02-cinematic-lens run build",
+    "build:c": "npm --prefix concepts/03-systems-monograph run build",
+    "build:d": "npm --prefix concepts/04-cartographers-atlas run build",
+    "build:e": "npm --prefix concepts/05-spectrum run build",
+    "build:all": "npm run build:a && npm run build:b && npm run build:c && npm run build:d && npm run build:e",
+    "install:concepts": "npm --prefix concepts/01-editorial-press install && npm --prefix concepts/02-cinematic-lens install && npm --prefix concepts/03-systems-monograph install && npm --prefix concepts/04-cartographers-atlas install && npm --prefix concepts/05-spectrum install"
   },
   "dependencies": {
     "chart.js": "^4.5.1",

@@ -1,0 +1,75 @@
+---
+import Base from "../../layouts/Base.astro";
+import { writing } from "../../lib/content.ts";
+---
+
+<Base title="Writing — Farshad Nayeri" description="Essays from the studio." active="writing" surface="paper">
+  <section class="container">
+    <header class="head">
+      <p class="kicker">Writing</p>
+      <h1>Essays</h1>
+      <p class="standfirst">Notes on data cinematography, systems, and the craft of building.</p>
+    </header>
+    <ol class="essays">
+      {writing.map((w) => (
+        <li>
+          <a href={`/writing/${w.slug}/`}>
+            <span class="date">{w.date}</span>
+            <span>
+              <strong>{w.title}</strong>
+              <span class="desc">{w.description}</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </section>
+</Base>
+
+<style>
+  .head { padding: clamp(40px, 6vw, 96px) 0 24px; }
+  .kicker {
+    font-family: var(--display);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--lens-blue);
+    margin: 0 0 14px;
+  }
+  h1 { font-size: var(--step-5); line-height: 0.92; margin: 0 0 14px; font-weight: 200; letter-spacing: -0.04em; }
+  .standfirst { font-family: var(--serif); font-style: italic; font-size: var(--step-2); color: var(--ink-soft); margin: 0; }
+  .essays { list-style: none; margin: 32px 0 0; padding: 0; }
+  .essays li { border-top: 1px solid var(--rule-light); }
+  .essays li:last-child { border-bottom: 1px solid var(--rule-light); }
+  .essays a {
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr);
+    gap: 24px;
+    align-items: baseline;
+    padding: 22px 0;
+    border: 0;
+  }
+  .essays a:hover strong { color: var(--lens-blue); }
+  .date {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--ink-quiet);
+  }
+  .essays strong {
+    display: block;
+    font-family: var(--display);
+    font-size: var(--step-2);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  .desc {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-quiet);
+    line-height: 1.5;
+  }
+</style>

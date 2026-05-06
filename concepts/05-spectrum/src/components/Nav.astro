@@ -1,0 +1,87 @@
+---
+const { active = "" } = Astro.props as { active?: string };
+const items = [
+  { href: "/", label: "Index", id: "home" },
+  { href: "/work/", label: "Work", id: "work" },
+  { href: "/writing/", label: "Writing", id: "writing" },
+  { href: "/talks/", label: "Talks", id: "talks" },
+  { href: "/about/", label: "About", id: "about" },
+  { href: "/contact/", label: "Contact", id: "contact" },
+];
+---
+
+<header class="nav no-print">
+  <div class="container nav-row">
+    <a href="/" class="brand">
+      <span class="brand-name">Farshad Nayeri</span>
+      <span class="brand-sub">Boston</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul>
+        {items.map((it) => (
+          <li>
+            <a href={it.href} aria-current={active === it.id ? "page" : undefined}>{it.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav {
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+    gap: 24px;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .brand-name {
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: -0.012em;
+  }
+  .brand-sub {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--ink-quiet);
+  }
+  .nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 22px;
+  }
+  .nav a {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    padding: 4px 0;
+    border-bottom: 2px solid transparent;
+  }
+  .nav a:hover { color: var(--ink); }
+  .nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--ink); }
+  @media (max-width: 700px) {
+    .nav-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .nav ul { flex-wrap: wrap; gap: 14px; }
+  }
+</style>

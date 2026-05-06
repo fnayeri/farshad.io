@@ -1,0 +1,288 @@
+---
+import Base from "../../layouts/Base.astro";
+import PersonaSwitcher from "../../components/PersonaSwitcher.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import {
+  personas,
+  testimonials,
+  projects,
+  getPersona,
+  type Persona,
+} from "../../lib/content.ts";
+
+export function getStaticPaths() {
+  return personas.map((p) => ({ params: { persona: p.id } }));
+}
+
+const { persona: personaId } = Astro.params;
+const persona = getPersona(personaId!) as Persona;
+
+const featured = persona.featured_project_slugs
+  .map((slug) => projects.find((p) => p.slug === slug))
+  .filter(Boolean) as typeof projects;
+
+const personaQuotes = testimonials.filter((t) => t.personas.includes(persona.id));
+---
+
+<Base
+  title={`${persona.label} — Farshad Nayeri`}
+  description={persona.pitch_line}
+  active="home"
+>
+  <section class="container persona-hero">
+    <div class="persona-hero-grid">
+      <div class="persona-meta">
+        <div class="meta-row">
+          <span class="meta-label">Read as</span>
+          <span class="meta-value">{persona.label}</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Filed under</span>
+          <span class="meta-value">Cribsheet</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">One-pager</span>
+          <span class="meta-value">
+            <a href="#" onclick="window.print();return false;" class="print-link">Print PDF →</a>
+          </span>
+        </div>
+      </div>
+      <div class="persona-display">
+        <p class="kicker">Cribsheet · Volume I</p>
+        <h1>{persona.label}</h1>
+        <p class="standfirst">{persona.pitch_line}</p>
+      </div>
+    </div>
+  </section>
+
+  <PersonaSwitcher active={persona.id} />
+
+  <section class="container">
+    <div class="editorial">
+      <aside class="rail">
+        <div class="rail-section">
+          <div class="rail-label">Credibility</div>
+          <ol class="rail-list">
+            {persona.credibility_anchors.map((anchor) => (
+              <li>{anchor}</li>
+            ))}
+          </ol>
+        </div>
+      </aside>
+      <div class="body">
+        <h2>The shape of the gap</h2>
+        <p>{persona.shape_of_the_gap}</p>
+
+        <h2>What he uniquely does</h2>
+        <p>{persona.what_he_uniquely_does}</p>
+
+        <h2>Angles to play</h2>
+        <ul class="angles">
+          {persona.angles_to_play.map((a) => <li>{a}</li>)}
+        </ul>
+
+        <h2>Heading off the obvious wrong reads</h2>
+        <p>{persona.head_off_early}</p>
+
+        <hr class="rule-bold" />
+
+        <p class="closing">{persona.closing_pitch}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container featured">
+    <div class="section-head">
+      <h2>Selected Work for {persona.label}</h2>
+      <a href="/work/" class="section-link">All work →</a>
+    </div>
+    <div class="cards">
+      {featured.map((p) => <ProjectCard project={p} />)}
+    </div>
+  </section>
+
+  {personaQuotes.length > 0 && (
+    <section class="container press">
+      <div class="section-head">
+        <h2>Press</h2>
+      </div>
+      <div class="quotes">
+        {personaQuotes.map((t) => (
+          <figure class="quote">
+            <blockquote>{t.quote}</blockquote>
+            <figcaption>
+              <span class="quote-name">{t.name}</span>
+              <span class="quote-title">{t.title}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+  )}
+</Base>
+
+<style>
+  .persona-hero {
+    border-bottom: 2px solid var(--ink);
+    padding: clamp(40px, 6vw, 96px) 0 clamp(32px, 4vw, 56px);
+  }
+  .persona-hero-grid {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: clamp(24px, 4vw, 64px);
+    align-items: start;
+  }
+  .persona-meta {
+    border-top: 2px solid var(--ink);
+    padding-top: 14px;
+  }
+  .meta-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--hairline);
+    padding: 10px 0;
+  }
+  .meta-label {
+    color: var(--ink-quiet);
+    font-weight: 500;
+  }
+  .meta-value {
+    color: var(--ink);
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 0;
+    font-family: var(--serif-display);
+    font-size: 16px;
+  }
+  .print-link {
+    font-family: var(--sans);
+    font-size: 12px;
+    border: 0;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+  }
+  .kicker {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin: 0 0 16px;
+  }
+  .persona-display h1 {
+    font-size: var(--step-5);
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    margin: 0 0 18px;
+  }
+  .standfirst {
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: var(--step-2);
+    line-height: 1.25;
+    color: var(--ink-soft);
+    max-width: 32ch;
+    margin: 0;
+  }
+  .body h2 {
+    font-size: var(--step-1);
+    margin-top: 36px;
+    border-top: 1px solid var(--rule);
+    padding-top: 18px;
+  }
+  .body h2:first-of-type {
+    margin-top: 0;
+    border-top: 0;
+    padding-top: 0;
+  }
+  .angles {
+    margin: 0 0 1em;
+    padding: 0 0 0 20px;
+  }
+  .angles li {
+    font-size: var(--step-0);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+  .closing {
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: var(--step-2);
+    line-height: 1.25;
+    color: var(--ink);
+  }
+  .rail-list {
+    list-style: decimal;
+    padding-left: 1.4em;
+    margin: 0;
+  }
+  .rail-list li {
+    font-family: var(--serif-display);
+    font-size: 13px;
+    line-height: 1.45;
+    margin-bottom: 12px;
+    color: var(--ink-soft);
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    border-top: 2px solid var(--ink);
+    padding-top: 18px;
+    margin: clamp(48px, 6vw, 80px) 0 24px;
+  }
+  .section-link {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    border: 0;
+  }
+  .quotes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 32px;
+    margin-top: 12px;
+  }
+  .quote {
+    margin: 0;
+    padding: 24px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .quote blockquote {
+    margin: 0 0 16px;
+    padding: 0;
+    border-left: 0;
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: var(--step-2);
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  .quote blockquote::before { content: "“"; color: var(--accent); }
+  .quote blockquote::after { content: "”"; color: var(--accent); }
+  .quote-name {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-right: 12px;
+  }
+  .quote-title {
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-quiet);
+  }
+  @media (max-width: 760px) {
+    .persona-hero-grid { grid-template-columns: 1fr; }
+  }
+</style>

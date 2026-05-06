@@ -1,0 +1,163 @@
+---
+import Base from "../layouts/Base.astro";
+import { profile, testimonials, clients } from "../lib/content.ts";
+---
+
+<Base title="About — Farshad Nayeri" description="The long bio." active="about">
+  <section class="container">
+    <header class="page-head">
+      <p class="kicker">Imprint · Volume I</p>
+      <h1>About</h1>
+      <p class="standfirst">{profile.throughline}</p>
+    </header>
+
+    <div class="editorial">
+      <aside class="rail">
+        <div class="rail-section">
+          <div class="rail-label">Location</div>
+          <div class="rail-value">{profile.location}</div>
+        </div>
+        <div class="rail-section">
+          <div class="rail-label">Email</div>
+          <div class="rail-value">
+            <a href={`mailto:${profile.email}`}>{profile.email}</a>
+          </div>
+        </div>
+        <div class="rail-section">
+          <div class="rail-label">LinkedIn</div>
+          <div class="rail-value">
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">linkedin.com/in/farshadnayeri</a>
+          </div>
+        </div>
+      </aside>
+
+      <div class="body">
+        <h2>The four careers, woven</h2>
+        <p>
+          <strong>Programming-language and developer-tools researcher</strong>. GTE Labs (Distributed Object Manager, ECOOP 1994). The DEC SRC Modula-3 lineage. Verizon Labs.
+        </p>
+        <p>
+          <strong>Founder</strong>. Critical Mass, Inc. (Cambridge, 1995): commercial Modula-3, the Reactor / CM3-IDE in 1996, and the Critical Mass JVM written entirely in Modula-3, class-compatible with Sun's JavaVM. Hired Bill Kalsow from DEC SRC. Edited <em>Threads: A Modula-3 Systems Journal</em> (Issues 1–3, 1995–1997). Open-sourced the codebase in 2001. iGEN Corporation (1998–present). Pixxa LLC and the Perspective iPad app, used in keynotes at Apple, Samsung, IBM, Fidelity, BNY Mellon, and Microsoft.
+        </p>
+        <p>
+          <strong>Data storyteller / Data Cinematographer</strong> (a phrase I coined). Co-creator with Horace Dediu of the Airshow tour: Boston, Tokyo, Vancouver, London, San Francisco, Helsinki, Seattle, Melbourne (2013–2016). Co-author on Asymco. Invited speaker at HarvardXR 2025.
+        </p>
+        <p>
+          <strong>Christensen-trained strategist</strong>. Worked directly with Clayton Christensen and Dave Sundahl. Connected to the Christensen Institute and the Disruptive MBA / Product Science Lab (dx.mba). Strategy work at EY, Fidelity, Baupost, CME.
+        </p>
+
+        <h2>Press</h2>
+        <div class="quotes">
+          {testimonials.map((t) => (
+            <figure class="quote">
+              <blockquote>{t.quote}</blockquote>
+              <figcaption>
+                <span class="quote-name">{t.name}</span>
+                <span class="quote-title">{t.title}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+
+        <h2>Clients</h2>
+        <ul class="client-wall">
+          {clients.map((c) => <li>{c}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page-head {
+    padding: clamp(40px, 6vw, 96px) 0 24px;
+  }
+  .kicker {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin: 0 0 14px;
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+    line-height: 0.92;
+    margin: 0 0 14px;
+  }
+  .standfirst {
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: var(--step-2);
+    color: var(--ink-soft);
+    max-width: 32ch;
+    margin: 0 0 28px;
+  }
+  .body h2 {
+    font-size: var(--step-1);
+    margin-top: 36px;
+    border-top: 1px solid var(--rule);
+    padding-top: 18px;
+  }
+  .body h2:first-of-type {
+    margin-top: 0;
+    border-top: 0;
+    padding-top: 0;
+  }
+  .quotes {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .quote {
+    margin: 0;
+    padding: 24px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .quote:first-of-type {
+    border-top: 0;
+  }
+  .quote blockquote {
+    margin: 0 0 12px;
+    border: 0;
+    padding: 0;
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: var(--step-2);
+    line-height: 1.2;
+  }
+  .quote blockquote::before { content: "“"; color: var(--accent); }
+  .quote blockquote::after { content: "”"; color: var(--accent); }
+  .quote-name {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-right: 12px;
+  }
+  .quote-title {
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-quiet);
+  }
+  .client-wall {
+    list-style: none;
+    margin: 12px 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 18px;
+    font-family: var(--serif-display);
+    font-size: var(--step-2);
+    line-height: 1.2;
+    font-weight: 700;
+  }
+  .client-wall li::after {
+    content: " ·";
+    color: var(--accent);
+    margin-left: 6px;
+  }
+  .client-wall li:last-child::after { content: ""; }
+</style>

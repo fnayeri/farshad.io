@@ -1,0 +1,174 @@
+---
+import { CATEGORY_COLORS } from "../lib/categories.ts";
+import { projectLogo, projectFirstArtifact } from "../lib/assets.ts";
+import CategoryIcon from "./CategoryIcon.astro";
+import type { ProjectFrontmatter } from "../lib/content.ts";
+
+const { project } = Astro.props as { project: ProjectFrontmatter };
+const wordmark = project.client.replace(/\s*\(founder\)$/i, "").trim();
+const cats = project.personas;
+const logo = projectLogo(project.slug);
+const artifact = projectFirstArtifact(project.slug);
+---
+
+<article class="card">
+  <a href={`/work/${project.slug}/`} class="card-link">
+    <div class="card-stripe" aria-hidden="true">
+      {cats.map((cid) => (
+        <span style={`background:${CATEGORY_COLORS[cid]?.hex || "#999"}`}></span>
+      ))}
+    </div>
+
+    {artifact && (
+      <div class="card-artifact" aria-hidden="true">
+        {artifact.kind === "video" ? (
+          <video
+            src={artifact.src}
+            poster={artifact.poster}
+            muted
+            playsinline
+            preload="metadata"
+          ></video>
+        ) : (
+          <img src={artifact.src} alt="" loading="lazy" decoding="async" />
+        )}
+      </div>
+    )}
+
+    <div class="card-head">
+      <span class="card-dates tnum">{project.dates}</span>
+      <div class="card-mark">
+        {logo ? (
+          <img class="card-logo" src={logo} alt={`${wordmark} logo`} loading="lazy" decoding="async" />
+        ) : (
+          <span class="card-wordmark">{wordmark}</span>
+        )}
+      </div>
+      <h3 class="card-title">{project.title}</h3>
+      <p class="card-client-quiet">{wordmark}</p>
+    </div>
+
+    <p class="card-outcome">{project.outcome}</p>
+
+    <ul class="card-tags">
+      {cats.map((cid) => {
+        const c = CATEGORY_COLORS[cid];
+        return c ? (
+          <li style={`color:${c.hex}`}>
+            <CategoryIcon id={cid} size={14} stroke={1.4} />
+            <span>{c.name}</span>
+          </li>
+        ) : null;
+      })}
+    </ul>
+  </a>
+</article>
+
+<style>
+  .card {
+    background: var(--bg-2);
+    border: 1px solid var(--rule);
+    transition: border-color var(--t-quick), transform var(--t-quick), box-shadow var(--t-quick);
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover {
+    border-color: var(--ink);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+  }
+  .card-link {
+    display: block;
+    padding: 0;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .card-stripe { height: 6px; display: flex; }
+  .card-stripe span { flex: 1; height: 100%; }
+
+  .card-artifact {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background: var(--bg-3);
+    overflow: hidden;
+    border-bottom: 1px solid var(--rule);
+  }
+  .card-artifact img,
+  .card-artifact video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 400ms cubic-bezier(0.2, 0, 0.2, 1);
+  }
+  .card-link:hover .card-artifact img,
+  .card-link:hover .card-artifact video {
+    transform: scale(1.03);
+  }
+
+  .card-head { padding: 20px 22px 10px; }
+  .card-dates {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-quiet);
+    letter-spacing: 0.04em;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .card-mark {
+    display: flex;
+    align-items: center;
+    height: 36px;
+    margin-bottom: 10px;
+  }
+  .card-logo {
+    max-height: 32px;
+    width: auto;
+    object-fit: contain;
+  }
+  .card-wordmark {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.0;
+    color: var(--ink);
+  }
+  .card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 2px;
+    letter-spacing: -0.012em;
+  }
+  .card-client-quiet {
+    margin: 0;
+    font-size: 11px;
+    color: var(--ink-quiet);
+    font-family: var(--mono);
+    letter-spacing: 0.04em;
+  }
+  .card-outcome {
+    margin: 0;
+    padding: 6px 22px 16px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .card-tags {
+    list-style: none;
+    margin: 0;
+    padding: 12px 22px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    border-top: 1px solid var(--hairline);
+  }
+  .card-tags li {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .card-tags li svg { flex-shrink: 0; }
+</style>

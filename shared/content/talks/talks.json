@@ -1,0 +1,58 @@
+{
+  "talks": [
+    {
+      "id": "harvardxr-2025",
+      "title": "Data Cinematography in Immersive Contexts",
+      "venue": "HarvardXR 2025",
+      "date": "2025-04",
+      "url": "https://www.harvardxr.com/2025/speakers",
+      "featured": true,
+      "description": "Invited speaker on directing data the way a cinematographer directs a scene, with a focus on what changes when the audience can move through the frame."
+    },
+    {
+      "id": "global-health-2025",
+      "title": "The Health of Nations (1950–2050)",
+      "venue": "Global Health Exhibition 2025, Riyadh",
+      "date": "2025-10",
+      "url": "https://www.globalhealthsaudi.com/en/home.html",
+      "featured": true,
+      "description": "Three-act data-cinematic presentation spanning a century of demographic and public-health data across all countries."
+    },
+    {
+      "id": "saudi-moh-2026",
+      "title": "The Health of Nations — Saudi Ministry of Health",
+      "venue": "Saudi Ministry of Health, Riyadh",
+      "date": "2026-02",
+      "url": null,
+      "featured": false,
+      "description": "Presented to ~200 senior leaders at the Saudi Ministry of Health."
+    },
+    {
+      "id": "yow-connected-2016",
+      "title": "Airshow: Post-PowerPoint Storytelling",
+      "venue": "YOW! Connected, Melbourne",
+      "date": "2016-09",
+      "url": null,
+      "featured": false,
+      "description": "Stage piece with Horace Dediu on data cinematography as a craft, presented to an audience of senior engineers."
+    },
+    {
+      "id": "airshow-tour",
+      "title": "Airshow Tour (with Horace Dediu)",
+      "venue": "Boston · Tokyo · Vancouver · London · San Francisco · Helsinki · Seattle · Melbourne",
+      "date": "2013–2016",
+      "url": null,
+      "featured": false,
+      "description": "Multi-stop tour applying data-cinematic methods to the Apple market narrative."
+    },
+    {
+      "id": "ecoop-1994",
+      "title": "Distributed Object Manager",
+      "venue": "ECOOP 1994",
+      "date": "1994-07",
+      "url": null,
+      "featured": false,
+      "description": "GTE Labs research on distributed-object systems in the Modula-3 lineage."
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+---
+const { active = "" } = Astro.props as { active?: string };
+const items = [
+  { href: "/", label: "Frontispiece", id: "home" },
+  { href: "/work/", label: "Specimens", id: "work" },
+  { href: "/writing/", label: "Field Notes", id: "writing" },
+  { href: "/talks/", label: "Engagements", id: "talks" },
+  { href: "/about/", label: "Colophon", id: "about" },
+  { href: "/contact/", label: "Correspondence", id: "contact" },
+];
+---
+
+<header class="nav no-print">
+  <div class="container nav-row">
+    <a href="/" class="masthead">
+      <span class="seal" aria-hidden="true">
+        <svg viewBox="0 0 56 56" width="44" height="44">
+          <circle cx="28" cy="28" r="26" fill="none" stroke="currentColor" stroke-width="1.25" />
+          <circle cx="28" cy="28" r="22" fill="none" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 3" />
+          <path d="M28 6 L31 28 L28 50 L25 28 Z" fill="currentColor" opacity="0.85" />
+          <path d="M6 28 L28 25 L50 28 L28 31 Z" fill="currentColor" opacity="0.45" />
+          <text x="28" y="14" text-anchor="middle" font-family="IM Fell English SC, serif" font-size="6" fill="currentColor">N</text>
+        </svg>
+      </span>
+      <span class="masthead-title">
+        <span class="masthead-name">Farshad Nayeri</span>
+        <span class="masthead-tag">An Atlas of One Operator · Cartographer's Edition</span>
+      </span>
+    </a>
+    <nav aria-label="Primary">
+      <ol>
+        {items.map((it, i) => (
+          <li>
+            <span class="ord">{String(i + 1).padStart(2, "0")}</span>
+            <a href={it.href} aria-current={active === it.id ? "page" : undefined}>{it.label}</a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav {
+    border-bottom: 3px double var(--ink);
+    background: var(--parchment);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0 14px;
+    gap: 24px;
+  }
+  .masthead {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--ink);
+    background: none;
+    padding: 0;
+  }
+  .masthead:hover { background: none; color: var(--rust); }
+  .seal { color: var(--ink); display: inline-flex; }
+  .masthead-title { display: flex; flex-direction: column; line-height: 1.1; }
+  .masthead-name {
+    font-family: var(--press);
+    font-size: 22px;
+    letter-spacing: -0.005em;
+  }
+  .masthead-tag {
+    font-family: var(--hand);
+    color: var(--rust);
+    font-size: 16px;
+    margin-top: 2px;
+  }
+  .nav ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+    align-items: baseline;
+  }
+  .nav li { display: inline-flex; align-items: baseline; gap: 6px; }
+  .ord {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--rust);
+  }
+  .nav a {
+    background: none;
+    color: var(--ink-soft);
+    font-family: var(--press-sc);
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0;
+  }
+  .nav a:hover { color: var(--rust); background: none; }
+  .nav a[aria-current="page"] {
+    color: var(--rust);
+    border-bottom: 2px solid var(--rust);
+  }
+  @media (max-width: 760px) {
+    .nav-row { flex-direction: column; align-items: flex-start; }
+  }
+</style>

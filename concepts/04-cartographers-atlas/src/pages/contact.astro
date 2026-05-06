@@ -1,0 +1,88 @@
+---
+import Base from "../layouts/Base.astro";
+import { profile } from "../lib/content.ts";
+---
+
+<Base title="Correspondence — A Cartographer's Edition" description={profile.availability} active="contact">
+  <section class="container">
+    <header class="head">
+      <p class="series"><span class="banner">Correspondence</span> · By post or wire</p>
+      <h1>Correspondence</h1>
+      <p class="hand-banner">— write at any hour; the reply tends to come within a Boston business day —</p>
+    </header>
+
+    <div class="cards">
+      <article class="card specimen">
+        <span class="banner mini">Currently for hire</span>
+        <p class="card-big"><em>{profile.availability}</em></p>
+      </article>
+
+      <article class="card specimen">
+        <span class="banner mini">Direct</span>
+        <p class="card-link"><a href={`mailto:${profile.email}`}>{profile.email}</a></p>
+        <p class="hand">— the most reliable wire —</p>
+      </article>
+
+      <article class="card specimen">
+        <span class="banner mini">Locale</span>
+        <p class="card-big">{profile.location}</p>
+        <p class="hand">— in person around Boston/Cambridge welcome —</p>
+      </article>
+
+      <article class="card specimen">
+        <span class="banner mini">Profile</span>
+        <p class="card-link"><a href={profile.linkedin} target="_blank" rel="noopener noreferrer">linkedin.com/in/farshadnayeri</a></p>
+      </article>
+    </div>
+
+    <hr class="rule-flourish" />
+    <p class="closing"><em>The atlas is in progress. If you have read this far, write.</em></p>
+  </section>
+</Base>
+
+<style>
+  .head { padding: clamp(40px, 6vw, 96px) 0 28px; max-width: 60ch; }
+  .series {
+    font-family: var(--press-sc);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin: 0 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  h1 { font-size: var(--step-5); margin: 0 0 14px; }
+  .hand-banner { font-family: var(--hand); font-size: 22px; color: var(--rust); margin: 0; }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    padding: 32px 0;
+  }
+  .card { padding: 28px 22px 22px; }
+  .card .banner.mini { font-size: 11px; padding: 3px 10px 4px; margin-bottom: 14px; display: inline-block; }
+  .card-big {
+    font-family: var(--press);
+    font-style: italic;
+    font-size: var(--step-1);
+    line-height: 1.4;
+    color: var(--ink);
+    margin: 0 0 8px;
+  }
+  .card-link {
+    font-family: var(--press);
+    font-size: var(--step-2);
+    margin: 0 0 6px;
+  }
+  .closing {
+    font-family: var(--press);
+    font-style: italic;
+    font-size: var(--step-2);
+    text-align: center;
+    margin: 36px 0 56px;
+    color: var(--ink);
+  }
+  @media (max-width: 700px) { .cards { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,168 @@
+---
+import Base from "../layouts/Base.astro";
+import { talks } from "../lib/content.ts";
+const featured = talks.filter((t) => t.featured);
+const rest = talks.filter((t) => !t.featured);
+---
+
+<Base title="Talks — Farshad Nayeri" description="Stage work, from ECOOP 1994 to HarvardXR 2025." active="talks">
+  <section class="container">
+    <header class="page-head">
+      <p class="kicker">Stage · Volume I</p>
+      <h1>Talks</h1>
+      <p class="standfirst">From ECOOP 1994 to HarvardXR 2025. Featured first.</p>
+    </header>
+
+    <div class="featured">
+      {featured.map((t) => (
+        <article class="featured-talk">
+          <p class="kicker-small">{t.date} · {t.venue}</p>
+          <h2>{t.title}</h2>
+          <p class="desc">{t.description}</p>
+          {t.url && (
+            <p>
+              <a href={t.url} target="_blank" rel="noopener noreferrer" class="link">
+                Visit →
+              </a>
+            </p>
+          )}
+        </article>
+      ))}
+    </div>
+
+    <h3 class="other-h">Other Talks</h3>
+    <ol class="other-list">
+      {rest.map((t) => (
+        <li>
+          <span class="t-date">{t.date}</span>
+          <span class="t-rule" aria-hidden="true"></span>
+          <span class="t-body">
+            <strong>{t.title}</strong>
+            <span class="t-venue">{t.venue}</span>
+            <span class="t-desc">{t.description}</span>
+          </span>
+        </li>
+      ))}
+    </ol>
+  </section>
+</Base>
+
+<style>
+  .page-head {
+    padding: clamp(40px, 6vw, 96px) 0 24px;
+  }
+  .kicker {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin: 0 0 14px;
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+    line-height: 0.92;
+    margin: 0 0 14px;
+  }
+  .standfirst {
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: var(--step-2);
+    color: var(--ink-soft);
+    margin: 0 0 28px;
+  }
+  .featured {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+    border-top: 2px solid var(--ink);
+    padding-top: 24px;
+  }
+  .featured-talk {
+    border-left: 3px solid var(--accent);
+    padding: 4px 16px 16px;
+  }
+  .kicker-small {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin: 0 0 8px;
+  }
+  .featured-talk h2 {
+    font-size: var(--step-2);
+    line-height: 1.1;
+    margin: 0 0 10px;
+  }
+  .desc {
+    font-family: var(--serif-display);
+    font-size: var(--step-0);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 0 12px;
+  }
+  .link {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 0;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+  }
+  .other-h {
+    margin: 56px 0 18px;
+    border-top: 2px solid var(--ink);
+    padding-top: 18px;
+    font-size: var(--step-2);
+  }
+  .other-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .other-list li {
+    display: grid;
+    grid-template-columns: 110px 14px minmax(0, 1fr);
+    gap: 18px;
+    align-items: baseline;
+    padding: 18px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .other-list li:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+  .t-date {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+  }
+  .t-rule {
+    height: 1px;
+    background: var(--ink-quiet);
+  }
+  .t-body strong {
+    display: block;
+    font-family: var(--serif-display);
+    font-size: var(--step-1);
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .t-venue {
+    display: block;
+    font-family: var(--serif-display);
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .t-desc {
+    font-family: var(--serif-display);
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+</style>

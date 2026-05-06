@@ -1,0 +1,111 @@
+---
+const { active = "" } = Astro.props as { active?: string };
+const items = [
+  { href: "/", label: "Home", id: "home" },
+  { href: "/work/", label: "Work", id: "work" },
+  { href: "/writing/", label: "Writing", id: "writing" },
+  { href: "/talks/", label: "Talks", id: "talks" },
+  { href: "/about/", label: "About", id: "about" },
+  { href: "/contact/", label: "Contact", id: "contact" },
+];
+---
+
+<header class="site-nav no-print">
+  <div class="container nav-row">
+    <a class="masthead" href="/" aria-label="Farshad Nayeri — home">
+      <span class="masthead-name">Farshad Nayeri</span>
+      <span class="masthead-rule" aria-hidden="true"></span>
+      <span class="masthead-tag">An Imprint of One</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-list">
+        {items.map((item) => (
+          <li>
+            <a href={item.href} aria-current={active === item.id ? "page" : undefined}>
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-nav {
+    border-bottom: 2px solid var(--ink);
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+    gap: 32px;
+  }
+  .masthead {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 14px;
+    border: 0;
+    color: var(--ink);
+  }
+  .masthead-name {
+    font-family: var(--serif-display);
+    font-weight: 900;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+  }
+  .masthead-rule {
+    width: 24px;
+    height: 1px;
+    background: var(--ink);
+  }
+  .masthead-tag {
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-quiet);
+  }
+  .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+  }
+  .nav-list a {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border: 0;
+    padding: 6px 2px;
+  }
+  .nav-list a[aria-current="page"] {
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+  }
+  .nav-list a:hover {
+    color: var(--accent);
+  }
+  @media (max-width: 700px) {
+    .nav-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .masthead-tag {
+      display: none;
+    }
+    .nav-list {
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+  }
+</style>

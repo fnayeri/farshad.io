@@ -1,0 +1,106 @@
+---
+import { personas as allPersonas } from "../lib/content.ts";
+import type { ProjectFrontmatter } from "../lib/content.ts";
+const { project } = Astro.props as { project: ProjectFrontmatter };
+const personaLabels = project.personas
+  .map((id) => allPersonas.find((p) => p.id === id)?.label)
+  .filter(Boolean);
+---
+
+<article class="card">
+  <a class="card-link" href={`/work/${project.slug}/`}>
+    <div class="card-meta">
+      <span class="card-dates">{project.dates}</span>
+      <span class="card-rule" aria-hidden="true"></span>
+      <span class="card-role">{project.role}</span>
+    </div>
+    <h3 class="card-title">{project.title}</h3>
+    <p class="card-client">{project.client}</p>
+    <p class="card-outcome">{project.outcome}</p>
+    {personaLabels.length > 0 && (
+      <ul class="card-tags">
+        {personaLabels.map((l) => (
+          <li>{l}</li>
+        ))}
+      </ul>
+    )}
+  </a>
+</article>
+
+<style>
+  .card {
+    border-top: 1px solid var(--rule);
+    padding: 28px 0;
+  }
+  .card:last-of-type {
+    border-bottom: 1px solid var(--rule);
+  }
+  .card-link {
+    display: block;
+    border: 0;
+    color: var(--ink);
+    transition: opacity var(--t-quick);
+  }
+  .card-link:hover {
+    opacity: 0.78;
+    color: var(--ink);
+  }
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin-bottom: 8px;
+  }
+  .card-rule {
+    width: 12px;
+    height: 1px;
+    background: var(--ink-quiet);
+  }
+  .card-title {
+    font-family: var(--serif-display);
+    font-size: var(--step-2);
+    line-height: 1.1;
+    letter-spacing: -0.012em;
+    margin: 0 0 4px;
+    font-weight: 700;
+  }
+  .card-link:hover .card-title {
+    color: var(--accent);
+  }
+  .card-client {
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    margin: 0 0 10px;
+  }
+  .card-outcome {
+    max-width: 60ch;
+    font-size: var(--step-0);
+    line-height: 1.55;
+    margin: 0;
+  }
+  .card-tags {
+    list-style: none;
+    margin: 14px 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .card-tags li {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: 1px solid var(--hairline);
+    padding: 3px 9px;
+    border-radius: 999px;
+    color: var(--ink-soft);
+  }
+</style>

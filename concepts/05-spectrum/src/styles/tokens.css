@@ -1,0 +1,40 @@
+:root {
+  /* Surface */
+  --bg: #fafafa;
+  --bg-2: #ffffff;
+  --bg-3: #f3f3f1;
+  --ink: #0a0a0a;
+  --ink-soft: #2c2c2c;
+  --ink-quiet: #6b6b6b;
+  --rule: #e5e5e2;
+  --hairline: rgba(10, 10, 10, 0.08);
+
+  /* Category palette — each persona has a single color, used everywhere. */
+  --cat-builder: #1d4ed8;
+  --cat-storyteller: #d97706;
+  --cat-strategist: #15803d;
+  --cat-founder: #a21caf;
+  --cat-devtools: #475569;
+
+  /* Type */
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Scale */
+  --step--1: clamp(0.78rem, 0.74rem + 0.18vw, 0.85rem);
+  --step-0: clamp(0.95rem, 0.92rem + 0.18vw, 1.05rem);
+  --step-1: clamp(1.1rem, 1.05rem + 0.25vw, 1.25rem);
+  --step-2: clamp(1.4rem, 1.3rem + 0.5vw, 1.7rem);
+  --step-3: clamp(1.9rem, 1.7rem + 1vw, 2.6rem);
+  --step-4: clamp(2.6rem, 2.1rem + 2.4vw, 4.4rem);
+  --step-5: clamp(3.6rem, 2.7rem + 4.4vw, 6.5rem);
+
+  --gutter: clamp(20px, 4vw, 56px);
+  --measure: 64ch;
+
+  --t-quick: 140ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}

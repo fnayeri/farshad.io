@@ -1,0 +1,99 @@
+---
+import { personas as allPersonas } from "../lib/content.ts";
+import type { ProjectFrontmatter } from "../lib/content.ts";
+const { project, idx = 1 } = Astro.props as { project: ProjectFrontmatter; idx?: number };
+const personaLabels = project.personas
+  .map((id) => allPersonas.find((p) => p.id === id)?.label)
+  .filter(Boolean);
+---
+
+<article class="specimen-card">
+  <a href={`/work/${project.slug}/`} class="card-link">
+    <div class="ribbon">
+      <span class="banner">Plate {String(idx).padStart(2, "0")}</span>
+    </div>
+    <div class="card-head">
+      <span class="card-dates">{project.dates}</span>
+      <h3 class="card-title">{project.title}</h3>
+      <p class="card-client"><em>{project.client}</em></p>
+    </div>
+    <p class="card-outcome">{project.outcome}</p>
+    {personaLabels.length > 0 && (
+      <p class="card-tags">
+        <span class="smallcaps">Filed under</span>
+        <span class="hand">{personaLabels.join(" · ")}</span>
+      </p>
+    )}
+    <span class="card-arrow" aria-hidden="true">↗ examine plate</span>
+  </a>
+</article>
+
+<style>
+  .specimen-card {
+    background: var(--parchment-2);
+    border: 1px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--parchment-3);
+    position: relative;
+    transition: transform var(--t-quick), box-shadow var(--t-quick);
+  }
+  .specimen-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--parchment-3);
+  }
+  .card-link {
+    display: block;
+    padding: 28px 22px 22px;
+    background: none;
+    color: var(--ink);
+  }
+  .card-link:hover { color: var(--ink); background: none; }
+  .ribbon {
+    position: absolute;
+    top: -10px;
+    left: 16px;
+  }
+  .card-dates {
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--ink-quiet);
+    margin-bottom: 6px;
+  }
+  .card-title {
+    font-family: var(--press);
+    font-size: var(--step-2);
+    line-height: 1.1;
+    margin: 0 0 4px;
+    color: var(--ink);
+  }
+  .card-link:hover .card-title { color: var(--rust); }
+  .card-client {
+    font-size: var(--step-0);
+    font-style: italic;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+  }
+  .card-outcome {
+    font-family: var(--press);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+  }
+  .card-tags {
+    margin: 0 0 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border-top: 1px dashed var(--rule);
+    padding-top: 10px;
+  }
+  .card-tags .smallcaps { color: var(--rust); }
+  .card-tags .hand { font-size: 18px; color: var(--ink); }
+  .card-arrow {
+    font-family: var(--hand);
+    font-size: 18px;
+    color: var(--rust);
+  }
+</style>

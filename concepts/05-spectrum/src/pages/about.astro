@@ -1,0 +1,84 @@
+---
+import Base from "../layouts/Base.astro";
+import LogoWall from "../components/LogoWall.astro";
+import { profile, testimonials } from "../lib/content.ts";
+---
+
+<Base title="About — Farshad Nayeri" description="The long bio." active="about">
+  <section class="container">
+    <header class="head">
+      <p class="label">About</p>
+      <h1>Farshad Nayeri</h1>
+      <p class="lede">{profile.throughline}</p>
+    </header>
+    <article class="grid">
+      <aside class="meta">
+        <dl>
+          <div><dt>Location</dt><dd>{profile.location}</dd></div>
+          <div><dt>Email</dt><dd><a href={`mailto:${profile.email}`}>{profile.email}</a></dd></div>
+          <div><dt>LinkedIn</dt><dd><a href={profile.linkedin} target="_blank" rel="noopener noreferrer">linkedin.com/in/farshadnayeri</a></dd></div>
+        </dl>
+      </aside>
+      <div class="bio">
+        <h2>Four careers, woven</h2>
+        <p><strong>Programming-language and developer-tools researcher.</strong> GTE Labs (Distributed Object Manager, ECOOP 1994). The DEC SRC Modula-3 lineage. Verizon Labs.</p>
+        <p><strong>Founder.</strong> Critical Mass, Inc. (Cambridge, 1995): commercial Modula-3, the Reactor / CM3-IDE in 1996, and the Critical Mass JVM written entirely in Modula-3, class-compatible with Sun's JavaVM. Hired Bill Kalsow from DEC SRC. Edited <em>Threads: A Modula-3 Systems Journal</em> (1995–1997). Open-sourced in 2001. iGEN Corporation (1998–present). Pixxa LLC and the Perspective iPad app.</p>
+        <p><strong>Data Cinematographer.</strong> Co-creator with Horace Dediu of the Airshow tour: Boston, Tokyo, Vancouver, London, San Francisco, Helsinki, Seattle, Melbourne (2013–2016). Co-author on Asymco. Invited speaker at HarvardXR 2025.</p>
+        <p><strong>Christensen-trained strategist.</strong> Worked directly with Clayton Christensen and Dave Sundahl. Connected to the Christensen Institute and the dx.MBA / Product Science Lab. Strategy work at EY, Fidelity, Baupost, CME.</p>
+        <h2>Press</h2>
+        <ul class="quotes">
+          {testimonials.map((t) => (
+            <li>
+              <em>"{t.quote}"</em>
+              <span class="attr">— <strong>{t.name}</strong>, {t.title}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </article>
+  </section>
+  <div class="container"><LogoWall /></div>
+</Base>
+
+<style>
+  .head { padding: clamp(40px, 6vw, 96px) 0 16px; max-width: 60ch; }
+  h1 { font-size: var(--step-5); margin: 8px 0 14px; }
+  .lede { font-size: var(--step-2); color: var(--ink-soft); margin: 0; }
+  .grid {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: clamp(28px, 4vw, 64px);
+    padding: 48px 0;
+  }
+  .meta dl { margin: 0; }
+  .meta div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 0;
+  }
+  .meta div:first-child { border-top: 2px solid var(--ink); }
+  .meta dt {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+  }
+  .meta dd { margin: 0; font-size: 14px; }
+  .bio h2 { font-size: var(--step-2); margin-top: 32px; margin-bottom: 12px; border-top: 1px solid var(--rule); padding-top: 16px; }
+  .bio h2:first-of-type { margin-top: 0; border-top: 0; padding-top: 0; }
+  .bio p { font-size: var(--step-0); line-height: 1.7; max-width: 64ch; }
+  .quotes { list-style: none; margin: 0; padding: 0; }
+  .quotes li {
+    border-top: 1px solid var(--rule);
+    padding: 16px 0;
+    font-size: var(--step-1);
+    line-height: 1.45;
+  }
+  .quotes em { font-style: italic; color: var(--ink); }
+  .quotes .attr { display: block; margin-top: 6px; font-size: 13px; color: var(--ink-quiet); font-style: normal; }
+  .quotes .attr strong { color: var(--ink); }
+  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,90 @@
+---
+import Base from "../../layouts/Base.astro";
+import { projects, getProjectModule, personas as allPersonas } from "../../lib/content.ts";
+
+export function getStaticPaths() {
+  return projects.map((p) => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+const mod = getProjectModule(slug!);
+if (!mod) throw new Error("Project not found: " + slug);
+const { frontmatter, Content } = mod;
+const personaLabels = frontmatter.personas
+  .map((id) => allPersonas.find((p) => p.id === id)?.label)
+  .filter(Boolean);
+---
+
+<Base title={`${frontmatter.title} — Farshad Nayeri`} description={frontmatter.outcome} active="work">
+  <article class="container case">
+    <header class="case-head">
+      <p class="numeral">§ Case Study · {frontmatter.dates}</p>
+      <h1>{frontmatter.title}</h1>
+      <p class="outcome"><em>{frontmatter.outcome}</em></p>
+    </header>
+
+    <div class="tufte case-grid">
+      <div class="body prose">
+        <Content />
+        <p class="back"><a href="/work/">← Index of projects</a></p>
+      </div>
+      <aside class="marginalia">
+        <aside class="note">
+          <span class="note-num">¶ Client</span>
+          <strong>{frontmatter.client}</strong>
+        </aside>
+        <aside class="note">
+          <span class="note-num">¶ Role</span>
+          {frontmatter.role}
+        </aside>
+        <aside class="note">
+          <span class="note-num">¶ Dates</span>
+          {frontmatter.dates}
+        </aside>
+        {frontmatter.location && (
+          <aside class="note">
+            <span class="note-num">¶ Location</span>
+            {frontmatter.location}
+          </aside>
+        )}
+        {frontmatter.collaborators.length > 0 && (
+          <aside class="note">
+            <span class="note-num">¶ Collaborators</span>
+            {frontmatter.collaborators.join(", ")}
+          </aside>
+        )}
+        {personaLabels.length > 0 && (
+          <aside class="note">
+            <span class="note-num">¶ Filed under</span>
+            <em>{personaLabels.join(" · ")}</em>
+          </aside>
+        )}
+      </aside>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .case-head { padding: clamp(40px, 6vw, 96px) 0 24px; max-width: 60ch; border-bottom: 1px solid var(--rule); }
+  .numeral { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--lab); margin: 0 0 14px; }
+  .case-head h1 { font-size: var(--step-4); margin: 0 0 16px; line-height: 1.05; }
+  .outcome { font-style: italic; color: var(--ink-soft); font-size: var(--step-1); margin: 0; }
+  .case-grid { padding: 32px 0; }
+  .prose :global(h2) {
+    font-size: var(--step-2);
+    margin-top: 32px;
+    margin-bottom: 12px;
+  }
+  .prose :global(h2:first-of-type) { margin-top: 0; }
+  .prose :global(p) { font-size: var(--step-0); line-height: 1.75; margin-bottom: 1em; }
+  .prose :global(blockquote) {
+    border-left: 3px solid var(--lab);
+    padding-left: 18px;
+    margin: 1.5em 0;
+    font-style: italic;
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+  }
+  .back { margin-top: 32px; }
+  .note strong { color: var(--ink); }
+</style>

@@ -1,0 +1,125 @@
+---
+import { personas as allPersonas } from "../lib/content.ts";
+import type { ProjectFrontmatter } from "../lib/content.ts";
+const { project, surface = "film" } = Astro.props as { project: ProjectFrontmatter; surface?: "film" | "paper" };
+const personaLabels = project.personas
+  .map((id) => allPersonas.find((p) => p.id === id)?.label)
+  .filter(Boolean);
+---
+
+<article class={`scene scene--${surface}`}>
+  <a href={`/work/${project.slug}/`} class="scene-link">
+    <div class="scene-frame letterbox-bars">
+      <div class="scene-num">f/{(project.slug.charCodeAt(0) % 9) + 1}</div>
+      <div class="scene-title-line">{project.title}</div>
+    </div>
+    <div class="scene-meta">
+      <p class="scene-client">{project.client}</p>
+      <p class="scene-outcome">{project.outcome}</p>
+      {personaLabels.length > 0 && (
+        <ul class="scene-tags">
+          {personaLabels.map((l) => <li>{l}</li>)}
+        </ul>
+      )}
+    </div>
+  </a>
+</article>
+
+<style>
+  .scene {
+    padding: 0;
+  }
+  .scene-link {
+    display: block;
+    border: 0;
+    color: inherit;
+  }
+  .scene-frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(135deg, var(--film-2), var(--lens-blue) 75%);
+    border: 1px solid var(--rule-dark);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 18px 22px;
+    overflow: hidden;
+    transition: transform var(--t-rack), border-color var(--t-quick);
+  }
+  .scene--paper .scene-frame {
+    background: linear-gradient(135deg, var(--paper-2), #d8d4c5 80%);
+    border-color: var(--rule-light);
+  }
+  .scene-link:hover .scene-frame {
+    border-color: var(--highlight);
+    transform: scale(1.005);
+  }
+  .scene-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--highlight);
+    letter-spacing: 0.1em;
+  }
+  .scene--paper .scene-num {
+    color: var(--lens-blue);
+  }
+  .scene-title-line {
+    font-family: var(--display);
+    font-size: var(--step-2);
+    line-height: 1.05;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--paper);
+    max-width: 70%;
+    text-align: right;
+  }
+  .scene--paper .scene-title-line {
+    color: var(--ink);
+  }
+  .scene-meta {
+    padding: 16px 0 0;
+  }
+  .scene-client {
+    font-family: var(--display);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--highlight);
+    margin: 0 0 6px;
+  }
+  .scene--paper .scene-client {
+    color: var(--lens-blue);
+  }
+  .scene-outcome {
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0 0 12px;
+    color: var(--halo);
+  }
+  .scene--paper .scene-outcome {
+    color: var(--ink-soft);
+  }
+  .scene-tags {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .scene-tags li {
+    font-family: var(--display);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid var(--rule-dark);
+    padding: 2px 8px;
+    border-radius: 999px;
+    color: var(--halo);
+  }
+  .scene--paper .scene-tags li {
+    border-color: var(--rule-light);
+    color: var(--ink-quiet);
+  }
+</style>

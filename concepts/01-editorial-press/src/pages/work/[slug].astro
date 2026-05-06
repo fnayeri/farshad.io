@@ -1,0 +1,155 @@
+---
+import Base from "../../layouts/Base.astro";
+import { projects, getProjectModule, personas as allPersonas } from "../../lib/content.ts";
+
+export function getStaticPaths() {
+  return projects.map((p) => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+const mod = getProjectModule(slug!);
+if (!mod) {
+  throw new Error("Project not found: " + slug);
+}
+const { frontmatter, Content } = mod;
+const personaLabels = frontmatter.personas
+  .map((id) => allPersonas.find((p) => p.id === id)?.label)
+  .filter(Boolean);
+---
+
+<Base
+  title={`${frontmatter.title} — Farshad Nayeri`}
+  description={frontmatter.outcome}
+  active="work"
+>
+  <article class="container case">
+    <div class="editorial">
+      <aside class="rail">
+        <div class="rail-section">
+          <div class="rail-label">Client</div>
+          <div class="rail-value">{frontmatter.client}</div>
+        </div>
+        <div class="rail-section">
+          <div class="rail-label">Role</div>
+          <div class="rail-value">{frontmatter.role}</div>
+        </div>
+        <div class="rail-section">
+          <div class="rail-label">Dates</div>
+          <div class="rail-value">{frontmatter.dates}</div>
+        </div>
+        {frontmatter.location && (
+          <div class="rail-section">
+            <div class="rail-label">Location</div>
+            <div class="rail-value">{frontmatter.location}</div>
+          </div>
+        )}
+        {frontmatter.collaborators.length > 0 && (
+          <div class="rail-section">
+            <div class="rail-label">Collaborators</div>
+            <ul class="rail-list-plain">
+              {frontmatter.collaborators.map((c) => <li>{c}</li>)}
+            </ul>
+          </div>
+        )}
+        {personaLabels.length > 0 && (
+          <div class="rail-section">
+            <div class="rail-label">Filed under</div>
+            <ul class="rail-list-plain">
+              {personaLabels.map((l) => <li>{l}</li>)}
+            </ul>
+          </div>
+        )}
+      </aside>
+      <div class="body">
+        <p class="kicker">Case · Volume I</p>
+        <h1>{frontmatter.title}</h1>
+        <p class="outcome">{frontmatter.outcome}</p>
+        <hr class="rule-bold" />
+        <div class="prose">
+          <Content />
+        </div>
+        <hr class="rule-thin" />
+        <p class="back"><a href="/work/">← All work</a></p>
+      </div>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .case {
+    padding-bottom: 48px;
+  }
+  .body .kicker {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin: 0 0 12px;
+  }
+  .body h1 {
+    font-size: var(--step-4);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    margin: 0 0 18px;
+  }
+  .outcome {
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: var(--step-2);
+    line-height: 1.25;
+    color: var(--ink-soft);
+    max-width: 40ch;
+    margin: 0 0 24px;
+  }
+  .prose :global(h2) {
+    font-size: var(--step-1);
+    margin-top: 36px;
+    border-top: 1px solid var(--rule);
+    padding-top: 18px;
+  }
+  .prose :global(h3) {
+    font-size: var(--step-1);
+    margin-top: 24px;
+  }
+  .prose :global(p) {
+    font-size: var(--step-0);
+    line-height: 1.7;
+    margin-bottom: 1em;
+  }
+  .prose :global(ul) {
+    padding-left: 1.4em;
+    margin: 0 0 1em;
+  }
+  .prose :global(blockquote) {
+    border-left: 3px solid var(--accent);
+    padding-left: 18px;
+    margin: 1.5em 0;
+    font-style: italic;
+    font-size: var(--step-1);
+    line-height: 1.45;
+    color: var(--ink-soft);
+  }
+  .rail-list-plain {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .rail-list-plain li {
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  .back {
+    margin-top: 28px;
+  }
+  .back a {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 0;
+  }
+</style>

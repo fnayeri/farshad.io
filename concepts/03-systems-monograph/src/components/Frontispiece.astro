@@ -1,0 +1,172 @@
+---
+import { profile } from "../lib/content.ts";
+---
+
+<section class="frontis">
+  <div class="container">
+    <p class="series">A Monograph in Progress · Volume I · Boston</p>
+    <h1 class="title">
+      <span class="title-name">Farshad Nayeri</span>
+      <span class="title-rule" aria-hidden="true"></span>
+      <span class="title-sub">Forty Years of Systems Work,<br />Hand-Set in One Volume</span>
+    </h1>
+    <p class="throughline"><em>{profile.throughline}</em></p>
+
+    <figure class="plate">
+      <div class="plate-frame">
+        <img class="plate-img" src="/wayback/cmass-logofront.gif" alt="Critical Mass Inc. masthead, captured 1998 from cmass.com" loading="eager" decoding="async" />
+        <div class="plate-overlay" aria-hidden="true">
+          <div class="plate-monitor">
+            <div class="monitor-bezel">
+              <div class="monitor-screen">
+                <div class="m-line m-line-prompt">% reactor --serve --port 8080</div>
+                <div class="m-line">[ok] HTTP server listening on :8080</div>
+                <div class="m-line">[ok] indexed 184 modules</div>
+                <div class="m-line">[ok] cross-references built</div>
+                <div class="m-line m-line-link">→ open in browser: <span>http://localhost:8080/Threads/Index.m3</span></div>
+                <div class="m-line m-line-prompt"><span class="caret">█</span></div>
+              </div>
+            </div>
+            <div class="monitor-stand"></div>
+          </div>
+        </div>
+      </div>
+      <figcaption>
+        <span class="plate-label">Plate I.</span>
+        <span class="plate-caption">
+          <em>Reactor IDE</em>, Critical Mass Inc., 1996. A web-delivered integrated development environment, served from a custom HTTP server written in Modula-3, presenting hyperlinked, syntax-highlighted code views to the browser. Masthead recovered from <a href="https://web.archive.org/web/19981212023843/http://www.cmass.com/" target="_blank" rel="noopener noreferrer">archive.org</a> (12 Dec 1998 capture). Reconstruction of the Reactor terminal output is illustrative.
+        </span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .frontis {
+    padding: clamp(40px, 6vw, 96px) 0 clamp(32px, 4vw, 64px);
+    border-bottom: 2px solid var(--ink);
+  }
+  .series {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--lab);
+    margin: 0 0 32px;
+  }
+  .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0 0 24px;
+    font-size: var(--step-5);
+    line-height: 0.95;
+    font-weight: 700;
+    letter-spacing: -0.012em;
+  }
+  .title-name {
+    font-size: var(--step-5);
+    line-height: 0.95;
+    margin-bottom: 18px;
+  }
+  .title-rule {
+    width: 220px;
+    height: 1px;
+    background: var(--ink);
+    margin: 0 auto 18px;
+  }
+  .title-sub {
+    font-size: var(--step-2);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink-soft);
+    line-height: 1.25;
+  }
+  .throughline {
+    text-align: center;
+    margin: 28px auto 48px;
+    font-size: var(--step-1);
+    font-style: italic;
+    line-height: 1.45;
+    max-width: 36ch;
+    color: var(--ink-soft);
+  }
+  .plate {
+    margin: 0;
+  }
+  .plate-frame {
+    border: 1px solid var(--rule);
+    background: var(--paper-2);
+    padding: 28px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 20px;
+    position: relative;
+  }
+  .plate-img {
+    margin: 0 auto;
+    image-rendering: pixelated;
+    background: var(--paper);
+    padding: 14px 24px;
+    box-shadow: 0 0 0 1px var(--rule);
+    max-width: 360px;
+    width: 100%;
+  }
+  .plate-monitor {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 540px;
+  }
+  .monitor-bezel {
+    background: linear-gradient(180deg, #d6cfc0, #b6ae9e);
+    border: 1px solid #4a4339;
+    border-radius: 14px 14px 6px 6px;
+    padding: 18px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 6px 0 rgba(0,0,0,0.06);
+  }
+  .monitor-screen {
+    background: #0a0d10;
+    border-radius: 4px;
+    box-shadow: inset 0 0 24px rgba(0,255,180,0.1);
+    padding: 14px 18px;
+    color: #b6f3c0;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.55;
+    min-height: 180px;
+    overflow: hidden;
+  }
+  .monitor-stand {
+    width: 130px;
+    height: 18px;
+    margin: -2px auto 0;
+    background: linear-gradient(180deg, #b6ae9e, #8b8473);
+    border-radius: 0 0 12px 12px;
+  }
+  .m-line { white-space: nowrap; overflow: hidden; }
+  .m-line-prompt { color: #f4e9b8; }
+  .m-line-link span { color: #6db3ff; text-decoration: underline; }
+  .caret { animation: blink 1.05s steps(2) infinite; color: #b6f3c0; }
+  @keyframes blink { 50% { opacity: 0; } }
+  figcaption {
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-quiet);
+  }
+  .plate-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--lab);
+    margin-right: 8px;
+  }
+  .plate-caption em { font-style: italic; color: var(--ink); }
+  @media (max-width: 600px) {
+    .title { font-size: var(--step-4); }
+    .title-sub { font-size: var(--step-1); }
+  }
+</style>

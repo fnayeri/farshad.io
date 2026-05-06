@@ -1,0 +1,44 @@
+{
+  "testimonials": [
+    {
+      "id": "gassee",
+      "name": "Jean-Louis Gassée",
+      "title": "Be, Inc. founder; former Apple executive",
+      "quote": "Airshow: post-PowerPoint storytelling.",
+      "source": "airshow.io",
+      "personas": ["data-storyteller"]
+    },
+    {
+      "id": "brody",
+      "name": "Paul Brody",
+      "title": "Global Blockchain Leader, EY",
+      "quote": "Farshad turned a federated organization's conflicting demands into a platform that all of EY could actually ship on.",
+      "source": "EY engagement",
+      "personas": ["product-builder", "strategist"]
+    },
+    {
+      "id": "bajarin",
+      "name": "Ben Bajarin",
+      "title": "Principal Analyst, Creative Strategies",
+      "quote": "There is no one I would rather have direct a hard data story.",
+      "source": "airshow.io",
+      "personas": ["data-storyteller"]
+    },
+    {
+      "id": "singer",
+      "name": "Ryan Singer",
+      "title": "Author, Shape Up; formerly Basecamp",
+      "quote": "Farshad sits with a problem until it has a shape. Then he ships the shape.",
+      "source": "airshow.io",
+      "personas": ["product-builder", "strategist"]
+    },
+    {
+      "id": "elmer-dewitt",
+      "name": "Philip Elmer-DeWitt",
+      "title": "Apple 3.0; formerly Fortune, CNN",
+      "quote": "I have watched Farshad and Horace Dediu turn a quarterly earnings call into a film. It is unnerving how good it is.",
+      "source": "airshow.io",
+      "personas": ["data-storyteller"]
+    }
+  ]
+}

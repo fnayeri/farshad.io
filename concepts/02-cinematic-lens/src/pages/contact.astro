@@ -1,0 +1,84 @@
+---
+import Base from "../layouts/Base.astro";
+import { profile } from "../lib/content.ts";
+---
+
+<Base title="Contact — Farshad Nayeri" description={profile.availability} active="contact">
+  <section class="container">
+    <header class="head">
+      <p class="kicker">Direct</p>
+      <h1>Contact</h1>
+    </header>
+    <div class="cards">
+      <article class="card">
+        <div class="label">Currently available for</div>
+        <p class="big">{profile.availability}</p>
+      </article>
+      <article class="card">
+        <div class="label">Email</div>
+        <p class="big-link"><a href={`mailto:${profile.email}`}>{profile.email}</a></p>
+        <p class="quiet">Replies within 24 hours, Boston business days.</p>
+      </article>
+      <article class="card">
+        <div class="label">Studio</div>
+        <p class="big">{profile.location}</p>
+        <p class="quiet">In-person around Boston/Cambridge. Remote engagements anywhere serious.</p>
+      </article>
+      <article class="card">
+        <div class="label">LinkedIn</div>
+        <p class="big-link"><a href={profile.linkedin} target="_blank" rel="noopener noreferrer">linkedin.com/in/farshadnayeri</a></p>
+      </article>
+    </div>
+    <p class="closing"><em>The film is on. If you have read this far, write.</em></p>
+  </section>
+</Base>
+
+<style>
+  .head { padding: clamp(40px, 6vw, 96px) 0 24px; }
+  .kicker { font-family: var(--display); font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--highlight); margin: 0 0 14px; }
+  h1 { font-size: var(--step-5); line-height: 0.92; margin: 0; font-weight: 200; letter-spacing: -0.04em; }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule-dark);
+    margin-top: 32px;
+  }
+  .card {
+    padding: 28px 28px 28px 0;
+    border-bottom: 1px solid var(--rule-dark);
+    border-right: 1px solid var(--rule-dark);
+  }
+  .card:nth-child(2n) { padding-right: 0; padding-left: 28px; border-right: 0; }
+  .label { color: var(--halo); margin-bottom: 12px; font-weight: 600; }
+  .big {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: var(--step-1);
+    line-height: 1.4;
+    color: var(--paper);
+    margin: 0 0 8px;
+  }
+  .big-link {
+    font-family: var(--display);
+    font-size: var(--step-2);
+    line-height: 1.15;
+    margin: 0 0 8px;
+    font-weight: 500;
+  }
+  .big-link a { color: var(--paper); border-bottom: 1px solid var(--paper); }
+  .big-link a:hover { color: var(--highlight); border-bottom-color: var(--highlight); }
+  .quiet { font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--halo); margin: 0; }
+  .closing {
+    font-family: var(--serif);
+    font-size: var(--step-2);
+    line-height: 1.25;
+    text-align: center;
+    margin: 56px 0;
+    color: var(--paper);
+  }
+  @media (max-width: 700px) {
+    .cards { grid-template-columns: 1fr; }
+    .card, .card:nth-child(2n) { padding: 28px 0; border-right: 0; }
+  }
+</style>

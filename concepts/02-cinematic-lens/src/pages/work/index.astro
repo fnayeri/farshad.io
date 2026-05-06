@@ -1,0 +1,107 @@
+---
+import Base from "../../layouts/Base.astro";
+import SceneCard from "../../components/SceneCard.astro";
+import { projects, personas } from "../../lib/content.ts";
+---
+
+<Base title="Work — Farshad Nayeri" description="The archive: scenes from 1992 to today." active="work" surface="paper">
+  <section class="container head">
+    <p class="kicker">Archive</p>
+    <h1>Selected Scenes</h1>
+    <p class="standfirst">Thirty years. Filtered by lens.</p>
+    <nav class="filter-bar" aria-label="Filter by lens">
+      <a href="#all" class="chip is-active">All</a>
+      {personas.map((p) => (
+        <a href={`#${p.id}`} class="chip">{p.label}</a>
+      ))}
+    </nav>
+  </section>
+
+  <section class="container archive">
+    <div class="scenes-grid">
+      {projects.map((p) => (
+        <div class="archive-item" data-personas={p.personas.join(",")}>
+          <SceneCard project={p} surface="paper" />
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      var chips = document.querySelectorAll(".chip");
+      var items = document.querySelectorAll(".archive-item");
+      function filter(t) {
+        chips.forEach(function (c) {
+          c.classList.toggle("is-active", c.getAttribute("href") === "#" + t);
+        });
+        items.forEach(function (it) {
+          var ps = (it.getAttribute("data-personas") || "").split(",");
+          it.style.display = t === "all" || ps.indexOf(t) !== -1 ? "" : "none";
+        });
+      }
+      chips.forEach(function (c) {
+        c.addEventListener("click", function (e) {
+          e.preventDefault();
+          var t = (c.getAttribute("href") || "#all").slice(1);
+          history.replaceState(null, "", "#" + t);
+          filter(t);
+        });
+      });
+      filter(location.hash ? location.hash.slice(1) : "all");
+    })();
+  </script>
+</Base>
+
+<style>
+  .head { padding: clamp(40px, 6vw, 96px) 0 24px; }
+  .kicker {
+    font-family: var(--display);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--lens-blue);
+    margin: 0 0 14px;
+  }
+  h1 {
+    font-size: var(--step-5);
+    line-height: 0.92;
+    margin: 0 0 14px;
+    font-weight: 200;
+    letter-spacing: -0.04em;
+  }
+  .standfirst {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: var(--step-2);
+    color: var(--ink-soft);
+    margin: 0 0 24px;
+  }
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    border-top: 1px solid var(--rule-light);
+    border-bottom: 1px solid var(--rule-light);
+    padding: 12px 0;
+  }
+  .chip {
+    font-family: var(--display);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    border: 1px solid var(--rule-light);
+    padding: 4px 12px;
+    border-radius: 999px;
+  }
+  .chip:hover { color: var(--lens-blue); border-color: var(--lens-blue); }
+  .chip.is-active { background: var(--lens-blue); color: white; border-color: var(--lens-blue); }
+  .archive { padding: 40px 0; }
+  .scenes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+  }
+</style>

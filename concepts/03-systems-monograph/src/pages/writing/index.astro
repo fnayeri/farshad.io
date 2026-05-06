@@ -1,0 +1,52 @@
+---
+import Base from "../../layouts/Base.astro";
+import { writing } from "../../lib/content.ts";
+---
+
+<Base title="Notes — Farshad Nayeri" description="Working notes." active="writing">
+  <section class="container">
+    <header class="head">
+      <p class="numeral">§ Notes</p>
+      <h1>Working Notes</h1>
+      <p class="standfirst"><em>In the spirit of a research lab notebook. Loaded slowly, read once.</em></p>
+    </header>
+
+    <ol class="notes">
+      {writing.map((w, i) => (
+        <li>
+          <a href={`/writing/${w.slug}/`}>
+            <span class="note-num">¶ {String(i + 1).padStart(2, "0")}</span>
+            <span>
+              <strong>{w.title}</strong>
+              <span class="note-date">{w.date}</span>
+              <span class="note-desc">{w.description}</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </section>
+</Base>
+
+<style>
+  .head { padding: clamp(40px, 6vw, 96px) 0 24px; max-width: 60ch; }
+  .numeral { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--lab); margin: 0 0 14px; }
+  h1 { font-size: var(--step-5); margin: 0 0 14px; }
+  .standfirst { font-size: var(--step-1); color: var(--ink-soft); }
+  .notes { list-style: none; margin: 32px 0 0; padding: 0; }
+  .notes li { border-top: 1px solid var(--rule); }
+  .notes li:last-child { border-bottom: 1px solid var(--rule); }
+  .notes a {
+    display: grid;
+    grid-template-columns: 60px minmax(0, 1fr);
+    gap: 18px;
+    padding: 22px 0;
+    border: 0;
+    align-items: baseline;
+  }
+  .note-num { color: var(--lab); font-family: var(--mono); font-size: 12px; }
+  .notes strong { display: block; font-size: var(--step-2); margin-bottom: 2px; }
+  .notes a:hover strong { color: var(--lab); }
+  .note-date { display: block; font-family: var(--mono); font-size: 12px; color: var(--ink-quiet); margin-bottom: 6px; }
+  .note-desc { font-style: italic; color: var(--ink-soft); font-size: 14px; }
+</style>

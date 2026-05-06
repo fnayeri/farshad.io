@@ -1,0 +1,21 @@
+{
+  "name": "concept-01-editorial-press",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev --port 4321",
+    "start": "astro dev --port 4321",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^3.1.9",
+    "@astrojs/sitemap": "^3.2.1",
+    "@fontsource/inter": "^5.1.0",
+    "@fontsource/jetbrains-mono": "^5.1.1",
+    "@fontsource/source-serif-4": "^5.1.0",
+    "astro": "^4.16.18"
+  }
+}

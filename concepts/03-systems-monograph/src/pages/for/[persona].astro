@@ -1,0 +1,186 @@
+---
+import Base from "../../layouts/Base.astro";
+import PersonaSentence from "../../components/PersonaSentence.astro";
+import {
+  personas,
+  testimonials,
+  projects,
+  getPersona,
+  type Persona,
+} from "../../lib/content.ts";
+
+export function getStaticPaths() {
+  return personas.map((p) => ({ params: { persona: p.id } }));
+}
+
+const { persona: personaId } = Astro.params;
+const persona = getPersona(personaId!) as Persona;
+const featured = persona.featured_project_slugs
+  .map((slug) => projects.find((p) => p.slug === slug))
+  .filter(Boolean) as typeof projects;
+const personaQuotes = testimonials.filter((t) => t.personas.includes(persona.id));
+const idx = personas.findIndex((p) => p.id === persona.id);
+---
+
+<Base title={`${persona.label} — Farshad Nayeri`} description={persona.pitch_line} active="home">
+  <section class="container">
+    <header class="chap-head">
+      <p class="numeral">Chapter {String(idx + 1).padStart(2, "0")} · Read As</p>
+      <h1>{persona.label}</h1>
+      <p class="pitch"><em>{persona.pitch_line}</em></p>
+      <div class="tools">
+        <a href="/work/" class="link">Selected work →</a>
+        <button type="button" class="link" onclick="window.print();">Print one-pager</button>
+      </div>
+    </header>
+
+    <PersonaSentence active={persona.id} />
+
+    <article class="tufte chap">
+      <div class="body">
+        <h2>The shape of the gap</h2>
+        <p>{persona.shape_of_the_gap}</p>
+
+        <h2>What he uniquely does</h2>
+        <p>{persona.what_he_uniquely_does}</p>
+
+        <h2>Angles to play</h2>
+        <ol class="angles">
+          {persona.angles_to_play.map((a) => <li>{a}</li>)}
+        </ol>
+
+        <h2>Heading off the wrong reads</h2>
+        <p>{persona.head_off_early}</p>
+
+        <p class="closing"><em>{persona.closing_pitch}</em></p>
+      </div>
+      <aside class="marginalia">
+        <div class="margin-section">
+          <div class="smallcaps">Credibility anchors</div>
+          {persona.credibility_anchors.map((a, i) => (
+            <aside class="note">
+              <span class="note-num">¶ {String(i + 1).padStart(2, "0")}</span>
+              {a}
+            </aside>
+          ))}
+        </div>
+
+        {personaQuotes.length > 0 && (
+          <div class="margin-section">
+            <div class="smallcaps">Press</div>
+            {personaQuotes.map((t) => (
+              <aside class="note">
+                <em>“{t.quote}”</em>
+                <br />— <strong>{t.name}</strong>, {t.title}
+              </aside>
+            ))}
+          </div>
+        )}
+      </aside>
+    </article>
+
+    <section class="chapter">
+      <header class="chapter-head">
+        <span class="numeral">§ Reading list</span>
+        <h2>Selected Work — {persona.label}</h2>
+      </header>
+      <ol class="brief-list">
+        {featured.map((p) => (
+          <li>
+            <a href={`/work/${p.slug}/`}>
+              <span class="brief-dates">{p.dates}</span>
+              <span>
+                <strong>{p.title}</strong>
+                <span class="brief-client">{p.client}</span>
+                <span class="brief-outcome">{p.outcome}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+  </section>
+</Base>
+
+<style>
+  .chap-head { padding: clamp(40px, 6vw, 96px) 0 24px; max-width: 64ch; }
+  .numeral {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--lab);
+    margin: 0 0 14px;
+  }
+  .chap-head h1 {
+    font-size: var(--step-5);
+    margin: 0 0 14px;
+  }
+  .pitch {
+    font-size: var(--step-2);
+    line-height: 1.3;
+    color: var(--ink-soft);
+    margin: 0 0 22px;
+    font-style: italic;
+  }
+  .tools { display: flex; gap: 18px; flex-wrap: wrap; }
+  .link {
+    border: 0;
+    color: var(--lab);
+    border-bottom: 1px solid var(--lab);
+    padding-bottom: 1px;
+    font-family: var(--serif);
+  }
+  .link:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+  .chap { padding: 32px 0; }
+  .body h2 {
+    font-size: var(--step-2);
+    margin-top: 32px;
+    margin-bottom: 12px;
+  }
+  .body h2:first-of-type { margin-top: 0; }
+  .angles { padding-left: 1.4em; }
+  .angles li { line-height: 1.6; margin-bottom: 8px; }
+  .closing {
+    font-size: var(--step-1);
+    color: var(--ink);
+    border-top: 1px solid var(--lab);
+    padding-top: 20px;
+    margin-top: 32px;
+  }
+  .margin-section { margin-bottom: 28px; }
+  .margin-section .smallcaps { display: block; margin-bottom: 12px; color: var(--lab); }
+  .note strong { color: var(--ink); }
+  .note em { color: var(--ink-soft); }
+
+  .chapter {
+    border-top: 1px solid var(--rule);
+    padding-top: 24px;
+    margin-top: 32px;
+  }
+  .chapter-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .chapter-head .numeral { color: var(--lab); }
+  .chapter-head h2 { margin: 0; }
+  .brief-list { list-style: none; margin: 0; padding: 0; }
+  .brief-list li { border-top: 1px solid var(--rule); }
+  .brief-list li:last-child { border-bottom: 1px solid var(--rule); }
+  .brief-list a {
+    display: grid;
+    grid-template-columns: 130px minmax(0, 1fr);
+    gap: 24px;
+    padding: 18px 0;
+    border: 0;
+    align-items: baseline;
+  }
+  .brief-list a:hover strong { color: var(--lab); }
+  .brief-dates { font-family: var(--mono); font-size: 12px; color: var(--ink-quiet); }
+  .brief-list strong { display: block; font-size: var(--step-1); margin-bottom: 2px; }
+  .brief-client { display: block; font-style: italic; color: var(--ink-soft); font-size: 14px; margin-bottom: 4px; }
+  .brief-outcome { color: var(--ink-soft); font-size: 14px; }
+</style>

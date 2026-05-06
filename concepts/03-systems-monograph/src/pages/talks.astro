@@ -1,0 +1,75 @@
+---
+import Base from "../layouts/Base.astro";
+import { talks } from "../lib/content.ts";
+const featured = talks.filter((t) => t.featured);
+const rest = talks.filter((t) => !t.featured);
+---
+
+<Base title="Talks — Farshad Nayeri" description="Stage work, ECOOP 1994 onward." active="talks">
+  <section class="container">
+    <header class="head">
+      <p class="numeral">§ Talks</p>
+      <h1>On Stage</h1>
+      <p class="standfirst"><em>Featured talks first; the long index follows.</em></p>
+    </header>
+
+    <ol class="talk-list">
+      {featured.map((t) => (
+        <li class="featured">
+          <span class="t-date">{t.date}</span>
+          <div class="t-body">
+            <strong>{t.title}</strong>
+            <span class="t-venue"><em>{t.venue}</em></span>
+            <p>{t.description}</p>
+            {t.url && <a href={t.url} target="_blank" rel="noopener noreferrer">Visit →</a>}
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <h3 class="other-h">§ Other talks</h3>
+    <ol class="talk-list">
+      {rest.map((t) => (
+        <li>
+          <span class="t-date">{t.date}</span>
+          <div class="t-body">
+            <strong>{t.title}</strong>
+            <span class="t-venue"><em>{t.venue}</em></span>
+            <p>{t.description}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+</Base>
+
+<style>
+  .head { padding: clamp(40px, 6vw, 96px) 0 24px; max-width: 60ch; }
+  .numeral { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--lab); margin: 0 0 14px; }
+  h1 { font-size: var(--step-5); margin: 0 0 14px; }
+  .standfirst { font-size: var(--step-1); color: var(--ink-soft); }
+  .talk-list { list-style: none; margin: 32px 0 0; padding: 0; }
+  .talk-list li {
+    display: grid;
+    grid-template-columns: 130px minmax(0, 1fr);
+    gap: 24px;
+    padding: 22px 0;
+    border-top: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .talk-list li:last-child { border-bottom: 1px solid var(--rule); }
+  .featured strong { color: var(--ink); }
+  .featured { background: var(--paper-2); padding-left: 18px; padding-right: 18px; border-left: 3px solid var(--lab); }
+  .t-date { font-family: var(--mono); font-size: 12px; color: var(--ink-quiet); }
+  .t-body strong { display: block; font-size: var(--step-1); margin-bottom: 2px; }
+  .t-venue { display: block; color: var(--ink-soft); font-size: 14px; margin-bottom: 8px; }
+  .t-body p { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 8px; }
+  .other-h {
+    margin: 56px 0 12px;
+    border-top: 1px solid var(--rule);
+    padding-top: 18px;
+    font-size: var(--step-1);
+    font-family: var(--serif);
+    color: var(--lab);
+  }
+</style>
