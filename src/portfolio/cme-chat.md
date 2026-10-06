@@ -3,7 +3,7 @@ layout: portfolio
 title: "Interactive Trade Clearing Platform"
 customer: "Chicago Mercantile Exchange 	"
 role: "Lead Architect"
-body: "Developed trade clearing component for CME Future and Option Trades on Instant Messages."
+body: "Developed trade clearing component for CME Real-time Future and Option Trades on Instant Messages."
 problem: "CME's Pivot trade messaging app required new means to clear trades that have been agreed upon by the counterparts."
 stakes: "Instant messaging is a great way for counterparts to come to a deal. In order to clear a deal, however, it has to be well-specified."
 discovery: "Commodity trades may involve complex strategies (e.g., butterfly condor, box), these can be considered part of a 'language' and verified using a PEG parser."
