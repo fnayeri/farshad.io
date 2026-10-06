@@ -1,6 +1,6 @@
 ---
 layout: portfolio
-title: "Real-time QoS Analysis Platform"
+title: "Real-time QoS Analytics Platform"
 customer: "Verizon Labs 	"
 role: "Lead Architect"
 body: "Designed and developed real-time system to monitor and visualize network quality of service for the entire Verizon management network. "
