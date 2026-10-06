@@ -1,6 +1,6 @@
 ---
 layout: portfolio
-title: "Interactive Trade Clearing Platform"
+title: "Interactive Clearing Platform for Real-Time Commodity & Energy Trading"
 customer: "Chicago Mercantile Exchange 	"
 role: "Lead Architect"
 body: "Developed trade clearing component for CME Real-time Future and Option Trades on Instant Messages."
